@@ -1,0 +1,10 @@
+name: HerobrineAI
+main: org.jakub1221.herobrineai.HerobrineAI
+version: 3.0.0
+commands:
+    hb-ai:
+      description: Main command.
+      usage: /hb-ai help
+    hb:
+      description: Main command.
+      usage: /hb help
