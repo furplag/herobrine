@@ -39,12 +39,6 @@ public class Pyramid extends Core{
 				int i4=0;
 				int i5=0;
 				int i6=0;
-				int x=0;
-				int y=0;
-				int z=0;
-				
-				
-					
 				
 				for (i1=-5;i1<=5;i1++){//Y
 	

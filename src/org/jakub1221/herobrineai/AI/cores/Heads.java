@@ -12,10 +12,8 @@ import org.bukkit.entity.Player;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.AI.AICore;
 import org.jakub1221.herobrineai.AI.Core;
-import org.jakub1221.herobrineai.AI.Core.AppearType;
 import org.jakub1221.herobrineai.AI.CoreResult;
 import org.jakub1221.herobrineai.misc.BlockChanger;
-import org.jakub1221.herobrineai.misc.ItemName;
 
 public class Heads extends Core{
 

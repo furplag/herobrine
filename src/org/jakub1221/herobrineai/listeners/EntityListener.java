@@ -17,7 +17,6 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -28,7 +27,6 @@ import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.AI.*;
 import org.jakub1221.herobrineai.AI.Core.CoreType;
-import org.jakub1221.herobrineai.entity.CustomZombie;
 import org.jakub1221.herobrineai.entity.MobType;
 import org.jakub1221.herobrineai.misc.ItemName;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
@@ -59,9 +57,6 @@ public class EntityListener implements Listener{
 		 World world = location.getWorld();
 		  
 
-		 net.minecraft.server.v1_5_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_5_R2.CraftWorld) world).getHandle();
-		
-		  
 		 if (creatureType == CreatureType.ZOMBIE && HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId())==false){
 			 
 		

@@ -100,8 +100,7 @@ public class Attack extends Core{
         	ploc.setY(ploc.getY()+1.5);
         	HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
         	if (HerobrineAI.getPluginCore().getConfigDB().Lighting==true){
-        	Random lchancegen= new Random();
-			int lchance= lchancegen.nextInt(100);
+			int lchance= new Random().nextInt(100);
          
         			if (lchance>75){
         	Location newloc = (Location) ploc;
@@ -141,8 +140,7 @@ public class Attack extends Core{
 		        	HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
 		        	AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(),Sound.BREATH,(float) 0.75,(float) 0.75);
 		        	if (HerobrineAI.getPluginCore().getConfigDB().HitPlayer==true){
-		        		Random hitchancegen= new Random();
-		    			int hitchance= hitchancegen.nextInt(100);
+		    			int hitchance= new Random().nextInt(100);
 		    			if (hitchance<55){
 		    				AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.HURT,(float) 0.75,(float) 0.75);
 		    				if (AICore.PlayerTarget.getHealth()>=4){

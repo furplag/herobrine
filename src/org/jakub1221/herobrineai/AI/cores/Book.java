@@ -23,8 +23,7 @@ public class Book extends Core{
 	
 		if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(player.getLocation().getWorld().getName())){
 			if (HerobrineAI.getPluginCore().getConfigDB().WriteBooks==true && HerobrineAI.getPluginCore().getSupport().checkBooks(player.getLocation())){
-			Random randgen = new Random();
-			int chance=randgen.nextInt(100);
+			int chance=new Random().nextInt(100);
 			if (chance>(100-HerobrineAI.getPluginCore().getConfigDB().BookChance)){
 			Inventory chest = (Inventory) data[1];
 			if (chest.firstEmpty()!=-1){
@@ -46,8 +45,7 @@ public class Book extends Core{
 		
 		int count = HerobrineAI.getPluginCore().getConfigDB().useBookMessages.size();
 		
-		Random randgen = new Random();
-		int chance=randgen.nextInt(count);
+		int chance=new Random().nextInt(count);
 		
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta meta = (BookMeta) book.getItemMeta();

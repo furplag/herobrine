@@ -1,7 +1,6 @@
 package org.jakub1221.herobrineai.AI.cores;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -11,7 +10,6 @@ import org.jakub1221.herobrineai.AI.AICore;
 import org.jakub1221.herobrineai.AI.Core;
 import org.jakub1221.herobrineai.AI.CoreResult;
 import org.jakub1221.herobrineai.AI.Message;
-import org.jakub1221.herobrineai.AI.Core.CoreType;
 
 public class Totem extends Core{
 	

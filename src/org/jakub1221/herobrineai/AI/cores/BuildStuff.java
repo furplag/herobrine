@@ -28,8 +28,7 @@ public class BuildStuff extends Core{
 			if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)){
 		if (loc.getBlockY()<60){
 		
-		Random randgen = new Random();
-		int chance=randgen.nextInt(100);
+		int chance=new Random().nextInt(100);
 		if (chance>(100-HerobrineAI.getPluginCore().getConfigDB().CaveChance)){
 			AICore.log.info("Creating cave...");
 			

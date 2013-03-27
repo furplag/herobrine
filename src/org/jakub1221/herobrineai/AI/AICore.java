@@ -8,7 +8,6 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -118,8 +117,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 			
 		if (isTarget==false){
 			
-		Random generator = new Random();
-		int att_chance= generator.nextInt(100);
+		int att_chance= new Random().nextInt(100);
 		log.info("[HerobrineAI] Generating find chance...");
 		
 		if (att_chance-(HerobrineAI.getPluginCore().getConfigDB().ShowRate*4)<55){
@@ -128,8 +126,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 				
 				log.info("[HerobrineAI] Finding target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-				Random generator2 = new Random();
-				int player_rolled= generator2.nextInt(Bukkit.getServer().getOnlinePlayers().length);
+				int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
 				if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
 				FindPlayer();
 				
@@ -212,8 +209,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 		if (PlayerTarget.isOnline() && isTarget){
 			 if (PlayerTarget.isDead()==false){
 				 Object[] data = {PlayerTarget};
-				 Random generator = new Random();
-					int chance= generator.nextInt(100);
+					int chance= new Random().nextInt(100);
 					 if (chance<=10){
 						 if(HerobrineAI.getPluginCore().getConfigDB().UseGraveyardWorld==true){
 						 log.info("[HerobrineAI] Teleporting target to Graveyard world.");
@@ -285,8 +281,7 @@ private void RandomPositionInterval(){
 if (CoreNow==CoreType.ANY){
 	  RandomPositionCore.setRandomTicks(0);
      int count = HerobrineAI.getPluginCore().getConfigDB().useWorlds.size();
-     Random randgen = new Random();
-		int chance=randgen.nextInt(count);
+		int chance=new Random().nextInt(count);
 		Object[] data = {Bukkit.getServer().getWorld(HerobrineAI.getPluginCore().getConfigDB().useWorlds.get(chance))};
 		getCore(CoreType.RANDOM_POSITION).RunCore(data);
 	
@@ -312,9 +307,7 @@ if (CoreNow==CoreType.ANY){
 	   }
    private void PyramidInterval(){
 		
-			  Random generator1 = new Random();
-			  Random generator3 = new Random();
-				int chance=generator1.nextInt(100);
+				int chance=new Random().nextInt(100);
 				if (chance>50){
 			  if (Bukkit.getServer().getOnlinePlayers().length>0){
 					log.info("[HerobrineAI] Finding pyramid target...");
@@ -326,7 +319,7 @@ if (CoreNow==CoreType.ANY){
 				}else{
 					if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 						
-						int chance2=generator3.nextInt(100);
+						int chance2=new Random().nextInt(100);
 						if (chance2<30){
 							  if (HerobrineAI.getPluginCore().getConfigDB().BuildPyramids==true){
 								  Object[] data = {AllOnPlayers[player_rolled]};
@@ -356,21 +349,18 @@ if (CoreNow==CoreType.ANY){
 
 private void TempleInterval(){
 	  if (HerobrineAI.getPluginCore().getConfigDB().BuildTemples==true){
-		  Random generator1 = new Random();
-		  Random generator3 = new Random();
-			int chance=generator1.nextInt(100);
+			int chance=new Random().nextInt(100);
 			if (chance>50){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
 				log.info("[HerobrineAI] Finding temple target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-		  Random generator2 = new Random();
-			int player_rolled= generator2.nextInt(Bukkit.getServer().getOnlinePlayers().length);
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
 			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
 				
 			}else{
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 					
-					int chance2=generator3.nextInt(100);
+					int chance2=new Random().nextInt(100);
 					if (chance2<50){
 						  Object[] data = {AllOnPlayers[player_rolled]};
 							getCore(CoreType.TEMPLE).RunCore(data);
@@ -388,21 +378,18 @@ private void TempleInterval(){
 
 private void BuildCave(){
 	  if (HerobrineAI.getPluginCore().getConfigDB().BuildStuff==true){
-		  Random generator1 = new Random();
-		  Random generator3 = new Random();
-			int chance=generator1.nextInt(100);
+			int chance=new Random().nextInt(100);
 			if (chance>50){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
 				log.info("[HerobrineAI] Finding cave target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-		  Random generator2 = new Random();
-			int player_rolled= generator2.nextInt(Bukkit.getServer().getOnlinePlayers().length);
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
 			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
 				
 			}else{
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 					
-					int chance2=generator3.nextInt(100);
+					int chance2=new Random().nextInt(100);
 					if (chance2<50){
 						  Object[] data = {AllOnPlayers[player_rolled].getLocation()};
 							getCore(CoreType.BUILD_STUFF).RunCore(data);
