@@ -44,8 +44,8 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 	private Support support;
 	private EntityManager entMng;
 	private PathManager pathMng;
-	public int version=3122;
-	public String versionStr="3.0.0";
+	public int build=3123;
+	public String versionStr="3.0.1";
 	public java.io.InputStream data_temple=HerobrineAI.class.getResourceAsStream("/res/temple.yml");
 	public java.io.InputStream data_graveyard_world=HerobrineAI.class.getResourceAsStream("/res/graveyard_world.yml");
 	
@@ -128,7 +128,7 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 				}
 			
 			}
-			log.info("[HerobrineAI] Plugin loaded! Version: "+versionStr+" / Build: "+version);
+			log.info("[HerobrineAI] Plugin loaded! Version: "+versionStr+" / Build: "+build);
 			
 			// Init Block Types
 		
@@ -274,6 +274,7 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 		return this.pathMng;
 	}
     public boolean canAttackPlayer(Player player,Player sender){
+ 
     	if (player.isOp()){
     		if (configdb.AttackOP){
     			 if (player.getGameMode()==GameMode.CREATIVE){
@@ -283,6 +284,9 @@ public class HerobrineAI extends JavaPlugin implements Listener{
     			 }
     			return true;
     		}else{sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player is OP.");return false;}
+    	}else if (player.hasPermission("hb-ai.ignore")){
+    		sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player has ignore permission.");
+    		return false;
     	}else if (player.getGameMode()==GameMode.CREATIVE){
     		if (configdb.AttackCreative){
     			return true;
@@ -291,6 +295,7 @@ public class HerobrineAI extends JavaPlugin implements Listener{
     	
     }
     public boolean canAttackPlayerConsole(Player player){
+    	
     	if (player.isOp()){
     		if (configdb.AttackOP){
     			 if (player.getGameMode()==GameMode.CREATIVE){
@@ -300,6 +305,9 @@ public class HerobrineAI extends JavaPlugin implements Listener{
     			 }
     			return true;
     		}else{log.info("[HerobrineAI] Player is OP.");return false;}
+    	}else if (player.hasPermission("hb-ai.ignore")){
+    		log.info("[HerobrineAI] Player has ignore permission.");
+    		return false;
     	}else if (player.getGameMode()==GameMode.CREATIVE){
     		if (configdb.AttackCreative){
     			return true;
@@ -318,6 +326,8 @@ public class HerobrineAI extends JavaPlugin implements Listener{
     			 }
     			return true;
     		}else{return false;}
+    	}else if (player.hasPermission("hb-ai.ignore")){
+    		return false;
     	}else if (player.getGameMode()==GameMode.CREATIVE){
     		if (configdb.AttackCreative){
     			return true;
