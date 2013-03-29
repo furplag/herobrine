@@ -19,37 +19,32 @@ public class SoundF extends Core{
 	
 	public CoreResult playRandom(Player player){
 		
-		Sound sound = Sound.BREATH;
+		Sound[] sounds = new Sound[15];
+		sounds[0]=Sound.STEP_STONE;
+		sounds[1]=Sound.STEP_WOOD;
+		sounds[2]=Sound.STEP_GRASS;
+		sounds[3]=Sound.STEP_SAND;
+		sounds[4]=Sound.STEP_GRAVEL;
+		sounds[5]=Sound.BREATH;
+		sounds[6]=Sound.BREATH;
+		sounds[7]=Sound.BREATH;
+		sounds[8]=Sound.BREATH;
+		sounds[9]=Sound.DOOR_OPEN;
+		sounds[10]=Sound.DOOR_CLOSE;
+		sounds[11]=Sound.GHAST_SCREAM;
+		sounds[12]=Sound.GHAST_SCREAM2;
+		sounds[13]=Sound.WITHER_DEATH;
+		sounds[14]=Sound.WITHER_HURT;
 		
-		Random generator = new Random();
-		int chance= generator.nextInt(20);
-		
-		if (chance<5){
-		sound = Sound.STEP_STONE;
-		}else if (chance<10){
-			sound = Sound.STEP_SAND;
-			}else if (chance<14){
-				sound = Sound.STEP_GRASS;
-				}else if (chance<18){
-			sound = Sound.STEP_GRAVEL;
-			}else{sound = Sound.BREATH;}
-		
-		Random randxgen = new Random();
-		int randx= randxgen.nextInt(3);
-		
-		Random randzgen = new Random();
-		int randz= randzgen.nextInt(3);
-		
-		Random randxgenp = new Random();
-		int randxp= randxgenp.nextInt(1);
-		Random randzgenp = new Random();
-		int randzp= randzgenp.nextInt(1);
+		int chance=new Random().nextInt(14);
+		int randx=new Random().nextInt(3);
+		int randz=new Random().nextInt(3);
+		int randxp=new Random().nextInt(1);
+		int randzp=new Random().nextInt(1);
 		if (randxp==0 && randx!=0){randx=(-(randx));}
 		if (randzp==0 && randz!=0){randz=(-(randz));}
 		
-		
-		
-       player.playSound(player.getLocation(),sound,(float) 0.75,(float) 0.75);
+       player.playSound(player.getLocation(),sounds[chance],(float) 0.75,(float) 0.75);
        
        return new CoreResult(true,"SoundF is starting!");
 	}

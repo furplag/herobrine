@@ -69,6 +69,7 @@ public class ConfigDB {
 	public boolean UseNPC_Warrior=true;
 	public CustomID ItemInHand=null;
 	public ArrayList<String> UseCustomItemsList = new ArrayList<String>();
+	public boolean Explosions=true;
 	
 	public ConfigDB(Logger l){
 		this.log=l;
@@ -178,6 +179,7 @@ public class ConfigDB {
 			config.set("config.UseNPC.Guardian", true);
 			config.set("config.UseNPC.Warrior", true);
 			config.set("config.ItemInHand", "0");
+			config.set("config.Explosions", true);
 			
 			try {
 				config.save(configF);
@@ -385,7 +387,14 @@ public class ConfigDB {
 			
 			}
 		
-			
+			if (!config.contains("config.Explosions")){
+				if (hasUpdated==false){
+				log.info("[HerobrineAI] Updating old config...");
+				}
+				hasUpdated=true;
+		
+				config.set("config.Explosions", true);
+			}
 	
 			
 			if (hasUpdated==true){
@@ -474,12 +483,15 @@ public class ConfigDB {
 		UseNPC_Guardian=config.getBoolean("config.UseNPC.Guardian");
 		UseNPC_Warrior=config.getBoolean("config.UseNPC.Warrior");
 		ItemInHand=new CustomID(config.getString("config.ItemInHand"));
+		Explosions=config.getBoolean("config.Explosions");
 		
 	    HerobrineAI.HerobrineMaxHP=HerobrineHP;
 	    HerobrineAI.getPluginCore().getAICore().Stop_MAIN();
 	    HerobrineAI.getPluginCore().getAICore().Start_MAIN();
 	    HerobrineAI.getPluginCore().getAICore().Stop_BD();
 	    HerobrineAI.getPluginCore().getAICore().Start_BD();
+	    HerobrineAI.getPluginCore().getAICore().Stop_RC();
+	    HerobrineAI.getPluginCore().getAICore().Start_RC();
 	    HerobrineAI.AvailableWorld=false;
 	    
 	    if (HerobrineAI.HerobrineNPC!=null){

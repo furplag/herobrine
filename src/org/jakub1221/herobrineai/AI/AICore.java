@@ -22,7 +22,9 @@ import org.jakub1221.herobrineai.AI.cores.Graveyard;
 import org.jakub1221.herobrineai.AI.cores.Haunt;
 import org.jakub1221.herobrineai.AI.cores.Heads;
 import org.jakub1221.herobrineai.AI.cores.Pyramid;
+import org.jakub1221.herobrineai.AI.cores.RandomExplosion;
 import org.jakub1221.herobrineai.AI.cores.RandomPosition;
+import org.jakub1221.herobrineai.AI.cores.RandomSound;
 import org.jakub1221.herobrineai.AI.cores.Signs;
 import org.jakub1221.herobrineai.AI.cores.SoundF;
 import org.jakub1221.herobrineai.AI.cores.Temple;
@@ -48,6 +50,7 @@ public class AICore {
 	private boolean RandomMoveINT=false;
 	private boolean RandomSeeINT=false;
 	private boolean CheckGravityINT=false;
+	private boolean RandomCoreINT=false;
 	private RandomPosition RandomPositionCore;
 	private Graveyard GraveyardCore;
 	private int RP_INT=0;
@@ -56,6 +59,7 @@ public class AICore {
 	private int CG_INT=0;
 	private int MAIN_INT=0;
 	private int BD_INT=0;
+	private int RC_INT=0;
 	
 	public Core getCore(CoreType type){
 		for (Core  c : AllCores){
@@ -88,6 +92,8 @@ public class AICore {
 		AllCores.add(new Temple());
 		AllCores.add(new Totem());
 		AllCores.add(new Heads());
+		AllCores.add(new RandomSound());
+		AllCores.add(new RandomExplosion());
 		
 		plugin = HerobrineAI.getPluginCore();
 		log.info("[HerobrineAI] Debug mode enabled!");
@@ -414,6 +420,10 @@ private void BuildCave(){
 	  }
   }
 
+  public void RandomCoreINT(){
+	  
+  }
+  
    
   public void DisappearEffect(){
 	   
@@ -481,6 +491,7 @@ private void BuildCave(){
 	    		Start_RP();
 	    		Start_MAIN();
 	    	    Start_BD();
+	    	    Start_RC();
 			    }
 	        }, 1 * 5L);
 
@@ -528,6 +539,16 @@ private void BuildCave(){
 			    }
 	        }, 1 * 15L,1 * 15L); 
    }
+   
+   public void Start_RC(){
+	   RandomCoreINT=true;
+	   RC_INT=Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AICore.plugin, new Runnable() {
+	        public void run() {
+	        	RandomCoreINT();
+			    }
+	        }, (long)(HerobrineAI.getPluginCore().getConfigDB().ShowInterval/1.5),(long)(HerobrineAI.getPluginCore().getConfigDB().ShowInterval/1.5)); 
+   }
+   
    public void Start_CG(){
 	   CheckGravityINT=true;
 	   CG_INT=Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AICore.plugin, new Runnable() {
@@ -559,6 +580,12 @@ private void BuildCave(){
 	   if (RandomMoveINT){
 	   RandomMoveINT=false;
 	   Bukkit.getServer().getScheduler().cancelTask(RM_INT);
+   }
+   }
+   public void Stop_RC(){
+	   if (RandomCoreINT){
+	   RandomCoreINT=false;
+	   Bukkit.getServer().getScheduler().cancelTask(RC_INT);
    }
    }
    public void Stop_CG(){

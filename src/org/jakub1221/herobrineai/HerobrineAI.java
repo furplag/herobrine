@@ -24,6 +24,7 @@ import org.jakub1221.herobrineai.NPC.AI.PathManager;
 import org.jakub1221.herobrineai.NPC.Entity.HumanNPC;
 import org.jakub1221.herobrineai.NPC.NPCCore;
 import org.jakub1221.herobrineai.AI.AICore;
+import org.jakub1221.herobrineai.AI.Core.CoreType;
 import org.jakub1221.herobrineai.AI.extensions.GraveyardWorld;
 import org.jakub1221.herobrineai.commands.CmdExecutor;
 import org.jakub1221.herobrineai.entity.CustomZombie;
@@ -228,6 +229,7 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 	public void onDisable(){
 		this.entMng.killAllMobs();
 		NPCman.DisableTask();
+		aicore.CancelTarget(CoreType.ANY);
 		log.info("[HerobrineAI] Plugin disabled!");
 		
 		
