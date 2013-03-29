@@ -384,8 +384,7 @@ private void TempleInterval(){
 
 private void BuildCave(){
 	  if (HerobrineAI.getPluginCore().getConfigDB().BuildStuff==true){
-			int chance=new Random().nextInt(100);
-			if (chance>50){
+			if (new Random().nextBoolean()){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
 				log.info("[HerobrineAI] Finding cave target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
@@ -421,6 +420,26 @@ private void BuildCave(){
   }
 
   public void RandomCoreINT(){
+	 
+			if (new Random().nextBoolean()){
+		  if (Bukkit.getServer().getOnlinePlayers().length>0){
+				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
+			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
+				
+			}else{
+				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
+					if (new Random().nextBoolean()){
+						  Object[] data = {AllOnPlayers[player_rolled]};
+							getCore(CoreType.RANDOM_SOUND).RunCore(data);		
+					}else{
+						  Object[] data = {AllOnPlayers[player_rolled]};
+							getCore(CoreType.RANDOM_EXPLOSION).RunCore(data);		
+					}
+				}
+			}
+		  }
+	  }
 	  
   }
   

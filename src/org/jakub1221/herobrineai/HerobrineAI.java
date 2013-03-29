@@ -45,14 +45,14 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 	private Support support;
 	private EntityManager entMng;
 	private PathManager pathMng;
-	public int build=3123;
-	public String versionStr="3.0.1";
+	public static final int build=3125;
+	public static final String versionStr="3.0.1";
 	public java.io.InputStream data_temple=HerobrineAI.class.getResourceAsStream("/res/temple.yml");
 	public java.io.InputStream data_graveyard_world=HerobrineAI.class.getResourceAsStream("/res/graveyard_world.yml");
 	
 	public static int HerobrineHP=200;
 	public static int HerobrineMaxHP=200;
-	public static boolean isDebugging=false;
+	public static final boolean isDebugging=false;
 	
 	public static NPCCore NPCman;
 	public static HumanNPC HerobrineNPC;
