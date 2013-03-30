@@ -5,7 +5,6 @@ import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 
 import org.bukkit.entity.CreatureType;
@@ -45,17 +44,15 @@ public class EntityListener implements Listener{
 		equalsLoreS.add("Sword of Lighting");
 	}
 	
-	 @EventHandler
+	@SuppressWarnings("deprecation")
+	@EventHandler
 	 public void onCreatureSpawn(CreatureSpawnEvent event){
 		 if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Warrior){
 		 if (new Random().nextInt(100)>95){
 		 if (event.isCancelled()) return;
 		  
-		 Location location = event.getLocation();
 		 Entity entity = event.getEntity();
 		 CreatureType creatureType = event.getCreatureType();
-		 World world = location.getWorld();
-		  
 
 		 if (creatureType == CreatureType.ZOMBIE && HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId())==false){
 			 

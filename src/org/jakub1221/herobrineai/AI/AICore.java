@@ -51,8 +51,6 @@ public class AICore {
 	private boolean RandomSeeINT=false;
 	private boolean CheckGravityINT=false;
 	private boolean RandomCoreINT=false;
-	private RandomPosition RandomPositionCore;
-	private Graveyard GraveyardCore;
 	private int RP_INT=0;
 	private int RM_INT=0;
 	private int RS_INT=0;
@@ -75,18 +73,15 @@ public class AICore {
 	public AICore (){
 		
 		/* Cores init */
-		
-		this.GraveyardCore=new Graveyard();
-        this.RandomPositionCore=new RandomPosition();
 		AllCores.add(new Attack());
 		AllCores.add(new Book());
 		AllCores.add(new BuildStuff());
 		AllCores.add(new BuryPlayer());
 		AllCores.add(new DestroyTorches());
-		AllCores.add(this.GraveyardCore);
+		AllCores.add(new Graveyard());
 		AllCores.add(new Haunt());
 		AllCores.add(new Pyramid());
-		AllCores.add(this.RandomPositionCore);
+		AllCores.add(new RandomPosition());
 		AllCores.add(new Signs());
 		AllCores.add(new SoundF());
 		AllCores.add(new Temple());
@@ -103,8 +98,8 @@ public class AICore {
 		
 	}
 
-public Graveyard getGraveyard(){return this.GraveyardCore;}
-public RandomPosition getRandomPosition(){return this.RandomPositionCore;}
+public Graveyard getGraveyard(){return ((Graveyard)getCore(CoreType.GRAVEYARD));}
+public RandomPosition getRandomPosition(){return ((RandomPosition)getCore(CoreType.RANDOM_POSITION));}
 public void setCoreTypeNow(CoreType c){CoreNow=c;}
 public CoreType getCoreTypeNow(){return CoreNow;}
 
@@ -132,19 +127,14 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 				
 				log.info("[HerobrineAI] Finding target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-				int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
-				if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
-				FindPlayer();
-				
-				}else{
-					
+				int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length-1);	
 					
 				if (AllOnPlayers[player_rolled].getEntityId()!=HerobrineAI.HerobrineEntityID){
 					
 					if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName()) && HerobrineAI.getPluginCore().canAttackPlayerNoMSG(AllOnPlayers[player_rolled])){
                
-						CancelTarget(CoreType.ANY);
-						PlayerTarget=AllOnPlayers[player_rolled];
+				CancelTarget(CoreType.ANY);
+				PlayerTarget=AllOnPlayers[player_rolled];
                 isTarget=true;
                 log.info("[HerobrineAI] Target founded, starting AI now! ("+PlayerTarget.getName()+")");
                 setCoreTypeNow(CoreType.START);
@@ -162,7 +152,6 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 		
 		}
 		}
-		}
 	}
 	
 	public void CancelTarget(CoreType coreType){
@@ -174,8 +163,8 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 				Stop_RS();
 				Stop_CG();
 				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0),(float) 0,(float) -20,(float) 0);
-				   nowloc.setYaw((float) 1);
-				    nowloc.setPitch((float) 1);
+				nowloc.setYaw((float) 1);
+				nowloc.setPitch((float) 1);
 				HerobrineAI.HerobrineNPC.moveTo(nowloc);
 				CoreNow=CoreType.ANY;
 				HerobrineAI.getPluginCore().getPathManager().setPath(null);
@@ -183,12 +172,10 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 			
 		if (isTarget==true){
 			if (CoreNow == CoreType.ATTACK){
-				Attack at = (Attack) getCore(CoreType.ATTACK);
-				at.StopHandler();
+				((Attack) getCore(CoreType.ATTACK)).StopHandler();
 			}
 			if (CoreNow == CoreType.HAUNT){
-				Haunt ht = (Haunt) getCore(CoreType.HAUNT);
-				ht.StopHandler();
+				((Haunt) getCore(CoreType.HAUNT)).StopHandler();
 			}
 			
 			
@@ -197,8 +184,8 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 		HerobrineAI.HerobrineHP=HerobrineAI.HerobrineMaxHP;
 		log.info("[HerobrineAI] Target cancelled.");
 		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0),(float) 0,(float) -20,(float) 0);
-		   nowloc.setYaw((float) 1);
-		    nowloc.setPitch((float) 1);
+		nowloc.setYaw((float) 1);
+		nowloc.setPitch((float) 1);
 		HerobrineAI.HerobrineNPC.moveTo(nowloc);
 		CoreNow=CoreType.ANY;
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
@@ -225,7 +212,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 						 }
 					 }else if (chance<=25){
 					
-	getCore(CoreType.ATTACK).RunCore(data);
+	             getCore(CoreType.ATTACK).RunCore(data);
 				 }else{
 					 getCore(CoreType.HAUNT).RunCore(data);
 				 }
@@ -276,7 +263,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 	   CancelTarget(CoreType.ANY);
 	   Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
 	        public void run() {
-	        	 CancelTarget(CoreType.ANY);
+	        	CancelTarget(CoreType.ANY);
 	         	Object[] data = {loc, playername};
    	        	getCore(CoreType.TOTEM).RunCore(data);
 			    }
@@ -285,7 +272,7 @@ public CoreType getCoreTypeNow(){return CoreNow;}
    
 private void RandomPositionInterval(){
 if (CoreNow==CoreType.ANY){
-	  RandomPositionCore.setRandomTicks(0);
+	 ((RandomPosition)getCore(CoreType.RANDOM_POSITION)).setRandomTicks(0);
      int count = HerobrineAI.getPluginCore().getConfigDB().useWorlds.size();
 		int chance=new Random().nextInt(count);
 		Object[] data = {Bukkit.getServer().getWorld(HerobrineAI.getPluginCore().getConfigDB().useWorlds.get(chance))};
@@ -296,33 +283,29 @@ if (CoreNow==CoreType.ANY){
    
   private void CheckGravityInterval(){
 	  if (this.CoreNow==CoreType.RANDOM_POSITION){
-	  this.RandomPositionCore.CheckGravity();
+		  ((RandomPosition)getCore(CoreType.RANDOM_POSITION)).CheckGravity();
 	  }
 
   }
    private void RandomMoveInterval(){
-	  RandomPositionCore.RandomMove();
+	   ((RandomPosition)getCore(CoreType.RANDOM_POSITION)).RandomMove();
 
    }
 	
    private void RandomSeeInterval(){
 		  if (CoreNow == CoreType.RANDOM_POSITION){
-			  RandomPositionCore.CheckPlayerPosition();
+			  ((RandomPosition)getCore(CoreType.RANDOM_POSITION)).CheckPlayerPosition();
 		  }
 	
 	   }
    private void PyramidInterval(){
-		
-				int chance=new Random().nextInt(100);
-				if (chance>50){
+
+				if (new Random().nextBoolean()){
 			  if (Bukkit.getServer().getOnlinePlayers().length>0){
 					log.info("[HerobrineAI] Finding pyramid target...");
 					Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-			  Random generator2 = new Random();
-				int player_rolled= generator2.nextInt(Bukkit.getServer().getOnlinePlayers().length);
-				if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
-					
-				}else{
+
+				    int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length-1);
 					if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 						
 						int chance2=new Random().nextInt(100);
@@ -346,35 +329,25 @@ if (CoreNow==CoreType.ANY){
 			  }
 		  
 			  }
-				}
-		  
-		 
 		   
 	   }
    
 
 private void TempleInterval(){
 	  if (HerobrineAI.getPluginCore().getConfigDB().BuildTemples==true){
-			int chance=new Random().nextInt(100);
-			if (chance>50){
+			if (new Random().nextBoolean()){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
 				log.info("[HerobrineAI] Finding temple target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
-			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
-				
-			}else{
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length-1);
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
-					
-					int chance2=new Random().nextInt(100);
-					if (chance2<50){
+					if (new Random().nextBoolean()){
 						  Object[] data = {AllOnPlayers[player_rolled]};
 							getCore(CoreType.TEMPLE).RunCore(data);
 					
 					}
 				}
 			}
-		  }
 	  }
 	  }
 	  
@@ -384,30 +357,21 @@ private void TempleInterval(){
 
 private void BuildCave(){
 	  if (HerobrineAI.getPluginCore().getConfigDB().BuildStuff==true){
-			if (new Random().nextBoolean()){
+		if (new Random().nextBoolean()){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
-				log.info("[HerobrineAI] Finding cave target...");
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
-			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
-				
-			}else{
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length-1);
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 					
-					int chance2=new Random().nextInt(100);
-					if (chance2<50){
+					if (new Random().nextBoolean()){
 						  Object[] data = {AllOnPlayers[player_rolled].getLocation()};
 							getCore(CoreType.BUILD_STUFF).RunCore(data);
 					
 					}
 				}
-			}
-		  }
+			}  
 	  }
-	  }
-	  
-
-	   
+}   
 }
    
    
@@ -424,10 +388,9 @@ private void BuildCave(){
 			if (new Random().nextBoolean()){
 		  if (Bukkit.getServer().getOnlinePlayers().length>0){
 				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length);
-			if (player_rolled>Bukkit.getServer().getOnlinePlayers().length-1){
-				
-			}else{
+			int player_rolled= new Random().nextInt(Bukkit.getServer().getOnlinePlayers().length-1);
+			
+			if (AllOnPlayers[player_rolled].getEntityId()!=HerobrineAI.HerobrineEntityID){
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
 					if (new Random().nextBoolean()){
 						  Object[] data = {AllOnPlayers[player_rolled]};
@@ -438,9 +401,8 @@ private void BuildCave(){
 					}
 				}
 			}
-		  }
 	  }
-	  
+    }
   }
   
    

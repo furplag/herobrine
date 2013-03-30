@@ -60,10 +60,7 @@ public class BlockChanger {
 			    else if (chance==3){bface=BlockFace.NORTH;}
 			    
 				skull.setRawData((byte) bface.ordinal());
-									    
-			
-			    
-			    skull.update(true);
+     		    skull.update(true);
 	
 			
 		}

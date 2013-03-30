@@ -2,7 +2,6 @@ package org.jakub1221.herobrineai.listeners;
 
 import java.util.Random;
 
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

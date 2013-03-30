@@ -108,9 +108,11 @@ public class PlayerListener implements Listener{
                 Jukebox block = (Jukebox) event.getClickedBlock().getState();
                 if (!block.isPlaying()){
                 	if (item.getType()==Material.getMaterial(2266)){
-                		if (!HerobrineAI.getPluginCore().getAICore().isDiscCalled){
+                		HerobrineAI.getPluginCore().getAICore();
+						if (!AICore.isDiscCalled){
                 			final Player player = event.getPlayer();
-                			HerobrineAI.getPluginCore().getAICore().isDiscCalled=true;
+                			HerobrineAI.getPluginCore().getAICore();
+							AICore.isDiscCalled=true;
                 			HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
                 			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
                 			        public void run() {
