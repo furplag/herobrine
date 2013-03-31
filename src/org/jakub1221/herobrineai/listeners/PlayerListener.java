@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Jukebox;
+import org.bukkit.craftbukkit.v1_5_R2.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
@@ -16,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -126,6 +128,15 @@ public class PlayerListener implements Listener{
 		}
 	}
 	
+	}
+	
+	@EventHandler
+	public void onPlayerEnterBed(PlayerBedEnterEvent event){
+		if (new Random().nextInt(100)>75){
+		Player player = event.getPlayer();
+		((CraftPlayer) player).getHandle().a(true, false, false);
+		HerobrineAI.getPluginCore().getAICore().playerBedEnter(player);
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)

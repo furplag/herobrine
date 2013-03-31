@@ -29,6 +29,7 @@ import org.jakub1221.herobrineai.AI.cores.Signs;
 import org.jakub1221.herobrineai.AI.cores.SoundF;
 import org.jakub1221.herobrineai.AI.cores.Temple;
 import org.jakub1221.herobrineai.AI.cores.Totem;
+import org.jakub1221.herobrineai.entity.MobType;
 import org.jakub1221.herobrineai.misc.ItemName;
 
 public class AICore {
@@ -111,6 +112,17 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 		
 		return result;
 		
+	}
+	
+	public void playerBedEnter(Player player){
+		int chance = new Random().nextInt(100);
+		if (chance<25){
+			GraveyardTeleport(player);
+		}else if (chance<50){
+			setHauntTarget(player);
+		}else{
+		    HerobrineAI.getPluginCore().getEntityManager().spawnCustomSkeleton(player.getLocation(), MobType.DEMON);
+		}
 	}
 	
 	public void FindPlayer(){
