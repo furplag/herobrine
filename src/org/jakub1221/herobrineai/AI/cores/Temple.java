@@ -162,7 +162,9 @@ public class Temple extends Core{
 		//Mob spawn
 		if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Guardian){
 		Location mobloc = new Location(loc.getWorld(),MainX+6, MainY+0, MainZ+4);
+		for (int i=1;i<=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount");i++){
 		HerobrineAI.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
+		}
 		}
 		//Chest
 		ItemStack ciItem=null;

@@ -1,6 +1,10 @@
 package org.jakub1221.herobrineai.entity;
 
+import java.util.Random;
+
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.jakub1221.herobrineai.HerobrineAI;
 
 import net.minecraft.server.v1_5_R2.ItemStack;
 import net.minecraft.server.v1_5_R2.World;
@@ -21,9 +25,9 @@ public class CustomZombie extends net.minecraft.server.v1_5_R2.EntityZombie impl
 
     private void spawnArtifactGuardian(Location loc){
     	
-        this.health=50;
+        this.health=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP");
         this.setCustomName("Artifact Guardian");
-        this.maxHealth=50;
+        this.maxHealth=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP");
         this.setEquipment(0, new ItemStack(net.minecraft.server.v1_5_R2.Item.GOLD_SWORD));
         this.setEquipment(1, new ItemStack(net.minecraft.server.v1_5_R2.Item.GOLD_BOOTS));
         this.setEquipment(2, new ItemStack(net.minecraft.server.v1_5_R2.Item.GOLD_LEGGINGS));
@@ -37,17 +41,15 @@ public class CustomZombie extends net.minecraft.server.v1_5_R2.EntityZombie impl
     
     private void spawnHerobrineWarrior(Location loc){
     	
-        this.health=25;
+        this.health=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP");
         this.setCustomName("Herobrine´s Warrior");
-        this.maxHealth=25;
+        this.maxHealth=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP");
         this.setEquipment(0, new ItemStack(net.minecraft.server.v1_5_R2.Item.IRON_SWORD));
         this.setEquipment(1, new ItemStack(net.minecraft.server.v1_5_R2.Item.IRON_BOOTS));
         this.setEquipment(2, new ItemStack(net.minecraft.server.v1_5_R2.Item.IRON_LEGGINGS));
         this.setEquipment(3, new ItemStack(net.minecraft.server.v1_5_R2.Item.IRON_CHESTPLATE));
         this.setEquipment(4, new ItemStack(net.minecraft.server.v1_5_R2.Item.IRON_HELMET));
         this.getBukkitEntity().teleport(loc);
-        
-    
         
     }
     
@@ -57,6 +59,19 @@ public class CustomZombie extends net.minecraft.server.v1_5_R2.EntityZombie impl
 
 	@Override
 	public void Kill() {
+		
+		String mobS = "";
+		if (this.mobType==MobType.ARTIFACT_GUARDIAN){mobS="Guardian";}else{mobS="Warrior";}
+		
+		for(int i=1;i<=2500;i++){
+			if (HerobrineAI.getPluginCore().getConfigDB().config.contains("npc."+mobS+".Drops."+Integer.toString(i))==true){
+				int chance=new Random().nextInt(100);
+						if (chance<=HerobrineAI.getPluginCore().getConfigDB().config.getInt("npc."+mobS+".Drops."+Integer.toString(i)+".Chance")){
+							this.getBukkitEntity().getLocation().getWorld().dropItemNaturally(this.getBukkitEntity().getLocation(), new org.bukkit.inventory.ItemStack(Material.getMaterial(i),HerobrineAI.getPluginCore().getConfigDB().config.getInt("npc."+mobS+".Drops."+Integer.toString(i)+".Count")));
+						}
+			}
+		}
+		
       this.health=0;		
 	}
 

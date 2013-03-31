@@ -16,6 +16,7 @@ public class ConfigDB {
 	
 	private Logger log;
 	public YamlConfiguration config;
+	public YamlConfiguration npc;
 	public int ShowRate=2;
 	public boolean HitPlayer=true;
 	public boolean SendMessages=true;
@@ -67,6 +68,7 @@ public class ConfigDB {
 	public boolean UseAncientSword = true;
 	public boolean UseNPC_Guardian=true;
 	public boolean UseNPC_Warrior=true;
+	public boolean UseNPC_Demon=true;
 	public CustomID ItemInHand=null;
 	public ArrayList<String> UseCustomItemsList = new ArrayList<String>();
 	public boolean Explosions=true;
@@ -76,6 +78,7 @@ public class ConfigDB {
 	}
 	
 	public File configF = new File("plugins/HerobrineAI/config.yml");
+	public File npcF = new File("plugins/HerobrineAI/npc.yml");
 	
 	public void Startup(){
 		new File("plugins/HerobrineAI").mkdirs();
@@ -90,11 +93,21 @@ public class ConfigDB {
 			}
 		
 		config = new YamlConfiguration();
-
-
+		
+		if (!npcF.exists())
+			try {
+				npcF.createNewFile();
+                
+		
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+		npc = new YamlConfiguration();
 		
 		try {
 			config.load(configF);
+			npc.load(npcF);
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
@@ -106,6 +119,34 @@ public class ConfigDB {
 			e.printStackTrace();
 		}
 
+		
+		if (!npc.contains("npc.Guardian")){
+			npc.set("npc.Guardian.SpawnCount", 1);
+			npc.set("npc.Guardian.HP", 40);
+			npc.set("npc.Guardian.Drops.283.Chance", 40);
+			npc.set("npc.Guardian.Drops.283.Count", 1);
+			npc.set("npc.Guardian.Drops.286.Chance", 30);
+			npc.set("npc.Guardian.Drops.286.Count", 1);
+			npc.set("npc.Warrior.SpawnChance", 5);
+			npc.set("npc.Warrior.HP", 40);
+			npc.set("npc.Warrior.Drops.307.Chance", 25);
+			npc.set("npc.Warrior.Drops.307.Count", 1);
+			npc.set("npc.Warrior.Drops.306.Chance", 20);
+			npc.set("npc.Warrior.Drops.306.Count", 1);
+			npc.set("npc.Demon.SpawnChance", 5);
+			npc.set("npc.Demon.HP", 40);
+			npc.set("npc.Demon.Drops.322.Chance", 40);
+			npc.set("npc.Demon.Drops.322.Count", 1);
+			npc.set("npc.Demon.Drops.397.Chance", 20);
+			npc.set("npc.Demon.Drops.397.Count", 1);
+			
+			try {
+				npc.save(npcF);
+			} catch (IOException e) {
+			
+				e.printStackTrace();
+			}
+		}
 		
 		if (!config.contains("config.ShowRate")){
 			
@@ -178,6 +219,7 @@ public class ConfigDB {
 			config.set("config.UseAncientSword", true);
 			config.set("config.UseNPC.Guardian", true);
 			config.set("config.UseNPC.Warrior", true);
+			config.set("config.UseNPC.Demon", true);
 			config.set("config.ItemInHand", "0");
 			config.set("config.Explosions", true);
 			
@@ -395,6 +437,15 @@ public class ConfigDB {
 		
 				config.set("config.Explosions", true);
 			}
+			
+			if (!config.contains("config.UseNPC.Demon")){
+				if (hasUpdated==false){
+				log.info("[HerobrineAI] Updating old config...");
+				}
+				hasUpdated=true;
+		
+				config.set("config.UseNPC.Demon", true);
+			}
 	
 			
 			if (hasUpdated==true){
@@ -419,6 +470,7 @@ public class ConfigDB {
 		
 		try {
 			config.load(configF);
+			npc.load(npcF);
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
@@ -482,6 +534,7 @@ public class ConfigDB {
 		UseAncientSword=config.getBoolean("config.UseAncientSword");
 		UseNPC_Guardian=config.getBoolean("config.UseNPC.Guardian");
 		UseNPC_Warrior=config.getBoolean("config.UseNPC.Warrior");
+		UseNPC_Demon=config.getBoolean("config.UseNPC.Demon");
 		ItemInHand=new CustomID(config.getString("config.ItemInHand"));
 		Explosions=config.getBoolean("config.Explosions");
 		

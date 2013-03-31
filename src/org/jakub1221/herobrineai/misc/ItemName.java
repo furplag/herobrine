@@ -2,17 +2,14 @@ package org.jakub1221.herobrineai.misc;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.Skull;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class ItemName {
@@ -20,6 +17,14 @@ public class ItemName {
 	public static ItemMeta meta=null;
 	public static SkullMeta skullmeta=null;
 	
+	public static ItemStack colorLeatherArmor(ItemStack i,Color color){
+		
+		LeatherArmorMeta la_meta = (LeatherArmorMeta) i.getItemMeta();
+		la_meta.setColor(color);
+		i.setItemMeta(la_meta);
+		
+		return i;
+	}
 	public static ItemStack setName(ItemStack item, String name){
 		meta=item.getItemMeta();
 		meta.setDisplayName(name);

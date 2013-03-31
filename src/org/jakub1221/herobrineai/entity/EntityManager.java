@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.jakub1221.herobrineai.HerobrineAI;
 
 public class EntityManager {
 	
@@ -18,6 +19,15 @@ public class EntityManager {
 		mcWorld.addEntity(zmb);
 		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);
 		
+	}
+	
+   public void spawnCustomSkeleton(Location loc,MobType mbt){
+		
+		World world = loc.getWorld();
+		net.minecraft.server.v1_5_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_5_R2.CraftWorld) world).getHandle();
+		CustomSkeleton zmb = new CustomSkeleton(mcWorld,loc,mbt);
+		mcWorld.addEntity(zmb);
+		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);
 	}
 	
 	public boolean isCustomMob(int id){

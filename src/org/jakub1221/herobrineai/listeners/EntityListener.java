@@ -12,6 +12,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,17 +48,15 @@ public class EntityListener implements Listener{
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	 public void onCreatureSpawn(CreatureSpawnEvent event){
-		 if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Warrior){
-		 if (new Random().nextInt(100)>95){
-		 if (event.isCancelled()) return;
-		  
 		 Entity entity = event.getEntity();
 		 CreatureType creatureType = event.getCreatureType();
+		 if (event.isCancelled()) return;
+		 
+		 if (creatureType == CreatureType.ZOMBIE){
+		 if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Warrior){
+		 if (new Random().nextInt(100)<HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.SpawnChance")){
 
-		 if (creatureType == CreatureType.ZOMBIE && HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId())==false){
-			 
-		
-		  
+		 if (HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId())==false){  
 		 LivingEntity ent = (LivingEntity) entity;
 	
 		 ent.setHealth(0);
@@ -67,6 +66,21 @@ public class EntityListener implements Listener{
 		 }
 		 }
 		 }
+		 }else if (creatureType == CreatureType.SKELETON){
+			 if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Demon){
+				 if (new Random().nextInt(100)<HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.SpawnChance")){
+
+				 if (HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId())==false){  
+				 LivingEntity ent = (LivingEntity) entity;
+			
+				 ent.setHealth(0);
+				 HerobrineAI.getPluginCore().getEntityManager().spawnCustomSkeleton(event.getLocation(),MobType.DEMON);
+				  
+				 return;
+				 }
+				 }
+				 }
+				 }
 		 }
 	
 	@EventHandler
@@ -233,7 +247,13 @@ public class EntityListener implements Listener{
 				if (zmb.getCustomName()=="Artifact Guardian" || zmb.getCustomName()=="Herobrine´s Warrior"){
 					
 				dEvent.setDamage(dEvent.getDamage()*3);
-				HerobrineAI.getPluginCore().log.info("GHf");
+				}
+			
+			}else if (dEvent.getDamager() instanceof Skeleton){
+				Skeleton zmb = (Skeleton) dEvent.getDamager();
+				if (zmb.getCustomName()=="Demon"){
+					
+				dEvent.setDamage(dEvent.getDamage()*3);
 				}
 			
 			}

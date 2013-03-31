@@ -27,6 +27,7 @@ import org.jakub1221.herobrineai.AI.AICore;
 import org.jakub1221.herobrineai.AI.Core.CoreType;
 import org.jakub1221.herobrineai.AI.extensions.GraveyardWorld;
 import org.jakub1221.herobrineai.commands.CmdExecutor;
+import org.jakub1221.herobrineai.entity.CustomSkeleton;
 import org.jakub1221.herobrineai.entity.CustomZombie;
 import org.jakub1221.herobrineai.entity.EntityManager;
 import org.jakub1221.herobrineai.listeners.BlockListener;
@@ -45,8 +46,8 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 	private Support support;
 	private EntityManager entMng;
 	private PathManager pathMng;
-	public static final int build=3125;
-	public static final String versionStr="3.0.1";
+	public static final int build=3127;
+	public static final String versionStr="3.1.0";
 	public java.io.InputStream data_temple=HerobrineAI.class.getResourceAsStream("/res/temple.yml");
 	public java.io.InputStream data_graveyard_world=HerobrineAI.class.getResourceAsStream("/res/graveyard_world.yml");
 	
@@ -216,6 +217,7 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 		        a.setAccessible(true);
 
 		        a.invoke(a, CustomZombie.class, "Zombie", 54);
+		        a.invoke(a, CustomSkeleton.class, "Skeleton", 51);
 		    }catch (Exception e){
 		        e.printStackTrace();
 		        this.setEnabled(false);
