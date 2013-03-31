@@ -18,6 +18,7 @@ import org.jakub1221.herobrineai.AI.cores.Book;
 import org.jakub1221.herobrineai.AI.cores.BuildStuff;
 import org.jakub1221.herobrineai.AI.cores.Burn;
 import org.jakub1221.herobrineai.AI.cores.BuryPlayer;
+import org.jakub1221.herobrineai.AI.cores.Curse;
 import org.jakub1221.herobrineai.AI.cores.DestroyTorches;
 import org.jakub1221.herobrineai.AI.cores.Graveyard;
 import org.jakub1221.herobrineai.AI.cores.Haunt;
@@ -92,6 +93,7 @@ public class AICore {
 		AllCores.add(new RandomSound());
 		AllCores.add(new RandomExplosion());
 		AllCores.add(new Burn());
+		AllCores.add(new Curse());
 		
 		plugin = HerobrineAI.getPluginCore();
 		log.info("[HerobrineAI] Debug mode enabled!");
@@ -414,9 +416,14 @@ private void BuildCave(){
 						  
 							getCore(CoreType.RANDOM_SOUND).RunCore(data);		
 					}else if (new Random().nextInt(100)<60){
-						  
+						  if (HerobrineAI.getPluginCore().getConfigDB().Burn){
 						    getCore(CoreType.BURN).RunCore(data);		
-				    }else{
+						    }
+				    }else if (new Random().nextInt(100)<80){
+						  if (HerobrineAI.getPluginCore().getConfigDB().Curse){
+					        getCore(CoreType.CURSE).RunCore(data);		
+						  }
+			        }else{
 						 
 							getCore(CoreType.RANDOM_EXPLOSION).RunCore(data);		
 					}

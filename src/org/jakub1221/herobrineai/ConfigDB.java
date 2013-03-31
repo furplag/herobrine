@@ -72,6 +72,8 @@ public class ConfigDB {
 	public CustomID ItemInHand=null;
 	public ArrayList<String> UseCustomItemsList = new ArrayList<String>();
 	public boolean Explosions=true;
+	public boolean Burn=true;
+	public boolean Curse=true;
 	
 	public ConfigDB(Logger l){
 		this.log=l;
@@ -222,6 +224,8 @@ public class ConfigDB {
 			config.set("config.UseNPC.Demon", true);
 			config.set("config.ItemInHand", "0");
 			config.set("config.Explosions", true);
+			config.set("config.Burn", true);
+			config.set("config.Curse", true);
 			
 			try {
 				config.save(configF);
@@ -445,6 +449,8 @@ public class ConfigDB {
 				hasUpdated=true;
 		
 				config.set("config.UseNPC.Demon", true);
+				config.set("config.Burn", true);
+				config.set("config.Curse", true);
 			}
 	
 			
@@ -537,6 +543,8 @@ public class ConfigDB {
 		UseNPC_Demon=config.getBoolean("config.UseNPC.Demon");
 		ItemInHand=new CustomID(config.getString("config.ItemInHand"));
 		Explosions=config.getBoolean("config.Explosions");
+		Burn=config.getBoolean("config.Burn");
+		Curse=config.getBoolean("config.Curse");
 		
 	    HerobrineAI.HerobrineMaxHP=HerobrineHP;
 	    HerobrineAI.getPluginCore().getAICore().Stop_MAIN();
