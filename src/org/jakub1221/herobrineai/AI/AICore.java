@@ -16,6 +16,7 @@ import org.jakub1221.herobrineai.AI.Core.CoreType;
 import org.jakub1221.herobrineai.AI.cores.Attack;
 import org.jakub1221.herobrineai.AI.cores.Book;
 import org.jakub1221.herobrineai.AI.cores.BuildStuff;
+import org.jakub1221.herobrineai.AI.cores.Burn;
 import org.jakub1221.herobrineai.AI.cores.BuryPlayer;
 import org.jakub1221.herobrineai.AI.cores.DestroyTorches;
 import org.jakub1221.herobrineai.AI.cores.Graveyard;
@@ -90,6 +91,7 @@ public class AICore {
 		AllCores.add(new Heads());
 		AllCores.add(new RandomSound());
 		AllCores.add(new RandomExplosion());
+		AllCores.add(new Burn());
 		
 		plugin = HerobrineAI.getPluginCore();
 		log.info("[HerobrineAI] Debug mode enabled!");
@@ -121,7 +123,9 @@ public CoreType getCoreTypeNow(){return CoreNow;}
 		}else if (chance<50){
 			setHauntTarget(player);
 		}else{
+			if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Demon){
 		    HerobrineAI.getPluginCore().getEntityManager().spawnCustomSkeleton(player.getLocation(), MobType.DEMON);
+			}
 		}
 	}
 	
@@ -404,11 +408,16 @@ private void BuildCave(){
 			
 			if (AllOnPlayers[player_rolled].getEntityId()!=HerobrineAI.HerobrineEntityID){
 				if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(AllOnPlayers[player_rolled].getLocation().getWorld().getName())){
-					if (new Random().nextBoolean()){
-						  Object[] data = {AllOnPlayers[player_rolled]};
+					Object[] data = {AllOnPlayers[player_rolled]};
+					
+					if (new Random().nextInt(100)<30){
+						  
 							getCore(CoreType.RANDOM_SOUND).RunCore(data);		
-					}else{
-						  Object[] data = {AllOnPlayers[player_rolled]};
+					}else if (new Random().nextInt(100)<60){
+						  
+						    getCore(CoreType.BURN).RunCore(data);		
+				    }else{
+						 
 							getCore(CoreType.RANDOM_EXPLOSION).RunCore(data);		
 					}
 				}

@@ -105,6 +105,15 @@ public class CmdExecutor implements CommandExecutor{
 						}else{player.sendMessage(ChatColor.RED+"[HerobrineAI] Player is offline.");}
 						
 						}else{player.sendMessage(ChatColor.RED+"Usage: "+ChatColor.GREEN+"/hb-ai cave <player name>");}
+				}else if (args[0].equalsIgnoreCase("burn")){
+					if (args.length>1){
+						
+						if (Bukkit.getServer().getPlayer(args[1])!=null){
+							Object[] data = {Bukkit.getServer().getPlayer(args[1])};
+							player.sendMessage(ChatColor.RED+"[HerobrineAI] "+P_Core.getAICore().getCore(CoreType.BURN).RunCore(data).getResultString());
+						}else{player.sendMessage(ChatColor.RED+"[HerobrineAI] Player is offline.");}
+						
+						}else{player.sendMessage(ChatColor.RED+"Usage: "+ChatColor.GREEN+"/hb-ai burn <player name>");}
 				}
 				else if (args[0].equalsIgnoreCase("graveyard")){
       					if (args.length>1){
@@ -160,6 +169,7 @@ public class CmdExecutor implements CommandExecutor{
 					player.sendMessage(ChatColor.GREEN+"/hb-ai temple <player name> - build temple near the player");
 					player.sendMessage(ChatColor.GREEN+"/hb-ai heads <player name> - place heads near the player");
 					player.sendMessage(ChatColor.GREEN+"/hb-ai cave <player name> - create cave near the player");
+					player.sendMessage(ChatColor.GREEN+"/hb-ai burn <player name> - burn player");
 					
 				}else if (args[0].equalsIgnoreCase("position")){
 						
@@ -251,6 +261,16 @@ public class CmdExecutor implements CommandExecutor{
 								}else{player.sendMessage(ChatColor.RED+"[HerobrineAI] Player is offline.");}
 								}else{player.sendMessage(ChatColor.RED+"You don´t have permissions to do that.");}
 								}else{player.sendMessage(ChatColor.RED+"Usage: "+ChatColor.GREEN+"/hb-ai cave <player name>");}
+						}else if (args[0].equalsIgnoreCase("burn")){
+							if (args.length>1){
+								if (player.hasPermission("hb-ai.burn")){
+								
+								if (Bukkit.getServer().getPlayer(args[1])!=null){
+									Object[] data = {Bukkit.getServer().getPlayer(args[1])};
+									player.sendMessage(ChatColor.RED+"[HerobrineAI] "+P_Core.getAICore().getCore(CoreType.BURN).RunCore(data).getResultString());
+								}else{player.sendMessage(ChatColor.RED+"[HerobrineAI] Player is offline.");}
+								}else{player.sendMessage(ChatColor.RED+"You don´t have permissions to do that.");}
+								}else{player.sendMessage(ChatColor.RED+"Usage: "+ChatColor.GREEN+"/hb-ai burn <player name>");}
 						}else if (args[0].equalsIgnoreCase("heads")){
 							if (args.length>1){
 								if (player.hasPermission("hb-ai.heads")){
@@ -321,6 +341,7 @@ public class CmdExecutor implements CommandExecutor{
 							player.sendMessage(ChatColor.GREEN+"/hb-ai temple <player name> - build temple near the player");
 							player.sendMessage(ChatColor.GREEN+"/hb-ai heads <player name> - place heads near the player");
 							player.sendMessage(ChatColor.GREEN+"/hb-ai cave <player name> - create cave near the player");
+							player.sendMessage(ChatColor.GREEN+"/hb-ai burn <player name> - burn player");
 							
 							}else{player.sendMessage(ChatColor.RED+"You don´t have permissions to do that.");}
 						}else if (args[0].equalsIgnoreCase("position")){
@@ -405,6 +426,15 @@ public class CmdExecutor implements CommandExecutor{
 							}else{log.info(ChatColor.RED+"[HerobrineAI] Player is offline.");}
 					
 							}else{log.info("Usage: /hb-ai cave <player name>");}
+					}else if (args[0].equalsIgnoreCase("burn")){
+						if (args.length>1){
+							
+							if (Bukkit.getServer().getPlayer(args[1])!=null){
+								Object[] data = {Bukkit.getServer().getPlayer(args[1])};
+								log.info("[HerobrineAI] "+P_Core.getAICore().getCore(CoreType.BURN).RunCore(data).getResultString());
+							}else{log.info("[HerobrineAI] Player is offline.");}
+							
+							}else{log.info("Usage: /hb-ai burn <player name>");}
 					}else if (args[0].equalsIgnoreCase("heads")){
 						if (args.length>1){
 							
@@ -469,6 +499,7 @@ public class CmdExecutor implements CommandExecutor{
 						log.info("/hb-ai temple <player name> - build temple near the player");
 						log.info("/hb-ai heads <player name> - place heads near the player");
 						log.info("/hb-ai cave <player name> - create cave near the player");
+						log.info("/hb-ai burn <player name> - burn player");
 						
 					}else if (args[0].equalsIgnoreCase("position")){
 							

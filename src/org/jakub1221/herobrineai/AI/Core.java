@@ -51,7 +51,8 @@ public abstract class Core {
 		TEMPLE,
 		HEADS,
 		RANDOM_SOUND,
-		RANDOM_EXPLOSION;
+		RANDOM_EXPLOSION,
+		BURN;
 		
 	}
 	public enum AppearType{
