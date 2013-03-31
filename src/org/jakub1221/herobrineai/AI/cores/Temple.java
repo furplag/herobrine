@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Chest;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
@@ -158,7 +159,7 @@ public class Temple extends Core{
 		//Main blocks 
 		
 		new StructureLoader(HerobrineAI.getPluginCore().data_temple).Build(loc.getWorld(), MainX, MainY, MainZ);
-	
+		 loc.getWorld().getBlockAt(MainX+6, MainY+0, MainZ+2).setType(Material.CHEST);
 		//Mob spawn
 		if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Guardian){
 		Location mobloc = new Location(loc.getWorld(),MainX+6, MainY+0, MainZ+4);
@@ -193,11 +194,16 @@ public class Temple extends Core{
 			 newLore.add("Herobrine´s artifact");
 			 newLore.add("Bow of Teleporting");
 			 item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
+			 item.addEnchantment(Enchantment.ARROW_FIRE, 1);
+			 item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
 		}else if (chance<8 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword){
 			 item = new ItemStack(Material.DIAMOND_SWORD);
 			 newLore.add("Herobrine´s artifact");
 			 newLore.add("Sword of Lighting");
 			 item = ItemName.setNameAndLore(item, "Sword of Lighting", newLore);
+			 item.addEnchantment(Enchantment.KNOCKBACK, 2);
+			 item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+			 item.addEnchantment(Enchantment.DURABILITY, 3);
 		}else if (chance<12 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactApple){
 			 item = new ItemStack(Material.GOLDEN_APPLE);
 			 newLore.add("Herobrine´s artifact");
@@ -207,6 +213,8 @@ public class Temple extends Core{
 		}else{
 			if (HerobrineAI.getPluginCore().getConfigDB().UseAncientSword){
 				item=HerobrineAI.getPluginCore().getAICore().createAncientSword();
+				 item.addEnchantment(Enchantment.KNOCKBACK, 2);
+				 item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
 			}
 		}
 		
