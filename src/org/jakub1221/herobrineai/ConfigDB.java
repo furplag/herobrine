@@ -127,13 +127,13 @@ public class ConfigDB {
 			npc.set("npc.Guardian.Drops.283.Count", 1);
 			npc.set("npc.Guardian.Drops.286.Chance", 30);
 			npc.set("npc.Guardian.Drops.286.Count", 1);
-			npc.set("npc.Warrior.SpawnChance", 5);
+			npc.set("npc.Warrior.SpawnChance", 10);
 			npc.set("npc.Warrior.HP", 40);
 			npc.set("npc.Warrior.Drops.307.Chance", 25);
 			npc.set("npc.Warrior.Drops.307.Count", 1);
 			npc.set("npc.Warrior.Drops.306.Chance", 20);
 			npc.set("npc.Warrior.Drops.306.Count", 1);
-			npc.set("npc.Demon.SpawnChance", 5);
+			npc.set("npc.Demon.SpawnChance", 10);
 			npc.set("npc.Demon.HP", 40);
 			npc.set("npc.Demon.Drops.322.Chance", 40);
 			npc.set("npc.Demon.Drops.322.Count", 1);
