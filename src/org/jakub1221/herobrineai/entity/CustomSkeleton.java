@@ -46,10 +46,10 @@ public class CustomSkeleton extends net.minecraft.server.v1_5_R2.EntitySkeleton 
 	@Override
 	public void Kill(){
 		for(int i=1;i<=2500;i++){
-			if (HerobrineAI.getPluginCore().getConfigDB().config.contains("npc.Demon.Drops."+Integer.toString(i))==true){
+			if (HerobrineAI.getPluginCore().getConfigDB().npc.contains("npc.Demon.Drops."+Integer.toString(i))==true){
 				int chance=new Random().nextInt(100);
-						if (chance<=HerobrineAI.getPluginCore().getConfigDB().config.getInt("npc.Demon.Drops."+Integer.toString(i)+".Chance")){
-							this.getBukkitEntity().getLocation().getWorld().dropItemNaturally(this.getBukkitEntity().getLocation(), new ItemStack(Material.getMaterial(i),HerobrineAI.getPluginCore().getConfigDB().config.getInt("npc.Demon.Drops."+Integer.toString(i)+".Count")));
+						if (chance<=HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.Drops."+Integer.toString(i)+".Chance")){
+							this.getBukkitEntity().getLocation().getWorld().dropItemNaturally(this.getBukkitEntity().getLocation(), new ItemStack(Material.getMaterial(i),HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.Drops."+Integer.toString(i)+".Count")));
 						}
 			}
 		}

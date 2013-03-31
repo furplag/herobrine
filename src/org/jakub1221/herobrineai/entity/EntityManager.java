@@ -39,6 +39,7 @@ public class EntityManager {
 	}
 	
 	public void removeMob(int id){
+		mobList.get(new Integer(id)).Kill();
 		mobList.remove(new Integer(id));
 	}
 	
