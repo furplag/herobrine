@@ -35,7 +35,6 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>${bukkitVersion}</version>
-			<scope>system</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jakub1221.customitems.CustomItems</groupId>
@@ -49,6 +48,7 @@
 			<artifactId>GriefPrevention</artifactId>
 			<version>7.2.1</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/GriefPrevention.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -56,6 +56,7 @@
 			<artifactId>PreciousStones</artifactId>
 			<version>9.5.6-SNAPSHOT</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/PreciousStones.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -63,6 +64,7 @@
 			<artifactId>Residence</artifactId>
 			<version>2.6.6.2</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/Residence.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -70,6 +72,7 @@
 			<artifactId>Towny</artifactId>
 			<version>0.82.0.9</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/Towny.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -77,6 +80,7 @@
 			<artifactId>WorldGuard</artifactId>
 			<version>5.7.3</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/WorldGuard.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -84,6 +88,7 @@
 			<artifactId>Factions</artifactId>
 			<version>2.1.0</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/Factions.jar</systemPath>
 		</dependency>
 	</dependencies>

@@ -1,4 +1,6 @@
-![HerobrineAI](http://dev.bukkit.org/media/images/53/795/herobrineai_logo_v3.png)
+# HerobrineAI
+[![Build Status](https://travis-ci.org/jakub1221/HerobrineAI.svg?branch=master)](https://travis-ci.org/jakub1221/HerobrineAI)  
+
 =========
 
 HerobrineAI is plugin that creates Herobrine with custom AI and skin.
