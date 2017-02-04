@@ -1,6 +1,7 @@
-name: HerobrineAI
+name: ${project.name}
 main: org.jakub1221.herobrineai.HerobrineAI
-version: 3.2.2
+version: ${project.version}
+description: ${project.description}
 commands:
     hb-ai:
       description: Main command.
