@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.jakub1221.herobrineai.misc.CustomID;
@@ -23,7 +24,7 @@ public class ConfigDB {
 	public boolean Lighting=true;
 	public boolean DestroyTorches=true;
 	public int DestroyTorchesRadius=5;
-	public int ShowInterval=30000;
+	public int ShowInterval=144000;
 	public boolean TotemExplodes=true;
 	public boolean OnlyWalkingMode=false;
 	public boolean BuildStuff=true;
@@ -62,7 +63,7 @@ public class ConfigDB {
 	public boolean SecuredArea_Signs = true;
 	public boolean SecuredArea_Books = true;
 	public int HerobrineHP = 150;
-	public int BuildInterval = 45000;
+	public int BuildInterval = 72000;
 	public boolean UseHeads = true;
 	public boolean UseCustomItems = false;
 	public boolean UseAncientSword = true;
@@ -74,6 +75,12 @@ public class ConfigDB {
 	public boolean Explosions=true;
 	public boolean Burn=true;
 	public boolean Curse=true;
+	public int maxBooks=1;
+	public int maxSigns=1;
+	public int maxHeads=1;
+	public boolean UseIgnorePermission=true;
+
+	private boolean isStartupDone=false;
 	
 	public ConfigDB(Logger l){
 		this.log=l;
@@ -125,18 +132,21 @@ public class ConfigDB {
 		if (!npc.contains("npc.Guardian")){
 			npc.set("npc.Guardian.SpawnCount", 1);
 			npc.set("npc.Guardian.HP", 40);
+			npc.set("npc.Guardian.Speed", 0.3);
 			npc.set("npc.Guardian.Drops.283.Chance", 40);
 			npc.set("npc.Guardian.Drops.283.Count", 1);
 			npc.set("npc.Guardian.Drops.286.Chance", 30);
 			npc.set("npc.Guardian.Drops.286.Count", 1);
-			npc.set("npc.Warrior.SpawnChance", 10);
+			npc.set("npc.Warrior.SpawnChance", 4);
 			npc.set("npc.Warrior.HP", 40);
+			npc.set("npc.Warrior.Speed", 0.3);
 			npc.set("npc.Warrior.Drops.307.Chance", 25);
 			npc.set("npc.Warrior.Drops.307.Count", 1);
 			npc.set("npc.Warrior.Drops.306.Chance", 20);
 			npc.set("npc.Warrior.Drops.306.Count", 1);
-			npc.set("npc.Demon.SpawnChance", 10);
+			npc.set("npc.Demon.SpawnChance", 4);
 			npc.set("npc.Demon.HP", 40);
+			npc.set("npc.Demon.Speed", 0.3);
 			npc.set("npc.Demon.Drops.322.Chance", 40);
 			npc.set("npc.Demon.Drops.322.Count", 1);
 			npc.set("npc.Demon.Drops.397.Chance", 20);
@@ -167,7 +177,7 @@ public class ConfigDB {
 		    UseCustomItemsList.add("ItemExample");
 			
 			log.info("[HerobrineAI] Creating new Config ...");
-			config.set("config.ShowInterval", 30000);
+			config.set("config.ShowInterval", 144000);
 			config.set("config.ShowRate", 2);
 			config.set("config.HitPlayer", true);
 			config.set("config.SendMessages", true);
@@ -202,12 +212,12 @@ public class ConfigDB {
 			config.set("config.WalkingModeRadius.Z", 1000);
 			config.set("config.WalkingModeRadius.FromX", 0);
 			config.set("config.WalkingModeRadius.FromZ", 0);
-			config.set("config.BuildInterval", 45000);
+			config.set("config.BuildInterval", 72000);
 			config.set("config.BuildTemples", true);
 			config.set("config.UseArtifacts.Bow", true);
 			config.set("config.UseArtifacts.Sword", true);
 			config.set("config.UseArtifacts.Apple", true);
-			config.set("config.HerobrineHP", 200);
+			config.set("config.HerobrineHP", 300);
 			config.set("config.AttackCreative", true);
 			config.set("config.AttackOP", true);
 			config.set("config.SecuredArea.Build", true);
@@ -226,6 +236,10 @@ public class ConfigDB {
 			config.set("config.Explosions", true);
 			config.set("config.Burn", true);
 			config.set("config.Curse", true);
+			config.set("config.Limit.Books", 1);
+			config.set("config.Limit.Signs", 1);
+			config.set("config.Limit.Heads", 1);
+			config.set("config.UseIgnorePermission", true);
 			
 			try {
 				config.save(configF);
@@ -452,11 +466,42 @@ public class ConfigDB {
 				config.set("config.Burn", true);
 				config.set("config.Curse", true);
 			}
-	
+			
+			if (!npc.contains("npc.Warrior.Speed")){
+				if (hasUpdated==false){
+				log.info("[HerobrineAI] Updating old config...");
+				}
+				hasUpdated=true;
+		
+				npc.set("npc.Warrior.Speed", 0.3);
+				npc.set("npc.Guardian.Speed", 0.3);
+				npc.set("npc.Demon.Speed", 0.3);
+			}
+			
+			if (!config.contains("config.Limit.Books")){
+				if (hasUpdated==false){
+				log.info("[HerobrineAI] Updating old config...");
+				}
+				hasUpdated=true;
+		
+				config.set("config.Limit.Books", 1);
+				config.set("config.Limit.Signs", 1);
+				config.set("config.Limit.Heads", 1);
+			}
+			
+			if (!config.contains("config.UseIgnorePermission")){
+				if (hasUpdated==false){
+				log.info("[HerobrineAI] Updating old config...");
+				}
+				hasUpdated=true;
+		
+				config.set("config.UseIgnorePermission", true);
+			}
 			
 			if (hasUpdated==true){
 				try {
 					config.save(configF);
+					npc.save(npcF);
 				} catch (IOException e) {
 				
 					e.printStackTrace();
@@ -545,6 +590,10 @@ public class ConfigDB {
 		Explosions=config.getBoolean("config.Explosions");
 		Burn=config.getBoolean("config.Burn");
 		Curse=config.getBoolean("config.Curse");
+		maxBooks=config.getInt("config.Limit.Books");
+		maxSigns=config.getInt("config.Limit.Signs");
+		maxHeads=config.getInt("config.Limit.Heads");
+		UseIgnorePermission=config.getBoolean("config.UseIgnorePermission");
 		
 	    HerobrineAI.HerobrineMaxHP=HerobrineHP;
 	    HerobrineAI.getPluginCore().getAICore().Stop_MAIN();
@@ -554,17 +603,68 @@ public class ConfigDB {
 	    HerobrineAI.getPluginCore().getAICore().Stop_RC();
 	    HerobrineAI.getPluginCore().getAICore().Start_RC();
 	    HerobrineAI.AvailableWorld=false;
+	    HerobrineAI.getPluginCore().getAICore().getResetLimits().updateFromConfig();
 	    
 	    if (HerobrineAI.HerobrineNPC!=null){
 	    HerobrineAI.HerobrineNPC.setItemInHand(ItemInHand.getItemStack());
 	    }
 	    
-	    for (int i = 0;i<=useWorlds.size()-1;i++){
+	  
+	    
+	    if (isStartupDone){
 	    	
-	    	   if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(useWorlds.get(i)))){HerobrineAI.AvailableWorld=true;}
-	       }
-	}
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
+		        public void run() {
+	        for (int i = 0;i<=useWorlds.size()-1;i++){
+	 	    	   if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(useWorlds.get(i)))){HerobrineAI.AvailableWorld=true;}
+	 	       }
 
+ 			if (HerobrineAI.AvailableWorld==false){
+ 				log.warning("**********************************************************");
+ 				log.warning("[HerobrineAI] There are no available worlds for Herobrine!");
+ 				log.warning("**********************************************************");
+ 				}else{
+ 				log.info("**********************************************************");
+ 				log.info("[HerobrineAI] No problems detected.");
+ 				log.info("**********************************************************");
+ 				}
+	    }
+			},1L);
+	  
+	}
+	    isStartupDone=true;
+	}
 	
+	public void addAllWorlds(){
+		
+		ArrayList<String> allWorlds = new ArrayList<String>();
+		List<World> worlds_ = Bukkit.getWorlds();
+		for(int i=0;i<=worlds_.size()-1;i++){
+			if(!worlds_.get(i).getName().equalsIgnoreCase("world_herobrineai_graveyard")){
+			allWorlds.add(worlds_.get(i).getName());
+			}
+		}
+		
+		try {
+			config.load(configF);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InvalidConfigurationException e) {
+			e.printStackTrace();
+		}
+		
+		config.set("config.Worlds", allWorlds);
+		
+		try {
+			config.save(configF);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Reload();
+	
+	}
 	
 }

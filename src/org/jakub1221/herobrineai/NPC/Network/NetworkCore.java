@@ -2,9 +2,9 @@ package org.jakub1221.herobrineai.NPC.Network;
 
 import java.io.IOException;
 
-import net.minecraft.server.v1_5_R2.Connection;
-import net.minecraft.server.v1_5_R2.NetworkManager;
-import net.minecraft.server.v1_5_R2.Packet;
+import net.minecraft.server.v1_11_R1.Connection;
+import net.minecraft.server.v1_11_R1.NetworkManager;
+import net.minecraft.server.v1_11_R1.Packet;
 
 public class NetworkCore extends NetworkManager{
 	

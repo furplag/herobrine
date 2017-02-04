@@ -1,12 +1,12 @@
 package org.jakub1221.herobrineai.NPC.Entity;
 
-import net.minecraft.server.v1_5_R2.Entity;
-import net.minecraft.server.v1_5_R2.EntityHuman;
-import net.minecraft.server.v1_5_R2.EntityPlayer;
-import net.minecraft.server.v1_5_R2.EnumGamemode;
-import net.minecraft.server.v1_5_R2.PlayerInteractManager;
+import net.minecraft.server.v1_11_R1.Entity;
+import net.minecraft.server.v1_11_R1.EntityHuman;
+import net.minecraft.server.v1_11_R1.EntityPlayer;
+import net.minecraft.server.v1_11_R1.EnumGamemode;
+import net.minecraft.server.v1_11_R1.PlayerInteractManager;
 
-import org.bukkit.craftbukkit.v1_5_R2.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftEntity;
 import org.jakub1221.herobrineai.NPC.NPCCore;
 import org.jakub1221.herobrineai.NPC.NMS.BWorld;
 import org.jakub1221.herobrineai.NPC.Network.NetworkHandler;

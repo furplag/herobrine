@@ -1,6 +1,6 @@
 name: HerobrineAI
 main: org.jakub1221.herobrineai.HerobrineAI
-version: 3.1.0
+version: 3.2.2
 commands:
     hb-ai:
       description: Main command.

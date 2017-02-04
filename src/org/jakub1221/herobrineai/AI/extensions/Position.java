@@ -1,132 +1,30 @@
 package org.jakub1221.herobrineai.AI.extensions;
 
-import java.util.Random;
-
 import org.bukkit.Location;
-import org.jakub1221.herobrineai.HerobrineAI;
+import org.bukkit.Material;
 
+public class Position {
 
-public class Position{
+	public static Location getTeleportPosition(Location ploc) {
 
-	public static  Location getTeleportPosition(Location ploc){
-		
-		Location newloc = (Location) ploc;
-
-		int chance= new Random().nextInt(3);
-		
-		if (chance==0){
-		
-		if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-		newloc.setX(newloc.getX()-2);
-		}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-			newloc.setX(newloc.getX()+2);
-			}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-				newloc.setZ(newloc.getZ()-2);
-			}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-				newloc.setZ(newloc.getZ()+2);
-			}else{
-				
-				if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-					newloc.setX(newloc.getX()-2);
-					}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-						newloc.setX(newloc.getX()+2);
-						}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-							newloc.setZ(newloc.getZ()-2);
-						}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-							newloc.setZ(newloc.getZ()+2);
-						}else{
-							
-						}
-				
-			}
-		}else if(chance==1){
-			
-			if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-				newloc.setX(newloc.getX()+2);
-				}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-					newloc.setX(newloc.getX()-2);
-					}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-						newloc.setZ(newloc.getZ()-2);
-					}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-						newloc.setZ(newloc.getZ()+2);
-					}else{
-						
-						if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-							newloc.setX(newloc.getX()+2);
-							}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-								newloc.setX(newloc.getX()-2);
-								}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-									newloc.setZ(newloc.getZ()-2);
-								}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-									newloc.setZ(newloc.getZ()+2);
-								}else{
-									
-								}
-						
-					}
-			
-		}else if(chance==2){
-			
-			 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-				newloc.setZ(newloc.getZ()-2);
-			}
-			 	else if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-				newloc.setX(newloc.getX()+2);
-				}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-					newloc.setX(newloc.getX()-2);
-					}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-						newloc.setZ(newloc.getZ()+2);
-					}else{
-						
-						if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-							newloc.setZ(newloc.getZ()-2);
-						}
-						
-						else if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-							newloc.setX(newloc.getX()+2);
-							}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-								newloc.setX(newloc.getX()-2);
-								}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-									newloc.setZ(newloc.getZ()+2);
-								}else{
-									
-								}
-						
-					}
-			
-		}		if (chance==3){
-			
-		if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-				newloc.setZ(newloc.getZ()+2);
-			}
-			else if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-			newloc.setX(newloc.getX()-2);
-			}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-				newloc.setX(newloc.getX()+2);
-				}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-					newloc.setZ(newloc.getZ()-2);
-				}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-					newloc.setZ(newloc.getZ()+2);
-				}else{
+		for(int y = -2; y < 2; y++)
+		{		
+			for(int x = -2; x < 2; x++)
+			{
+				for(int z = -2; z < 2; z++)
+				{
+					Material bottomBlock = ploc.clone().add(new Location(ploc.getWorld(), x, y - 1 ,z)).getBlock().getType();
+					Material middleBlock = ploc.clone().add(new Location(ploc.getWorld(), x, y ,z)).getBlock().getType();
+					Material topBlock = ploc.clone().add(new Location(ploc.getWorld(), x, y + 1 ,z)).getBlock().getType();
 					
-					if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()+2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()+2).getType())){
-						newloc.setZ(newloc.getZ()+2);
-					}
-					else if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()-2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-						newloc.setX(newloc.getX()-2);
-						}else	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY(), ploc.getBlockZ()).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX()+2, ploc.getBlockY()+1, ploc.getBlockZ()).getType())){
-							newloc.setX(newloc.getX()+2);
-							}else 	if (HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY(), ploc.getBlockZ()-2).getType()) && HerobrineAI.AllowedBlocks.contains(ploc.getWorld().getBlockAt(ploc.getBlockX(), ploc.getBlockY()+1, ploc.getBlockZ()-2).getType())){
-								newloc.setZ(newloc.getZ()-2);
-							}else{
-								
-							}
-					
+					if (bottomBlock.isSolid() && !middleBlock.isSolid() && !topBlock.isSolid())
+						return ploc.clone().add(new Location(ploc.getWorld(), x, y - 1 ,z));
 				}
 			}
+		}
 		
-		return newloc;
-		
+		return ploc;
+
 	}
-	
+
 }

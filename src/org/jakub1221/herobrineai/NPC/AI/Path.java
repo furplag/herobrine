@@ -97,9 +97,12 @@ public class Path {
 		
 	}
 	}else{
-		if (new Random().nextInt(4)==0){
+		if (new Random().nextInt(7)==3){
 
-			HerobrineAI.HerobrineNPC.setYaw(new Random().nextInt(360));
+			int yaw=new Random().nextInt(360);
+			
+			HerobrineAI.HerobrineNPC.setYaw(yaw);
+			HerobrineAI.HerobrineNPC.setYawA(yaw);
 			HerobrineAI.HerobrineNPC.setPitch(0);
 		
 		}

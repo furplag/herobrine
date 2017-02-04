@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.jakub1221.herobrineai.HerobrineAI;
 
 public class EntityManager {
 	
@@ -14,7 +13,7 @@ public class EntityManager {
 	public void spawnCustomZombie(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_5_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_5_R2.CraftWorld) world).getHandle();
+		net.minecraft.server.v1_11_R1.World mcWorld = ((org.bukkit.craftbukkit.v1_11_R1.CraftWorld) world).getHandle();
 		CustomZombie zmb = new CustomZombie(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
 		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);
@@ -24,7 +23,7 @@ public class EntityManager {
    public void spawnCustomSkeleton(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_5_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_5_R2.CraftWorld) world).getHandle();
+		net.minecraft.server.v1_11_R1.World mcWorld = ((org.bukkit.craftbukkit.v1_11_R1.CraftWorld) world).getHandle();
 		CustomSkeleton zmb = new CustomSkeleton(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
 		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);

@@ -6,11 +6,13 @@ public abstract class Core {
 	
 	private final AppearType Appear;
 	private final CoreType coreType;
-	private CoreResult nowData=null;
+	private CoreResult nowData = null;
+	protected HerobrineAI PluginCore = null;
 	
-	public Core(CoreType cp,AppearType ap){
+	public Core(CoreType cp,AppearType ap, HerobrineAI hb){
 		this.coreType=cp;
 		this.Appear=ap;
+		this.PluginCore = hb;
 	}
 	
 	public AppearType getAppear(){
@@ -21,7 +23,7 @@ public abstract class Core {
 		return coreType;
 		}
 
-	public abstract CoreResult CallCore(Object[] data);
+	protected abstract CoreResult CallCore(Object[] data);
 	
 	public CoreResult RunCore(Object[] data){
 
@@ -53,7 +55,8 @@ public abstract class Core {
 		RANDOM_SOUND,
 		RANDOM_EXPLOSION,
 		BURN,
-		CURSE;
+		CURSE,
+		STARE;
 		
 	}
 	public enum AppearType{

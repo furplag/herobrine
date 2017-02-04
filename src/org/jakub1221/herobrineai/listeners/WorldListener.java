@@ -31,7 +31,7 @@ public class WorldListener implements Listener{
 			 
 			 if (HerobrineAI.getPluginCore().getConfigDB().BuildPyramids==true){
 					
-				 if (new Random().nextInt(15)==1){
+				 if (new Random().nextInt(30)==4){
 					 Object[] data = {event.getChunk()};
 				     HerobrineAI.getPluginCore().getAICore().getCore(CoreType.PYRAMID).RunCore(data);
 				 }

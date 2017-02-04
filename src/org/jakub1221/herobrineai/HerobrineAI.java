@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,8 +20,9 @@ import org.bukkit.WorldCreator;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
-
+import org.jakub1221.herobrineai.NPC.AI.Path;
 import org.jakub1221.herobrineai.NPC.AI.PathManager;
 import org.jakub1221.herobrineai.NPC.Entity.HumanNPC;
 import org.jakub1221.herobrineai.NPC.NPCCore;
@@ -36,9 +39,7 @@ import org.jakub1221.herobrineai.listeners.InventoryListener;
 import org.jakub1221.herobrineai.listeners.PlayerListener;
 import org.jakub1221.herobrineai.listeners.WorldListener;
 
-
-
-public class HerobrineAI extends JavaPlugin implements Listener{
+public class HerobrineAI extends JavaPlugin implements Listener {
 
 	private static HerobrineAI pluginCore;
 	private AICore aicore;
@@ -46,94 +47,108 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 	private Support support;
 	private EntityManager entMng;
 	private PathManager pathMng;
-	public static final int build=3127;
-	public static final String versionStr="3.1.0";
-	public java.io.InputStream data_temple=HerobrineAI.class.getResourceAsStream("/res/temple.yml");
-	public java.io.InputStream data_graveyard_world=HerobrineAI.class.getResourceAsStream("/res/graveyard_world.yml");
-	
-	public static int HerobrineHP=200;
-	public static int HerobrineMaxHP=200;
-	public static final boolean isDebugging=false;
-	
+	public static final int build = 3219;
+	public static final String versionStr = "3.2.2";
+	public static boolean isNPCDisabled = false;
+	private static int pathUpdateINT = 0;
+
+	public static String bukkit_ver_string = "1.6.4 R0.1";
+	public static int HerobrineHP = 200;
+	public static int HerobrineMaxHP = 200;
+	public static final boolean isDebugging = false;
+	public static boolean isInitDone = false;
+
 	public static NPCCore NPCman;
 	public static HumanNPC HerobrineNPC;
 	public static long HerobrineEntityID;
-	
+
 	public static boolean AvailableWorld = false;
-	
+
 	public static List<Material> AllowedBlocks = new ArrayList<Material>();
 	public static List<Material> StandBlocks = new ArrayList<Material>();
 	public static List<Material> NonStandBlocks = new ArrayList<Material>();
-	public Map<Player,Long> PlayerApple = new HashMap<Player,Long>();
-	
+	public Map<Player, Long> PlayerApple = new HashMap<Player, Long>();
+
 	public static Logger log = Logger.getLogger("Minecraft");
-	
-	public void onEnable(){
-		
-		NPCman = new NPCCore(this);
-		HerobrineAI.pluginCore = this;
-		this.configdb = new ConfigDB(log);
-		
-	
-		getServer().getPluginManager().registerEvents(new EntityListener(), this);
-		getServer().getPluginManager().registerEvents(new BlockListener(), this);
-		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
-		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
-		getServer().getPluginManager().registerEvents(new WorldListener(), this);
-		
-		// Metrics
-		
+
+	public void onEnable() {
+
+		boolean errorCheck = true;
+
 		try {
-		    Metrics metrics = new Metrics(this);
-		    metrics.start();
-		} catch (IOException e) {
-		 
+			Class.forName("net.minecraft.server.v1_6_R3.Entity");
+		} catch (ClassNotFoundException e) {
+			errorCheck = false;
+			isInitDone = false;
 		}
-		
-		// Initialize PathManager
-		
-		this.pathMng = new PathManager();
-		
-		// Initialize AICore
-		
-		this.aicore = new AICore();
-		
-		// Initialize EntityManager
-		
-		this.entMng = new EntityManager();
-		
-		  // Config loading 
-		
-		configdb.Startup();
-		configdb.Reload();
-		
-		// Spawn Herobrine
-		
-		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0),(float) 0,(float) -20,(float) 0);
-		   nowloc.setYaw((float) 1);
-		    nowloc.setPitch((float) 1);
-            HerobrineSpawn(nowloc);
-			
-            HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
-			
-          //Graveyard World
-            
-			if (this.configdb.UseGraveyardWorld==true){
-			if (Bukkit.getServer().getWorld("world_herobrineai_graveyard")==null){
-				log.info("[HerobrineAI] Creating Graveyard world...");
-				  WorldCreator wc = new WorldCreator("world_herobrineai_graveyard");
-				  wc.generateStructures(false);
-				org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
-			       wc.type(type);
-			        wc.createWorld();
-			        GraveyardWorld.Create();
-				}
-			
+		if (errorCheck) {
+			isInitDone = true;
+			HerobrineAI.pluginCore = this;
+
+			NPCman = new NPCCore(this);
+
+			this.configdb = new ConfigDB(log);
+
+			getServer().getPluginManager().registerEvents(new EntityListener(), this);
+			getServer().getPluginManager().registerEvents(new BlockListener(), this);
+			getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+			getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+			getServer().getPluginManager().registerEvents(new WorldListener(), this);
+
+			// Metrics
+
+			try {
+				Metrics metrics = new Metrics(this);
+				metrics.start();
+			} catch (IOException e) {
+
 			}
-			log.info("[HerobrineAI] Plugin loaded! Version: "+versionStr+" / Build: "+build);
-			
+
+			// Initialize PathManager
+
+			this.pathMng = new PathManager();
+
+			// Initialize AICore
+
+			this.aicore = new AICore();
+
+			// Initialize EntityManager
+
+			this.entMng = new EntityManager();
+
+			// Config loading
+
+			configdb.Startup();
+			configdb.Reload();
+
+			// Spawn Herobrine
+
+			Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
+					(float) 0);
+			nowloc.setYaw((float) 1);
+			nowloc.setPitch((float) 1);
+			HerobrineSpawn(nowloc);
+
+			HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
+
+			// Graveyard World
+
+			if (this.configdb.UseGraveyardWorld == true) {
+				if (Bukkit.getServer().getWorld("world_herobrineai_graveyard") == null) {
+					log.info("[HerobrineAI] Creating Graveyard world...");
+					WorldCreator wc = new WorldCreator("world_herobrineai_graveyard");
+					wc.generateStructures(false);
+					org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
+					wc.type(type);
+					wc.createWorld();
+					GraveyardWorld.Create();
+				}
+
+			}
+			log.info("[HerobrineAI] Plugin loaded! Version: " + versionStr + " / Build: " + build);
+
 			// Init Block Types
-		
+
 			StandBlocks.add(Material.STONE);
 			StandBlocks.add(Material.getMaterial(2));
 			StandBlocks.add(Material.GRAVEL);
@@ -150,11 +165,11 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 			StandBlocks.add(Material.getMaterial(57));
 			StandBlocks.add(Material.getMaterial(41));
 			StandBlocks.add(Material.getMaterial(42));
-			
+
 			NonStandBlocks.add(Material.AIR);
 			NonStandBlocks.add(Material.GRASS);
 			NonStandBlocks.add(Material.SNOW);
-			
+
 			AllowedBlocks.add(Material.AIR);
 			AllowedBlocks.add(Material.SNOW);
 			AllowedBlocks.add(Material.getMaterial(31));
@@ -173,179 +188,267 @@ public class HerobrineAI extends JavaPlugin implements Listener{
 			AllowedBlocks.add(Material.getMaterial(77));
 			AllowedBlocks.add(Material.LADDER);
 
-	       for (int i = 0;i<=configdb.useWorlds.size()-1;i++){
-	    	   if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(configdb.useWorlds.get(i)))){AvailableWorld=true;}
-	       }
-			if (AvailableWorld==false){
-				log.info("**********************************************************");
-				log.info("[HerobrineAI] There are no available worlds for Herobrine!");
-				log.info("**********************************************************");
+			/*
+			 * Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this,
+			 * new Runnable() { public void run() {
+			 * 
+			 * for (int i = 0;i<=configdb.useWorlds.size()-1;i++){ if
+			 * (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().
+			 * getWorld(configdb.useWorlds.get(i)))){AvailableWorld=true;} } if
+			 * (AvailableWorld==false){ log.warning(
+			 * "**********************************************************");
+			 * log.
+			 * warning("[HerobrineAI] There are no available worlds for Herobrine!"
+			 * ); log.warning(
+			 * "**********************************************************");
+			 * }else{ log.info(
+			 * "**********************************************************");
+			 * log.info("[HerobrineAI] No problems detected."); log.info(
+			 * "**********************************************************"); }
+			 * 
+			 * 
+			 * } }, 1 * 1L);
+			 */
+
+			pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+				public void run() {
+					if (new Random().nextInt(4) == 2 && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow()
+							.equals(CoreType.RANDOM_POSITION)) {
+						pathMng.setPath(new Path(new Random().nextInt(15) - 7f, new Random().nextInt(15) - 7f));
+					}
 				}
-			
-			
-		
-			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AICore.plugin, new Runnable() {
-		        public void run() {
-		        	
-				    }
-		        }, 1 * 35L, 1 * 35L);
-			
+			}, 1 * 200L, 1 * 200L);
+
 			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-		        public void run() {
-		        	pathMng.update();
-				    }
-		        }, 1 * 5L, 1 * 5L);
-			
-		
-			//Command Executors
+				public void run() {
+					pathMng.update();
+				}
+			}, 1 * 5L, 1 * 5L);
+
+			// Command Executors
 			this.getCommand("hb").setExecutor((CommandExecutor) new CmdExecutor(this));
 			this.getCommand("hb-ai").setExecutor((CommandExecutor) new CmdExecutor(this));
-			
-			//Support initialize
+
+			// Support initialize
 			this.support = new Support();
-			
-			
-			//Register mobs
-			try{
-		        @SuppressWarnings("rawtypes")
-		        Class[] args = new Class[3];
-		        args[0] = Class.class;
-		        args[1] = String.class;
-		        args[2] = int.class;
 
-		        Method a = net.minecraft.server.v1_5_R2.EntityTypes.class.getDeclaredMethod("a", args);
-		        a.setAccessible(true);
+			Class[] argst = new Class[3];
+			argst[0] = Class.class;
+			argst[1] = String.class;
+			argst[2] = int.class;
+			try {
+				Method ab = net.minecraft.server.v1_11_R1.EntityTypes.class.getDeclaredMethod("a", argst);
+			} catch (NoSuchMethodException e1) {
+				isNPCDisabled = true;
+			} catch (SecurityException e1) {
+				isNPCDisabled = true;
+			}
 
-		        a.invoke(a, CustomZombie.class, "Zombie", 54);
-		        a.invoke(a, CustomSkeleton.class, "Skeleton", 51);
-		    }catch (Exception e){
-		        e.printStackTrace();
-		        this.setEnabled(false);
-		    }
-		
+			if (!isNPCDisabled) {
+				try {
+					@SuppressWarnings("rawtypes")
+					Class[] args = new Class[3];
+					args[0] = Class.class;
+					args[1] = String.class;
+					args[2] = int.class;
 
-			
-	}	
-	
-	
-	public void onDisable(){
-		this.entMng.killAllMobs();
-		NPCman.DisableTask();
-		aicore.CancelTarget(CoreType.ANY);
-		log.info("[HerobrineAI] Plugin disabled!");
-		
-		
+					Method a = net.minecraft.server.v1_11_R1.EntityTypes.class.getDeclaredMethod("a", args);
+					a.setAccessible(true);
+
+					a.invoke(a, CustomZombie.class, "Zombie", 54);
+					a.invoke(a, CustomSkeleton.class, "Skeleton", 51);
+				} catch (Exception e) {
+					e.printStackTrace();
+					this.setEnabled(false);
+				}
+			} else {
+				log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
+			}
+		} else {
+			log.warning("[HerobrineAI] ******************ERROR******************");
+			log.warning("[HerobrineAI] This version is only compatible with bukkit version " + bukkit_ver_string);
+			log.warning("[HerobrineAI] *****************************************");
+			this.setEnabled(false);
+		}
 	}
-	
-	public AICore getAICore(){
-		
+
+	public void onDisable() {
+
+		if (isInitDone) {
+			this.entMng.killAllMobs();
+			Bukkit.getServer().getScheduler().cancelTask(pathUpdateINT);
+			NPCman.DisableTask();
+			aicore.CancelTarget(CoreType.ANY);
+			aicore.Stop_BD();
+			aicore.Stop_CG();
+			aicore.Stop_MAIN();
+			aicore.Stop_RC();
+			aicore.Stop_RM();
+			aicore.Stop_RP();
+			aicore.Stop_RS();
+			aicore.disableAll();
+			log.info("[HerobrineAI] Plugin disabled!");
+		}
+
+	}
+
+	public java.io.InputStream getInputStreamData(String src) {
+		return HerobrineAI.class.getResourceAsStream(src);
+	}
+
+	public AICore getAICore() {
+
 		return this.aicore;
-		
+
 	}
-	
-	public EntityManager getEntityManager(){
+
+	public EntityManager getEntityManager() {
 		return this.entMng;
 	}
-	
-	public static HerobrineAI getPluginCore(){
-		
+
+	public static HerobrineAI getPluginCore() {
+
 		return HerobrineAI.pluginCore;
-		
+
 	}
-	
-	public void HerobrineSpawn(Location loc){
-	     HerobrineNPC = (HumanNPC) NPCman.spawnHumanNPC(ChatColor.WHITE+"Herobrine", loc);
-	     HerobrineEntityID=HerobrineNPC.getBukkitEntity().getEntityId();
-	   
+
+	public void HerobrineSpawn(Location loc) {
+		HerobrineNPC = (HumanNPC) NPCman.spawnHumanNPC(ChatColor.WHITE + "Herobrine", loc);
+		HerobrineNPC.getBukkitEntity().setMetadata("NPC", new FixedMetadataValue(this, true));
+		HerobrineEntityID = HerobrineNPC.getBukkitEntity().getEntityId();
+
 	}
-	public void HerobrineRemove(){
-		
-		HerobrineEntityID=0;
-		HerobrineNPC=null;
+
+	public void HerobrineRemove() {
+
+		HerobrineEntityID = 0;
+		HerobrineNPC = null;
 		NPCman.removeAll();
-		
+
 	}
-    public ConfigDB getConfigDB(){
-    	return this.configdb;
-    }
-    public String getVersionStr(){
-    	return versionStr;
-    }
-    public Support getSupport(){
-    	return this.support;
-    }
-	public PathManager getPathManager(){
+
+	public ConfigDB getConfigDB() {
+		return this.configdb;
+	}
+
+	public String getVersionStr() {
+		return versionStr;
+	}
+
+	public Support getSupport() {
+		return this.support;
+	}
+
+	public PathManager getPathManager() {
 		return this.pathMng;
 	}
-    public boolean canAttackPlayer(Player player,Player sender){
- 
-    	if (player.isOp()){
-    		if (configdb.AttackOP){
-    			 if (player.getGameMode()==GameMode.CREATIVE){
-    				 if (configdb.AttackCreative){
-    					 return true;
-    				 }else{sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player is in Creative mode.");return false;}
-    			 }
-    			return true;
-    		}else{sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player is OP.");return false;}
-    	}else if (player.hasPermission("hb-ai.ignore")){
-    		sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player has ignore permission.");
-    		return false;
-    	}else if (player.getGameMode()==GameMode.CREATIVE){
-    		if (configdb.AttackCreative){
-    			return true;
-    		}else{sender.sendMessage(ChatColor.RED+"[HerobrineAI] Player is in Creative mode.");return false;}
-    	}else{return true;}
-    	
-    }
-    public boolean canAttackPlayerConsole(Player player){
-    	
-    	if (player.isOp()){
-    		if (configdb.AttackOP){
-    			 if (player.getGameMode()==GameMode.CREATIVE){
-    				 if (configdb.AttackCreative){
-    					 return true;
-    				 }else{log.info("[HerobrineAI] Player is in Creative mode.");return false;}
-    			 }
-    			return true;
-    		}else{log.info("[HerobrineAI] Player is OP.");return false;}
-    	}else if (player.hasPermission("hb-ai.ignore")){
-    		log.info("[HerobrineAI] Player has ignore permission.");
-    		return false;
-    	}else if (player.getGameMode()==GameMode.CREATIVE){
-    		if (configdb.AttackCreative){
-    			return true;
-    		}else{log.info("[HerobrineAI] Player is in Creative mode.");return false;}
-    	}else{return true;}
-    	
-    }
-	
-    public boolean canAttackPlayerNoMSG(Player player){
-    	if (player.isOp()){
-    		if (configdb.AttackOP){
-    			 if (player.getGameMode()==GameMode.CREATIVE){
-    				 if (configdb.AttackCreative){
-    					 return true;
-    				 }else{return false;}
-    			 }
-    			return true;
-    		}else{return false;}
-    	}else if (player.hasPermission("hb-ai.ignore")){
-    		return false;
-    	}else if (player.getGameMode()==GameMode.CREATIVE){
-    		if (configdb.AttackCreative){
-    			return true;
-    		}else{return false;}
-    	}else{return true;}
-    	
-    }
-    public String getAvailableWorldString(){
-    	if (AvailableWorld){
-    		return "Yes";
-    	}else{
-    		return "No";
-    	}
-    }
+
+	public boolean canAttackPlayer(Player player, Player sender) {
+
+		boolean opCheck = true;
+		boolean creativeCheck = true;
+		boolean ignoreCheck = true;
+
+		if (!configdb.AttackOP) {
+			if (player.isOp()) {
+				opCheck = false;
+			}
+		}
+		if (!configdb.AttackCreative) {
+			if (player.getGameMode() == GameMode.CREATIVE) {
+				creativeCheck = false;
+			}
+		}
+		;
+		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
+			ignoreCheck = false;
+		}
+
+		if (opCheck && creativeCheck && ignoreCheck) {
+			return true;
+		} else {
+			if (!opCheck) {
+				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is OP.");
+			} else if (!creativeCheck) {
+				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is in Creative mode.");
+			} else if (!ignoreCheck) {
+				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player has ignore permission.");
+			}
+			return false;
+		}
+
+	}
+
+	public boolean canAttackPlayerConsole(Player player) {
+
+		boolean opCheck = true;
+		boolean creativeCheck = true;
+		boolean ignoreCheck = true;
+
+		if (!configdb.AttackOP) {
+			if (player.isOp()) {
+				opCheck = false;
+			}
+		}
+		if (!configdb.AttackCreative) {
+			if (player.getGameMode() == GameMode.CREATIVE) {
+				creativeCheck = false;
+			}
+		}
+		;
+		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
+			ignoreCheck = false;
+		}
+
+		if (opCheck && creativeCheck && ignoreCheck) {
+			return true;
+		} else {
+			if (!opCheck) {
+				log.info("[HerobrineAI] Player is OP.");
+			} else if (!creativeCheck) {
+				log.info("[HerobrineAI] Player is in Creative mode.");
+			} else if (!ignoreCheck) {
+				log.info("[HerobrineAI] Player has ignore permission.");
+			}
+			return false;
+		}
+
+	}
+
+	public boolean canAttackPlayerNoMSG(Player player) {
+		boolean opCheck = true;
+		boolean creativeCheck = true;
+		boolean ignoreCheck = true;
+
+		if (!configdb.AttackOP) {
+			if (player.isOp()) {
+				opCheck = false;
+			}
+		}
+		if (!configdb.AttackCreative) {
+			if (player.getGameMode() == GameMode.CREATIVE) {
+				creativeCheck = false;
+			}
+		}
+		;
+		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
+			ignoreCheck = false;
+		}
+
+		if (opCheck && creativeCheck && ignoreCheck) {
+			return true;
+		} else {
+
+			return false;
+		}
+	}
+
+	public String getAvailableWorldString() {
+		if (AvailableWorld) {
+			return "Yes";
+		} else {
+			return "No";
+		}
+	}
 
 }
-

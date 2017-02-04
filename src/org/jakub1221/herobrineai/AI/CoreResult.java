@@ -4,15 +4,17 @@ public class CoreResult {
 
 	private final boolean bo;
 	private final String text;
-	
-	public CoreResult(boolean b,String t){
-		this.bo=b;
-		this.text=t;
+
+	public CoreResult(boolean b, String t) {
+		this.bo = b;
+		this.text = t;
 	}
-	public boolean getResult(){
+
+	public boolean getResult() {
 		return this.bo;
 	}
-	public String getResultString(){
+
+	public String getResultString() {
 		return this.text;
 	}
 }

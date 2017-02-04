@@ -1,5 +1,7 @@
 package org.jakub1221.herobrineai.AI.cores;
 
+import java.util.Collection;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -11,139 +13,105 @@ import org.jakub1221.herobrineai.AI.Core;
 import org.jakub1221.herobrineai.AI.CoreResult;
 import org.jakub1221.herobrineai.AI.Message;
 
-public class Totem extends Core{
-	
-	public Totem(){
-	super(CoreType.TOTEM,AppearType.APPEAR);
+public class Totem extends Core {
+
+	public Totem() {
+		super(CoreType.TOTEM, AppearType.APPEAR, HerobrineAI.getPluginCore());
 	}
 
-	public CoreResult CallCore(Object[] data){
-		return TotemCall((Location)data[0],(String)data[1]);
+	public CoreResult CallCore(Object[] data) {
+		return TotemCall((Location) data[0], (String) data[1]);
 	}
-	
-	public CoreResult TotemCall(Location loc,String caller){
-		
-		AICore.isTotemCalled=false;
+
+	public CoreResult TotemCall(Location loc, String caller) {
+
+		AICore.isTotemCalled = false;
 		loc.getWorld().strikeLightning(loc);
-		if (HerobrineAI.getPluginCore().getConfigDB().TotemExplodes==true){
-		loc.getWorld().createExplosion(loc, 5);
+		
+		if (PluginCore.getConfigDB().TotemExplodes == true) {
+			loc.getWorld().createExplosion(loc, 5);
 		}
-		if (Bukkit.getServer().getPlayer(caller) != null){
-			if (Bukkit.getServer().getPlayer(caller).isOnline()){
-			     HerobrineAI.getPluginCore().getAICore().setCoreTypeNow(CoreType.TOTEM);
-				HerobrineAI.getPluginCore().getAICore().setAttackTarget(Bukkit.getServer().getPlayer(caller));
+		
+		if (Bukkit.getServer().getPlayer(caller) != null) {
+			
+			if (Bukkit.getServer().getPlayer(caller).isOnline()) {
+				PluginCore.getAICore().setCoreTypeNow(CoreType.TOTEM);
+				PluginCore.getAICore().setAttackTarget(Bukkit.getServer().getPlayer(caller));
 				Player player = (Player) Bukkit.getServer().getPlayer(caller);
+
+				Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
 				
-				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-				   if (Bukkit.getServer().getOnlinePlayers().length>0){
-				   int i = 0;
-				   for (i=0;i<=Bukkit.getServer().getOnlinePlayers().length-1;i++){
-					Location ploc = (Location) AllOnPlayers[i].getLocation();
-					   if (AllOnPlayers[i].getName() != player.getName() && ploc.getX()+10>loc.getX() && ploc.getX()-10<loc.getX() && ploc.getZ()+10>loc.getZ() && ploc.getZ()-10<loc.getZ()){
-					
-					Message.SendMessage(AllOnPlayers[i]);
-					 if (HerobrineAI.getPluginCore().getConfigDB().UsePotionEffects){
-					AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
-					AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
-					AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
-					 }
-					   }
-				   }
-				
-				   }
-			}else{
-				boolean hasTarget=false;
+				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
+					for(Player onlinePlayer : onlinePlayers) {
+						Location ploc = (Location) onlinePlayer.getLocation();
+						if (onlinePlayer.getName() != player.getName() && ploc.getX() + 10 > loc.getX()
+								&& ploc.getX() - 10 < loc.getX() && ploc.getZ() + 10 > loc.getZ()
+								&& ploc.getZ() - 10 < loc.getZ()) {
+
+							Message.SendMessage(onlinePlayer);
+							if (PluginCore.getConfigDB().UsePotionEffects) {
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
+							}
+						}
+					}
+
+				}
+			} else {
 				Player target = null;
+
+				Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
 				
-				Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-				   if (Bukkit.getServer().getOnlinePlayers().length>0){
-				   int i = 0;
-				   for (i=0;i<=Bukkit.getServer().getOnlinePlayers().length-1;i++){
-					   if (hasTarget==false){
-					Location ploc = (Location) AllOnPlayers[i].getLocation();
-					   if (ploc.getX()+10>loc.getX() && ploc.getX()-10<loc.getX() && ploc.getZ()+10>loc.getZ() && ploc.getZ()-10<loc.getZ()){
-					
-					hasTarget=true;
-					target=AllOnPlayers[i];
-						   
-					   }
-					   }
-				   }
+				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
+					for(Player onlinePlayer : onlinePlayers) {
+						
+						Location ploc = (Location) onlinePlayer.getLocation();
+						
+						if (ploc.getX() + 10 > loc.getX() && ploc.getX() - 10 < loc.getX()
+							&& ploc.getZ() + 10 > loc.getZ() && ploc.getZ() - 10 < loc.getZ()) {
+						
+							target = onlinePlayer;
+							break;
+
+						}
+						
+					}
+
+				}
 				
-				   }
-				   if (hasTarget==true){
-					   
-					   HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.TOTEM);
-					   HerobrineAI.getPluginCore().getAICore().setAttackTarget(target);
-					   Player player = (Player) target;
-					   if (Bukkit.getServer().getOnlinePlayers().length>0){
-						   int i = 0;
-						   for (i=0;i<=Bukkit.getServer().getOnlinePlayers().length-1;i++){
-							Location ploc = (Location) AllOnPlayers[i].getLocation();
-							   if (AllOnPlayers[i].getName() != player.getName() && ploc.getX()+20>loc.getX() && ploc.getX()-20<loc.getX() && ploc.getZ()+20>loc.getZ() && ploc.getZ()-20<loc.getZ()){
+				if (target != null) {
+
+					PluginCore.getAICore().CancelTarget(CoreType.TOTEM);
+					PluginCore.getAICore().setAttackTarget(target);
+					Player player = (Player) target;
+					if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
+						for(Player onlinePlayer : onlinePlayers) {
 							
-							Message.SendMessage(AllOnPlayers[i]);
-							AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
-							AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
-							AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
-							   
-							   }
-						   }
-						
-						   }
-					 
-					   
-				   }
-				
-				
+							Location ploc = (Location) onlinePlayer.getLocation();
+							if (onlinePlayer.getName() != player.getName() 
+								&& ploc.getX() + 20 > loc.getX()
+								&& ploc.getX() - 20 < loc.getX() 
+								&& ploc.getZ() + 20 > loc.getZ()
+								&& ploc.getZ() - 20 < loc.getZ()
+								) {
+
+								Message.SendMessage(onlinePlayer);
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
+								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
+
+							}
+						}
+
+					}
+
+				}
+
 			}
-		
-		
-		}else{
-			boolean hasTarget=false;
-			Player target = null;
-			
-			Player [] AllOnPlayers = Bukkit.getServer().getOnlinePlayers();
-			   if (Bukkit.getServer().getOnlinePlayers().length>0){
-			   int i = 0;
-			   for (i=0;i<=Bukkit.getServer().getOnlinePlayers().length-1;i++){
-				   if (hasTarget==false){
-				Location ploc = (Location) AllOnPlayers[i].getLocation();
-				   if (ploc.getX()+20>loc.getX() && ploc.getX()-20<loc.getX() && ploc.getZ()+20>loc.getZ() && ploc.getZ()-20<loc.getZ()){
-				
-				hasTarget=true;
-				target=AllOnPlayers[i];
-					   
-				   }
-				   }
-			   }
-			
-			   }
-			   if (hasTarget==true){
-				   
-				   HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.TOTEM);
-				   HerobrineAI.getPluginCore().getAICore().setAttackTarget(target);
-				   Player player = (Player) target;
-				   if (Bukkit.getServer().getOnlinePlayers().length>0){
-					   int i = 0;
-					   for (i=0;i<=Bukkit.getServer().getOnlinePlayers().length-1;i++){
-						   if (AllOnPlayers[i].getEntityId()!=HerobrineAI.HerobrineEntityID){
-						Location ploc = (Location) AllOnPlayers[i].getLocation();
-						   if (AllOnPlayers[i].getName() != player.getName() && ploc.getX()+20>loc.getX() && ploc.getX()-20<loc.getX() && ploc.getZ()+20>loc.getZ() && ploc.getZ()-20<loc.getZ()){
-						
-						Message.SendMessage(AllOnPlayers[i]);
-						AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
-						AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
-						AllOnPlayers[i].addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
-						   }
-					   }
-					   }
-					   }
-				   
-			   }
-			
-			
+
 		}
-		return new CoreResult(false,"Totem called!");
+		
+		return new CoreResult(false, "Totem called!");
 	}
 }

@@ -1,13 +1,14 @@
 package org.jakub1221.herobrineai.AI.cores;
 
 import org.bukkit.entity.Player;
+import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.AI.Core;
 import org.jakub1221.herobrineai.AI.CoreResult;
 
 public class Burn extends Core {
 
 	public Burn() {
-		super(CoreType.BURN, AppearType.NORMAL);
+		super(CoreType.BURN, AppearType.NORMAL, HerobrineAI.getPluginCore());
 	}
 
 	@Override

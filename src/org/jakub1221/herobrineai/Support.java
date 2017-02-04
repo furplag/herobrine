@@ -3,6 +3,7 @@ package org.jakub1221.herobrineai;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.jakub1221.herobrineai.support._CustomItems;
+import org.jakub1221.herobrineai.support._Factions;
 import org.jakub1221.herobrineai.support._GriefPrevention;
 import org.jakub1221.herobrineai.support._PreciousStones;
 import org.jakub1221.herobrineai.support._Residence;
@@ -17,12 +18,14 @@ public class Support {
 	private boolean B_CustomItems=false;
 	private boolean B_WorldGuard=false;
 	private boolean B_PreciousStones=false;
+	private boolean B_Factions=false;
 	private _Residence ResidenceCore=null; 
 	private _GriefPrevention GriefPreventionCore=null;
 	private _Towny TownyCore=null;
 	private _CustomItems CustomItems=null;
 	private _WorldGuard WorldGuard=null;
 	private _PreciousStones PreciousStones=null;
+	private _Factions Factions=null;
 	
 	public Support(){
 		ResidenceCore=new _Residence();
@@ -31,11 +34,12 @@ public class Support {
 		CustomItems=new _CustomItems();
 		WorldGuard=new _WorldGuard();
 		PreciousStones=new _PreciousStones();
+		Factions=new _Factions();
 		   Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
 		        public void run() {
 		        	CheckForPlugins();
 		        }
-	        }, 1 * 10L);
+	        }, 1 * 2L);
 	}
 	
 	public boolean isPreciousStones(){
@@ -52,6 +56,9 @@ public class Support {
 	}
 	public boolean isTowny(){
 		return B_Towny;
+	}
+	public boolean isFactions(){
+		return B_Factions;
 	}
 	public void CheckForPlugins(){
 		if (ResidenceCore.Check()){
@@ -79,6 +86,10 @@ public class Support {
 			B_PreciousStones=true;
 			HerobrineAI.log.info("[HerobrineAI] PreciousStones plugin detected!");
 		}
+		if (Factions.Check()){
+			B_Factions=true;
+			HerobrineAI.log.info("[HerobrineAI] Factions plugin detected!");
+		}
 	}
 	public boolean isSecuredArea(Location loc){
 		if (B_Residence){
@@ -99,6 +110,10 @@ public class Support {
 			}else{return false;}
 		}else if (B_PreciousStones){
 			if (PreciousStones.isSecuredArea(loc)){
+				return true;
+			}else{return false;}
+		}else if (B_Factions){
+			if (Factions.isSecuredArea(loc)){
 				return true;
 			}else{return false;}
 		}
