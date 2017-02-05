@@ -26,21 +26,37 @@
 	<repositories>
 		<repository>
             <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
 		</repository>
 	</repositories>
 
 	<dependencies>
+		 <!--Spigot API-->
 		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>bukkit</artifactId>
-			<version>${bukkitVersion}</version>
+			   <groupId>org.spigotmc</groupId>
+			   <artifactId>spigot-api</artifactId>
+			   <version>${bukkitVersion}</version>
+			   <scope>provided</scope>
 		</dependency>
+		<!--Bukkit API-->
+		<dependency>
+				<groupId>org.bukkit</groupId>
+				<artifactId>bukkit</artifactId>
+				<version>${bukkitVersion}</version>
+				<scope>provided</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>${bukkitVersion}</version>
+			<scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.jakub1221.customitems.CustomItems</groupId>
 			<artifactId>CustomItems</artifactId>
 			<version>1.6.0</version>
 			<optional>true</optional>
+			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/CustomItems.jar</systemPath>
 		</dependency>
 		<dependency>
@@ -90,6 +106,14 @@
 			<optional>true</optional>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/Factions.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.massivecraft.mcore.MCore</groupId>
+			<artifactId>MCore</artifactId>
+			<version>6.7.0</version>
+			<optional>true</optional>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/mcore.jar</systemPath>
 		</dependency>
 	</dependencies>
 

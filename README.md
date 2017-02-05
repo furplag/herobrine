@@ -1,5 +1,5 @@
 # HerobrineAI
-[![Build Status](https://travis-ci.org/jakub1221/HerobrineAI.svg?branch=master)](https://travis-ci.org/jakub1221/HerobrineAI)  
+[![Build Status](http://jenkins.logicshard.com/buildStatus/icon?job=HerobrineAI)](http://jenkins.logicshard.com/job/HerobrineAI/)
 
 =========
 
