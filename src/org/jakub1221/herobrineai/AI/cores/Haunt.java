@@ -52,9 +52,9 @@ public class Haunt extends Core {
 			AICore.isTarget = true;
 			AICore.PlayerTarget = player;
 			AICore.log.info("[HerobrineAI] Hauntig player!");
-			Location loc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+			Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			loc.setY(-20);
-			HerobrineAI.HerobrineNPC.moveTo(loc);
+			PluginCore.HerobrineNPC.moveTo(loc);
 
 			StartHandler();
 			return new CoreResult(true, "Herobrine haunts " + player.getName() + "!");
@@ -162,7 +162,7 @@ public class Haunt extends Core {
 				&& PluginCore.getAICore().getCoreTypeNow() == CoreType.HAUNT) {
 			if (AICore.PlayerTarget.isDead() == false) {
 
-				Location loc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+				Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 
 				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 					
@@ -191,7 +191,7 @@ public class Haunt extends Core {
 				HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
 				loc = AICore.PlayerTarget.getLocation();
 				loc.setY(loc.getY() + 1.5);
-				HerobrineAI.HerobrineNPC.lookAtPoint(loc);
+				PluginCore.HerobrineNPC.lookAtPoint(loc);
 
 				_ticks++;
 
@@ -221,7 +221,7 @@ public class Haunt extends Core {
 					FindAndTeleport(AICore.PlayerTarget);
 					Location ploc = (Location) AICore.PlayerTarget.getLocation();
 					ploc.setY(ploc.getY() + 1.5);
-					HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
+					PluginCore.HerobrineNPC.lookAtPoint(ploc);
 
 				} else {
 					PluginCore.getAICore().CancelTarget(CoreType.HAUNT);
@@ -258,9 +258,10 @@ public class Haunt extends Core {
 					if (!(x >= -4 && x <= 4 && z >= -4 && z <= 4)) {
 						
 						Material blockBottom =  loc.getWorld().getBlockAt(
-																	x + loc.getBlockX(), 
-																	y + loc.getBlockY() - 1, 
-																	z + loc.getBlockZ()).getType();
+								x + loc.getBlockX(), 
+								y + loc.getBlockY() - 1, 
+								z + loc.getBlockZ()).getType();
+						
 						Material blockMiddle =  loc.getWorld().getBlockAt(
 								x + loc.getBlockX(), 
 								y + loc.getBlockY(), 
@@ -271,14 +272,9 @@ public class Haunt extends Core {
 								y + loc.getBlockY() + 1, 
 								z + loc.getBlockZ()).getType();
 						
-						List<Material> mats = new ArrayList<Material>();
-						mats.add(blockBottom);
-						mats.add(blockMiddle);
-						mats.add(blockTop);
-						
-						if (HerobrineAI.StandBlocks.containsAll(mats)){
-								Teleport(loc.getWorld(), x + loc.getBlockX(), y + loc.getBlockY(), z + loc.getBlockZ());								
-								return true;
+						if (blockBottom.isSolid() && blockMiddle.isSolid() && blockTop.isSolid()){
+							Teleport(loc.getWorld(), x + loc.getBlockX(), y + loc.getBlockY(), z + loc.getBlockZ());								
+							return true;
 						}
 					}
 				}
@@ -293,12 +289,12 @@ public class Haunt extends Core {
 
 	public void Teleport(World world, int X, int Y, int Z) {
 
-		Location loc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+		Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 		loc.setWorld(world);
 		loc.setX((double) X);
 		loc.setY((double) Y);
 		loc.setZ((double) Z);
-		HerobrineAI.HerobrineNPC.moveTo(loc);
+		PluginCore.HerobrineNPC.moveTo(loc);
 
 	}
 

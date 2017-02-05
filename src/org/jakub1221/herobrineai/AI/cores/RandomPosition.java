@@ -54,10 +54,10 @@ public class RandomPosition extends Core {
 					Location newloc = (Location) getRandomLocation(world);
 					if (newloc != null) {
 
-						HerobrineAI.HerobrineNPC.moveTo(newloc);
+						PluginCore.HerobrineNPC.moveTo(newloc);
 						newloc.setX(newloc.getX() + 2);
 						newloc.setY(newloc.getY() + 1.5);
-						HerobrineAI.HerobrineNPC.lookAtPoint(newloc);
+						PluginCore.HerobrineNPC.lookAtPoint(newloc);
 						randomTicks = 0;
 						AICore.log.info("[HerobrineAI] Herobrine is now in RandomLocation mode.");
 						PluginCore.getAICore().Start_RM();
@@ -155,9 +155,10 @@ public class RandomPosition extends Core {
 			HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
 
 			if (Utils.getRandomGen().nextInt(5) == 3) {
-				Location loc = HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+				Location loc = PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 				Path path = new Path((float) loc.getX() + Utils.getRandomGen().nextInt(30) - 15,
-						(float) loc.getZ() + Utils.getRandomGen().nextInt(30) - 15);
+									 (float) loc.getZ() + Utils.getRandomGen().nextInt(30) - 15,
+									 PluginCore);
 				PluginCore.getPathManager().setPath(path);
 			}
 
@@ -169,19 +170,20 @@ public class RandomPosition extends Core {
 
 		if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION && AICore.isTarget == false) {
 
-			Location hbloc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+			Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			World w = (World) hbloc.getWorld();
 			ConfigDB config = PluginCore.getConfigDB();
+			
 			if (hbloc.getBlockX() < config.WalkingModeXRadius + config.WalkingModeFromXRadius
-					&& hbloc.getBlockX() > (-config.WalkingModeXRadius) + config.WalkingModeFromXRadius
-					&& hbloc.getBlockZ() < config.WalkingModeZRadius + config.WalkingModeFromZRadius
-					&& hbloc.getBlockZ() > (-config.WalkingModeZRadius) + config.WalkingModeFromZRadius) {
-				if (HerobrineAI.NonStandBlocks.contains(
-						w.getBlockAt(hbloc.getBlockX(), hbloc.getBlockY() - 1, hbloc.getBlockZ()).getType())) {
+				&& hbloc.getBlockX() > (-config.WalkingModeXRadius) + config.WalkingModeFromXRadius
+				&& hbloc.getBlockZ() < config.WalkingModeZRadius + config.WalkingModeFromZRadius
+				&& hbloc.getBlockZ() > (-config.WalkingModeZRadius) + config.WalkingModeFromZRadius) {
+			
+				if (!w.getBlockAt(hbloc.getBlockX(), hbloc.getBlockY() - 1, hbloc.getBlockZ()).getType().isSolid()) {
 
 					hbloc.setY(hbloc.getY() - 1);
 
-					HerobrineAI.HerobrineNPC.moveTo(hbloc);
+					PluginCore.HerobrineNPC.moveTo(hbloc);
 
 				}
 			} else {
@@ -192,36 +194,42 @@ public class RandomPosition extends Core {
 
 	public void CheckPlayerPosition() {
 		boolean isThere = false;
-		Location loc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+		Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 		Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
 		
 		if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 
 			for (Player player : onlinePlayers) {
 				
-				if (HerobrineAI.HerobrineEntityID != player.getEntityId()) {
+				if (PluginCore.HerobrineEntityID != player.getEntityId()) {
 					Location ploc = (Location) player.getLocation();
 					
-					if (ploc.getWorld() == loc.getWorld() && ploc.getX() + 7 > loc.getX()
-							&& ploc.getX() - 7 < loc.getX() && ploc.getZ() + 7 > loc.getZ()
-							&& ploc.getZ() - 7 < loc.getZ() && ploc.getY() + 7 > loc.getY()
-							&& ploc.getY() - 7 < loc.getY()) {
+					if (ploc.getWorld() == loc.getWorld() 
+						&& ploc.getX() + 7 > loc.getX()
+						&& ploc.getX() - 7 < loc.getX() 
+						&& ploc.getZ() + 7 > loc.getZ()
+						&& ploc.getZ() - 7 < loc.getZ() 
+						&& ploc.getY() + 7 > loc.getY()
+						&& ploc.getY() - 7 < loc.getY()) {
 						
 						loc.setY(-20);
-						HerobrineAI.HerobrineNPC.moveTo(loc);
+						PluginCore.HerobrineNPC.moveTo(loc);
 						PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
 						RandomMoveIsPlayer = false;
 						PluginCore.getAICore().setAttackTarget(player);
 						break;
 					} else {
 						
-						if (ploc.getWorld() == loc.getWorld() && ploc.getX() + 15 > loc.getX()
-								&& ploc.getX() - 15 < loc.getX() && ploc.getZ() + 15 > loc.getZ()
-								&& ploc.getZ() - 15 < loc.getZ() && ploc.getY() + 15 > loc.getY()
-								&& ploc.getY() - 15 < loc.getY()) {
+						if (ploc.getWorld() == loc.getWorld() 
+							&& ploc.getX() + 15 > loc.getX()
+							&& ploc.getX() - 15 < loc.getX()
+							&& ploc.getZ() + 15 > loc.getZ()
+							&& ploc.getZ() - 15 < loc.getZ() 
+							&& ploc.getY() + 15 > loc.getY()
+							&& ploc.getY() - 15 < loc.getY()) {
 							
 							ploc.setY(ploc.getY() + 1.5);
-							HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
+							PluginCore.HerobrineNPC.lookAtPoint(ploc);
 							PluginCore.getPathManager().setPath(null);
 							isThere = true;
 							break;

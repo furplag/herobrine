@@ -38,18 +38,20 @@ public class EntityListener implements Listener {
 	private ArrayList<String> equalsLore = new ArrayList<String>();
 	private ArrayList<String> equalsLoreS = new ArrayList<String>();
 	private ArrayList<String> getLore = new ArrayList<String>();
+	private HerobrineAI PluginCore = null;
 
-	public EntityListener() {
+	public EntityListener(HerobrineAI plugin) {
 		equalsLore.add("Herobrine artifact");
 		equalsLore.add("Bow of Teleporting");
 		equalsLoreS.add("Herobrine artifact");
 		equalsLoreS.add("Sword of Lighting");
+		PluginCore = plugin;
 	}
 
 	@EventHandler
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
-		if (!HerobrineAI.isNPCDisabled) {
-			if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
+		if (!PluginCore.isNPCDisabled) {
+			if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
 				
 				Entity entity = event.getEntity();
 				EntityType creatureType = event.getEntityType();
@@ -58,28 +60,28 @@ public class EntityListener implements Listener {
 					return;
 
 				if (creatureType == EntityType.ZOMBIE) {
-					if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Warrior) {
-						if (Utils.getRandomGen().nextInt(100) < HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
+					if (PluginCore.getConfigDB().UseNPC_Warrior) {
+						if (Utils.getRandomGen().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
 
-							if (HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId()) == false) {
+							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
 								LivingEntity ent = (LivingEntity) entity;
 
 								ent.setHealth(0);
-								HerobrineAI.getPluginCore().getEntityManager().spawnCustomZombie(event.getLocation(), MobType.HEROBRINE_WARRIOR);
+								PluginCore.getEntityManager().spawnCustomZombie(event.getLocation(), MobType.HEROBRINE_WARRIOR);
 
 								return;
 							}
 						}
 					}
 				} else if (creatureType == EntityType.SKELETON) {
-					if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Demon) {
-						if (Utils.getRandomGen().nextInt(100) < HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
+					if (PluginCore.getConfigDB().UseNPC_Demon) {
+						if (Utils.getRandomGen().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
 
-							if (HerobrineAI.getPluginCore().getEntityManager().isCustomMob(entity.getEntityId()) == false) {
+							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
 								LivingEntity ent = (LivingEntity) entity;
 
 								ent.setHealth(0);
-								HerobrineAI.getPluginCore().getEntityManager().spawnCustomSkeleton(event.getLocation(), MobType.DEMON);
+								PluginCore.getEntityManager().spawnCustomSkeleton(event.getLocation(), MobType.DEMON);
 
 								return;
 							}
@@ -92,15 +94,15 @@ public class EntityListener implements Listener {
 
 	@EventHandler
 	public void onEntityDeathEvent(EntityDeathEvent event) {
-		if (HerobrineAI.getPluginCore().getEntityManager().isCustomMob(event.getEntity().getEntityId())) {
-			HerobrineAI.getPluginCore().getEntityManager().removeMob(event.getEntity().getEntityId());
+		if (PluginCore.getEntityManager().isCustomMob(event.getEntity().getEntityId())) {
+			PluginCore.getEntityManager().removeMob(event.getEntity().getEntityId());
 		}
 	}
 
 	@EventHandler
 	public void EntityTargetEvent(EntityTargetLivingEntityEvent e) {
 		LivingEntity lv = e.getTarget();
-		if (lv.getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (lv.getEntityId() == PluginCore.HerobrineEntityID) {
 			e.setCancelled(true);
 			return;
 		}
@@ -125,7 +127,7 @@ public class EntityListener implements Listener {
 								
 								if (getLore.containsAll(equalsLore)) {
 									
-									if (HerobrineAI.getPluginCore().getConfigDB().UseArtifactBow) {
+									if (PluginCore.getConfigDB().UseArtifactBow) {
 
 										player.teleport(arrow.getLocation());
 									}
@@ -141,7 +143,7 @@ public class EntityListener implements Listener {
 	@EventHandler
 	public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
 
-		if (event.getEntity().getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
 			event.setCancelled(true);
 			event.setDamage(0);
 			return;
@@ -151,67 +153,67 @@ public class EntityListener implements Listener {
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		if (event.getEntity().getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
 			if (event instanceof EntityDamageByEntityEvent) {
 
 				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
-				if (HerobrineAI.getPluginCore().getConfigDB().Killable == true
-					&& HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() != CoreType.GRAVEYARD) {
+				if (PluginCore.getConfigDB().Killable == true
+					&& PluginCore.getAICore().getCoreTypeNow() != CoreType.GRAVEYARD) {
 					
 					if (dEvent.getDamager() instanceof Player) {
-						if (event.getDamage() >= HerobrineAI.HerobrineHP) {
+						if (event.getDamage() >= PluginCore.HerobrineHP) {
 
 							HerobrineDropItems();
 
-							HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
-							HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+							PluginCore.getAICore().CancelTarget(CoreType.ANY);
+							PluginCore.HerobrineHP = PluginCore.HerobrineMaxHP;
 							Player player = (Player) dEvent.getDamager();
-							player.sendMessage("<Herobrine> " + HerobrineAI.getPluginCore().getConfigDB().DeathMessage);
+							player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 						} else {
-							HerobrineAI.HerobrineHP -= event.getDamage();
-							HerobrineAI.HerobrineNPC.HurtAnimation();
+							PluginCore.HerobrineHP -= event.getDamage();
+							PluginCore.HerobrineNPC.HurtAnimation();
 							AICore.log.info("HIT: " + event.getDamage());
 						}
 					} else if (dEvent.getDamager() instanceof Projectile) {
 
 						Arrow arrow = (Arrow) dEvent.getDamager();
 						if (arrow.getShooter() instanceof Player) {
-							if (HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
-								HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
-								HerobrineAI.getPluginCore().getAICore().setAttackTarget((Player) arrow.getShooter());
+							if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+								PluginCore.getAICore().CancelTarget(CoreType.ANY);
+								PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
 							} else {
 
-								if (event.getDamage() >= HerobrineAI.HerobrineHP) {
+								if (event.getDamage() >= PluginCore.HerobrineHP) {
 
 									HerobrineDropItems();
 
-									HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
-									HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+									PluginCore.getAICore().CancelTarget(CoreType.ANY);
+									PluginCore.HerobrineHP = PluginCore.HerobrineMaxHP;
 									Player player = (Player) arrow.getShooter();
-									player.sendMessage("<Herobrine> " + HerobrineAI.getPluginCore().getConfigDB().DeathMessage);
+									player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 								} else {
-									HerobrineAI.HerobrineHP -= event.getDamage();
-									HerobrineAI.HerobrineNPC.HurtAnimation();
+									PluginCore.HerobrineHP -= event.getDamage();
+									PluginCore.HerobrineNPC.HurtAnimation();
 									AICore.log.info("HIT: " + event.getDamage());
 								}
 
 							}
 						} else {
-							if (HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
-								Location newloc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+							if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+								Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 								newloc.setY(-20);
-								HerobrineAI.HerobrineNPC.moveTo(newloc);
-								HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
+								PluginCore.HerobrineNPC.moveTo(newloc);
+								PluginCore.getAICore().CancelTarget(CoreType.ANY);
 							}
 						}
 					} else {
-						if (HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
-							Location newloc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+						if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+							Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 							newloc.setY(-20);
-							HerobrineAI.HerobrineNPC.moveTo(newloc);
-							HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
+							PluginCore.HerobrineNPC.moveTo(newloc);
+							PluginCore.getAICore().CancelTarget(CoreType.ANY);
 						}
 					}
 				}
@@ -233,7 +235,7 @@ public class EntityListener implements Listener {
 								itemInHand = player.getItemInHand();
 								getLore = ItemName.getLore(itemInHand);
 								if (getLore.containsAll(equalsLoreS)) {
-									if (HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
+									if (PluginCore.getConfigDB().UseArtifactSword) {
 										if (Utils.getRandomGen().nextBoolean()) {
 											player.getLocation().getWorld().strikeLightning(event.getEntity().getLocation());
 										}
@@ -261,7 +263,7 @@ public class EntityListener implements Listener {
 			if (event.getCause() != null) {
 				if (event.getCause() == DamageCause.LIGHTNING) {
 					if (event.getEntity() instanceof Player) {
-						if (event.getEntity().getEntityId() != HerobrineAI.HerobrineEntityID) {
+						if (event.getEntity().getEntityId() != PluginCore.HerobrineEntityID) {
 							Player player = (Player) event.getEntity();
 							if (player.getItemInHand() != null) {
 								if (player.getItemInHand().getType() == Material.DIAMOND_SWORD) {
@@ -269,7 +271,7 @@ public class EntityListener implements Listener {
 										itemInHand = player.getItemInHand();
 										getLore = ItemName.getLore(itemInHand);
 										if (getLore.containsAll(equalsLoreS)) {
-											if (HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
+											if (PluginCore.getConfigDB().UseArtifactSword) {
 												event.setDamage(0);
 												event.setCancelled(true);
 												return;
@@ -289,22 +291,22 @@ public class EntityListener implements Listener {
 	
 	protected void HerobrineDropItems(){
 		for (int i = 1; i <= 2500; i++) {
-			if (HerobrineAI.getPluginCore().getConfigDB().config.contains("config.Drops." + Integer.toString(i)) == true) {
+			if (PluginCore.getConfigDB().config.contains("config.Drops." + Integer.toString(i)) == true) {
 				
 				Random randgen = Utils.getRandomGen();
 				
 				int chance = randgen.nextInt(100);
 				
-				int requiredRoll = HerobrineAI.getPluginCore().getConfigDB().config.getInt("config.Drops." + Integer.toString(i) + ".chance");
+				int requiredRoll = PluginCore.getConfigDB().config.getInt("config.Drops." + Integer.toString(i) + ".chance");
 				
 				if (chance <= requiredRoll) {
 						
-					int itsAmount = HerobrineAI.getPluginCore().getConfigDB().config.getInt("config.Drops." + Integer.toString(i)+ ".count");
+					int itsAmount = PluginCore.getConfigDB().config.getInt("config.Drops." + Integer.toString(i)+ ".count");
 					
 					ItemStack its = new ItemStack(Material.getMaterial(i), itsAmount);
 					
-					HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(
-									HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation(),
+					PluginCore.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(
+									PluginCore.HerobrineNPC.getBukkitEntity().getLocation(),
 									its);
 				}
 			}

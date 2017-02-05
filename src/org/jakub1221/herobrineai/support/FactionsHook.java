@@ -6,12 +6,13 @@ import org.bukkit.Location;
 import com.massivecraft.factions.entity.BoardColls;
 import com.massivecraft.mcore.ps.PS;
 
-public class _Factions {
-	
-	public boolean Check(){
-		return (Bukkit.getServer().getPluginManager().getPlugin("Factions")!=null);
+public class FactionsHook {
+
+	public boolean Check() {
+		return (Bukkit.getServer().getPluginManager().getPlugin("Factions") != null);
 	}
-	public boolean isSecuredArea(Location loc){
+
+	public boolean isSecuredArea(Location loc) {
 		return !BoardColls.get().getFactionAt(PS.valueOf(loc)).getComparisonName().equalsIgnoreCase("Wilderness");
-	}	
+	}
 }

@@ -38,8 +38,7 @@ public class Graveyard extends Core {
 				LivingEntities = Bukkit.getServer().getWorld("world_herobrineai_graveyard").getLivingEntities();
 				for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
-					if (LivingEntities.get(i) instanceof Player
-							|| LivingEntities.get(i).getEntityId() == HerobrineAI.HerobrineEntityID) {
+					if (LivingEntities.get(i) instanceof Player || LivingEntities.get(i).getEntityId() == PluginCore.HerobrineEntityID) {
 					} else {
 
 						LivingEntities.get(i).remove();
@@ -80,8 +79,7 @@ public class Graveyard extends Core {
 	public void Start() {
 
 		ticks = 0;
-		HerobrineAI.HerobrineNPC
-				.moveTo(new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, -4.12));
+		PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, -4.12));
 		HandlerInterval();
 
 	}
@@ -101,7 +99,7 @@ public class Graveyard extends Core {
 		for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
 			if (LivingEntities.get(i) instanceof Player
-					|| LivingEntities.get(i).getEntityId() == HerobrineAI.HerobrineEntityID) {
+					|| LivingEntities.get(i).getEntityId() == PluginCore.HerobrineEntityID) {
 			} else {
 
 				LivingEntities.get(i).remove();
@@ -124,19 +122,19 @@ public class Graveyard extends Core {
 		} else {
 			Location ploc = (Location) savedPlayer.getLocation();
 			ploc.setY(ploc.getY() + 1.5);
-			HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
+			PluginCore.HerobrineNPC.lookAtPoint(ploc);
 			if (ticks == 1) {
-				HerobrineAI.HerobrineNPC.moveTo(
+				PluginCore.HerobrineNPC.moveTo(
 						new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, -4.12));
 			} else if (ticks == 40) {
-				HerobrineAI.HerobrineNPC.moveTo(
+				PluginCore.HerobrineNPC.moveTo(
 						new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, -0.5));
 			} else if (ticks == 60) {
-				HerobrineAI.HerobrineNPC.moveTo(
+				PluginCore.HerobrineNPC.moveTo(
 						new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, 5.1));
 
 			} else if (ticks == 84) {
-				HerobrineAI.HerobrineNPC.moveTo(
+				PluginCore.HerobrineNPC.moveTo(
 						new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49, 4, 7.5));
 
 			}

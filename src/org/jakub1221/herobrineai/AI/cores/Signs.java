@@ -76,8 +76,8 @@ public class Signs extends Core {
 
 			Block signblock = loc.add(0, 0D, 0).getBlock();
 			Block undersignblock = signblock.getLocation().subtract(0D, 1D, 0D).getBlock();
-			if (HerobrineAI.NonStandBlocks.contains(signblock.getType())
-					&& !HerobrineAI.NonStandBlocks.contains(undersignblock.getType())) {
+			if (!signblock.getType().isSolid() && undersignblock.getType().isSolid()) {
+				
 				signblock.setType(Material.SIGN_POST);
 				Sign sign = (Sign) signblock.getState();
 				sign.setLine(1, HerobrineAI.getPluginCore().getConfigDB().useSignMessages.get(randmsg));

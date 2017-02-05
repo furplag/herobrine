@@ -6,16 +6,17 @@ import org.bukkit.Location;
 import com.bekvon.bukkit.residence.Residence;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 
-public class _Residence {
-	
-	public boolean Check(){
-		return (Bukkit.getServer().getPluginManager().getPlugin("Residence")!=null);
-		
+public class ResidenceHook {
+
+	public boolean Check() {
+		return (Bukkit.getServer().getPluginManager().getPlugin("Residence") != null);
+
 	}
-	public boolean isSecuredArea(Location loc){
+
+	public boolean isSecuredArea(Location loc) {
 		Residence residence = (Residence) Bukkit.getServer().getPluginManager().getPlugin("Residence");
 		ClaimedResidence res = residence.getResidenceManager().getByLoc(loc);
-		return (res!=null);
+		return (res != null);
 	}
 
 }

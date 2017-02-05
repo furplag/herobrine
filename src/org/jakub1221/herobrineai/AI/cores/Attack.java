@@ -54,7 +54,7 @@ public class Attack extends Core {
 				}
 				Location tploc = (Location) Position.getTeleportPosition(ploc);
 
-				HerobrineAI.HerobrineNPC.moveTo(tploc);
+				PluginCore.HerobrineNPC.moveTo(tploc);
 
 				Message.SendMessage(AICore.PlayerTarget);
 
@@ -105,7 +105,7 @@ public class Attack extends Core {
 
 					Location ploc = (Location) AICore.PlayerTarget.getLocation();
 					ploc.setY(ploc.getY() + 1.5);
-					HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
+					PluginCore.HerobrineNPC.lookAtPoint(ploc);
 					if (PluginCore.getConfigDB().Lighting == true) {
 						int lchance = Utils.getRandomGen().nextInt(100);
 
@@ -149,10 +149,10 @@ public class Attack extends Core {
 				if (PluginCore.getConfigDB().useWorlds.contains(AICore.PlayerTarget.getWorld().getName())
 					&& PluginCore.getSupport().checkAttack(AICore.PlayerTarget.getLocation())) {
 					
-					HerobrineAI.HerobrineNPC.moveTo(Position.getTeleportPosition(AICore.PlayerTarget.getLocation()));
+					PluginCore.HerobrineNPC.moveTo(Position.getTeleportPosition(AICore.PlayerTarget.getLocation()));
 					Location ploc = (Location) AICore.PlayerTarget.getLocation();
 					ploc.setY(ploc.getY() + 1.5);
-					HerobrineAI.HerobrineNPC.lookAtPoint(ploc);
+					PluginCore.HerobrineNPC.lookAtPoint(ploc);
 					AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_BREATH, 0.75f, 0.75f);
 					if (PluginCore.getConfigDB().HitPlayer == true) {
 						int hitchance = Utils.getRandomGen().nextInt(100);
@@ -186,19 +186,19 @@ public class Attack extends Core {
 
 				for(int i=0; i < 5; i++){
 					for(float j=0; j < 2; j+= 0.5f){
-						Location hbloc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();
+						Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 						hbloc.setY(hbloc.getY() + j);
 						hbloc.getWorld().playEffect(hbloc, Effect.SMOKE, 80);
 					}
 				}
 
 				if (PluginCore.getConfigDB().SpawnBats) {
-					Location hbloc = (Location) HerobrineAI.HerobrineNPC.getBukkitEntity().getLocation();			
+					Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();			
 					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
 					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);			
 				}
 
-				HerobrineAI.HerobrineNPC.moveTo(ploc);
+				PluginCore.HerobrineNPC.moveTo(ploc);
 
 			} else {
 				PluginCore.getAICore().CancelTarget(CoreType.ATTACK);

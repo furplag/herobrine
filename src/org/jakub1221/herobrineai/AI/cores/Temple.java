@@ -32,7 +32,8 @@ public class Temple extends Core {
 			return FindPlacePlayer((Chunk) data[0]);
 		}
 	}
-
+	
+	// TODO Change this nonsense
 	public CoreResult FindPlacePlayer(Player player) {
 
 		Location loc = player.getLocation();
@@ -61,10 +62,7 @@ public class Temple extends Core {
 								}
 								if (i4 == -1) {
 									if (canBuild == true) {
-										if (HerobrineAI.StandBlocks.contains(loc
-												.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-														i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-												.getType())) {
+										if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 											canBuild = true;
 										} else {
 											canBuild = false;
@@ -72,10 +70,7 @@ public class Temple extends Core {
 									}
 								} else {
 									if (canBuild == true) {
-										if (HerobrineAI.NonStandBlocks.contains(loc
-												.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-														i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-												.getType())) {
+										if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(), i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 											canBuild = true;
 										} else {
 											canBuild = false;
@@ -136,11 +131,7 @@ public class Temple extends Core {
 						}
 						if (i4 == -1) {
 							if (canBuild == true) {
-								if (HerobrineAI.StandBlocks
-										.contains(loc
-												.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-														i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-												.getType())) {
+								if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(), i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 									canBuild = true;
 								} else {
 									canBuild = false;
@@ -148,11 +139,7 @@ public class Temple extends Core {
 							}
 						} else {
 							if (canBuild == true) {
-								if (HerobrineAI.NonStandBlocks
-										.contains(loc
-												.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-														i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-												.getType())) {
+								if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 									canBuild = true;
 								} else {
 									canBuild = false;
@@ -195,10 +182,8 @@ public class Temple extends Core {
 			if (!HerobrineAI.isNPCDisabled) {
 				if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Guardian) {
 					Location mobloc = new Location(loc.getWorld(), MainX + 6, MainY + 0, MainZ + 4);
-					for (int i = 1; i <= HerobrineAI.getPluginCore().getConfigDB().npc
-							.getInt("npc.Guardian.SpawnCount"); i++) {
-						HerobrineAI.getPluginCore().getEntityManager().spawnCustomZombie(mobloc,
-								MobType.ARTIFACT_GUARDIAN);
+					for (int i = 1; i <= HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
+						HerobrineAI.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
 					}
 				}
 			}

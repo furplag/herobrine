@@ -45,7 +45,7 @@ public class Heads extends Core {
 							for (z = -7; z <= 7; z++) {
 								if (randomGen.nextInt(7) == randomGen.nextInt(7)) {
 
-									if (HerobrineAI.NonStandBlocks.contains(loc.getWorld().getHighestBlockAt(px + x, pz + z).getType())) {
+									if (!loc.getWorld().getHighestBlockAt(px + x, pz + z).getType().isSolid()) {
 										y = loc.getWorld().getHighestBlockYAt(px + x, pz + z);
 									} else {
 										y = loc.getWorld().getHighestBlockYAt(px + x, pz + z) + 1;

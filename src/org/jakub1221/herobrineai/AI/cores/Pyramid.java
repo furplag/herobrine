@@ -27,6 +27,7 @@ public class Pyramid extends Core {
 		}
 	}
 
+	// TODO Change this nonsense
 	public CoreResult FindPlace(Chunk chunk) {
 		if (PluginCore.getConfigDB().BuildPyramids) {
 
@@ -56,11 +57,7 @@ public class Pyramid extends Core {
 							}
 							if (i4 == -1) {
 								if (canBuild == true) {
-									if (HerobrineAI.StandBlocks
-											.contains(loc
-													.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-															i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-													.getType())) {
+									if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 										canBuild = true;
 									} else {
 										canBuild = false;
@@ -68,11 +65,7 @@ public class Pyramid extends Core {
 								}
 							} else {
 								if (canBuild == true) {
-									if (HerobrineAI.NonStandBlocks
-											.contains(loc
-													.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-															i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-													.getType())) {
+									if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 										canBuild = true;
 									} else {
 										canBuild = false;
@@ -129,10 +122,7 @@ public class Pyramid extends Core {
 									}
 									if (i4 == -1) {
 										if (canBuild == true) {
-											if (HerobrineAI.StandBlocks.contains(loc
-													.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-															i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-													.getType())) {
+											if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 												canBuild = true;
 											} else {
 												canBuild = false;
@@ -140,10 +130,7 @@ public class Pyramid extends Core {
 										}
 									} else {
 										if (canBuild == true) {
-											if (HerobrineAI.NonStandBlocks.contains(loc
-													.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),
-															i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ())
-													.getType())) {
+											if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
 												canBuild = true;
 											} else {
 												canBuild = false;

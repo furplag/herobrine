@@ -49,7 +49,7 @@ public class BuryPlayer extends Core {
 														loc.getBlockZ() + blocks[i][1]
 														).getType();
 				
-				if(!HerobrineAI.StandBlocks.contains(mat))
+				if(!mat.isSolid())
 					return new CoreResult(false,"Cannot find suitable location!");
 					
 			}

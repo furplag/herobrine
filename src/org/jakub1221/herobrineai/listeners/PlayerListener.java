@@ -38,12 +38,14 @@ public class PlayerListener implements Listener {
 	private Location p_loc = null;
 	private long timestamp = 0;
 	private boolean canUse = false;
+	private HerobrineAI PluginCore = null;
 
-	public PlayerListener() {
+	public PlayerListener(HerobrineAI plugin) {
 		equalsLoreS.add("Herobrine artifact");
 		equalsLoreS.add("Sword of Lighting");
 		equalsLoreA.add("Herobrine artifact");
 		equalsLoreA.add("Apple of Death");
+		PluginCore = plugin;
 	}
 
 	@EventHandler
@@ -61,7 +63,7 @@ public class PlayerListener implements Listener {
 						if (ItemName.getLore(itemInHand) != null) {
 
 							if (ItemName.getLore(itemInHand).containsAll(equalsLoreS)
-								&& HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
+								&& PluginCore.getConfigDB().UseArtifactSword) {
 
 								if (Utils.getRandomGen().nextBoolean()) {
 									event.getPlayer().getLocation().getWorld()
@@ -69,14 +71,14 @@ public class PlayerListener implements Listener {
 								}
 
 							} else if (ItemName.getLore(itemInHand).containsAll(equalsLoreA)
-									   && HerobrineAI.getPluginCore().getConfigDB().UseArtifactApple) {
+									   && PluginCore.getConfigDB().UseArtifactApple) {
 								
 								timestamp = System.currentTimeMillis() / 1000;
 								canUse = false;
 								
-								if (HerobrineAI.getPluginCore().PlayerApple.containsKey(event.getPlayer())) {
-									if (HerobrineAI.getPluginCore().PlayerApple.get(event.getPlayer()) < timestamp) {
-										HerobrineAI.getPluginCore().PlayerApple.remove(event.getPlayer());
+								if (PluginCore.PlayerApple.containsKey(event.getPlayer())) {
+									if (PluginCore.PlayerApple.get(event.getPlayer()) < timestamp) {
+										PluginCore.PlayerApple.remove(event.getPlayer());
 										canUse = true;
 									} else {
 										canUse = false;
@@ -90,12 +92,12 @@ public class PlayerListener implements Listener {
 									event.getPlayer().getWorld().createExplosion(event.getPlayer().getLocation(), 0F);
 									LivingEntities = (ArrayList<LivingEntity>) event.getPlayer().getLocation()
 											.getWorld().getLivingEntities();
-									HerobrineAI.getPluginCore().PlayerApple.put(event.getPlayer(), timestamp + 60);
+									PluginCore.PlayerApple.put(event.getPlayer(), timestamp + 60);
 
 									for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
 										if (LivingEntities.get(i) instanceof Player || LivingEntities.get(i)
-												.getEntityId() == HerobrineAI.HerobrineEntityID) {
+												.getEntityId() == PluginCore.HerobrineEntityID) {
 										} else {
 											le_loc = LivingEntities.get(i).getLocation();
 											p_loc = event.getPlayer().getLocation();
@@ -136,19 +138,19 @@ public class PlayerListener implements Listener {
 					if (!block.isPlaying()) {
 						if (item.getType() == Material.getMaterial(2266)) {
 
-							HerobrineAI.getPluginCore().getAICore();
+							PluginCore.getAICore();
 
 							if (!AICore.isDiscCalled) {
 
 								final Player player = event.getPlayer();
-								HerobrineAI.getPluginCore().getAICore();
+								PluginCore.getAICore();
 								AICore.isDiscCalled = true;
-								HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.ANY);
+								PluginCore.getAICore().CancelTarget(CoreType.ANY);
 
 								Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin,
 										new Runnable() {
 											public void run() {
-												HerobrineAI.getPluginCore().getAICore().callByDisc(player);
+												PluginCore.getAICore().callByDisc(player);
 											}
 										}, 1 * 50L);
 							}
@@ -165,24 +167,24 @@ public class PlayerListener implements Listener {
 		if (Utils.getRandomGen().nextInt(100) > 75) {
 			Player player = event.getPlayer();
 			((CraftPlayer) player).getHandle().a(true, false, false);
-			HerobrineAI.getPluginCore().getAICore().playerBedEnter(player);
+			PluginCore.getAICore().playerBedEnter(player);
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 
 	public void onPlayerQuit(PlayerQuitEvent event) {
-		if (event.getPlayer().getEntityId() != HerobrineAI.HerobrineEntityID) {
+		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 
-			if (HerobrineAI.getPluginCore().getAICore().PlayerTarget == event.getPlayer()
-					&& HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() == CoreType.GRAVEYARD
+			if (PluginCore.getAICore().PlayerTarget == event.getPlayer()
+					&& PluginCore.getAICore().getCoreTypeNow() == CoreType.GRAVEYARD
 					&& event.getPlayer().getLocation().getWorld() == Bukkit.getServer()
 							.getWorld("world_herobrineai_graveyard")
-					&& HerobrineAI.getPluginCore().getAICore().isTarget) {
+					&& PluginCore.getAICore().isTarget) {
 
 				if (Utils.getRandomGen().nextBoolean()) {
 					event.getPlayer()
-							.teleport(HerobrineAI.getPluginCore().getAICore().getGraveyard().getSavedLocation());
+							.teleport(PluginCore.getAICore().getGraveyard().getSavedLocation());
 				}
 			}
 		}
@@ -190,7 +192,7 @@ public class PlayerListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerKick(PlayerKickEvent event) {
-		if (event.getPlayer().getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (event.getPlayer().getEntityId() == PluginCore.HerobrineEntityID) {
 			event.setCancelled(true);
 			return;
 		}
@@ -199,25 +201,25 @@ public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
 
-		if (event.getPlayer().getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (event.getPlayer().getEntityId() == PluginCore.HerobrineEntityID) {
 			if (event.getFrom().getWorld() != event.getTo().getWorld()) {
-				HerobrineAI.getPluginCore().HerobrineRemove();
-				HerobrineAI.getPluginCore().HerobrineSpawn(event.getTo());
+				PluginCore.HerobrineRemove();
+				PluginCore.HerobrineSpawn(event.getTo());
 				event.setCancelled(true);
 				return;
 			}
 
-			if (HerobrineAI.getPluginCore().getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+			if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
 
-				Location herobrineLocation = HerobrineAI.HerobrineNPC.getEntity().getBukkitEntity().getLocation();
+				Location herobrineLocation = PluginCore.HerobrineNPC.getEntity().getBukkitEntity().getLocation();
 
-				if (herobrineLocation.getBlockX() > HerobrineAI.getPluginCore().getConfigDB().WalkingModeXRadius
-					&& herobrineLocation.getBlockX() < -HerobrineAI.getPluginCore().getConfigDB().WalkingModeXRadius
-					&& herobrineLocation.getBlockZ() > HerobrineAI.getPluginCore().getConfigDB().WalkingModeZRadius
-					&& herobrineLocation.getBlockZ() < -HerobrineAI.getPluginCore().getConfigDB().WalkingModeZRadius) {
+				if (herobrineLocation.getBlockX() > PluginCore.getConfigDB().WalkingModeXRadius
+					&& herobrineLocation.getBlockX() < -PluginCore.getConfigDB().WalkingModeXRadius
+					&& herobrineLocation.getBlockZ() > PluginCore.getConfigDB().WalkingModeZRadius
+					&& herobrineLocation.getBlockZ() < -PluginCore.getConfigDB().WalkingModeZRadius) {
 					
-					HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.RANDOM_POSITION);
-					HerobrineAI.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
+					PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
+					PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
 
 				}
 			}
@@ -226,21 +228,21 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onPlayerDeathEvent(PlayerDeathEvent event) {
-		if (event.getEntity().getEntityId() == HerobrineAI.HerobrineEntityID) {
+		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
 			event.setDeathMessage("");
 
-			HerobrineAI.getPluginCore().HerobrineRemove();
+			PluginCore.HerobrineRemove();
 
 			Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0);
 			nowloc.setYaw(1.f);
 			nowloc.setPitch(1.f);
-			HerobrineAI.getPluginCore().HerobrineSpawn(nowloc);
+			PluginCore.HerobrineSpawn(nowloc);
 		}
 	}
 
 	@EventHandler
 	public void onPlayerMoveEvent(PlayerMoveEvent event) {
-		if (event.getPlayer().getEntityId() != HerobrineAI.HerobrineEntityID) {
+		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld("world_herobrineai_graveyard")) {
 				Player player = (Player) event.getPlayer();
 				player.teleport(new Location(Bukkit.getServer().getWorld("world_herobrineai_graveyard"), -2.49f, 4.f,
