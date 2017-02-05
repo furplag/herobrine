@@ -28,22 +28,33 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
 		</repository>
+		
+		<repository>
+            <id>worldedit-worldguard-repo</id>
+            <url>http://maven.sk89q.com/repo/</url>
+		</repository>
+		
+		<repository>
+			<id>project-repo</id>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+
 	</repositories>
 
 	<dependencies>
 		 <!--Spigot API-->
 		<dependency>
-			   <groupId>org.spigotmc</groupId>
-			   <artifactId>spigot-api</artifactId>
-			   <version>${bukkitVersion}</version>
-			   <scope>provided</scope>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>${bukkitVersion}</version>
+			<scope>provided</scope>
 		</dependency>
 		<!--Bukkit API-->
 		<dependency>
-				<groupId>org.bukkit</groupId>
-				<artifactId>bukkit</artifactId>
-				<version>${bukkitVersion}</version>
-				<scope>provided</scope>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>${bukkitVersion}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
             <groupId>org.bukkit</groupId>
@@ -52,68 +63,46 @@
 			<scope>provided</scope>
         </dependency>
 		<dependency>
-			<groupId>org.jakub1221.customitems.CustomItems</groupId>
+            <groupId>com.sk89q</groupId>
+            <artifactId>worldguard</artifactId>
+            <version>6.1.1-SNAPSHOT</version>
+        </dependency>
+		<dependency>
+			<groupId>local-rep</groupId>
 			<artifactId>CustomItems</artifactId>
 			<version>1.6.0</version>
 			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/CustomItems.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>me.ryanhamshire.GriefPrevention.GriefPrevention</groupId>
+			<groupId>local-rep</groupId>
 			<artifactId>GriefPrevention</artifactId>
 			<version>7.2.1</version>
 			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/GriefPrevention.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones</groupId>
+			<groupId>local-rep</groupId>
 			<artifactId>PreciousStones</artifactId>
 			<version>9.5.6-SNAPSHOT</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/PreciousStones.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.bekvon.bukkit.residence.Residence</groupId>
+			<groupId>local-rep</groupId>
 			<artifactId>Residence</artifactId>
 			<version>2.6.6.2</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Residence.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.palmergames.bukkit.towny.Towny</groupId>
+			<groupId>local-rep</groupId>
 			<artifactId>Towny</artifactId>
 			<version>0.82.0.9</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Towny.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.sk89q.worldguard.bukkit.WorldGuardPlugin</groupId>
-			<artifactId>WorldGuard</artifactId>
-			<version>5.7.3</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/WorldGuard.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>com.massivecraft.factions.Factions</groupId>
+			<groupId>local-rep</groupId>
 			<artifactId>Factions</artifactId>
 			<version>2.1.0</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Factions.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.massivecraft.mcore.MCore</groupId>
-			<artifactId>MCore</artifactId>
+			<groupId>local-rep</groupId>
+			<artifactId>mcore</artifactId>
 			<version>6.7.0</version>
-			<optional>true</optional>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/mcore.jar</systemPath>
 		</dependency>
 	</dependencies>
 
