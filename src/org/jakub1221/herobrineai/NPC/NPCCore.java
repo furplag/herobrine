@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.UUID;
 
 import net.minecraft.server.v1_11_R1.Entity;
 import net.minecraft.server.v1_11_R1.PlayerInteractManager;
@@ -18,11 +19,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.NPC.Entity.HumanEntity;
 import org.jakub1221.herobrineai.NPC.Entity.HumanNPC;
 import org.jakub1221.herobrineai.NPC.NMS.BServer;
 import org.jakub1221.herobrineai.NPC.NMS.BWorld;
 import org.jakub1221.herobrineai.NPC.Network.NetworkCore;
+
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 
 public class NPCCore {
 
@@ -35,32 +40,39 @@ public class NPCCore {
 	public boolean isInLoaded = false;
 	private int lastID = 0;
 
+	private static final GameProfile HEROBRINE_GAME_PROFILE = getHerobrineGameProfile();
+
+	private static GameProfile getHerobrineGameProfile() {
+		GameProfile profile = new GameProfile(
+											  UUID.fromString(HerobrineAI.getPluginCore().getConfigDB().HerobrineUUID),
+											  HerobrineAI.getPluginCore().getConfigDB().HerobrineName
+											  );
+		
+		Property textures = new Property("textures",
+				"eyJ0aW1lc3RhbXAiOjE0MjE0ODczMzk3MTMsInByb2ZpbGVJZCI6ImY4NGM2YTc5MGE0ZTQ1ZTA4NzliY2Q0OWViZDRjNGUyIiwicHJvZmlsZU5hbWUiOiJIZXJvYnJpbmUiLCJpc1B1YmxpYyI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzk4YjdjYTNjN2QzMTRhNjFhYmVkOGZjMThkNzk3ZmMzMGI2ZWZjODQ0NTQyNWM0ZTI1MDk5N2U1MmU2Y2IifX19",
+				"Edb1R3vm2NHUGyTPaOdXNQY9p5/Ez4xButUGY3tNKIJAzjJM5nQNrq54qyFhSZFVwIP6aM4Ivqmdb2AamXNeN0KgaaU/C514N+cUZNWdW5iiycPytfh7a6EsWXV4hCC9B2FoLkbXuxs/KAbKORtwNfFhQupAsmn9yP00e2c3ZQmS18LWwFg0vzFqvp4HvzJHqY/cTqUxdlSFDrQe/4rATe6Yx6v4zbZN2sHbSL+8AwlDDuP2Xr4SS6f8nABOxjSTlWMn6bToAYiymD+KUPoO0kQJ0Uw/pVXgWHYjQeM4BYf/FAxe8Bf1cP8S7VKueULkOxqIjXAp85uqKkU7dR/s4M4yHm6fhCOCLSMv6hi5ewTaFNYyhK+NXPftFqHcOxA1LbrjOe6NyphF/2FI79n90hagxJpWwNPz3/8I5rnGbYwBZPTsTnD8PszgQTNuWSuvZwGIXPIp9zb90xuU7g7VNWjzPVoOHfRNExEs7Dn9pG8CIA/m/a8koWW3pkbP/AMMWnwgHCr/peGdvF5fN+hJwVdpbfC9sJfzGwA7AgXG/6yqhl1U7YAp/aCVM9bZ94sav+kQghvN41jqOwy4F4i/swc7R4Fx2w5HFxVY3j7FChG7iuhqjUclm79YNhTG0lBQLiZbN5FmC9QgrNHRKlzgSZrXHWoG3YXFSqfn4J+Om9w=");
+		
+		profile.getProperties().put(textures.getName(), textures);
+		
+		return profile;
+	}
+
 	public NPCCore(JavaPlugin plugin) {
-		server = BServer.getInstance();
-
-		try {
-			networkCore = new NetworkCore();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		taskid = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HerobrineAI.getPluginCore(), new Runnable() {
 			@Override
 			public void run() {
-				ArrayList<HumanNPC> toRemove = new ArrayList<HumanNPC>();
-				for (HumanNPC i : npcs) {
-					Entity j = i.getEntity();
-
-					if (j.dead) {
-						toRemove.add(i);
+				final ArrayList<HumanNPC> toRemove = new ArrayList<HumanNPC>();
+				for (final HumanNPC humanNPC : npcs) {
+					final Entity entity = humanNPC.getEntity();
+					if (entity.dead) {
+						toRemove.add(humanNPC);
 					}
 				}
-				for (HumanNPC n : toRemove) {
+				for (final HumanNPC n : toRemove) {
 					npcs.remove(n);
 				}
 			}
 		}, 1L, 1L);
-		Bukkit.getServer().getPluginManager().registerEvents(new WorldL(), plugin);
 	}
 
 	public void removeAll() {
@@ -123,12 +135,13 @@ public class NPCCore {
 
 	public HumanNPC spawnHumanNPC(String name, Location l, int id) {
 
-		BWorld world = getBWorld(l.getWorld());
-		HumanEntity humanEntity = new HumanEntity(this, world, name, new PlayerInteractManager(world.getWorldServer()));
-		((Entity) humanEntity).setLocation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
+		final BWorld world = server.getWorld(l.getWorld().getName());
+		final HumanEntity humanEntity = new HumanEntity(this, world, HEROBRINE_GAME_PROFILE, new PlayerInteractManager(world.getWorldServer()));		
+		humanEntity.setLocation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
 		world.getWorldServer().addEntity(humanEntity);
-		HumanNPC humannpc = new HumanNPC(humanEntity, id);
+		final HumanNPC humannpc = new HumanNPC(humanEntity, id);
 		npcs.add(humannpc);
+		
 		return humannpc;
 	}
 

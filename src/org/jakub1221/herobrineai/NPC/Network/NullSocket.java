@@ -1,8 +1,7 @@
 package org.jakub1221.herobrineai.NPC.Network;
 
-import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
@@ -10,13 +9,29 @@ public class NullSocket extends Socket {
 
 	@Override
 	public InputStream getInputStream() {
-		byte[] buffer = new byte[5];
-		return new ByteArrayInputStream(buffer);
+		return new VoidInputStream();
 	}
 
 	@Override
 	public OutputStream getOutputStream() {
-		return new ByteArrayOutputStream();
+		return new VoidOutputStream();
+	}
+
+	private class VoidInputStream extends InputStream {
+
+		@Override
+		public int read() throws IOException {
+			return -1;
+		}
+
+	}
+
+	private class VoidOutputStream extends OutputStream {
+
+		@Override
+		public void write(int b) throws IOException {
+		}
+
 	}
 
 }
