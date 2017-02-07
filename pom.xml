@@ -26,7 +26,7 @@
 	<repositories>
 		<repository>
             <id>spigot-repo</id>
-            <url>http://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
 		</repository>
 		
 		<repository>
@@ -66,43 +66,57 @@
             <groupId>com.sk89q</groupId>
             <artifactId>worldguard</artifactId>
             <version>6.1.1-SNAPSHOT</version>
+			<optional>true</optional>
+			<scope>compile</scope>
         </dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>CustomItems</artifactId>
 			<version>1.6.0</version>
 			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>GriefPrevention</artifactId>
 			<version>7.2.1</version>
 			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>PreciousStones</artifactId>
 			<version>9.5.6-SNAPSHOT</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>Residence</artifactId>
 			<version>2.6.6.2</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>Towny</artifactId>
 			<version>0.82.0.9</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>Factions</artifactId>
 			<version>2.1.0</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>local-rep</groupId>
 			<artifactId>mcore</artifactId>
 			<version>6.7.0</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
@@ -127,20 +141,7 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			</plugin>		
 		</plugins>
 	</build>
 	<description>
