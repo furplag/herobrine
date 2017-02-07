@@ -1,5 +1,5 @@
 # HerobrineAI
-[![Build Status](http://jenkins.logicshard.com/buildStatus/icon?job=HerobrineAI)](http://jenkins.logicshard.com/job/HerobrineAI/)
+[![Build Status](http://jenkins.logicshard.com/job/HerobrineAI/1//badge/icon)](http://jenkins.logicshard.com/job/HerobrineAI/1/)
 
 =========
 
