@@ -1,9 +1,7 @@
 package org.jakub1221.herobrineai.NPC;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.UUID;
 
@@ -40,9 +38,9 @@ public class NPCCore {
 	public boolean isInLoaded = false;
 	private int lastID = 0;
 
-	private static final GameProfile HEROBRINE_GAME_PROFILE = getHerobrineGameProfile();
+	private GameProfile HerobrineGameProfile = getHerobrineGameProfile();
 
-	private static GameProfile getHerobrineGameProfile() {
+	private GameProfile getHerobrineGameProfile() {
 		GameProfile profile = new GameProfile(
 											  UUID.fromString(HerobrineAI.getPluginCore().getConfigDB().HerobrineUUID),
 											  HerobrineAI.getPluginCore().getConfigDB().HerobrineName
@@ -58,6 +56,12 @@ public class NPCCore {
 	}
 
 	public NPCCore(JavaPlugin plugin) {
+		
+		server = BServer.getInstance();
+		
+		networkCore = new NetworkCore();
+		
+		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HerobrineAI.getPluginCore(), new Runnable() {
 			@Override
 			public void run() {
@@ -73,6 +77,8 @@ public class NPCCore {
 				}
 			}
 		}, 1L, 1L);
+		
+		this.HerobrineGameProfile = getHerobrineGameProfile();
 	}
 
 	public void removeAll() {
@@ -136,7 +142,7 @@ public class NPCCore {
 	public HumanNPC spawnHumanNPC(String name, Location l, int id) {
 
 		final BWorld world = server.getWorld(l.getWorld().getName());
-		final HumanEntity humanEntity = new HumanEntity(this, world, HEROBRINE_GAME_PROFILE, new PlayerInteractManager(world.getWorldServer()));		
+		final HumanEntity humanEntity = new HumanEntity(this, world, HerobrineGameProfile, new PlayerInteractManager(world.getWorldServer()));		
 		humanEntity.setLocation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
 		world.getWorldServer().addEntity(humanEntity);
 		final HumanNPC humannpc = new HumanNPC(humanEntity, id);

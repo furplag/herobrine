@@ -81,12 +81,14 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			isInitDone = false;
 		}
 		if (errorCheck) {
+			
 			isInitDone = true;
+			
 			HerobrineAI.pluginCore = this;
-
-			NPCman = new NPCCore(this);
-
+			
 			this.configdb = new ConfigDB(log);
+
+			this.NPCman = new NPCCore(this);
 
 			getServer().getPluginManager().registerEvents(new EntityListener(this), this);
 			getServer().getPluginManager().registerEvents(new BlockListener(), this);
