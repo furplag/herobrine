@@ -16,7 +16,7 @@ import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.AI.Core.CoreType;
 import org.jakub1221.herobrineai.AI.cores.Attack;
 import org.jakub1221.herobrineai.AI.cores.Book;
-import org.jakub1221.herobrineai.AI.cores.BuildStuff;
+import org.jakub1221.herobrineai.AI.cores.BuildCave;
 import org.jakub1221.herobrineai.AI.cores.Burn;
 import org.jakub1221.herobrineai.AI.cores.BuryPlayer;
 import org.jakub1221.herobrineai.AI.cores.Curse;
@@ -78,7 +78,7 @@ public class AICore {
 		/* Cores init */
 		AllCores.add(new Attack());
 		AllCores.add(new Book());
-		AllCores.add(new BuildStuff());
+		AllCores.add(new BuildCave());
 		AllCores.add(new BuryPlayer());
 		AllCores.add(new DestroyTorches());
 		AllCores.add(new Graveyard());
@@ -410,7 +410,7 @@ public class AICore {
 
 						if (Utils.getRandomGen().nextBoolean()) {
 							Object[] data = { player.getLocation() };
-							getCore(CoreType.BUILD_STUFF).RunCore(data);
+							getCore(CoreType.BUILD_CAVE).RunCore(data);
 
 						}
 					}

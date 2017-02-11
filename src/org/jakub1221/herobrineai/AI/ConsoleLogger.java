@@ -10,7 +10,7 @@ public class ConsoleLogger {
 	
 	public void info(String text){
 		if (HerobrineAI.isDebugging){
-		log.info(text);
+			log.info(text);
 		}
 	}
 	

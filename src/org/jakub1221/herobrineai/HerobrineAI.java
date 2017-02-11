@@ -344,48 +344,23 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		if (opCheck && creativeCheck && ignoreCheck) {
 			return true;
 		} else {
-			
-			if (!opCheck) {
-				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is an OP.");
-			} else if (!creativeCheck) {
-				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is in creative mode.");
-			} else if (!ignoreCheck) {
-				sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player has ignore permission.");
+		
+			if(sender == null){			
+				if (!opCheck)
+					log.info("[HerobrineAI] Player is an OP.");
+				else if (!creativeCheck)
+					log.info("[HerobrineAI] Player is in creative mode.");
+				else if (!ignoreCheck)
+					log.info("[HerobrineAI] Player has ignore permission.");			
+			}else{
+				if (!opCheck)
+					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is an OP.");
+				else if (!creativeCheck)
+					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is in creative mode.");
+				else if (!ignoreCheck)
+					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player has ignore permission.");
 			}
 			
-			return false;
-		}
-
-	}
-
-	public boolean canAttackPlayerConsole(Player player) {
-
-		boolean opCheck = true;
-		boolean creativeCheck = true;
-		boolean ignoreCheck = true;
-
-		if (!configdb.AttackOP && player.isOp()){
-			opCheck = false;
-		}
-		
-		if (!configdb.AttackCreative && player.getGameMode() == GameMode.CREATIVE) {
-				creativeCheck = false;
-		}
-		
-		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
-			ignoreCheck = false;
-		}
-
-		if (opCheck && creativeCheck && ignoreCheck) {
-			return true;
-		} else {
-			if (!opCheck) {
-				log.info("[HerobrineAI] Player is an OP.");
-			} else if (!creativeCheck) {
-				log.info("[HerobrineAI] Player is in creative mode.");
-			} else if (!ignoreCheck) {
-				log.info("[HerobrineAI] Player has ignore permission.");
-			}
 			return false;
 		}
 

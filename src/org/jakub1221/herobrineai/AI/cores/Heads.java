@@ -79,7 +79,7 @@ public class Heads extends Core {
 				return new CoreResult(false, "Player is offline.");
 			}
 		} else {
-			return new CoreResult(false, "There are already heads! Wait until they disappear.");
+			return new CoreResult(false, "Action is on cooldown.");
 		}
 	}
 

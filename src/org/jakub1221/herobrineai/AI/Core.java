@@ -39,7 +39,7 @@ public abstract class Core {
 		ATTACK,
 		HAUNT,
 		BOOK,
-		BUILD_STUFF,
+		BUILD_CAVE,
 		BURY_PLAYER,
 		DESTROY_TORCHES,
 		GRAVEYARD,

@@ -10,10 +10,10 @@ import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.AI.*;
 
-public class BuildStuff extends Core {
+public class BuildCave extends Core {
 
-	public BuildStuff() {
-		super(CoreType.BUILD_STUFF, AppearType.NORMAL, HerobrineAI.getPluginCore());
+	public BuildCave() {
+		super(CoreType.BUILD_CAVE, AppearType.NORMAL, HerobrineAI.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {

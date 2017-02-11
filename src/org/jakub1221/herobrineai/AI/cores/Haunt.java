@@ -145,7 +145,7 @@ public class Haunt extends Core {
 
 					if (isFirst) {
 						Object[] data2 = { AICore.PlayerTarget.getLocation() };
-						PluginCore.getAICore().getCore(CoreType.BUILD_STUFF).RunCore(data2);
+						PluginCore.getAICore().getCore(CoreType.BUILD_CAVE).RunCore(data2);
 					}
 					isFirst = false;
 				}
