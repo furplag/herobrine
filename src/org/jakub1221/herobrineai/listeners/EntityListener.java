@@ -102,6 +102,10 @@ public class EntityListener implements Listener {
 	@EventHandler
 	public void EntityTargetEvent(EntityTargetLivingEntityEvent e) {
 		LivingEntity lv = e.getTarget();
+		
+		if(lv == null)
+			return;
+		
 		if (lv.getEntityId() == PluginCore.HerobrineEntityID) {
 			e.setCancelled(true);
 			return;
