@@ -8,7 +8,7 @@ Plugin has many features and it is based on the legend of Herobrine.
 
 Contributing 
 ---------
-This is an project and there are some parts of code that are poorly written, feel free to pull any refactored code.
+This is an old project and there are some parts of code that are poorly written, feel free to pull any refactored code.
 
 Building
 ---------
