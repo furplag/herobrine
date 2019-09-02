@@ -231,7 +231,7 @@ public class ConfigDB {
 			config.set("config.UseNPC.Guardian", true);
 			config.set("config.UseNPC.Warrior", true);
 			config.set("config.UseNPC.Demon", true);
-			config.set("config.ItemInHand", "0");
+			config.set("config.ItemInHand", "AIR");
 			config.set("config.Explosions", true);
 			config.set("config.Burn", true);
 			config.set("config.Curse", true);
