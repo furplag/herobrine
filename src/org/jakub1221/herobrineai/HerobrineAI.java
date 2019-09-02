@@ -96,15 +96,6 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
 			getServer().getPluginManager().registerEvents(new WorldListener(), this);
 
-			// Metrics
-
-			try {
-				Metrics metrics = new Metrics(this);
-				metrics.start();
-			} catch (IOException e) {
-
-			}
-
 			// Initialize PathManager
 
 			this.pathMng = new PathManager();
