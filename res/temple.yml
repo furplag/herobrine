@@ -1,2750 +1,2292 @@
 DATA:
   '0':
     X: 4
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '1':
     X: 4
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '2':
     X: 3
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '3':
     X: 3
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '4':
     X: 2
-    Y: 7
+    Y: 5
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '5':
     X: 5
-    Y: 8
+    Y: 6
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '6':
     X: 4
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '7':
     X: 4
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '8':
     X: 3
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '9':
     X: 3
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '10':
     X: 2
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '11':
     X: 2
-    Y: 8
+    Y: 6
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '12':
     X: 2
-    Y: 8
+    Y: 6
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '13':
     X: 2
-    Y: 8
+    Y: 6
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '14':
     X: 2
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '15':
     X: 2
-    Y: 8
+    Y: 6
     Z: 4
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '16':
     X: 2
-    Y: 7
+    Y: 5
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '17':
     X: 2
-    Y: 7
+    Y: 5
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '18':
     X: 2
-    Y: 7
+    Y: 5
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '19':
     X: 2
-    Y: 7
+    Y: 5
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '20':
     X: 2
-    Y: 7
+    Y: 5
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '21':
     X: 2
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '22':
     X: 1
-    Y: 7
+    Y: 5
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '23':
     X: 10
-    Y: 6
+    Y: 4
     Z: 7
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '24':
     X: 10
-    Y: 6
+    Y: 4
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '25':
     X: 2
-    Y: 8
+    Y: 6
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '26':
     X: 2
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '27':
     X: 1
-    Y: 8
+    Y: 6
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '28':
     X: 10
-    Y: 7
+    Y: 5
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '29':
     X: 10
-    Y: 7
+    Y: 5
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '30':
     X: 9
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '31':
     X: 9
-    Y: 7
+    Y: 5
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '32':
     X: 9
-    Y: 7
+    Y: 5
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '33':
     X: 9
-    Y: 7
+    Y: 5
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '34':
     X: 10
-    Y: 6
+    Y: 4
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '35':
     X: 9
-    Y: 7
+    Y: 5
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '36':
     X: 10
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '37':
     X: 9
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '38':
     X: 9
-    Y: 6
+    Y: 4
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '39':
     X: 9
-    Y: 6
+    Y: 4
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '40':
     X: 9
-    Y: 6
+    Y: 4
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '41':
     X: 9
-    Y: 6
+    Y: 4
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '42':
     X: 9
-    Y: 6
+    Y: 4
     Z: 3
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '43':
     X: 9
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '44':
     X: 9
-    Y: 6
+    Y: 4
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '45':
     X: 9
-    Y: 7
+    Y: 5
     Z: 3
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '46':
     X: 9
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '47':
     X: 8
-    Y: 7
+    Y: 5
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '48':
     X: 8
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '49':
     X: 8
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '50':
     X: 8
-    Y: 7
+    Y: 5
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '51':
     X: 7
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '52':
     X: 7
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '53':
     X: 6
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '54':
     X: 8
-    Y: 6
+    Y: 4
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '55':
     X: 6
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '56':
     X: 8
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '57':
     X: 8
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '58':
     X: 8
-    Y: 6
+    Y: 4
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '59':
     X: 7
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '60':
     X: 7
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '61':
     X: 6
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '62':
     X: 6
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '63':
     X: 6
-    Y: 6
+    Y: 4
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '64':
     X: 5
-    Y: 6
+    Y: 4
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '65':
     X: 5
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '66':
     X: 5
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '67':
     X: 5
-    Y: 6
+    Y: 4
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '68':
     X: 4
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '69':
     X: 4
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '70':
     X: 3
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '71':
     X: 3
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '72':
     X: 2
-    Y: 6
+    Y: 4
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '73':
     X: 2
-    Y: 6
+    Y: 4
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '74':
     X: 2
-    Y: 6
+    Y: 4
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '75':
     X: 2
-    Y: 6
+    Y: 4
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '76':
     X: 2
-    Y: 6
+    Y: 4
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '77':
     X: 2
-    Y: 6
+    Y: 4
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '78':
     X: 2
-    Y: 6
+    Y: 4
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '79':
     X: 2
-    Y: 6
+    Y: 4
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '80':
     X: 1
-    Y: 6
+    Y: 4
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '81':
     X: 10
-    Y: 5
+    Y: 3
     Z: 7
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '82':
     X: 10
-    Y: 5
+    Y: 3
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '83':
     X: 10
-    Y: 5
+    Y: 3
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '84':
     X: 10
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '85':
     X: 9
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '86':
     X: 9
-    Y: 5
+    Y: 3
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '87':
     X: 9
-    Y: 5
+    Y: 3
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '88':
     X: 9
-    Y: 5
+    Y: 3
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '89':
     X: 9
-    Y: 5
+    Y: 3
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '90':
     X: 9
-    Y: 5
+    Y: 3
     Z: 3
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '91':
     X: 9
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '92':
     X: 9
-    Y: 5
+    Y: 3
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '93':
     X: 9
-    Y: 4
+    Y: 2
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '94':
     X: 8
-    Y: 5
+    Y: 3
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '95':
     X: 9
-    Y: 4
+    Y: 2
     Z: 5
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '96':
     X: 8
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '97':
     X: 9
-    Y: 4
+    Y: 2
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '98':
     X: 9
-    Y: 4
+    Y: 2
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '99':
     X: 9
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '100':
     X: 9
-    Y: 4
+    Y: 2
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '101':
     X: 8
-    Y: 4
+    Y: 2
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '102':
     X: 8
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '103':
     X: 8
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '104':
     X: 8
-    Y: 4
+    Y: 2
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '105':
     X: 8
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '106':
     X: 8
-    Y: 5
+    Y: 3
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '107':
     X: 7
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '108':
     X: 7
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '109':
     X: 6
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '110':
     X: 6
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '111':
     X: 6
-    Y: 5
+    Y: 3
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '112':
     X: 5
-    Y: 5
+    Y: 3
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '113':
     X: 7
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '114':
     X: 5
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '115':
     X: 7
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '116':
     X: 5
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '117':
     X: 6
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '118':
     X: 6
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '119':
     X: 6
-    Y: 4
+    Y: 2
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '120':
     X: 5
-    Y: 4
+    Y: 2
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '121':
     X: 5
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '122':
     X: 5
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '123':
     X: 5
-    Y: 4
+    Y: 2
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '124':
     X: 4
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '125':
     X: 5
-    Y: 5
+    Y: 3
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '126':
     X: 4
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '127':
     X: 4
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '128':
     X: 3
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '129':
     X: 3
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '130':
     X: 2
-    Y: 5
+    Y: 3
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '131':
     X: 2
-    Y: 5
+    Y: 3
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '132':
     X: 2
-    Y: 5
+    Y: 3
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '133':
     X: 4
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '134':
     X: 2
-    Y: 5
+    Y: 3
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '135':
     X: 3
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '136':
     X: 2
-    Y: 5
+    Y: 3
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '137':
     X: 3
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '138':
     X: 2
-    Y: 4
+    Y: 2
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '139':
     X: 2
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '140':
     X: 2
-    Y: 4
+    Y: 2
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '141':
     X: 2
-    Y: 4
+    Y: 2
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '142':
     X: 2
-    Y: 4
+    Y: 2
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '143':
     X: 2
-    Y: 4
+    Y: 2
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '144':
     X: 2
-    Y: 4
+    Y: 2
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '145':
     X: 2
-    Y: 5
+    Y: 3
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '146':
     X: 2
-    Y: 5
+    Y: 3
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '147':
     X: 2
-    Y: 5
+    Y: 3
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '148':
     X: 1
-    Y: 5
+    Y: 3
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '149':
     X: 10
-    Y: 4
+    Y: 2
     Z: 7
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '150':
     X: 10
-    Y: 4
+    Y: 2
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '151':
     X: 10
-    Y: 4
+    Y: 2
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '152':
     X: 10
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '153':
     X: 2
-    Y: 4
+    Y: 2
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '154':
     X: 9
-    Y: 4
+    Y: 2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '155':
     X: 1
-    Y: 4
+    Y: 2
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '156':
     X: 9
-    Y: 4
+    Y: 2
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '157':
     X: 11
-    Y: 3
+    Y: 1
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '158':
     X: 11
-    Y: 3
+    Y: 1
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '159':
     X: 10
-    Y: 3
+    Y: 1
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '160':
     X: 10
-    Y: 3
+    Y: 1
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '161':
     X: 10
-    Y: 3
+    Y: 1
     Z: 6
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '162':
     X: 10
-    Y: 3
+    Y: 1
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '163':
     X: 10
-    Y: 3
+    Y: 1
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '164':
     X: 10
-    Y: 3
+    Y: 1
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '165':
     X: 10
-    Y: 3
+    Y: 1
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '166':
     X: 9
-    Y: 3
+    Y: 1
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '167':
     X: 9
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '168':
     X: 9
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '169':
     X: 8
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '170':
     X: 8
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '171':
     X: 8
-    Y: 3
+    Y: 1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '172':
     X: 7
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '173':
     X: 7
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '174':
     X: 6
-    Y: 3
+    Y: 1
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '175':
     X: 6
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '176':
     X: 6
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '177':
     X: 6
-    Y: 3
+    Y: 1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '178':
     X: 5
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '179':
     X: 5
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '180':
     X: 5
-    Y: 3
+    Y: 1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '181':
     X: 4
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '182':
     X: 4
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '183':
     X: 3
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '184':
     X: 3
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '185':
     X: 2
-    Y: 3
+    Y: 1
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '186':
     X: 2
-    Y: 3
+    Y: 1
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '187':
     X: 1
-    Y: 3
+    Y: 1
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '188':
     X: 1
-    Y: 3
+    Y: 1
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '189':
     X: 1
-    Y: 3
+    Y: 1
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '190':
     X: 1
-    Y: 3
+    Y: 1
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '191':
     X: 1
-    Y: 3
+    Y: 1
     Z: 4
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '192':
     X: 1
-    Y: 3
+    Y: 1
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '193':
     X: 1
-    Y: 3
+    Y: 1
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '194':
     X: 0
-    Y: 3
+    Y: 1
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '195':
     X: 0
-    Y: 3
+    Y: 1
     Z: 3
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '196':
     X: 11
-    Y: 2
+    Y: 0
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '197':
     X: 11
-    Y: 2
+    Y: 0
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '198':
     X: 10
-    Y: 2
+    Y: 0
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '199':
     X: 10
-    Y: 2
+    Y: 0
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '200':
     X: 10
-    Y: 2
+    Y: 0
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '201':
     X: 10
-    Y: 2
+    Y: 0
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '202':
     X: 10
-    Y: 2
+    Y: 0
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '203':
     X: 10
-    Y: 2
+    Y: 0
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '204':
     X: 10
-    Y: 2
+    Y: 0
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '205':
     X: 3
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '206':
     X: 2
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '207':
     X: 2
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '208':
     X: 1
-    Y: 2
+    Y: 0
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '209':
     X: 1
-    Y: 2
+    Y: 0
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '210':
     X: 1
-    Y: 2
+    Y: 0
     Z: 6
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '211':
     X: 1
-    Y: 2
+    Y: 0
     Z: 5
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '212':
     X: 1
-    Y: 2
+    Y: 0
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '213':
     X: 1
-    Y: 2
+    Y: 0
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '214':
     X: 1
-    Y: 2
+    Y: 0
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '215':
     X: 9
-    Y: 2
+    Y: 0
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '216':
     X: 9
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '217':
     X: 9
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '218':
     X: 8
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '219':
     X: 8
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '220':
     X: 8
-    Y: 2
+    Y: 0
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '221':
     X: 7
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '222':
     X: 7
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '223':
     X: 6
-    Y: 2
+    Y: 0
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '224':
     X: 6
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '225':
     X: 0
-    Y: 2
+    Y: 0
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '226':
     X: 0
-    Y: 2
+    Y: 0
     Z: 3
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '227':
     X: 11
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '228':
     X: 1
-    Y: 0
+    Y: -2
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '229':
     X: 11
-    Y: 1
+    Y: -1
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '230':
     X: 1
-    Y: 0
+    Y: -2
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '231':
     X: 10
-    Y: 1
+    Y: -1
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '232':
     X: 1
-    Y: 0
+    Y: -2
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '233':
     X: 10
-    Y: 1
+    Y: -1
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '234':
     X: 1
-    Y: 0
+    Y: -2
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '235':
     X: 10
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '236':
     X: 1
-    Y: 0
+    Y: -2
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '237':
     X: 10
-    Y: 1
+    Y: -1
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '238':
     X: 1
-    Y: 0
+    Y: -2
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '239':
     X: 10
-    Y: 1
+    Y: -1
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '240':
     X: 1
-    Y: 0
+    Y: -2
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '241':
     X: 10
-    Y: 1
+    Y: -1
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '242':
     X: 0
-    Y: 0
+    Y: -2
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '243':
     X: 0
-    Y: 0
+    Y: -2
     Z: 3
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '244':
     X: 6
-    Y: 2
+    Y: 0
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '245':
     X: 0
-    Y: 0
+    Y: -2
     Z: 2
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '246':
     X: 6
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '247':
     X: 6
-    Y: 2
+    Y: 0
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '248':
     X: 5
-    Y: 2
+    Y: 0
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '249':
     X: 5
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '250':
     X: 5
-    Y: 2
+    Y: 0
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '251':
     X: 4
-    Y: 2
+    Y: 0
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '252':
     X: 4
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '253':
     X: 4
-    Y: 2
+    Y: 0
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '254':
     X: 3
-    Y: 2
+    Y: 0
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '255':
     X: 10
-    Y: 1
+    Y: -1
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '256':
     X: 9
-    Y: 1
+    Y: -1
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '257':
     X: 9
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '258':
     X: 9
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '259':
     X: 8
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '260':
     X: 8
-    Y: 1
+    Y: -1
     Z: 4
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '261':
     X: 8
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '262':
     X: 8
-    Y: 1
+    Y: -1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '263':
     X: 7
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '264':
     X: 7
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '265':
     X: 6
-    Y: 1
+    Y: -1
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '266':
     X: 6
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '267':
     X: 6
-    Y: 1
+    Y: -1
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '268':
     X: 6
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '269':
     X: 6
-    Y: 1
+    Y: -1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '270':
     X: 5
-    Y: 1
+    Y: -1
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '271':
     X: 5
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '272':
     X: 5
-    Y: 1
+    Y: -1
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '273':
     X: 4
-    Y: 1
+    Y: -1
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '274':
     X: 4
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '275':
     X: 4
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '276':
     X: 3
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '277':
     X: 3
-    Y: 1
+    Y: -1
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '278':
     X: 3
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '279':
     X: 2
-    Y: 1
+    Y: -1
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '280':
     X: 2
-    Y: 1
+    Y: -1
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '281':
     X: 1
-    Y: 1
+    Y: -1
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '282':
     X: 1
-    Y: 1
+    Y: -1
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '283':
     X: 1
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '284':
     X: 1
-    Y: 1
+    Y: -1
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '285':
     X: 8
-    Y: 12
+    Y: 10
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '286':
     X: 7
-    Y: 12
+    Y: 10
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '287':
     X: 7
-    Y: 12
+    Y: 10
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '288':
     X: 7
-    Y: 12
+    Y: 10
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '289':
     X: 6
-    Y: 12
+    Y: 10
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '290':
     X: 6
-    Y: 12
+    Y: 10
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '291':
     X: 6
-    Y: 12
+    Y: 10
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '292':
     X: 8
-    Y: 10
+    Y: 8
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '293':
     X: 6
-    Y: 12
+    Y: 10
     Z: 3
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '294':
     X: 8
-    Y: 10
+    Y: 8
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '295':
     X: 8
-    Y: 10
+    Y: 8
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '296':
     X: 8
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '297':
     X: 8
-    Y: 10
+    Y: 8
     Z: 2
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '298':
     X: 7
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '299':
     X: 7
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '300':
     X: 6
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '301':
     X: 6
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '302':
     X: 5
-    Y: 10
+    Y: 8
     Z: 8
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '303':
     X: 1
-    Y: 1
+    Y: -1
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '304':
     X: 1
-    Y: 1
+    Y: -1
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '305':
     X: 1
-    Y: 1
+    Y: -1
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '306':
     X: 0
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '307':
     X: 0
-    Y: 1
+    Y: -1
     Z: 3
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '308':
     X: 11
-    Y: 0
+    Y: -2
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '309':
     X: 11
-    Y: 0
+    Y: -2
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '310':
     X: 10
-    Y: 0
+    Y: -2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '311':
     X: 10
-    Y: 0
+    Y: -2
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '312':
     X: 5
-    Y: 12
+    Y: 10
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '313':
     X: 10
-    Y: 0
+    Y: -2
     Z: 6
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '314':
     X: 5
-    Y: 12
+    Y: 10
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '315':
     X: 5
-    Y: 12
+    Y: 10
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '316':
     X: 4
-    Y: 12
+    Y: 10
     Z: 6
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '317':
     X: 4
-    Y: 12
+    Y: 10
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '318':
     X: 4
-    Y: 12
+    Y: 10
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '319':
     X: 9
-    Y: 11
+    Y: 9
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '320':
     X: 8
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '321':
     X: 8
-    Y: 11
+    Y: 9
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '322':
     X: 5
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '323':
     X: 8
-    Y: 11
+    Y: 9
     Z: 5
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '324':
     X: 5
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '325':
     X: 5
-    Y: 10
+    Y: 8
     Z: 2
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '326':
     X: 4
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '327':
     X: 4
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '328':
     X: 3
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '329':
     X: 3
-    Y: 10
+    Y: 8
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '330':
     X: 3
-    Y: 10
+    Y: 8
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '331':
     X: 3
-    Y: 10
+    Y: 8
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '332':
     X: 3
-    Y: 10
+    Y: 8
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '333':
     X: 10
-    Y: 0
+    Y: -2
     Z: 5
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '334':
     X: 10
-    Y: 0
+    Y: -2
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '335':
     X: 10
-    Y: 0
+    Y: -2
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '336':
     X: 10
-    Y: 0
+    Y: -2
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '337':
     X: 9
-    Y: 0
+    Y: -2
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '338':
     X: 9
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '339':
     X: 9
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '340':
     X: 8
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '341':
     X: 8
-    Y: 0
+    Y: -2
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '342':
     X: 8
-    Y: 11
+    Y: 9
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '343':
     X: 8
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '344':
     X: 8
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '345':
     X: 8
-    Y: 11
+    Y: 9
     Z: 2
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '346':
     X: 7
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '347':
     X: 7
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '348':
     X: 6
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '349':
     X: 6
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '350':
     X: 5
-    Y: 11
+    Y: 9
     Z: 8
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '351':
     X: 5
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '352':
     X: 10
-    Y: 9
+    Y: 7
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '353':
     X: 5
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '354':
     X: 10
-    Y: 9
+    Y: 7
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '355':
     X: 9
-    Y: 9
+    Y: 7
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '356':
     X: 9
-    Y: 9
+    Y: 7
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '357':
     X: 9
-    Y: 9
+    Y: 7
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '358':
     X: 9
-    Y: 9
+    Y: 7
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '359':
     X: 9
-    Y: 9
+    Y: 7
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '360':
     X: 8
-    Y: 9
+    Y: 7
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '361':
     X: 8
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '362':
     X: 8
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '363':
     X: 8
-    Y: 0
+    Y: -2
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '364':
     X: 7
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '365':
     X: 7
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '366':
     X: 6
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '367':
     X: 6
-    Y: 0
+    Y: -2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '368':
     X: 6
-    Y: 0
+    Y: -2
     Z: 2
-    ID: 54
-    DATA: 3
+    MATERIAL: 'CHEST'
   '369':
     X: 6
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '370':
     X: 6
-    Y: 0
+    Y: -2
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '371':
     X: 5
-    Y: 0
+    Y: -2
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '372':
     X: 5
-    Y: 11
+    Y: 9
     Z: 2
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '373':
     X: 5
-    Y: 0
+    Y: -2
     Z: 2
-    ID: 54
-    DATA: 3
+    MATERIAL: 'CHEST'
   '374':
     X: 4
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '375':
     X: 4
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '376':
     X: 3
-    Y: 11
+    Y: 9
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '377':
     X: 3
-    Y: 11
+    Y: 9
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '378':
     X: 3
-    Y: 11
+    Y: 9
     Z: 5
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '379':
     X: 3
-    Y: 11
+    Y: 9
     Z: 4
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '380':
     X: 3
-    Y: 11
+    Y: 9
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '381':
     X: 9
-    Y: 10
+    Y: 8
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '382':
     X: 8
-    Y: 9
+    Y: 7
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '383':
     X: 8
-    Y: 10
+    Y: 8
     Z: 7
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '384':
     X: 7
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '385':
     X: 7
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '386':
     X: 6
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '387':
     X: 6
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '388':
     X: 5
-    Y: 9
+    Y: 7
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '389':
     X: 5
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '390':
     X: 5
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '391':
     X: 5
-    Y: 9
+    Y: 7
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '392':
     X: 4
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '393':
     X: 5
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '394':
     X: 5
-    Y: 0
+    Y: -2
     Z: 0
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '395':
     X: 4
-    Y: 0
+    Y: -2
     Z: 10
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '396':
     X: 4
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '397':
     X: 4
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '398':
     X: 3
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '399':
     X: 3
-    Y: 0
+    Y: -2
     Z: 4
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '400':
     X: 3
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '401':
     X: 2
-    Y: 0
+    Y: -2
     Z: 9
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '402':
     X: 2
-    Y: 0
+    Y: -2
     Z: 1
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '403':
     X: 4
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '404':
     X: 3
-    Y: 9
+    Y: 7
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '405':
     X: 3
-    Y: 9
+    Y: 7
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '406':
     X: 2
-    Y: 9
+    Y: 7
     Z: 7
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '407':
     X: 2
-    Y: 9
+    Y: 7
     Z: 6
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '408':
     X: 2
-    Y: 9
+    Y: 7
     Z: 5
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '409':
     X: 2
-    Y: 9
+    Y: 7
     Z: 4
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '410':
     X: 2
-    Y: 9
+    Y: 7
     Z: 3
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '411':
     X: 1
-    Y: 9
+    Y: 7
     Z: 6
-    ID: 106
-    DATA: 8
+    MATERIAL: 'VINE'
   '412':
     X: 10
-    Y: 8
+    Y: 6
     Z: 6
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '413':
     X: 10
-    Y: 8
+    Y: 6
     Z: 4
-    ID: 106
-    DATA: 2
+    MATERIAL: 'VINE'
   '414':
     X: 9
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '415':
     X: 9
-    Y: 8
+    Y: 6
     Z: 7
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '416':
     X: 9
-    Y: 8
+    Y: 6
     Z: 6
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '417':
     X: 9
-    Y: 8
+    Y: 6
     Z: 5
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '418':
     X: 9
-    Y: 8
+    Y: 6
     Z: 4
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '419':
     X: 9
-    Y: 8
+    Y: 6
     Z: 3
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '420':
     X: 9
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '421':
     X: 8
-    Y: 8
+    Y: 6
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '422':
     X: 8
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '423':
     X: 8
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 101
-    DATA: 0
+    MATERIAL: 'IRON_BARS'
   '424':
     X: 8
-    Y: 8
+    Y: 6
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '425':
     X: 7
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '426':
     X: 7
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '427':
     X: 6
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '428':
     X: 6
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '429':
     X: 6
-    Y: 8
+    Y: 6
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '430':
     X: 5
-    Y: 8
+    Y: 6
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '431':
     X: 5
-    Y: 8
+    Y: 6
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '432':
     X: 6
-    Y: 7
+    Y: 5
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '433':
     X: 5
-    Y: 8
+    Y: 6
     Z: 2
-    ID: 98
-    DATA: 2
+    MATERIAL: 'STONE_BRICKS'
   '434':
     X: 5
-    Y: 7
+    Y: 5
     Z: 9
-    ID: 106
-    DATA: 4
+    MATERIAL: 'VINE'
   '435':
     X: 5
-    Y: 7
+    Y: 5
     Z: 8
-    ID: 98
-    DATA: 1
+    MATERIAL: 'STONE_BRICKS'
   '436':
     X: 5
-    Y: 7
+    Y: 5
     Z: 2
-    ID: 98
-    DATA: 0
+    MATERIAL: 'STONE_BRICKS'
   '437':
     X: 5
-    Y: 7
+    Y: 5
     Z: 1
-    ID: 106
-    DATA: 1
+    MATERIAL: 'VINE'
   '438':
     X: 8
-    Y: 5
+    Y: 3
     Z: 5
-    ID: 76
-    DATA: 2
+    MATERIAL: 'REDSTONE_TORCH'
   '439':
     X: 3
-    Y: 5
+    Y: 3
     Z: 5
-    ID: 76
-    DATA: 1
+    MATERIAL: 'REDSTONE_TORCH'
   '440':
     X: 8
-    Y: 2
+    Y: 0
     Z: 4
-    ID: 76
-    DATA: 5
+    MATERIAL: 'REDSTONE_TORCH'
   '441':
     X: 3
-    Y: 2
+    Y: 0
     Z: 4
-    ID: 76
-    DATA: 5
+    MATERIAL: 'REDSTONE_TORCH'
   '442':
     X: 9
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 76
-    DATA: 2
+    MATERIAL: 'REDSTONE_TORCH'
   '443':
     X: 9
-    Y: 1
+    Y: -1
     Z: 5
-    ID: 76
-    DATA: 2
+    MATERIAL: 'REDSTONE_TORCH'
   '444':
     X: 6
-    Y: 1
+    Y: -1
     Z: 2
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   '445':
     X: 5
-    Y: 1
+    Y: -1
     Z: 2
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   '446':
     X: 2
-    Y: 1
+    Y: -1
     Z: 6
-    ID: 76
-    DATA: 1
+    MATERIAL: 'REDSTONE_TORCH'
   '447':
     X: 2
-    Y: 1
+    Y: -1
     Z: 5
-    ID: 76
-    DATA: 1
+    MATERIAL: 'REDSTONE_TORCH'
   '448':
     X: 7
-    Y: 10
+    Y: 8
     Z: 5
-    ID: 76
-    DATA: 2
+    MATERIAL: 'REDSTONE_TORCH'
   '449':
     X: 6
-    Y: 10
+    Y: 8
     Z: 6
-    ID: 76
-    DATA: 4
+    MATERIAL: 'REDSTONE_TORCH'
   '450':
     X: 6
-    Y: 10
+    Y: 8
     Z: 4
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   '451':
     X: 5
-    Y: 10
+    Y: 8
     Z: 6
-    ID: 76
-    DATA: 4
+    MATERIAL: 'REDSTONE_TORCH'
   '452':
     X: 5
-    Y: 10
+    Y: 8
     Z: 4
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   '453':
     X: 4
-    Y: 10
+    Y: 8
     Z: 5
-    ID: 76
-    DATA: 1
+    MATERIAL: 'REDSTONE_TORCH'
   '454':
     X: 6
-    Y: 6
+    Y: 4
     Z: 7
-    ID: 76
-    DATA: 4
+    MATERIAL: 'REDSTONE_TORCH'
   '455':
     X: 6
-    Y: 6
+    Y: 4
     Z: 3
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   '456':
     X: 5
-    Y: 6
+    Y: 4
     Z: 7
-    ID: 76
-    DATA: 4
+    MATERIAL: 'REDSTONE_TORCH'
   '457':
     X: 5
-    Y: 6
+    Y: 4
     Z: 3
-    ID: 76
-    DATA: 3
+    MATERIAL: 'REDSTONE_TORCH'
   LENGTH: 458
