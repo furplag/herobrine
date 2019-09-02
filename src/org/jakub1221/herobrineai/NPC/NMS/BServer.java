@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.minecraft.server.v1_11_R1.DedicatedServer;
-import net.minecraft.server.v1_11_R1.MinecraftServer;
-import net.minecraft.server.v1_11_R1.WorldServer;
+import net.minecraft.server.v1_14_R1.DedicatedServer;
+import net.minecraft.server.v1_14_R1.MinecraftServer;
+import net.minecraft.server.v1_14_R1.WorldServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.craftbukkit.v1_11_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_14_R1.CraftServer;
 
 public class BServer { 
 	

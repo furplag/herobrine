@@ -1,16 +1,11 @@
 package org.jakub1221.herobrineai.AI.cores;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
@@ -19,8 +14,6 @@ import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.AI.AICore;
 import org.jakub1221.herobrineai.AI.Core;
 import org.jakub1221.herobrineai.AI.CoreResult;
-
-import com.google.common.collect.Sets;
 
 public class Haunt extends Core {
 

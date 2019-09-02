@@ -10,10 +10,10 @@ import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.Utils;
 
-import net.minecraft.server.v1_11_R1.GenericAttributes;
-import net.minecraft.server.v1_11_R1.World;
+import net.minecraft.server.v1_14_R1.GenericAttributes;
+import net.minecraft.server.v1_14_R1.World;
 
-public class CustomZombie extends net.minecraft.server.v1_11_R1.EntityZombie implements CustomEntity {
+public class CustomZombie extends net.minecraft.server.v1_14_R1.EntityZombie implements CustomEntity {
 
 	private MobType mobType = null;
 

@@ -2,7 +2,6 @@ package org.jakub1221.herobrineai;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.jakub1221.herobrineai.support.CustomItemsHook;
 import org.jakub1221.herobrineai.support.FactionsHook;
 import org.jakub1221.herobrineai.support.GriefPreventionHook;
 import org.jakub1221.herobrineai.support.PreciousStonesHook;
@@ -15,14 +14,12 @@ public class Support {
 	private boolean B_Residence = false;
 	private boolean B_GriefPrevention = false;
 	private boolean B_Towny = false;
-	private boolean B_CustomItems = false;
 	private boolean B_WorldGuard = false;
 	private boolean B_PreciousStones = false;
 	private boolean B_Factions = false;
 	private ResidenceHook ResidenceCore = null;
 	private GriefPreventionHook GriefPreventionCore = null;
 	private TownyHook TownyCore = null;
-	private CustomItemsHook CustomItems = null;
 	private WorldGuardHook WorldGuard = null;
 	private PreciousStonesHook PreciousStones = null;
 	private FactionsHook Factions = null;
@@ -31,7 +28,6 @@ public class Support {
 		ResidenceCore = new ResidenceHook();
 		GriefPreventionCore = new GriefPreventionHook();
 		TownyCore = new TownyHook();
-		CustomItems = new CustomItemsHook();
 		WorldGuard = new WorldGuardHook();
 		PreciousStones = new PreciousStonesHook();
 		Factions = new FactionsHook();
@@ -79,11 +75,6 @@ public class Support {
 		if (TownyCore.Check()) {
 			B_Towny = true;
 			HerobrineAI.log.info("[HerobrineAI] Towny plugin detected!");
-		}
-		if (CustomItems.Check()) {
-			B_CustomItems = true;
-			HerobrineAI.log.info("[HerobrineAI] CustomItems plugin detected!");
-			CustomItems.init();
 		}
 		if (WorldGuard.Check()) {
 			B_WorldGuard = true;
@@ -134,17 +125,6 @@ public class Support {
 
 	public boolean checkBooks(final Location loc) {
 		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Books || !isSecuredArea(loc);
-	}
-	
-	public boolean isCustomItems() {
-		return B_CustomItems;
-	}
-
-	public CustomItemsHook getCustomItems() {
-		if (B_CustomItems) {
-			return CustomItems;
-		}
-		return null;
 	}
 
 }

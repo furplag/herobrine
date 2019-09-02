@@ -3,8 +3,8 @@ package org.jakub1221.herobrineai.support;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-import com.massivecraft.factions.entity.BoardColls;
-import com.massivecraft.mcore.ps.PS;
+import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.massivecore.ps.PS;
 
 public class FactionsHook {
 
@@ -13,6 +13,6 @@ public class FactionsHook {
 	}
 
 	public boolean isSecuredArea(Location loc) {
-		return !BoardColls.get().getFactionAt(PS.valueOf(loc)).getComparisonName().equalsIgnoreCase("Wilderness");
+		return !BoardColl.get().getFactionAt(PS.valueOf(loc)).getComparisonName().equalsIgnoreCase("Wilderness");
 	}
 }

@@ -216,7 +216,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			argst[1] = String.class;
 			argst[2] = int.class;
 			try {
-				Method ab = net.minecraft.server.v1_11_R1.EntityTypes.class.getDeclaredMethod("a", argst);
+				Method ab = net.minecraft.server.v1_14_R1.EntityTypes.class.getDeclaredMethod("a", argst);
 			} catch (NoSuchMethodException e1) {
 				isNPCDisabled = true;
 			} catch (SecurityException e1) {
@@ -231,7 +231,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 					args[1] = String.class;
 					args[2] = int.class;
 
-					Method a = net.minecraft.server.v1_11_R1.EntityTypes.class.getDeclaredMethod("a", args);
+					Method a = net.minecraft.server.v1_14_R1.EntityTypes.class.getDeclaredMethod("a", args);
 					a.setAccessible(true);
 
 					a.invoke(a, CustomZombie.class, "Zombie", 54);
