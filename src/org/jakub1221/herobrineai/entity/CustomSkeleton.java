@@ -4,9 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Random;
+
 import org.bukkit.Color;
 import org.jakub1221.herobrineai.HerobrineAI;
-import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.misc.ItemName;
 
 import net.minecraft.server.v1_14_R1.ChatComponentText;
@@ -50,21 +52,18 @@ public class CustomSkeleton extends net.minecraft.server.v1_14_R1.EntitySkeleton
 
 	@Override
 	public void Kill() {
-		for (int i = 1; i <= 2500; i++) {
-			if (HerobrineAI.getPluginCore().getConfigDB().npc.contains("npc.Demon.Drops." + Integer.toString(i)) == true) {
-				int chance = Utils.getRandomGen().nextInt(100);
-				
-				int requiredRoll = HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.Drops." + Integer.toString(i) + ".Chance");
-				
-				if (chance <= requiredRoll) {
-				
-					ItemStack its = new ItemStack(Material.getMaterial(i), HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.Drops." + Integer.toString(i) + ".Count"));
-					
-					this.getBukkitEntity().getLocation().getWorld().dropItemNaturally(this.getBukkitEntity().getLocation(),its);
-				}
+		Object[] items = HerobrineAI.getPluginCore().getConfigDB().npc.getConfigurationSection("npc.Demon.Drops")
+				.getKeys(false).toArray();
+		for (Object itemObj : items) {
+			final String item = itemObj.toString();
+			final int chance = new Random().nextInt(100);
+			if (chance <= HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.Drops." + item + ".Chance")) {
+				getBukkitEntity().getLocation().getWorld().dropItemNaturally(getBukkitEntity().getLocation(),
+						new ItemStack(Material.matchMaterial(item), HerobrineAI.getPluginCore().getConfigDB().npc
+								.getInt("npc.Demon.Drops." + item + ".Count")));
 			}
 		}
-		this.setHealth(0);
+		setHealth(0.0f);
 	}
 
 	@Override

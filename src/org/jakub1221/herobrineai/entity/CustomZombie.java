@@ -4,11 +4,9 @@ import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
-import org.jakub1221.herobrineai.Utils;
 
 import net.minecraft.server.v1_14_R1.ChatComponentText;
 import net.minecraft.server.v1_14_R1.GenericAttributes;
@@ -74,30 +72,24 @@ public class CustomZombie extends net.minecraft.server.v1_14_R1.EntityZombie imp
 
 	@Override
 	public void Kill() {
-
 		String mobS = "";
-		if (this.mobType == MobType.ARTIFACT_GUARDIAN) {
+		if (mobType == MobType.ARTIFACT_GUARDIAN)
 			mobS = "Guardian";
-		} else {
+		else
 			mobS = "Warrior";
-		}
 		
-		for (int i = 1; i <= 2500; i++) {
-			if (HerobrineAI.getPluginCore().getConfigDB().npc.contains("npc." + mobS + ".Drops." + Integer.toString(i)) == true) {
-				int chance = Utils.getRandomGen().nextInt(100);
-				
-				int requiredRoll = HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc." + mobS + ".Drops." + Integer.toString(i) + ".Chance");
-				
-				if (chance <= requiredRoll) {
-				
-					ItemStack its = new ItemStack(Material.getMaterial(i), HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc." + mobS + ".Drops." + Integer.toString(i) + ".Count"));
-					
-					this.getBukkitEntity().getLocation().getWorld().dropItemNaturally(this.getBukkitEntity().getLocation(),its);
-				}
+		Object[] items = HerobrineAI.getPluginCore().getConfigDB().npc.getConfigurationSection("npc." + mobS + ".Drops")
+				.getKeys(false).toArray();
+		for (Object itemObj : items) {
+			final String item = itemObj.toString();
+			final int chance = new Random().nextInt(100);
+			if (chance <= HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc." + mobS + ".Drops." + item + ".Chance")) {
+				getBukkitEntity().getLocation().getWorld().dropItemNaturally(getBukkitEntity().getLocation(),
+						new ItemStack(Material.matchMaterial(item), HerobrineAI.getPluginCore().getConfigDB().npc
+								.getInt("npc." + mobS + ".Drops." + item + ".Count")));
 			}
 		}
-
-		this.setHealth(0);
+		setHealth(0.0f);
 	}
 
 	@Override
