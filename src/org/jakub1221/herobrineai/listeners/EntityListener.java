@@ -294,25 +294,14 @@ public class EntityListener implements Listener {
 	}
 	
 	protected void HerobrineDropItems(){
-		for (int i = 1; i <= 2500; i++) {
-			if (PluginCore.getConfigDB().config.contains("config.Drops." + Integer.toString(i)) == true) {
-				
-				Random randgen = Utils.getRandomGen();
-				
-				int chance = randgen.nextInt(100);
-				
-				int requiredRoll = PluginCore.getConfigDB().config.getInt("config.Drops." + Integer.toString(i) + ".chance");
-				
-				if (chance <= requiredRoll) {
-						
-					int itsAmount = PluginCore.getConfigDB().config.getInt("config.Drops." + Integer.toString(i)+ ".count");
-					
-					ItemStack its = new ItemStack(Material.getMaterial(i), itsAmount);
-					
-					PluginCore.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(
-									PluginCore.HerobrineNPC.getBukkitEntity().getLocation(),
-									its);
-				}
+		Object[] items = PluginCore.getConfigDB().config.getConfigurationSection("config.Drops").getKeys(false).toArray();
+		for (Object itemObj : items) {
+			final String item = itemObj.toString();
+			final int chance = new Random().nextInt(100);
+			if (chance <= PluginCore.getConfigDB().config.getInt("config.Drops." + item + ".chance")) {
+				PluginCore.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(PluginCore.HerobrineNPC.getBukkitEntity()
+						.getLocation(), new ItemStack(Material.matchMaterial(item), PluginCore.getConfigDB().config
+								.getInt("config.Drops." + item + ".count")));
 			}
 		}
 	}

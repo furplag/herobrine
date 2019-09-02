@@ -199,8 +199,8 @@ public class ConfigDB {
 			config.set("config.Messages", useMessages);
 			config.set("config.SignMessages", useSignMessages);
 			config.set("config.BookMessages", useBookMessages);
-			config.set("config.Drops.264.count", 1);
-			config.set("config.Drops.264.chance", 20);
+			config.set("config.Drops.DIAMOND.count", 1);
+			config.set("config.Drops.DIAMOND.chance", 20);
 			config.set("config.BuildPyramids", true);
 			config.set("config.UseGraveyardWorld", true);
 			config.set("config.BuryPlayers", true);
