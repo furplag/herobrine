@@ -1,7 +1,6 @@
 package org.jakub1221.herobrineai.AI;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;

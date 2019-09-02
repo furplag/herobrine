@@ -1,9 +1,10 @@
 package org.jakub1221.herobrineai.NPC.Entity;
 
 import net.minecraft.server.v1_14_R1.EntityPlayer;
+import net.minecraft.server.v1_14_R1.EnumHand;
 import net.minecraft.server.v1_14_R1.PacketPlayInArmAnimation;
+import net.minecraft.server.v1_14_R1.PlayerChunkMap;
 import net.minecraft.server.v1_14_R1.WorldServer;
-import net.minecraft.server.v1_14_R1.Entity;
 
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
@@ -29,7 +30,12 @@ public class HumanNPC {
 	}
 
 	public void ArmSwingAnimation() {
-		((WorldServer) entity.world).tracker.a(entity, new PacketPlayInArmAnimation());
+		PlayerChunkMap playerChunkMap = ((WorldServer) this.entity.world).getChunkProvider().playerChunkMap;
+		PlayerChunkMap.EntityTracker playerchunkmap_entitytracker = playerChunkMap.trackedEntities.get(this.entity.getId());
+		
+		if(playerchunkmap_entitytracker != null) {
+			playerchunkmap_entitytracker.broadcast(new PacketPlayInArmAnimation(EnumHand.MAIN_HAND));
+		}
 	}
 
 	public void HurtAnimation() {
@@ -43,7 +49,7 @@ public class HumanNPC {
 
 	public void setItemInHand(ItemStack item) {
 		if (item != null) {
-			((org.bukkit.entity.HumanEntity) getEntity().getBukkitEntity()).setItemInHand(item);
+			((org.bukkit.entity.HumanEntity) getEntity().getBukkitEntity()).getInventory().setItemInMainHand(item);
 		}
 	}
 
@@ -69,7 +75,7 @@ public class HumanNPC {
 
 	public void removeFromWorld() {
 		try {
-			entity.world.removeEntity(entity);
+			entity.getWorldServer().removeEntity(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -77,7 +83,6 @@ public class HumanNPC {
 
 	public void setYaw(float yaw) {
 		((EntityPlayer) getEntity()).yaw = yaw;
-		((EntityPlayer) getEntity()).aA = yaw;
 	}
 
 	public void lookAtPoint(Location point) {
@@ -110,7 +115,7 @@ public class HumanNPC {
 	}
 
 	public void setYawA(float yaw) {
-		((EntityPlayer) getEntity()).aP = yaw;
+		((EntityPlayer) getEntity()).yaw = yaw;
 	}
 
 	public org.bukkit.entity.Entity getBukkitEntity() {

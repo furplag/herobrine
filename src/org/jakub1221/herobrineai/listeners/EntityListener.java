@@ -165,17 +165,17 @@ public class EntityListener implements Listener {
 					&& PluginCore.getAICore().getCoreTypeNow() != CoreType.GRAVEYARD) {
 					
 					if (dEvent.getDamager() instanceof Player) {
-						if (event.getDamage() >= PluginCore.HerobrineHP) {
+						if (event.getDamage() >= HerobrineAI.HerobrineHP) {
 
 							HerobrineDropItems();
 
 							PluginCore.getAICore().CancelTarget(CoreType.ANY);
-							PluginCore.HerobrineHP = PluginCore.HerobrineMaxHP;
+							HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
 							Player player = (Player) dEvent.getDamager();
 							player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 						} else {
-							PluginCore.HerobrineHP -= event.getDamage();
+							HerobrineAI.HerobrineHP -= event.getDamage();
 							PluginCore.HerobrineNPC.HurtAnimation();
 							AICore.log.info("HIT: " + event.getDamage());
 						}
@@ -188,7 +188,7 @@ public class EntityListener implements Listener {
 								PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
 							} else {
 
-								if (event.getDamage() >= PluginCore.HerobrineHP) {
+								if (event.getDamage() >= HerobrineAI.HerobrineHP) {
 
 									HerobrineDropItems();
 

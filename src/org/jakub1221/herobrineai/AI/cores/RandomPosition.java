@@ -1,7 +1,6 @@
 package org.jakub1221.herobrineai.AI.cores;
 
 import java.util.Collection;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
