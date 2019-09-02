@@ -18,12 +18,12 @@ public class BuildCave extends Core {
 
 	public CoreResult CallCore(Object[] data) {
 		if (data.length == 2) {
-			return BuildCave((Location) data[0], true);
+			return buildCave((Location) data[0], true);
 		}
-		return BuildCave((Location) data[0]);
+		return buildCave((Location) data[0]);
 	}
 
-	public CoreResult BuildCave(Location loc) {
+	public CoreResult buildCave(Location loc) {
 
 		if (HerobrineAI.getPluginCore().getConfigDB().BuildStuff == true) {
 			if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)) {
@@ -52,7 +52,7 @@ public class BuildCave extends Core {
 
 	}
 
-	public CoreResult BuildCave(Location loc, boolean cmd) {
+	public CoreResult buildCave(Location loc, boolean cmd) {
 
 		if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)) {
 			if (loc.getBlockY() < 60) {
