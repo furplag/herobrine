@@ -81,12 +81,12 @@ public class BuryPlayer extends Core {
 		Location loc = new Location(world, X, Y, Z);
 		Location signloc = new Location(world, X, Y, Z - 2);
 		Block signblock = signloc.add(0, 0D, 0).getBlock();
-		signblock.setType(Material.SIGN_POST);
+		signblock.setType(Material.OAK_SIGN);
 		Sign sign = (Sign) signblock.getState();
 		sign.setLine(1, playername);
 		sign.update();
-		loc.getWorld().getBlockAt(X, Y - 1, Z).setTypeIdAndData(98, (byte) 2, false);
-		loc.getWorld().getBlockAt(X, Y - 1, Z - 1).setTypeIdAndData(98, (byte) 2, false);
+		loc.getWorld().getBlockAt(X, Y - 1, Z).setType(Material.STONE_BRICKS, false);
+		loc.getWorld().getBlockAt(X, Y - 1, Z - 1).setType(Material.STONE_BRICKS, false);
 	}
 
 }

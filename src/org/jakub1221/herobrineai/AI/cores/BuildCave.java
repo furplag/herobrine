@@ -143,7 +143,7 @@ public class BuildCave extends Core {
 		Random randgen = Utils.getRandomGen();
 		int chance = randgen.nextInt(100);
 		if (chance > 70) {
-			world.getBlockAt(x, y, z).setType(Material.REDSTONE_TORCH_ON);
+			world.getBlockAt(x, y, z).setType(Material.REDSTONE_TORCH);
 		}
 	}
 

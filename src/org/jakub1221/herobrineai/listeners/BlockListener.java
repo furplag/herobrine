@@ -43,10 +43,10 @@ public class BlockListener implements Listener {
 							{ new Vector(1, -1, 1), Material.GOLD_BLOCK },
 							{ new Vector(0, -1, -1), Material.GOLD_BLOCK },
 							{ new Vector(0, -1, +1), Material.GOLD_BLOCK },
-							{ new Vector(0, 0, 1), Material.REDSTONE_TORCH_ON },
-							{ new Vector(0, 0, -1), Material.REDSTONE_TORCH_ON },
-							{ new Vector(1, 0, 0), Material.REDSTONE_TORCH_ON },
-							{ new Vector(-1, 0, 0), Material.REDSTONE_TORCH_ON } 
+							{ new Vector(0, 0, 1), Material.REDSTONE_TORCH },
+							{ new Vector(0, 0, -1), Material.REDSTONE_TORCH },
+							{ new Vector(1, 0, 0), Material.REDSTONE_TORCH },
+							{ new Vector(-1, 0, 0), Material.REDSTONE_TORCH } 
 							};
 
 					boolean checkListCorrect = true;

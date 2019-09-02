@@ -213,7 +213,7 @@ public class Pyramid extends Core {
 			// Level 3
 			world.getBlockAt(X, Y + 2, Z).setType(mainMat);
 			// Level 4
-			world.getBlockAt(X, Y + 3, Z).setType(Material.REDSTONE_TORCH_ON);
+			world.getBlockAt(X, Y + 3, Z).setType(Material.REDSTONE_TORCH);
 
 		}
 

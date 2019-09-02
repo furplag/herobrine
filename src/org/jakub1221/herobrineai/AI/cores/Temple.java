@@ -187,69 +187,48 @@ public class Temple extends Core {
 					}
 				}
 			}
-			// Chest
-			ItemStack ciItem = null;
-			if (HerobrineAI.getPluginCore().getConfigDB().UseCustomItems) {
-				if (HerobrineAI.getPluginCore().getConfigDB().UseCustomItemsList.size() > 0) {
-					Random generator = new Random();
-					int chance = generator.nextInt(HerobrineAI.getPluginCore().getConfigDB().UseCustomItemsList.size());
-					if (HerobrineAI.getPluginCore().getSupport().isCustomItems()) {
-						if (HerobrineAI.getPluginCore().getSupport().getCustomItems()
-								.checkItem(HerobrineAI.getPluginCore().getConfigDB().UseCustomItemsList.get(chance))) {
-							ciItem = HerobrineAI.getPluginCore().getSupport().getCustomItems()
-									.getItem(HerobrineAI.getPluginCore().getConfigDB().UseCustomItemsList.get(chance));
-						}
-					}
-				}
+			// Chest			
+			Random generator = Utils.getRandomGen();
+			int chance = generator.nextInt(15);
+			ItemStack item = null;
+			ArrayList<String> newLore = new ArrayList<String>();
+			
+			if (chance < 4 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactBow) {
+				
+				item = new ItemStack(Material.BOW);
+				newLore.add("Herobrine�s artifact");
+				newLore.add("Bow of Teleporting");
+				item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
+				item.addEnchantment(Enchantment.ARROW_FIRE, 1);
+				item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
+				
+			} else if (chance < 8 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
+				
+				item = new ItemStack(Material.DIAMOND_SWORD);
+				newLore.add("Herobrine�s artifact");
+				newLore.add("Sword of Lighting");
+				item = ItemName.setNameAndLore(item, "Sword of Lighting", newLore);
+				item.addEnchantment(Enchantment.KNOCKBACK, 2);
+				item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+				item.addEnchantment(Enchantment.DURABILITY, 3);
+				
+			} else if (chance < 12 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactApple) {
+				
+				item = new ItemStack(Material.GOLDEN_APPLE);
+				newLore.add("Herobrine�s artifact");
+				newLore.add("Apple of Death");
+				item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
-				if (ciItem != null) {
-					Chest chest = (Chest) loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).getState();
-					chest.getBlockInventory().setItem(chest.getInventory().firstEmpty(), ciItem);
-				}
 			} else {
-				
-				Random generator = Utils.getRandomGen();
-				int chance = generator.nextInt(15);
-				ItemStack item = null;
-				ArrayList<String> newLore = new ArrayList<String>();
-				
-				if (chance < 4 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactBow) {
-					
-					item = new ItemStack(Material.BOW);
-					newLore.add("Herobrine�s artifact");
-					newLore.add("Bow of Teleporting");
-					item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
-					item.addEnchantment(Enchantment.ARROW_FIRE, 1);
-					item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
-					
-				} else if (chance < 8 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
-					
-					item = new ItemStack(Material.DIAMOND_SWORD);
-					newLore.add("Herobrine�s artifact");
-					newLore.add("Sword of Lighting");
-					item = ItemName.setNameAndLore(item, "Sword of Lighting", newLore);
+				if (HerobrineAI.getPluginCore().getConfigDB().UseAncientSword) {
+					item = HerobrineAI.getPluginCore().getAICore().createAncientSword();
 					item.addEnchantment(Enchantment.KNOCKBACK, 2);
 					item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
-					item.addEnchantment(Enchantment.DURABILITY, 3);
-					
-				} else if (chance < 12 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactApple) {
-					
-					item = new ItemStack(Material.GOLDEN_APPLE);
-					newLore.add("Herobrine�s artifact");
-					newLore.add("Apple of Death");
-					item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
-
-				} else {
-					if (HerobrineAI.getPluginCore().getConfigDB().UseAncientSword) {
-						item = HerobrineAI.getPluginCore().getAICore().createAncientSword();
-						item.addEnchantment(Enchantment.KNOCKBACK, 2);
-						item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
-					}
 				}
-
-				Chest chest = (Chest) loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).getState();
-				chest.getBlockInventory().setItem(chest.getInventory().firstEmpty(), item);
 			}
+
+			Chest chest = (Chest) loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).getState();
+			chest.getBlockInventory().setItem(chest.getInventory().firstEmpty(), item);
 		}
 	}
 

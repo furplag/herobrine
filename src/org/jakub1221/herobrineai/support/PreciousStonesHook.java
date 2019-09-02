@@ -1,6 +1,6 @@
 package org.jakub1221.herobrineai.support;
 
-import net.sacredlabyrinth.Phaed.PreciousStones.FieldFlag;
+import net.sacredlabyrinth.Phaed.PreciousStones.field.FieldFlag;
 import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
 
 import org.bukkit.Bukkit;
@@ -13,8 +13,6 @@ public class PreciousStonesHook {
 	}
 
 	public boolean isSecuredArea(Location loc) {
-		PreciousStones preciousStones = (PreciousStones) Bukkit.getServer().getPluginManager().getPlugin("PreciousStones");
-
-		return preciousStones.API().isFieldProtectingArea(FieldFlag.ALL, loc);
+		return PreciousStones.API().isFieldProtectingArea(FieldFlag.ALL, loc);
 	}
 }

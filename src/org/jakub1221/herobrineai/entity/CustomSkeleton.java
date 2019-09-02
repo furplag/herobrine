@@ -9,6 +9,8 @@ import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.misc.ItemName;
 
+import net.minecraft.server.v1_14_R1.ChatComponentText;
+import net.minecraft.server.v1_14_R1.EntityTypes;
 import net.minecraft.server.v1_14_R1.GenericAttributes;
 import net.minecraft.server.v1_14_R1.World;
 
@@ -17,7 +19,7 @@ public class CustomSkeleton extends net.minecraft.server.v1_14_R1.EntitySkeleton
 	private MobType mobType = null;
 
 	public CustomSkeleton(World world, Location loc, MobType mbt) {
-		super(world);
+		super(EntityTypes.SKELETON, world);
 		this.mobType = mbt;
 		if (mbt == MobType.DEMON) {
 			spawnDemon(loc);
@@ -26,10 +28,10 @@ public class CustomSkeleton extends net.minecraft.server.v1_14_R1.EntitySkeleton
 
 	public void spawnDemon(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.c).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
-		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
+		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
+		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
 		this.setHealth(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
-		this.setCustomName("Demon");
+		this.setCustomName(new ChatComponentText("Demon"));
 
 		Skeleton entityCast = (Skeleton) this.getBukkitEntity();
 		
@@ -43,7 +45,7 @@ public class CustomSkeleton extends net.minecraft.server.v1_14_R1.EntitySkeleton
 	}
 
 	public CustomSkeleton(World world) {
-		super(world);
+		super(EntityTypes.SKELETON, world);
 	}
 
 	@Override

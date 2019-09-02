@@ -6,6 +6,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Directional;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.Utils;
 import org.jakub1221.herobrineai.AI.ConsoleLogger;
@@ -78,11 +80,14 @@ public class Signs extends Core {
 			Block undersignblock = signblock.getLocation().subtract(0D, 1D, 0D).getBlock();
 			if (!signblock.getType().isSolid() && undersignblock.getType().isSolid()) {
 				
-				signblock.setType(Material.SIGN_POST);
+				signblock.setType(Material.OAK_SIGN);
 				Sign sign = (Sign) signblock.getState();
-				sign.setLine(1, HerobrineAI.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
 
-				sign.setRawData((byte) BlockChanger.getPlayerBlockFace(ploc).ordinal());
+				BlockData blockData = sign.getBlockData();
+				((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
+				sign.setBlockData(blockData);
+				
+				sign.setLine(1, HerobrineAI.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
 				sign.update();
 			}
 		}
