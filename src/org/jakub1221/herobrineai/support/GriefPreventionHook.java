@@ -13,8 +13,7 @@ public class GriefPreventionHook {
 	}
 
 	public boolean isSecuredArea(Location loc) {
-		GriefPrevention griefprevention = (GriefPrevention) Bukkit.getServer().getPluginManager().getPlugin("GriefPrevention");
-		Claim claim = griefprevention.instance.dataStore.getClaimAt(loc, false, null);
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(loc, false, null);
 		return (claim != null);
 	}
 }
