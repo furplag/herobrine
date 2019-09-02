@@ -6,10 +6,10 @@ import net.minecraft.server.v1_14_R1.EntityPlayer;
 import net.minecraft.server.v1_14_R1.EnumGamemode;
 import net.minecraft.server.v1_14_R1.EnumMoveType;
 import net.minecraft.server.v1_14_R1.PlayerInteractManager;
+import net.minecraft.server.v1_14_R1.Vec3D;
 
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_14_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_14_R1.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.jakub1221.herobrineai.NPC.NPCCore;
 import org.jakub1221.herobrineai.NPC.NMS.BWorld;
@@ -30,13 +30,9 @@ public class HumanEntity extends EntityPlayer {
 		fauxSleeping = true;
 	}
 
-	public void setBukkitEntity(org.bukkit.entity.Entity entity) {
-		bukkitEntity = (CraftEntity) entity;
-	}
-
 	@Override
-	public void move(EnumMoveType x, double arg0, double arg1, double arg2) {
-		setPosition(arg0, arg1, arg2);
+	public void move(EnumMoveType x, Vec3D vec3d) {
+		setPosition(vec3d.x, vec3d.y, vec3d.z);
 	}
 
 	@Override

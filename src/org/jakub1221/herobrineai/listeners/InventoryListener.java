@@ -30,7 +30,7 @@ public class InventoryListener implements Listener {
 					if (event.getInventory().firstEmpty() != -1) {
 						if (HerobrineAI.getPluginCore().getAICore().getResetLimits().isHead()) {
 							event.getInventory().setItem(event.getInventory().firstEmpty(),
-									ItemName.CreateSkull(event.getPlayer().getName()));
+									ItemName.CreateSkull(event.getPlayer().getUniqueId(), event.getPlayer().getName()));
 						}
 					}
 				}

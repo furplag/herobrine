@@ -2,6 +2,7 @@ package org.jakub1221.herobrineai.AI.extensions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.misc.StructureLoader;
 
@@ -14,7 +15,7 @@ public class GraveyardWorld {
 		for (int x = -50; x <= 50; x++) {
 			for (int z = -50; z <= 50; z++) {
 
-				loc.getWorld().getBlockAt(x, 3, z).setTypeId(110);
+				loc.getWorld().getBlockAt(x, 3, z).setType(Material.MYCELIUM);
 			}
 
 		}

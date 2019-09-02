@@ -3,6 +3,7 @@ package org.jakub1221.herobrineai.AI.cores;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -52,7 +53,7 @@ public class Heads extends Core {
 									}
 
 									Block block = loc.getWorld().getBlockAt(px + x, y, pz + z);
-									BlockChanger.PlaceSkull(block.getLocation(), "Herobrine");
+									BlockChanger.PlaceSkull(block.getLocation(), UUID.fromString("f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2"));
 
 									headList.add(block);
 

@@ -50,7 +50,7 @@ public class EntityListener implements Listener {
 
 	@EventHandler
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
-		if (!PluginCore.isNPCDisabled) {
+		if (!HerobrineAI.isNPCDisabled) {
 			if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
 				
 				Entity entity = event.getEntity();

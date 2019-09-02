@@ -8,7 +8,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
@@ -136,7 +135,7 @@ public class PlayerListener implements Listener {
 					Jukebox block = (Jukebox) event.getClickedBlock().getState();
 
 					if (!block.isPlaying()) {
-						if (item.getType() == Material.getMaterial(2266)) {
+						if (item.getType() == Material.MUSIC_DISC_11) {
 
 							PluginCore.getAICore();
 
@@ -166,7 +165,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerEnterBed(PlayerBedEnterEvent event) {
 		if (Utils.getRandomGen().nextInt(100) > 75) {
 			Player player = event.getPlayer();
-			((CraftPlayer) player).getHandle().a(true, false, false);
+			event.setCancelled(true);
 			PluginCore.getAICore().playerBedEnter(player);
 		}
 	}

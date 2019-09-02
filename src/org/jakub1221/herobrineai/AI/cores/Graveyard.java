@@ -48,7 +48,7 @@ public class Graveyard extends Core {
 				}
 
 				Bukkit.getServer().getWorld("world_herobrineai_graveyard").setTime(15000);
-				HerobrineAI.getPluginCore().getAICore().PlayerTarget = player;
+				AICore.PlayerTarget = player;
 				Location loc = (Location) player.getLocation();
 				savedX = loc.getX();
 				savedY = loc.getY();
@@ -65,7 +65,7 @@ public class Graveyard extends Core {
 				
 				Start();
 				
-				HerobrineAI.getPluginCore().getAICore().isTarget = true;
+				AICore.isTarget = true;
 				Bukkit.getServer().getWorld("world_herobrineai_graveyard").setStorm(false);
 				
 				return new CoreResult(true, "Player successfully teleported!");
@@ -111,9 +111,9 @@ public class Graveyard extends Core {
 		if (savedPlayer.isDead() == true 
 			|| savedPlayer.isOnline() == false
 			|| savedPlayer.getLocation().getWorld() != Bukkit.getServer().getWorld("world_herobrineai_graveyard")
-			|| this.ticks == 90 || HerobrineAI.getPluginCore().getAICore().isTarget == false) {
+			|| this.ticks == 90 || AICore.isTarget == false) {
 			
-			if (HerobrineAI.getPluginCore().getAICore().PlayerTarget == savedPlayer) {
+			if (AICore.PlayerTarget == savedPlayer) {
 				HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
 			}
 			

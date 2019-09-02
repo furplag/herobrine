@@ -1,7 +1,5 @@
 package org.jakub1221.herobrineai.AI.cores;
 
-import java.util.Random;
-
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,11 +1,12 @@
 package org.jakub1221.herobrineai.misc;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -55,13 +56,15 @@ public class ItemName {
 		return item.getItemMeta().getDisplayName();
 	}
 
-	public static ItemStack CreateSkull(String data) {
-		ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
-		SkullMeta skullmeta = (SkullMeta) skull.getItemMeta();
-		skullmeta.setOwner(data);
+	public static ItemStack CreateSkull(final UUID uuid, final String data) {
+		final ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
+		final SkullMeta skullmeta = (SkullMeta) skull.getItemMeta();
 
+		skullmeta.setOwningPlayer(Bukkit.getOfflinePlayer(uuid));
 		skullmeta.setDisplayName(ChatColor.RESET + data);
+
 		skull.setItemMeta(skullmeta);
+		
 		return skull;
 	}
 
