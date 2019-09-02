@@ -35,7 +35,7 @@ public class CustomSkeleton extends net.minecraft.server.v1_14_R1.EntitySkeleton
 
 		Skeleton entityCast = (Skeleton) this.getBukkitEntity();
 		
-		entityCast.getEquipment().setItemInHand(new ItemStack(Material.GOLDEN_APPLE, 1));
+		entityCast.getEquipment().setItemInMainHand(new ItemStack(Material.GOLDEN_APPLE, 1));
 		entityCast.getEquipment().setHelmet(ItemName.colorLeatherArmor(new ItemStack(Material.LEATHER_HELMET, 1), Color.RED));
 		entityCast.getEquipment().setChestplate(ItemName.colorLeatherArmor(new ItemStack(Material.LEATHER_CHESTPLATE, 1), Color.RED));
 		entityCast.getEquipment().setLeggings(ItemName.colorLeatherArmor(new ItemStack(Material.LEATHER_LEGGINGS, 1), Color.RED));

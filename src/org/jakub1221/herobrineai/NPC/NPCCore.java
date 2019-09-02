@@ -11,11 +11,6 @@ import net.minecraft.server.v1_14_R1.PlayerInteractManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.event.EventException;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.world.ChunkLoadEvent;
-import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.NPC.Entity.HumanEntity;
@@ -102,35 +97,6 @@ public class NPCCore {
 
 	public void DisableTask() {
 		Bukkit.getServer().getScheduler().cancelTask(taskid);
-	}
-
-	private class WorldL implements Listener {
-		@SuppressWarnings("unused")
-		@EventHandler
-		public void onChunkLoad(ChunkLoadEvent event) throws EventException {
-			for (HumanNPC humannpc : npcs) {
-				if (humannpc != null
-						&& event.getChunk() == humannpc.getBukkitEntity().getLocation().getBlock().getChunk()) {
-
-					if (isInLoaded == false) {
-						BWorld world = getBWorld(event.getWorld());
-
-						isInLoaded = true;
-					}
-				}
-			}
-
-		}
-
-		@EventHandler
-		public void onChunkUnload(ChunkUnloadEvent event) {
-			for (HumanNPC humannpc : npcs) {
-				if (humannpc != null
-						&& event.getChunk() == humannpc.getBukkitEntity().getLocation().getBlock().getChunk()) {
-
-				}
-			}
-		}
 	}
 
 	public HumanNPC spawnHumanNPC(String name, Location l) {

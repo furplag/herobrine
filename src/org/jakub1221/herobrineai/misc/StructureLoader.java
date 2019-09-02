@@ -3,7 +3,10 @@ package org.jakub1221.herobrineai.misc;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,7 +24,7 @@ public class StructureLoader {
 		file = new YamlConfiguration();
 
 		try {
-			file.load(inp);
+			file.load(new InputStreamReader(inp, StandardCharsets.UTF_8));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -41,12 +44,11 @@ public class StructureLoader {
 	}
 
 	public void Build(World world, int MainX, int MainY, int MainZ) {
-
+		
 		length = file.getInt("DATA.LENGTH") - 1;
-		for (current = 0; current <= length; current++) {
-			world.getBlockAt(MainX + file.getInt("DATA." + current + ".X"),
-					MainY + file.getInt("DATA." + current + ".Y"), MainZ + file.getInt("DATA." + current + ".Z"))
-					.setTypeIdAndData(+file.getInt("DATA." + current + ".ID"),(byte) +file.getInt("DATA." + current + ".DATA"), false);
+		for(current = 0; current <= length; current++) {
+			world.getBlockAt(MainX + file.getInt("DATA." + current + ".X"), MainY + file.getInt("DATA." + current + ".Y"), MainZ + file.getInt("DATA." + current + ".Z"))
+				.setType(Material.valueOf(file.getString("DATA." + current + ".MATERIAL")));
 		}
 
 	}

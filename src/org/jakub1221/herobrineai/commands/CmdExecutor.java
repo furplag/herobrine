@@ -20,7 +20,7 @@ public class CmdExecutor implements CommandExecutor {
 			"bury", "curse", "burn", "pyramid", "cave", "temple", "graveyard" };
 
 	public CmdExecutor(HerobrineAI p) {
-		log = p.log;
+		log = HerobrineAI.log;
 
 		subCommands.put("reload", new CmdReload(p, log));
 		subCommands.put("cancel", new CmdCancel(p, log));

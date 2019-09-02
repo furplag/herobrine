@@ -51,10 +51,10 @@ public class PlayerListener implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent event) {
 
 		if (event.getAction() == Action.LEFT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if (event.getClickedBlock() != null && event.getPlayer().getItemInHand() != null) {
+			if (event.getClickedBlock() != null && event.getPlayer().getInventory().getItemInMainHand() != null) {
 
-				ItemStack itemInHand = event.getPlayer().getItemInHand();
-				if (event.getPlayer().getItemInHand().getType() != null) {
+				ItemStack itemInHand = event.getPlayer().getInventory().getItemInMainHand();
+				if (event.getPlayer().getInventory().getItemInMainHand().getType() != null) {
 
 					if (itemInHand.getType() == Material.DIAMOND_SWORD
 							|| itemInHand.getType() == Material.GOLDEN_APPLE) {
@@ -128,10 +128,10 @@ public class PlayerListener implements Listener {
 		}
 
 		if (event.getClickedBlock() != null) {
-			if (event.getPlayer().getItemInHand() != null) {
+			if (event.getPlayer().getInventory().getItemInMainHand() != null) {
 				if (event.getClickedBlock().getType() == Material.JUKEBOX) {
 
-					ItemStack item = event.getPlayer().getItemInHand();
+					ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
 					Jukebox block = (Jukebox) event.getClickedBlock().getState();
 
 					if (!block.isPlaying()) {
@@ -175,11 +175,11 @@ public class PlayerListener implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 
-			if (PluginCore.getAICore().PlayerTarget == event.getPlayer()
+			if (AICore.PlayerTarget == event.getPlayer()
 					&& PluginCore.getAICore().getCoreTypeNow() == CoreType.GRAVEYARD
 					&& event.getPlayer().getLocation().getWorld() == Bukkit.getServer()
 							.getWorld("world_herobrineai_graveyard")
-					&& PluginCore.getAICore().isTarget) {
+					&& AICore.isTarget) {
 
 				if (Utils.getRandomGen().nextBoolean()) {
 					event.getPlayer()

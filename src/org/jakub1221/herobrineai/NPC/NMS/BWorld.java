@@ -24,7 +24,7 @@ public class BWorld {
 	}
 
 	public PlayerChunkMap getPlayerManager() {
-		return wServer.getPlayerChunkMap();
+		return wServer.getChunkProvider().playerChunkMap;
 	}
 
 	public CraftWorld getCraftWorld() {

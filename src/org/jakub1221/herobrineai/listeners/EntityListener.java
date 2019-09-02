@@ -120,9 +120,9 @@ public class EntityListener implements Listener {
 			if (arrow.getShooter() instanceof Player) {
 				
 				Player player = (Player) arrow.getShooter();
-				if (player.getItemInHand() != null) {
+				if (player.getInventory().getItemInMainHand() != null) {
 					
-					itemInHand = player.getItemInHand();
+					itemInHand = player.getInventory().getItemInMainHand();
 					if (itemInHand.getType() != null) {
 						
 						if (itemInHand.getType() == Material.BOW) {
@@ -233,10 +233,10 @@ public class EntityListener implements Listener {
 				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
 				if (dEvent.getDamager() instanceof Player) {
 					Player player = (Player) dEvent.getDamager();
-					if (player.getItemInHand() != null) {
-						if (player.getItemInHand().getType() == Material.DIAMOND_SWORD) {
-							if (ItemName.getLore(player.getItemInHand()) != null) {
-								itemInHand = player.getItemInHand();
+					if (player.getInventory().getItemInMainHand() != null) {
+						if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
+							if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
+								itemInHand = player.getInventory().getItemInMainHand();
 								getLore = ItemName.getLore(itemInHand);
 								if (getLore.containsAll(equalsLoreS)) {
 									if (PluginCore.getConfigDB().UseArtifactSword) {
@@ -269,10 +269,10 @@ public class EntityListener implements Listener {
 					if (event.getEntity() instanceof Player) {
 						if (event.getEntity().getEntityId() != PluginCore.HerobrineEntityID) {
 							Player player = (Player) event.getEntity();
-							if (player.getItemInHand() != null) {
-								if (player.getItemInHand().getType() == Material.DIAMOND_SWORD) {
-									if (ItemName.getLore(player.getItemInHand()) != null) {
-										itemInHand = player.getItemInHand();
+							if (player.getInventory().getItemInMainHand() != null) {
+								if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
+									if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
+										itemInHand = player.getInventory().getItemInMainHand();
 										getLore = ItemName.getLore(itemInHand);
 										if (getLore.containsAll(equalsLoreS)) {
 											if (PluginCore.getConfigDB().UseArtifactSword) {

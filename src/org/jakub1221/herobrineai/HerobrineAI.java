@@ -211,13 +211,6 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			argst[0] = Class.class;
 			argst[1] = String.class;
 			argst[2] = int.class;
-			try {
-				Method ab = net.minecraft.server.v1_14_R1.EntityTypes.class.getDeclaredMethod("a", argst);
-			} catch (NoSuchMethodException e1) {
-				isNPCDisabled = true;
-			} catch (SecurityException e1) {
-				isNPCDisabled = true;
-			}
 
 			if (!isNPCDisabled) {
 				try {
