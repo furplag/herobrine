@@ -88,8 +88,8 @@ public class ConfigDB {
 		this.log = l;
 	}
 
-	public File configF = new File("plugins/HerobrineAI/config.yml");
-	public File npcF = new File("plugins/HerobrineAI/npc.yml");
+	public File configF = new File("plugins/Herobrine/config.yml");
+	public File npcF = new File("plugins/Herobrine/npc.yml");
 
 	public void Startup() {
 		new File("plugins/HerobrineAI").mkdirs();
@@ -132,24 +132,24 @@ public class ConfigDB {
 			npc.set("npc.Guardian.SpawnCount", 1);
 			npc.set("npc.Guardian.HP", 40);
 			npc.set("npc.Guardian.Speed", 0.3);
-			npc.set("npc.Guardian.Drops.283.Chance", 40);
-			npc.set("npc.Guardian.Drops.283.Count", 1);
-			npc.set("npc.Guardian.Drops.286.Chance", 30);
-			npc.set("npc.Guardian.Drops.286.Count", 1);
+			npc.set("npc.Guardian.Drops.GOLDEN_SWORD.Chance", 40);
+			npc.set("npc.Guardian.Drops.GOLDEN_SWORD.Count", 1);
+			npc.set("npc.Guardian.Drops.GOLDEN_AXE.Chance", 30);
+			npc.set("npc.Guardian.Drops.GOLDEN_AXE.Count", 1);
 			npc.set("npc.Warrior.SpawnChance", 4);
 			npc.set("npc.Warrior.HP", 40);
 			npc.set("npc.Warrior.Speed", 0.3);
-			npc.set("npc.Warrior.Drops.307.Chance", 25);
-			npc.set("npc.Warrior.Drops.307.Count", 1);
-			npc.set("npc.Warrior.Drops.306.Chance", 20);
-			npc.set("npc.Warrior.Drops.306.Count", 1);
+			npc.set("npc.Warrior.Drops.IRON_CHESTPLATE.Chance", 25);
+			npc.set("npc.Warrior.Drops.IRON_CHESTPLATE.Count", 1);
+			npc.set("npc.Warrior.Drops.IRON_HELMET.Chance", 20);
+			npc.set("npc.Warrior.Drops.IRON_HELMET.Count", 1);
 			npc.set("npc.Demon.SpawnChance", 4);
 			npc.set("npc.Demon.HP", 40);
 			npc.set("npc.Demon.Speed", 0.3);
-			npc.set("npc.Demon.Drops.322.Chance", 40);
-			npc.set("npc.Demon.Drops.322.Count", 1);
-			npc.set("npc.Demon.Drops.397.Chance", 20);
-			npc.set("npc.Demon.Drops.397.Count", 1);
+			npc.set("npc.Demon.Drops.GOLDEN_APPLE.Chance", 40);
+			npc.set("npc.Demon.Drops.GOLDEN_APPLE.Count", 1);
+			npc.set("npc.Demon.Drops.SKELETON_SKULL.Chance", 20);
+			npc.set("npc.Demon.Drops.SKELETON_SKULL.Count", 1);
 
 			try {
 				npc.save(npcF);
