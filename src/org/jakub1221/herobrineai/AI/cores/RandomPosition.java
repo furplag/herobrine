@@ -127,14 +127,16 @@ public class RandomPosition extends Core {
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.LAVA
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.GRASS
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SNOW
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.ACACIA_LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.BIRCH_LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.DARK_OAK_LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.JUNGLE_LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.OAK_LEAVES
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SPRUCE_LEAVES
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WHEAT
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.TORCH
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH_OFF
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH_ON
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.STATIONARY_WATER
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.STATIONARY_LAVA) {
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH
+						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE) {
 
 					AICore.log.info("[HerobrineAI] RandomLocation "
 							+ world.getBlockAt(randx, randy - 1, randz).getType().toString() + " is X:" + randx + " Y:"

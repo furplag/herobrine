@@ -151,20 +151,28 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 
 			AllowedBlocks.add(Material.AIR);
 			AllowedBlocks.add(Material.SNOW);
-			AllowedBlocks.add(Material.getMaterial(31));
-			AllowedBlocks.add(Material.RAILS);
-			AllowedBlocks.add(Material.getMaterial(32));
-			AllowedBlocks.add(Material.getMaterial(37));
-			AllowedBlocks.add(Material.getMaterial(38));
-			AllowedBlocks.add(Material.getMaterial(70));
-			AllowedBlocks.add(Material.getMaterial(72));
-			AllowedBlocks.add(Material.getMaterial(106));
+			AllowedBlocks.add(Material.RAIL);
+			AllowedBlocks.add(Material.ACTIVATOR_RAIL);
+			AllowedBlocks.add(Material.DETECTOR_RAIL);
+			AllowedBlocks.add(Material.POWERED_RAIL);
+			AllowedBlocks.add(Material.DEAD_BUSH);
+			AllowedBlocks.add(Material.DANDELION);
+			AllowedBlocks.add(Material.POPPY);
+			AllowedBlocks.add(Material.ACACIA_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.BIRCH_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.DARK_OAK_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.JUNGLE_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.OAK_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.SPRUCE_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.STONE_PRESSURE_PLATE);
+			AllowedBlocks.add(Material.VINE);
 			AllowedBlocks.add(Material.TORCH);
 			AllowedBlocks.add(Material.REDSTONE);
-			AllowedBlocks.add(Material.REDSTONE_TORCH_ON);
-			AllowedBlocks.add(Material.REDSTONE_TORCH_OFF);
+			AllowedBlocks.add(Material.REDSTONE_TORCH);
 			AllowedBlocks.add(Material.LEVER);
-			AllowedBlocks.add(Material.getMaterial(77));
+			AllowedBlocks.add(Material.STONE_BUTTON);
 			AllowedBlocks.add(Material.LADDER);
 
 			/*

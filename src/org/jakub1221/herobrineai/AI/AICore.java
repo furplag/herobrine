@@ -623,7 +623,7 @@ public class AICore {
 	}
 
 	public ItemStack createAncientSword() {
-		ItemStack item = new ItemStack(Material.GOLD_SWORD);
+		ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
 		String name = "Ancient Sword";
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("AncientSword");

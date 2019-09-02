@@ -1,5 +1,6 @@
 package org.jakub1221.herobrineai.NPC.NMS;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,12 +33,12 @@ public class BServer {
 	}
 
 	public void stop() {
-		mcServer.safeShutdown();
+		mcServer.safeShutdown(true);
 	}
 
 	public void sendConsoleCommand(String cmd) {
 		if (mcServer.isRunning()) {
-			((DedicatedServer) mcServer).issueCommand(cmd, mcServer);
+			((DedicatedServer) mcServer).issueCommand(cmd, mcServer.getServerCommandListener());
 		}
 	}
 
@@ -46,7 +47,10 @@ public class BServer {
 	}
 
 	public List<WorldServer> getWorldServers() {
-		return mcServer.worlds;
+		List<WorldServer> worlds = new ArrayList<>();
+		for (WorldServer world:mcServer.getWorlds())
+			worlds.add(world);
+		return worlds;
 	}
 
 	public Server getServer() {

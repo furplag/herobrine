@@ -13,9 +13,6 @@ import org.jakub1221.herobrineai.HerobrineAI;
 
 public class CmdExecutor implements CommandExecutor {
 
-	@Deprecated
-	private HerobrineAI P_Core = null;
-
 	private Logger log = null;
 	private HashMap<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
 	private String[] helpCommandOrder = {

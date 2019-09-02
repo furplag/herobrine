@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.Utils;
 
+import net.minecraft.server.v1_14_R1.ChatComponentText;
 import net.minecraft.server.v1_14_R1.GenericAttributes;
 import net.minecraft.server.v1_14_R1.World;
 
@@ -29,19 +30,19 @@ public class CustomZombie extends net.minecraft.server.v1_14_R1.EntityZombie imp
 
 	private void spawnArtifactGuardian(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.c).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
-		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
+		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
+		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 		this.setHealth(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 
-		this.setCustomName("Artifact Guardian");
+		this.setCustomName(new ChatComponentText("Artifact Guardian"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 
-		entityCast.getEquipment().setItemInMainHand(new ItemStack(Material.GOLD_SWORD, 1));
-		entityCast.getEquipment().setHelmet(new ItemStack(Material.GOLD_HELMET, 1));
-		entityCast.getEquipment().setChestplate(new ItemStack(Material.GOLD_CHESTPLATE, 1));
-		entityCast.getEquipment().setLeggings(new ItemStack(Material.GOLD_LEGGINGS, 1));
-		entityCast.getEquipment().setBoots(new ItemStack(Material.GOLD_BOOTS, 1));
+		entityCast.getEquipment().setItemInMainHand(new ItemStack(Material.GOLDEN_SWORD, 1));
+		entityCast.getEquipment().setHelmet(new ItemStack(Material.GOLDEN_HELMET, 1));
+		entityCast.getEquipment().setChestplate(new ItemStack(Material.GOLDEN_CHESTPLATE, 1));
+		entityCast.getEquipment().setLeggings(new ItemStack(Material.GOLDEN_LEGGINGS, 1));
+		entityCast.getEquipment().setBoots(new ItemStack(Material.GOLDEN_BOOTS, 1));
 
 		this.getBukkitEntity().teleport(loc);
 
@@ -49,11 +50,11 @@ public class CustomZombie extends net.minecraft.server.v1_14_R1.EntityZombie imp
 
 	private void spawnHerobrineWarrior(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.c).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
-		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
+		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
+		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 		this.setHealth(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 
-		this.setCustomName("Herobrine Warrior");
+		this.setCustomName(new ChatComponentText("Herobrine Warrior"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 
