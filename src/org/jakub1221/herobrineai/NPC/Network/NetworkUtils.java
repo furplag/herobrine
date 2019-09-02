@@ -10,11 +10,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class NetworkUtils {
-	public static void sendPacketNearby(Location location, Packet packet) {
+	public static void sendPacketNearby(Location location, Packet<?> packet) {
 		sendPacketNearby(location, packet, 64);
 	}
 
-	public static void sendPacketNearby(Location location, Packet packet, double radius) {
+	public static void sendPacketNearby(Location location, Packet<?> packet, double radius) {
 		radius *= radius;
 		final World world = location.getWorld();
 		for (Player player : Bukkit.getOnlinePlayers()) {

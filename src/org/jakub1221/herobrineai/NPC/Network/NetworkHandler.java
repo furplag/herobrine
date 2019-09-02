@@ -18,7 +18,7 @@ public class NetworkHandler extends PlayerConnection {
 	}
 
 	@Override
-	public void sendPacket(final Packet packet) {
+	public void sendPacket(final Packet<?> packet) {
 		
 	}
 

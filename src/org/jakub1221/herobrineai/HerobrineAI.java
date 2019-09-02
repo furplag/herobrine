@@ -207,7 +207,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			// Support initialize
 			this.support = new Support();
 
-			Class[] argst = new Class[3];
+			Class<?>[] argst = new Class[3];
 			argst[0] = Class.class;
 			argst[1] = String.class;
 			argst[2] = int.class;

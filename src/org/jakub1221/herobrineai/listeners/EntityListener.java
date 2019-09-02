@@ -193,12 +193,12 @@ public class EntityListener implements Listener {
 									HerobrineDropItems();
 
 									PluginCore.getAICore().CancelTarget(CoreType.ANY);
-									PluginCore.HerobrineHP = PluginCore.HerobrineMaxHP;
+									HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
 									Player player = (Player) arrow.getShooter();
 									player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 								} else {
-									PluginCore.HerobrineHP -= event.getDamage();
+									HerobrineAI.HerobrineHP -= event.getDamage();
 									PluginCore.HerobrineNPC.HurtAnimation();
 									AICore.log.info("HIT: " + event.getDamage());
 								}
