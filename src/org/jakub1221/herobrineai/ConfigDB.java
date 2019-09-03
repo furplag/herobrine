@@ -92,7 +92,7 @@ public class ConfigDB {
 	public File npcF = new File("plugins/Herobrine/npc.yml");
 
 	public void Startup() {
-		new File("plugins/HerobrineAI").mkdirs();
+		new File("plugins/Herobrine").mkdirs();
 
 		if (!configF.exists())
 			try {

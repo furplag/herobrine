@@ -53,7 +53,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 	
 	public static String versionStr = "UNDEFINED";
 	public static boolean isNPCDisabled = false;
-	public static String bukkit_ver_string = "1.11.1";
+	public static String bukkit_ver_string = "1.14.4";
 	public static int HerobrineHP = 200;
 	public static int HerobrineMaxHP = 200;
 	public static final boolean isDebugging = false;
@@ -72,7 +72,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		boolean errorCheck = true;
 
 		try {
-			Class.forName("net.minecraft.server.v1_11_R1.Entity");
+			Class.forName("net.minecraft.server.v1_14_R1.EntityTypes");
 		} catch (ClassNotFoundException e) {
 			errorCheck = false;
 			isInitDone = false;
