@@ -1,6 +1,5 @@
 package org.jakub1221.herobrineai;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +35,11 @@ import org.jakub1221.herobrineai.listeners.EntityListener;
 import org.jakub1221.herobrineai.listeners.InventoryListener;
 import org.jakub1221.herobrineai.listeners.PlayerListener;
 import org.jakub1221.herobrineai.listeners.WorldListener;
+
+import net.minecraft.server.v1_15_R1.Entity;
+import net.minecraft.server.v1_15_R1.EntityTypes;
+import net.minecraft.server.v1_15_R1.EnumCreatureType;
+import net.minecraft.server.v1_15_R1.IRegistry;
 
 public class HerobrineAI extends JavaPlugin implements Listener {
 
@@ -214,17 +218,8 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 
 			if (!isNPCDisabled) {
 				try {
-					@SuppressWarnings("rawtypes")
-					Class[] args = new Class[3];
-					args[0] = Class.class;
-					args[1] = String.class;
-					args[2] = int.class;
-
-					Method a = net.minecraft.server.v1_15_R1.EntityTypes.class.getDeclaredMethod("a", args);
-					a.setAccessible(true);
-
-					a.invoke(a, CustomZombie.class, "Zombie", 54);
-					a.invoke(a, CustomSkeleton.class, "Skeleton", 51);
+					addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
+					addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
 				} catch (Exception e) {
 					e.printStackTrace();
 					this.setEnabled(false);
@@ -387,6 +382,13 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		} else {
 			return "No";
 		}
+	}
+	
+	// https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
+	private static <T extends Entity> void addCustomEntity(String customName, EntityTypes.b<T> _func, EnumCreatureType enumCreatureType) {
+		EntityTypes.a<?> entity = EntityTypes.a.a(_func, enumCreatureType);
+		entity.b();
+		IRegistry.a(IRegistry.ENTITY_TYPE, customName, entity.a(customName));
 	}
 
 }

@@ -9,15 +9,21 @@ import org.bukkit.inventory.ItemStack;
 import org.jakub1221.herobrineai.HerobrineAI;
 
 import net.minecraft.server.v1_15_R1.ChatComponentText;
+import net.minecraft.server.v1_15_R1.Entity;
+import net.minecraft.server.v1_15_R1.EntityTypes;
 import net.minecraft.server.v1_15_R1.GenericAttributes;
 import net.minecraft.server.v1_15_R1.World;
 
 public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie implements CustomEntity {
 
 	private MobType mobType = null;
+	
+	public CustomZombie(EntityTypes<? extends Entity> entitytypes, World world) {
+		super(EntityTypes.ZOMBIE, world);
+	}
 
 	public CustomZombie(World world, Location loc, MobType mbt) {
-		super(world);
+		super(EntityTypes.ZOMBIE, world);
 		this.mobType = mbt;
 		if (mbt == MobType.ARTIFACT_GUARDIAN) {
 			spawnArtifactGuardian(loc);
@@ -67,7 +73,8 @@ public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie imp
 	}
 
 	public CustomZombie(World world) {
-		super(world);
+		super(EntityTypes.ZOMBIE, world);
+		mobType = null;
 	}
 
 	@Override

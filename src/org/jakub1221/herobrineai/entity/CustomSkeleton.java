@@ -12,6 +12,7 @@ import org.jakub1221.herobrineai.HerobrineAI;
 import org.jakub1221.herobrineai.misc.ItemName;
 
 import net.minecraft.server.v1_15_R1.ChatComponentText;
+import net.minecraft.server.v1_15_R1.Entity;
 import net.minecraft.server.v1_15_R1.EntityTypes;
 import net.minecraft.server.v1_15_R1.GenericAttributes;
 import net.minecraft.server.v1_15_R1.World;
@@ -19,6 +20,10 @@ import net.minecraft.server.v1_15_R1.World;
 public class CustomSkeleton extends net.minecraft.server.v1_15_R1.EntitySkeleton implements CustomEntity {
 
 	private MobType mobType = null;
+	
+	public CustomSkeleton(EntityTypes<? extends Entity> entitytypes, World world) {
+		super(EntityTypes.SKELETON, world);
+	}
 
 	public CustomSkeleton(World world, Location loc, MobType mbt) {
 		super(EntityTypes.SKELETON, world);
