@@ -3,7 +3,7 @@ main: org.jakub1221.herobrineai.HerobrineAI
 version: 2.0.0
 description: "Bring Herobrine to your Spigot-based Minecraft server!"
 website: https://www.theprogrammersworld.net
-api-version: 1.14
+api-version: 1.15
 load: STARTUP
 commands:
     herobrine:
