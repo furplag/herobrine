@@ -6,7 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/spigot-1.14.4.jar"/>
 	<classpathentry kind="lib" path="libs/Factions.jar"/>
 	<classpathentry kind="lib" path="libs/GriefPrevention.jar"/>
 	<classpathentry kind="lib" path="libs/MassiveCore.jar"/>
@@ -17,5 +16,6 @@
 	<classpathentry kind="lib" path="libs/WorldEdit.jar"/>
 	<classpathentry kind="lib" path="libs/WorldGuard.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/spigot-1.15.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

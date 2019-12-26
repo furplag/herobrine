@@ -2,9 +2,9 @@ package org.jakub1221.herobrineai.NPC.Network;
 
 import org.jakub1221.herobrineai.NPC.NPCCore;
 
-import net.minecraft.server.v1_14_R1.EntityPlayer;
-import net.minecraft.server.v1_14_R1.Packet;
-import net.minecraft.server.v1_14_R1.PlayerConnection;
+import net.minecraft.server.v1_15_R1.EntityPlayer;
+import net.minecraft.server.v1_15_R1.Packet;
+import net.minecraft.server.v1_15_R1.PlayerConnection;
 
 public class NetworkHandler extends PlayerConnection {
 

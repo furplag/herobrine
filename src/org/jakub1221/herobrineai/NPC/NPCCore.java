@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import net.minecraft.server.v1_14_R1.Entity;
-import net.minecraft.server.v1_14_R1.PlayerInteractManager;
+import net.minecraft.server.v1_15_R1.Entity;
+import net.minecraft.server.v1_15_R1.PlayerInteractManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

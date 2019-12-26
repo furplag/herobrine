@@ -220,7 +220,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 					args[1] = String.class;
 					args[2] = int.class;
 
-					Method a = net.minecraft.server.v1_14_R1.EntityTypes.class.getDeclaredMethod("a", args);
+					Method a = net.minecraft.server.v1_15_R1.EntityTypes.class.getDeclaredMethod("a", args);
 					a.setAccessible(true);
 
 					a.invoke(a, CustomZombie.class, "Zombie", 54);
