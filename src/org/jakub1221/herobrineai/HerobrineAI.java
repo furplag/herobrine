@@ -362,8 +362,8 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		}
 	}
 	
-	// https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
 	private static <T extends Entity> void addCustomEntity(String customName, EntityTypes.b<T> _func, EnumCreatureType enumCreatureType) {
+		// Registers a custom entity. Adapted from https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
 		EntityTypes.a<?> entity = EntityTypes.a.a(_func, enumCreatureType);
 		entity.b();
 		IRegistry.a(IRegistry.ENTITY_TYPE, customName, entity.a(customName));
