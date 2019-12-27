@@ -72,144 +72,128 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		
 		PluginDescriptionFile pdf = this.getDescription();
 		versionStr = pdf.getVersion();
+		
+		isInitDone = true;
+		
+		HerobrineAI.pluginCore = this;
+		
+		this.configdb = new ConfigDB(log);
 
-		boolean errorCheck = true;
+		this.NPCman = new NPCCore(this);
 
-		try {
-			Class.forName("net.minecraft.server.v1_15_R1.EntityTypes");
-		} catch (ClassNotFoundException e) {
-			errorCheck = false;
-			isInitDone = false;
+		getServer().getPluginManager().registerEvents(new EntityListener(this), this);
+		getServer().getPluginManager().registerEvents(new BlockListener(), this);
+		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+		getServer().getPluginManager().registerEvents(new WorldListener(), this);
+
+		// Initialize PathManager
+
+		this.pathMng = new PathManager();
+
+		// Initialize AICore
+
+		this.aicore = new AICore();
+
+		// Initialize EntityManager
+
+		this.entMng = new EntityManager();
+
+		// Config loading
+
+		configdb.Startup();
+		configdb.Reload();
+
+		// Spawn Herobrine
+
+		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
+				(float) 0);
+		nowloc.setYaw((float) 1);
+		nowloc.setPitch((float) 1);
+		HerobrineSpawn(nowloc);
+
+		HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
+
+		// Graveyard World
+
+		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrineai_graveyard") == null) {
+			log.info("[HerobrineAI] Creating Graveyard world...");
+			
+			WorldCreator wc = new WorldCreator("world_herobrineai_graveyard");
+			wc.generateStructures(false);
+			org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
+			wc.type(type);
+			wc.createWorld();
+			
+			GraveyardWorld.Create();
 		}
-		if (errorCheck) {
-			
-			isInitDone = true;
-			
-			HerobrineAI.pluginCore = this;
-			
-			this.configdb = new ConfigDB(log);
+		log.info("[HerobrineAI] Plugin loaded! Version: ");
 
-			this.NPCman = new NPCCore(this);
+		// Init Block Types
 
-			getServer().getPluginManager().registerEvents(new EntityListener(this), this);
-			getServer().getPluginManager().registerEvents(new BlockListener(), this);
-			getServer().getPluginManager().registerEvents(new InventoryListener(), this);
-			getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-			getServer().getPluginManager().registerEvents(new WorldListener(), this);
+		AllowedBlocks.add(Material.AIR);
+		AllowedBlocks.add(Material.SNOW);
+		AllowedBlocks.add(Material.RAIL);
+		AllowedBlocks.add(Material.ACTIVATOR_RAIL);
+		AllowedBlocks.add(Material.DETECTOR_RAIL);
+		AllowedBlocks.add(Material.POWERED_RAIL);
+		AllowedBlocks.add(Material.DEAD_BUSH);
+		AllowedBlocks.add(Material.DANDELION);
+		AllowedBlocks.add(Material.POPPY);
+		AllowedBlocks.add(Material.ACACIA_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.BIRCH_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.DARK_OAK_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.JUNGLE_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.OAK_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.SPRUCE_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.STONE_PRESSURE_PLATE);
+		AllowedBlocks.add(Material.VINE);
+		AllowedBlocks.add(Material.TORCH);
+		AllowedBlocks.add(Material.REDSTONE);
+		AllowedBlocks.add(Material.REDSTONE_TORCH);
+		AllowedBlocks.add(Material.LEVER);
+		AllowedBlocks.add(Material.STONE_BUTTON);
+		AllowedBlocks.add(Material.LADDER);
 
-			// Initialize PathManager
-
-			this.pathMng = new PathManager();
-
-			// Initialize AICore
-
-			this.aicore = new AICore();
-
-			// Initialize EntityManager
-
-			this.entMng = new EntityManager();
-
-			// Config loading
-
-			configdb.Startup();
-			configdb.Reload();
-
-			// Spawn Herobrine
-
-			Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
-					(float) 0);
-			nowloc.setYaw((float) 1);
-			nowloc.setPitch((float) 1);
-			HerobrineSpawn(nowloc);
-
-			HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
-
-			// Graveyard World
-
-			if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrineai_graveyard") == null) {
-				log.info("[HerobrineAI] Creating Graveyard world...");
-				
-				WorldCreator wc = new WorldCreator("world_herobrineai_graveyard");
-				wc.generateStructures(false);
-				org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
-				wc.type(type);
-				wc.createWorld();
-				
-				GraveyardWorld.Create();
+		pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				if (Utils.getRandomGen().nextInt(4) == 2 && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow()
+						.equals(CoreType.RANDOM_POSITION)) {
+					pathMng.setPath(new Path(Utils.getRandomGen().nextInt(15) - 7f, Utils.getRandomGen().nextInt(15) - 7f, HerobrineAI.getPluginCore()));
+				}
 			}
-			log.info("[HerobrineAI] Plugin loaded! Version: ");
+		}, 1 * 200L, 1 * 200L);
 
-			// Init Block Types
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				pathMng.update();
+			}
+		}, 1 * 5L, 1 * 5L);
 
-			AllowedBlocks.add(Material.AIR);
-			AllowedBlocks.add(Material.SNOW);
-			AllowedBlocks.add(Material.RAIL);
-			AllowedBlocks.add(Material.ACTIVATOR_RAIL);
-			AllowedBlocks.add(Material.DETECTOR_RAIL);
-			AllowedBlocks.add(Material.POWERED_RAIL);
-			AllowedBlocks.add(Material.DEAD_BUSH);
-			AllowedBlocks.add(Material.DANDELION);
-			AllowedBlocks.add(Material.POPPY);
-			AllowedBlocks.add(Material.ACACIA_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.BIRCH_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.DARK_OAK_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.JUNGLE_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.OAK_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.SPRUCE_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.STONE_PRESSURE_PLATE);
-			AllowedBlocks.add(Material.VINE);
-			AllowedBlocks.add(Material.TORCH);
-			AllowedBlocks.add(Material.REDSTONE);
-			AllowedBlocks.add(Material.REDSTONE_TORCH);
-			AllowedBlocks.add(Material.LEVER);
-			AllowedBlocks.add(Material.STONE_BUTTON);
-			AllowedBlocks.add(Material.LADDER);
+		// Command Executors
+		this.getCommand("hb").setExecutor((CommandExecutor) new CmdExecutor(this));
+		this.getCommand("hb-ai").setExecutor((CommandExecutor) new CmdExecutor(this));
 
-			pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-				public void run() {
-					if (Utils.getRandomGen().nextInt(4) == 2 && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow()
-							.equals(CoreType.RANDOM_POSITION)) {
-						pathMng.setPath(new Path(Utils.getRandomGen().nextInt(15) - 7f, Utils.getRandomGen().nextInt(15) - 7f, HerobrineAI.getPluginCore()));
-					}
-				}
-			}, 1 * 200L, 1 * 200L);
+		// Support initialize
+		this.support = new Support();
 
-			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-				public void run() {
-					pathMng.update();
-				}
-			}, 1 * 5L, 1 * 5L);
+		Class<?>[] argst = new Class[3];
+		argst[0] = Class.class;
+		argst[1] = String.class;
+		argst[2] = int.class;
 
-			// Command Executors
-			this.getCommand("hb").setExecutor((CommandExecutor) new CmdExecutor(this));
-			this.getCommand("hb-ai").setExecutor((CommandExecutor) new CmdExecutor(this));
-
-			// Support initialize
-			this.support = new Support();
-
-			Class<?>[] argst = new Class[3];
-			argst[0] = Class.class;
-			argst[1] = String.class;
-			argst[2] = int.class;
-
-			if (!isNPCDisabled) {
-				try {
-					addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
-					addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
-				} catch (Exception e) {
-					e.printStackTrace();
-					this.setEnabled(false);
-				}
-			} else {
-				log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
+		if (!isNPCDisabled) {
+			try {
+				addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
+				addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
+			} catch (Exception e) {
+				e.printStackTrace();
+				this.setEnabled(false);
 			}
 		} else {
-			log.warning("[HerobrineAI] ******************ERROR******************");
-			log.warning("[HerobrineAI] This version is only compatible with bukkit version " + bukkit_ver_string);
-			log.warning("[HerobrineAI] *****************************************");
-			this.setEnabled(false);
+			log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
 		}
 	}
 
