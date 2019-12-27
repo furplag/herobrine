@@ -167,28 +167,6 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			AllowedBlocks.add(Material.STONE_BUTTON);
 			AllowedBlocks.add(Material.LADDER);
 
-			/*
-			 * Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this,
-			 * new Runnable() { public void run() {
-			 * 
-			 * for (int i = 0;i<=configdb.useWorlds.size()-1;i++){ if
-			 * (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().
-			 * getWorld(configdb.useWorlds.get(i)))){AvailableWorld=true;} } if
-			 * (AvailableWorld==false){ log.warning(
-			 * "**********************************************************");
-			 * log.
-			 * warning("[HerobrineAI] There are no available worlds for Herobrine!"
-			 * ); log.warning(
-			 * "**********************************************************");
-			 * }else{ log.info(
-			 * "**********************************************************");
-			 * log.info("[HerobrineAI] No problems detected."); log.info(
-			 * "**********************************************************"); }
-			 * 
-			 * 
-			 * } }, 1 * 1L);
-			 */
-
 			pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 				public void run() {
 					if (Utils.getRandomGen().nextInt(4) == 2 && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow()
