@@ -632,18 +632,18 @@ public class AICore {
 		ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
 		String name = "Ancient Sword";
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("AncientSword");
-		lore.add("Very old and mysterious sword.");
-		lore.add("It protects you aganist Herobrine.");
+		lore.add("Ancient Sword");
+		lore.add("A very old and mysterious sword");
+		lore.add("that protects aganist Herobrine.");
 		item = ItemName.setNameAndLore(item, name, lore);
 		return item;
 	}
 
 	public boolean isAncientSword(ItemStack item) {
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("AncientSword");
-		lore.add("Very old and mysterious sword.");
-		lore.add("It protects you aganist Herobrine.");
+		lore.add("Ancient Sword");
+		lore.add("A very old and mysterious sword");
+		lore.add("that protects aganist Herobrine.");
 		if (item != null) {
 			if (item.getItemMeta() != null) {
 				if (item.getItemMeta().getLore() != null) {

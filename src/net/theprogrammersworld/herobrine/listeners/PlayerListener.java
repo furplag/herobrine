@@ -42,7 +42,7 @@ public class PlayerListener implements Listener {
 
 	public PlayerListener(Herobrine plugin) {
 		equalsLoreS.add("Herobrine artifact");
-		equalsLoreS.add("Sword of Lighting");
+		equalsLoreS.add("Sword of Lightning");
 		equalsLoreA.add("Herobrine artifact");
 		equalsLoreA.add("Apple of Death");
 		PluginCore = plugin;

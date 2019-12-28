@@ -46,7 +46,7 @@ public class EntityListener implements Listener {
 		equalsLore.add("Herobrine artifact");
 		equalsLore.add("Bow of Teleporting");
 		equalsLoreS.add("Herobrine artifact");
-		equalsLoreS.add("Sword of Lighting");
+		equalsLoreS.add("Sword of Lightning");
 		PluginCore = plugin;
 	}
 

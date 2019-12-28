@@ -197,7 +197,7 @@ public class Temple extends Core {
 			if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
 				
 				item = new ItemStack(Material.BOW);
-				newLore.add("Herobrine�s artifact");
+				newLore.add("Herobrine artifact");
 				newLore.add("Bow of Teleporting");
 				item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
 				item.addEnchantment(Enchantment.ARROW_FIRE, 1);
@@ -206,9 +206,9 @@ public class Temple extends Core {
 			} else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
 				
 				item = new ItemStack(Material.DIAMOND_SWORD);
-				newLore.add("Herobrine�s artifact");
-				newLore.add("Sword of Lighting");
-				item = ItemName.setNameAndLore(item, "Sword of Lighting", newLore);
+				newLore.add("Herobrine artifact");
+				newLore.add("Sword of Lightning");
+				item = ItemName.setNameAndLore(item, "Sword of Lightning", newLore);
 				item.addEnchantment(Enchantment.KNOCKBACK, 2);
 				item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
 				item.addEnchantment(Enchantment.DURABILITY, 3);
@@ -216,7 +216,7 @@ public class Temple extends Core {
 			} else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
 				
 				item = new ItemStack(Material.GOLDEN_APPLE);
-				newLore.add("Herobrine�s artifact");
+				newLore.add("Herobrine artifact");
 				newLore.add("Apple of Death");
 				item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
