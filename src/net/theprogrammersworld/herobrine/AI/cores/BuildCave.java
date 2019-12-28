@@ -126,7 +126,7 @@ public class BuildCave extends Core {
 					loc.getWorld().getBlockAt(baseX, baseY + 1, baseZ).breakNaturally(null);
 					
 					if (rand.nextBoolean()) {
-						redstoneTorchList.add(new Location(loc.getWorld(), baseX, baseY + 1, baseZ));
+						redstoneTorchList.add(new Location(loc.getWorld(), baseX, baseY, baseZ));
 					}
 				}
 			}
