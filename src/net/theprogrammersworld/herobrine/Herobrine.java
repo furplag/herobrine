@@ -101,12 +101,6 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 		this.NPCman = new NPCCore(this);
 
-		getServer().getPluginManager().registerEvents(new EntityListener(this), this);
-		getServer().getPluginManager().registerEvents(new BlockListener(), this);
-		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
-		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-		getServer().getPluginManager().registerEvents(new WorldListener(), this);
-
 		// Initialize PathManager
 
 		this.pathMng = new PathManager();
@@ -147,6 +141,13 @@ public class Herobrine extends JavaPlugin implements Listener {
 			
 			GraveyardWorld.Create();
 		}
+		
+		getServer().getPluginManager().registerEvents(new EntityListener(this), this);
+		getServer().getPluginManager().registerEvents(new BlockListener(), this);
+		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+		getServer().getPluginManager().registerEvents(new WorldListener(), this);
+		
 		log.info("[Herobrine] Plugin loaded! Version: ");
 
 		// Init Block Types
