@@ -23,44 +23,58 @@ public class BuryPlayer extends Core {
 	public CoreResult CallCore(Object[] data) {
 		return FindPlace((Player) data[0]);
 	}
-
-	public CoreResult FindPlace(Player player){
-        if(Herobrine.getPluginCore().getSupport().checkBuild(player.getLocation())){	
-			Location loc = (Location) player.getLocation();
-			
-			int[][] blocks = {
-								{-1, 0},
-								{-2, 0},
-								{-1,-1},
-								{-2,-1},
-								{-3, 0},
-								{-3,-1},
-								{-1,-1},
-								{-2,-1},
-								{-1,-2},
-								{ 0,-2},
-								
-							};
-			
-			for (int i = 0; i < blocks.length; i++){
-				
-				Material mat = loc.getWorld().getBlockAt(
-						  	  							loc.getBlockX(), 
-														loc.getBlockY() + blocks[i][0], 
-														loc.getBlockZ() + blocks[i][1]
-														).getType();
-				
-				if(!mat.isSolid())
-					return new CoreResult(false,"Cannot find suitable location!");
-					
+	
+	public CoreResult FindPlace(final Player player) {
+		if (Herobrine.getPluginCore().getSupport().checkBuild(player.getLocation())) {
+			final Location loc = player.getLocation();
+			if (isSolidBlock(
+					loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ()).getType())
+					&& isSolidBlock(
+							loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ()).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 1).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ() - 1).getType())
+					&& isSolidBlock(
+							loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 3, loc.getBlockZ()).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 3, loc.getBlockZ() - 1).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 1).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ() - 1).getType())
+					&& isSolidBlock(loc.getWorld()
+							.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 2).getType())) {
+				if (Herobrine.getPluginCore().getSupport().checkBuild(
+						loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ()).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ()).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 1).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ() - 1).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 3, loc.getBlockZ()).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 3, loc.getBlockZ() - 1).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 1).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 2, loc.getBlockZ() - 1).getLocation())
+						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
+								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 2).getLocation())) {
+					Bury(loc.getWorld(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), player);
+					return new CoreResult(true, player.getDisplayName() + " was buried by Herobrine.");
+				} else {
+					return new CoreResult(false, "Player in protect zone,You can't bury him.");
+				}
 			}
-			
-		  
-			Bury(loc.getWorld(),loc.getBlockX(),loc.getBlockY(),loc.getBlockZ(),player);
-			return new CoreResult(true,"Player buried!");
-        }
-        
-        return new CoreResult(false,"Cannot find suitable location!");
+		} else {
+			return new CoreResult(false, player.getDisplayName()
+					+ " could not be buried because a good burial location could not be found.");
+		}
+		return new CoreResult(false,
+				player.getDisplayName() + " could not be buried because a good burial location could not be found.");
 	}
 
 	public void Bury(World world, int X, int Y, int Z, Player player) {
@@ -88,6 +102,10 @@ public class BuryPlayer extends Core {
 		sign.update();
 		loc.getWorld().getBlockAt(X, Y - 1, Z).setType(Material.STONE_BRICKS, false);
 		loc.getWorld().getBlockAt(X, Y - 1, Z - 1).setType(Material.STONE_BRICKS, false);
+	}
+	
+	private boolean isSolidBlock(Material m) {
+		return m.isSolid();
 	}
 
 }
