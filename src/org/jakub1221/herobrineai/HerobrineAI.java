@@ -15,7 +15,9 @@ import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -68,8 +70,26 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 
 	public static Logger log = Logger.getLogger("Minecraft");
 
+	@Override
 	public void onEnable() {
+		// Custom Entity Injection
+		if (!isNPCDisabled) {
+			try {
+				addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
+				addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
+			} catch (Exception e) {
+				e.printStackTrace();
+				this.setEnabled(false);
+			}
+		} else {
+			log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
+		}
 		
+		getServer().getPluginManager().registerEvents(this, this);
+	}
+	
+	@EventHandler
+	public void onServerLoad(ServerLoadEvent event) {
 		PluginDescriptionFile pdf = this.getDescription();
 		versionStr = pdf.getVersion();
 		
@@ -178,25 +198,9 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 
 		// Support initialize
 		this.support = new Support();
-
-		Class<?>[] argst = new Class[3];
-		argst[0] = Class.class;
-		argst[1] = String.class;
-		argst[2] = int.class;
-
-		if (!isNPCDisabled) {
-			try {
-				addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
-				addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
-			} catch (Exception e) {
-				e.printStackTrace();
-				this.setEnabled(false);
-			}
-		} else {
-			log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
-		}
 	}
 
+	@Override
 	public void onDisable() {
 
 		if (isInitDone) {
