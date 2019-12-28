@@ -6,10 +6,13 @@ import net.minecraft.server.v1_15_R1.PacketPlayInArmAnimation;
 import net.minecraft.server.v1_15_R1.PlayerChunkMap;
 import net.minecraft.server.v1_15_R1.WorldServer;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.jakub1221.herobrineai.HerobrineAI;
 
 public class HumanNPC {
 
@@ -67,6 +70,13 @@ public class HumanNPC {
 
 	public void Teleport(Location loc) {
 		getEntity().getBukkitEntity().teleport(loc);
+		
+		// After Herobrine moves, check if any players are in Herobrine's line of sight.
+		boolean doActivationTeleport = false;
+		for(Player p : Bukkit.getOnlinePlayers())
+			doActivationTeleport = doActivationTeleport || HerobrineAI.getPluginCore().getAICore().toggleHerobrinePlayerVisibilityNoTeleport(p);
+		if(doActivationTeleport)
+			HerobrineAI.getPluginCore().getAICore().visibilityActivationTeleport();
 	}
 
 	public PlayerInventory getInventory() {

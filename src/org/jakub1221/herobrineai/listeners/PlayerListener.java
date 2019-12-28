@@ -17,7 +17,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -46,11 +45,6 @@ public class PlayerListener implements Listener {
 		equalsLoreA.add("Herobrine artifact");
 		equalsLoreA.add("Apple of Death");
 		PluginCore = plugin;
-	}
-	
-	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
-		PluginCore.getAICore().showHerobrine(event.getPlayer());
 	}
 
 	@EventHandler
@@ -247,6 +241,10 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onPlayerMoveEvent(PlayerMoveEvent event) {
+		// Dynamically toggle Herobrine's visibility to players as a workaround to the persistent tab list entry.
+		PluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
+		
+		// Prevent player from moving when in Herobrine's Graveyard.
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld("world_herobrineai_graveyard")) {
 				Player player = (Player) event.getPlayer();

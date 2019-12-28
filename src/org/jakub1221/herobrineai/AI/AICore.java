@@ -1,6 +1,7 @@
 package org.jakub1221.herobrineai.AI;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -67,6 +68,7 @@ public class AICore {
 	private int MAIN_INT = 0;
 	private int BD_INT = 0;
 	private int RC_INT = 0;
+	private HashSet<Player> visibilityList = new HashSet<>();
 
 	public Core getCore(CoreType type) {
 		for (Core c : AllCores) {
@@ -670,10 +672,40 @@ public class AICore {
 
 		return false;
 	}
-
 	
-	public void showHerobrine(Player p) {
-		EntityPlayer pcon = ((CraftPlayer) p).getHandle();
-		pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, HerobrineAI.getPluginCore().HerobrineNPC.getEntity()));
+	public boolean toggleHerobrinePlayerVisibilityNoTeleport(Player p) {
+		// Toggles the visibility of Herobrine for the given player. This function does not perform the "visibility activation teleport".
+		// If an activiation teleport should be performed, returns true, otherwise, false.
+		boolean playerCanSeeHerobrine = p.hasLineOfSight(HerobrineAI.getPluginCore().HerobrineNPC.getBukkitEntity());
+		if(playerCanSeeHerobrine && !visibilityList.contains(p)) {
+			// If player p can see Herobrine but visibilty is not already enabled, then enable it.
+			EntityPlayer pcon = ((CraftPlayer) p).getHandle();
+			pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, HerobrineAI.getPluginCore().HerobrineNPC.getEntity()));
+			visibilityList.add(p);
+			return true;
+		}
+		else if(!playerCanSeeHerobrine && visibilityList.contains(p)) {
+			// If player p cannot see Herobrine but visibility is still enabled, then disable it.
+			EntityPlayer pcon = ((CraftPlayer) p).getHandle();
+			pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.REMOVE_PLAYER, HerobrineAI.getPluginCore().HerobrineNPC.getEntity()));
+			visibilityList.remove(p);
+		}
+		return false;
+	}
+	
+	public void visibilityActivationTeleport() {
+		// Makes Herobrine visible to players that should be able to see him by quickly teleporting him out of the map and back to where he previously was.
+		Location original = HerobrineAI.getPluginCore().HerobrineNPC.getBukkitEntity().getLocation();
+		HerobrineAI.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
+		HerobrineAI.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(original);
+	}
+	
+	public void toggleHerobrinePlayerVisibility(Player p) {
+		// Toggles the visibility of Herobrine for the given player. Most of the work is passed off to toggleHerobrinePlayerVisibilityNoTeleport().
+		if(toggleHerobrinePlayerVisibilityNoTeleport(p)) {
+			// If toggleHerobrinePlayerVisibilityNoTeleport() retured true, Herobrine will appear in the tab list, but to appear to the player, he cannot
+			// already be in the line of sight. To work around this, teleport Herobrine out of the line of sight and then teleport him back.
+			visibilityActivationTeleport();
+		}
 	}
 }
