@@ -163,12 +163,12 @@ public class ConfigDB {
 		if (!config.contains("config.ShowRate")) {
 
 			useWorlds.add("world");
-			useMessages.add("Even Notch can�t save you now!");
+			useMessages.add("Even Notch can't save you now!");
 			useMessages.add("Fear me!");
 			useMessages.add("Welcome to my world!");
 			useMessages.add("I am your death!");
 			useMessages.add("Grave awaits you!");
-			useSignMessages.add("I�m watching.");
+			useSignMessages.add("I'm watching.");
 			useSignMessages.add("Death...");
 			useSignMessages.add("Eyes in dark...");
 			useBookMessages.add("White eyes in dark...");
@@ -379,7 +379,7 @@ public class ConfigDB {
 		ArrayList<String> allWorlds = new ArrayList<String>();
 		List<World> worlds_ = Bukkit.getWorlds();
 		for (int i = 0; i <= worlds_.size() - 1; i++) {
-			if (!worlds_.get(i).getName().equalsIgnoreCase("world_herobrineai_graveyard")) {
+			if (!worlds_.get(i).getName().equalsIgnoreCase("world_herobrine_graveyard")) {
 				allWorlds.add(worlds_.get(i).getName());
 			}
 		}
