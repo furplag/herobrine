@@ -17,6 +17,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -45,6 +46,11 @@ public class PlayerListener implements Listener {
 		equalsLoreA.add("Herobrine artifact");
 		equalsLoreA.add("Apple of Death");
 		PluginCore = plugin;
+	}
+	
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+		PluginCore.getAICore().showHerobrine(event.getPlayer());
 	}
 
 	@EventHandler

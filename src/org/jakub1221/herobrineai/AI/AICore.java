@@ -7,6 +7,7 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -33,6 +34,10 @@ import org.jakub1221.herobrineai.AI.cores.Temple;
 import org.jakub1221.herobrineai.AI.cores.Totem;
 import org.jakub1221.herobrineai.entity.MobType;
 import org.jakub1221.herobrineai.misc.ItemName;
+
+import net.minecraft.server.v1_15_R1.EntityPlayer;
+import net.minecraft.server.v1_15_R1.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_15_R1.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
 
 public class AICore {
 
@@ -666,4 +671,9 @@ public class AICore {
 		return false;
 	}
 
+	
+	public void showHerobrine(Player p) {
+		EntityPlayer pcon = ((CraftPlayer) p).getHandle();
+		pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, HerobrineAI.getPluginCore().HerobrineNPC.getEntity()));
+	}
 }
