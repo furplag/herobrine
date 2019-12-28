@@ -6,14 +6,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
 public class Curse extends Core {
 
 	public Curse() {
-		super(CoreType.CURSE, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.CURSE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class Curse extends Core {
 		player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 1000, 1));
 
 		for (int i=0; i< 3 ; i++) {
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 
 				@Override
 				public void run() {

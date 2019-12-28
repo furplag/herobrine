@@ -12,7 +12,7 @@ import net.minecraft.server.v1_15_R1.Entity;
 import net.minecraft.server.v1_15_R1.EntityTypes;
 import net.minecraft.server.v1_15_R1.GenericAttributes;
 import net.minecraft.server.v1_15_R1.World;
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie implements CustomEntity {
 
@@ -34,9 +34,9 @@ public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie imp
 
 	private void spawnArtifactGuardian(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
-		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
-		this.setHealth(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
+		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
+		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
+		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 
 		this.setCustomName(new ChatComponentText("Artifact Guardian"));
 
@@ -54,9 +54,9 @@ public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie imp
 
 	private void spawnHerobrineWarrior(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
-		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
-		this.setHealth(HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
+		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
+		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
+		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 
 		this.setCustomName(new ChatComponentText("Herobrine Warrior"));
 
@@ -85,14 +85,14 @@ public class CustomZombie extends net.minecraft.server.v1_15_R1.EntityZombie imp
 		else
 			mobS = "Warrior";
 		
-		Object[] items = HerobrineAI.getPluginCore().getConfigDB().npc.getConfigurationSection("npc." + mobS + ".Drops")
+		Object[] items = Herobrine.getPluginCore().getConfigDB().npc.getConfigurationSection("npc." + mobS + ".Drops")
 				.getKeys(false).toArray();
 		for (Object itemObj : items) {
 			final String item = itemObj.toString();
 			final int chance = new Random().nextInt(100);
-			if (chance <= HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc." + mobS + ".Drops." + item + ".Chance")) {
+			if (chance <= Herobrine.getPluginCore().getConfigDB().npc.getInt("npc." + mobS + ".Drops." + item + ".Chance")) {
 				getBukkitEntity().getLocation().getWorld().dropItemNaturally(getBukkitEntity().getLocation(),
-						new ItemStack(Material.matchMaterial(item), HerobrineAI.getPluginCore().getConfigDB().npc
+						new ItemStack(Material.matchMaterial(item), Herobrine.getPluginCore().getConfigDB().npc
 								.getInt("npc." + mobS + ".Drops." + item + ".Count")));
 			}
 		}

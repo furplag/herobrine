@@ -25,7 +25,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.*;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
@@ -40,9 +40,9 @@ public class EntityListener implements Listener {
 	private ArrayList<String> equalsLore = new ArrayList<String>();
 	private ArrayList<String> equalsLoreS = new ArrayList<String>();
 	private ArrayList<String> getLore = new ArrayList<String>();
-	private HerobrineAI PluginCore = null;
+	private Herobrine PluginCore = null;
 
-	public EntityListener(HerobrineAI plugin) {
+	public EntityListener(Herobrine plugin) {
 		equalsLore.add("Herobrine artifact");
 		equalsLore.add("Bow of Teleporting");
 		equalsLoreS.add("Herobrine artifact");
@@ -52,7 +52,7 @@ public class EntityListener implements Listener {
 
 	@EventHandler
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
-		if (!HerobrineAI.isNPCDisabled) {
+		if (!Herobrine.isNPCDisabled) {
 			if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
 				
 				Entity entity = event.getEntity();
@@ -167,17 +167,17 @@ public class EntityListener implements Listener {
 					&& PluginCore.getAICore().getCoreTypeNow() != CoreType.GRAVEYARD) {
 					
 					if (dEvent.getDamager() instanceof Player) {
-						if (event.getDamage() >= HerobrineAI.HerobrineHP) {
+						if (event.getDamage() >= Herobrine.HerobrineHP) {
 
 							HerobrineDropItems();
 
 							PluginCore.getAICore().CancelTarget(CoreType.ANY);
-							HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+							Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 							Player player = (Player) dEvent.getDamager();
 							player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 						} else {
-							HerobrineAI.HerobrineHP -= event.getDamage();
+							Herobrine.HerobrineHP -= event.getDamage();
 							PluginCore.HerobrineNPC.HurtAnimation();
 							AICore.log.info("HIT: " + event.getDamage());
 						}
@@ -190,17 +190,17 @@ public class EntityListener implements Listener {
 								PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
 							} else {
 
-								if (event.getDamage() >= HerobrineAI.HerobrineHP) {
+								if (event.getDamage() >= Herobrine.HerobrineHP) {
 
 									HerobrineDropItems();
 
 									PluginCore.getAICore().CancelTarget(CoreType.ANY);
-									HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+									Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 									Player player = (Player) arrow.getShooter();
 									player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
 								} else {
-									HerobrineAI.HerobrineHP -= event.getDamage();
+									Herobrine.HerobrineHP -= event.getDamage();
 									PluginCore.HerobrineNPC.HurtAnimation();
 									AICore.log.info("HIT: " + event.getDamage());
 								}

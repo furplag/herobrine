@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 
 public class WorldListener implements Listener{
@@ -18,23 +18,23 @@ public class WorldListener implements Listener{
 
 			World world = event.getWorld();
 			
-			if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(world.getName())){
+			if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(world.getName())){
 
-			 if (HerobrineAI.getPluginCore().getConfigDB().BuildTemples==true){
+			 if (Herobrine.getPluginCore().getConfigDB().BuildTemples==true){
 			
 				 if (new Random().nextInt(2)==1){
 					 Object[] data = {event.getChunk()};
 				
-					HerobrineAI.getPluginCore().getAICore().getCore(CoreType.TEMPLE).RunCore(data);
+					Herobrine.getPluginCore().getAICore().getCore(CoreType.TEMPLE).RunCore(data);
 				 }
 			 
 			 }
 			 
-			 if (HerobrineAI.getPluginCore().getConfigDB().BuildPyramids==true){
+			 if (Herobrine.getPluginCore().getConfigDB().BuildPyramids==true){
 					
 				 if (new Random().nextInt(30)==4){
 					 Object[] data = {event.getChunk()};
-				     HerobrineAI.getPluginCore().getAICore().getCore(CoreType.PYRAMID).RunCore(data);
+				     Herobrine.getPluginCore().getAICore().getCore(CoreType.PYRAMID).RunCore(data);
 				 }
 			 
 			 }

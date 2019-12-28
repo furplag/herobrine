@@ -1,6 +1,6 @@
 package net.theprogrammersworld.herobrine.NPC.AI;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 
 public class PathManager {
@@ -12,7 +12,7 @@ public class PathManager {
 	}
 
 	public void update() {
-		if (pathNow != null && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.RANDOM_POSITION)) {
+		if (pathNow != null && Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.RANDOM_POSITION)) {
 			pathNow.update();
 		}
 	}

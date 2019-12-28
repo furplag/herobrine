@@ -1,15 +1,15 @@
 package net.theprogrammersworld.herobrine.AI;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public abstract class Core {
 	
 	private final AppearType Appear;
 	private final CoreType coreType;
 	private CoreResult nowData = null;
-	protected HerobrineAI PluginCore = null;
+	protected Herobrine PluginCore = null;
 	
-	public Core(CoreType cp,AppearType ap, HerobrineAI hb){
+	public Core(CoreType cp,AppearType ap, Herobrine hb){
 		this.coreType=cp;
 		this.Appear=ap;
 		this.PluginCore = hb;
@@ -29,7 +29,7 @@ public abstract class Core {
 
 		nowData=this.CallCore(data);
 		if (nowData.getResult() && Appear == AppearType.APPEAR){
-			HerobrineAI.getPluginCore().getAICore().setCoreTypeNow(this.coreType);
+			Herobrine.getPluginCore().getAICore().setCoreTypeNow(this.coreType);
 			
 		}
 		return nowData;

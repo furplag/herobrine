@@ -6,12 +6,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.AICore;
 
 public class CmdHaunt extends SubCommand {
 
-	public CmdHaunt(HerobrineAI plugin, Logger log) {
+	public CmdHaunt(Herobrine plugin, Logger log) {
 		super(plugin, log);
 	}
 
@@ -23,26 +23,26 @@ public class CmdHaunt extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkHaunt(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
 				return true;
 			}
 			
 			if (AICore.isTarget == false) {			
 				plugin.getAICore().setHauntTarget(target);
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Herobrine is now haunting " + args[1] + "!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Herobrine is now haunting " + args[1] + "!");
 				
 			} else {
-				sendMessage(player,ChatColor.RED + "[HerobrineAI] Herobrine already has target! Use "
+				sendMessage(player,ChatColor.RED + "[Herobrine] Herobrine already has target! Use "
 								  + ChatColor.GREEN + "/hb-ai cancel" + ChatColor.RED
                                   + " to cancel current target.");
 			}

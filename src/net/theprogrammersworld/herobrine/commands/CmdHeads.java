@@ -6,12 +6,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 
 public class CmdHeads extends SubCommand {
 
-	public CmdHeads(HerobrineAI plugin, Logger log) {
+	public CmdHeads(Herobrine plugin, Logger log) {
 		super(plugin, log);
 	}
 
@@ -23,22 +23,22 @@ public class CmdHeads extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkBuild(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[HerobrineAI] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
 				return true;
 			}
 			
 			Object[] data = { args[1] };
-			sendMessage(player, ChatColor.RED + "[HerobrineAI] " + plugin.getAICore().getCore(CoreType.HEADS).RunCore(data).getResultString());
+			sendMessage(player, ChatColor.RED + "[Herobrine] " + plugin.getAICore().getCore(CoreType.HEADS).RunCore(data).getResultString());
 			
 			return true;
 		}

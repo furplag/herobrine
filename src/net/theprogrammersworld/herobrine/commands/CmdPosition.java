@@ -6,19 +6,19 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.AICore;
 
 public class CmdPosition extends SubCommand {
 
-	public CmdPosition(HerobrineAI plugin, Logger log) {
+	public CmdPosition(Herobrine plugin, Logger log) {
 		super(plugin, log);
 	}
 
 	@Override
 	public boolean execute(Player player, String[] args) {
 		
-		sendMessage(player, ChatColor.RED + "[HerobrineAI] Position");
+		sendMessage(player, ChatColor.RED + "[Herobrine] Position");
 		
 		Location loc = plugin.HerobrineNPC.getBukkitEntity().getLocation();
 		

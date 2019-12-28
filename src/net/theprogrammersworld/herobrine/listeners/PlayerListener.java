@@ -23,7 +23,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
@@ -38,9 +38,9 @@ public class PlayerListener implements Listener {
 	private Location p_loc = null;
 	private long timestamp = 0;
 	private boolean canUse = false;
-	private HerobrineAI PluginCore = null;
+	private Herobrine PluginCore = null;
 
-	public PlayerListener(HerobrineAI plugin) {
+	public PlayerListener(Herobrine plugin) {
 		equalsLoreS.add("Herobrine artifact");
 		equalsLoreS.add("Sword of Lighting");
 		equalsLoreA.add("Herobrine artifact");

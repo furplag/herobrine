@@ -9,7 +9,7 @@ import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -26,7 +26,7 @@ public class Graveyard extends Core {
 	private Player savedPlayer = null;
 
 	public Graveyard() {
-		super(CoreType.GRAVEYARD, AppearType.APPEAR, HerobrineAI.getPluginCore());
+		super(CoreType.GRAVEYARD, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -34,8 +34,8 @@ public class Graveyard extends Core {
 	}
 
 	public CoreResult Teleport(Player player) {
-		if (HerobrineAI.getPluginCore().getConfigDB().UseGraveyardWorld == true) {
-			if (!HerobrineAI.getPluginCore().getAICore().checkAncientSword(player.getInventory())) {
+		if (Herobrine.getPluginCore().getConfigDB().UseGraveyardWorld == true) {
+			if (!Herobrine.getPluginCore().getAICore().checkAncientSword(player.getInventory())) {
 				LivingEntities = Bukkit.getServer().getWorld("world_herobrineai_graveyard").getLivingEntities();
 				for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
@@ -115,7 +115,7 @@ public class Graveyard extends Core {
 			|| this.ticks == 90 || AICore.isTarget == false) {
 			
 			if (AICore.PlayerTarget == savedPlayer) {
-				HerobrineAI.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
+				Herobrine.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
 			}
 			
 			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ));

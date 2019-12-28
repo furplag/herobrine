@@ -10,7 +10,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -27,7 +27,7 @@ public class Haunt extends Core {
 	private boolean isFirst = true;
 
 	public Haunt() {
-		super(CoreType.HAUNT, AppearType.APPEAR, HerobrineAI.getPluginCore());
+		super(CoreType.HAUNT, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -45,7 +45,7 @@ public class Haunt extends Core {
 			isFirst = true;
 			AICore.isTarget = true;
 			AICore.PlayerTarget = player;
-			AICore.log.info("[HerobrineAI] Hauntig player!");
+			AICore.log.info("[Herobrine] Hauntig player!");
 			Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			loc.setY(-20);
 			PluginCore.HerobrineNPC.moveTo(loc);
@@ -182,7 +182,7 @@ public class Haunt extends Core {
 					
 				}
 
-				HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 				loc = AICore.PlayerTarget.getLocation();
 				loc.setY(loc.getY() + 1.5);
 				PluginCore.HerobrineNPC.lookAtPoint(loc);

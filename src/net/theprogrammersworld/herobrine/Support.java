@@ -33,7 +33,7 @@ public class Support {
 		PreciousStones = new PreciousStonesHook();
 		Factions = new FactionsHook();
 		
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 			public void run() {
 				CheckForPlugins();
 			}
@@ -67,27 +67,27 @@ public class Support {
 	public void CheckForPlugins() {
 		if (ResidenceCore.Check()) {
 			B_Residence = true;
-			HerobrineAI.log.info("[HerobrineAI] Residence plugin detected!");
+			Herobrine.log.info("[Herobrine] Residence plugin detected!");
 		}
 		if (GriefPreventionCore.Check()) {
 			B_GriefPrevention = true;
-			HerobrineAI.log.info("[HerobrineAI] GriefPrevention plugin detected!");
+			Herobrine.log.info("[Herobrine] GriefPrevention plugin detected!");
 		}
 		if (TownyCore.Check()) {
 			B_Towny = true;
-			HerobrineAI.log.info("[HerobrineAI] Towny plugin detected!");
+			Herobrine.log.info("[Herobrine] Towny plugin detected!");
 		}
 		if (WorldGuard.Check()) {
 			B_WorldGuard = true;
-			HerobrineAI.log.info("[HerobrineAI] WorldGuard plugin detected!");
+			Herobrine.log.info("[Herobrine] WorldGuard plugin detected!");
 		}
 		if (PreciousStones.Check()) {
 			B_PreciousStones = true;
-			HerobrineAI.log.info("[HerobrineAI] PreciousStones plugin detected!");
+			Herobrine.log.info("[Herobrine] PreciousStones plugin detected!");
 		}
 		if (Factions.Check()) {
 			B_Factions = true;
-			HerobrineAI.log.info("[HerobrineAI] Factions plugin detected!");
+			Herobrine.log.info("[Herobrine] Factions plugin detected!");
 		}
 	}
 
@@ -109,23 +109,23 @@ public class Support {
 	}
 
 	public boolean checkBuild(final Location loc) {
-		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Build || !isSecuredArea(loc);
+		return Herobrine.getPluginCore().getConfigDB().SecuredArea_Build || !isSecuredArea(loc);
 	}
 
 	public boolean checkAttack(final Location loc) {
-		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Attack || !isSecuredArea(loc);
+		return Herobrine.getPluginCore().getConfigDB().SecuredArea_Attack || !isSecuredArea(loc);
 	}
 
 	public boolean checkHaunt(final Location loc) {
-		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Haunt || !isSecuredArea(loc);
+		return Herobrine.getPluginCore().getConfigDB().SecuredArea_Haunt || !isSecuredArea(loc);
 	}
 
 	public boolean checkSigns(final Location loc) {
-		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Signs || !isSecuredArea(loc);
+		return Herobrine.getPluginCore().getConfigDB().SecuredArea_Signs || !isSecuredArea(loc);
 	}
 
 	public boolean checkBooks(final Location loc) {
-		return HerobrineAI.getPluginCore().getConfigDB().SecuredArea_Books || !isSecuredArea(loc);
+		return Herobrine.getPluginCore().getConfigDB().SecuredArea_Books || !isSecuredArea(loc);
 	}
 
 }

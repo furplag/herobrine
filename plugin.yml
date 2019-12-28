@@ -1,5 +1,5 @@
 name: Herobrine
-main: net.theprogrammersworld.herobrine.HerobrineAI
+main: net.theprogrammersworld.herobrine.Herobrine
 version: 2.0.0
 description: "Bring Herobrine to your Spigot-based Minecraft server!"
 website: https://www.theprogrammersworld.net

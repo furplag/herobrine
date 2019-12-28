@@ -14,7 +14,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.util.Vector;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.*;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.AI.cores.Heads;
@@ -65,8 +65,8 @@ public class BlockListener implements Listener {
 						}
 					}
 
-					if (checkListCorrect && HerobrineAI.getPluginCore().getConfigDB().UseTotem && !AICore.isTotemCalled) {
-						HerobrineAI.getPluginCore().getAICore().PlayerCallTotem(event.getPlayer());
+					if (checkListCorrect && Herobrine.getPluginCore().getConfigDB().UseTotem && !AICore.isTotemCalled) {
+						Herobrine.getPluginCore().getAICore().PlayerCallTotem(event.getPlayer());
 					}
 
 				}
@@ -86,7 +86,7 @@ public class BlockListener implements Listener {
 			event.setCancelled(true);
 			return;
 		} else {
-			Heads h = (Heads) HerobrineAI.getPluginCore().getAICore().getCore(CoreType.HEADS);
+			Heads h = (Heads) Herobrine.getPluginCore().getAICore().getCore(CoreType.HEADS);
 			ArrayList<Block> list = h.getHeadList();
 			if (list.contains(event.getBlock())) {
 				event.setCancelled(true);

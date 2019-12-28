@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -24,7 +24,7 @@ public class Attack extends Core {
 	private boolean isHandler = false;
 
 	public Attack() {
-		super(CoreType.ATTACK, AppearType.APPEAR, HerobrineAI.getPluginCore());
+		super(CoreType.ATTACK, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -38,11 +38,11 @@ public class Attack extends Core {
 					return new CoreResult(false, "This player is protected.");
 				}
 
-				HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 				ticksToEnd = 0;
 				AICore.PlayerTarget = player;
 				AICore.isTarget = true;
-				AICore.log.info("[HerobrineAI] Teleporting to target. (" + AICore.PlayerTarget.getName() + ")");
+				AICore.log.info("[Herobrine] Teleporting to target. (" + AICore.PlayerTarget.getName() + ")");
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
 				Object[] data = { ploc };
 				PluginCore.getAICore().getCore(CoreType.DESTROY_TORCHES).RunCore(data);

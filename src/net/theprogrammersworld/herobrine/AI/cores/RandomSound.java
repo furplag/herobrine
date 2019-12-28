@@ -2,14 +2,14 @@ package net.theprogrammersworld.herobrine.AI.cores;
 
 import org.bukkit.Bukkit;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
 public class RandomSound extends Core {
 
 	public RandomSound() {
-		super(CoreType.RANDOM_SOUND, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.RANDOM_SOUND, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override
@@ -18,12 +18,12 @@ public class RandomSound extends Core {
 		int multip = 1;
 
 		while (multip != 7) {
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 
 				@Override
 				public void run() {
 
-					HerobrineAI.getPluginCore().getAICore().getCore(CoreType.SOUNDF).RunCore(data);
+					Herobrine.getPluginCore().getAICore().getCore(CoreType.SOUNDF).RunCore(data);
 
 				}
 

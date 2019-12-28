@@ -5,11 +5,11 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdReload extends SubCommand {
 
-	public CmdReload(HerobrineAI plugin, Logger log) {
+	public CmdReload(Herobrine plugin, Logger log) {
 		super(plugin, log);
 	}
 
@@ -17,7 +17,7 @@ public class CmdReload extends SubCommand {
 	public boolean execute(Player player, String[] args) {
 		
 		plugin.getConfigDB().Reload();
-		sendMessage(player, ChatColor.RED + "[HerobrineAI] Config reloaded!");
+		sendMessage(player, ChatColor.RED + "[Herobrine] Config reloaded!");
 		
 		return true;
 	}

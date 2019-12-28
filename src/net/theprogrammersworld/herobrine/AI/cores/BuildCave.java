@@ -7,14 +7,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.*;
 
 public class BuildCave extends Core {
 
 	public BuildCave() {
-		super(CoreType.BUILD_CAVE, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.BUILD_CAVE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -26,12 +26,12 @@ public class BuildCave extends Core {
 
 	public CoreResult buildCave(Location loc) {
 
-		if (HerobrineAI.getPluginCore().getConfigDB().BuildStuff == true) {
-			if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)) {
+		if (Herobrine.getPluginCore().getConfigDB().BuildStuff == true) {
+			if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
 				if (loc.getBlockY() < 60) {
 
 					int chance = Utils.getRandomGen().nextInt(100);
-					if (chance > (100 - HerobrineAI.getPluginCore().getConfigDB().CaveChance)) {
+					if (chance > (100 - Herobrine.getPluginCore().getConfigDB().CaveChance)) {
 						AICore.log.info("Creating cave...");
 
 						GenerateCave(loc);
@@ -55,7 +55,7 @@ public class BuildCave extends Core {
 
 	public CoreResult buildCave(Location loc, boolean cmd) {
 
-		if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)) {
+		if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
 			if (loc.getBlockY() < 60) {
 
 				AICore.log.info("Creating cave...");
@@ -75,7 +75,7 @@ public class BuildCave extends Core {
 
 	public void GenerateCave(Location loc) {
 
-		if (HerobrineAI.getPluginCore().getSupport().checkBuild(loc)) {
+		if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
 
 			ArrayList<Location> redstoneTorchList = new ArrayList<Location>();
 			

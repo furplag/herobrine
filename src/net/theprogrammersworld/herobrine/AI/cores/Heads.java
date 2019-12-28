@@ -11,7 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -24,7 +24,7 @@ public class Heads extends Core {
 	private List<Block> headList = new ArrayList<Block>();
 
 	public Heads() {
-		super(CoreType.HEADS, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.HEADS, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {

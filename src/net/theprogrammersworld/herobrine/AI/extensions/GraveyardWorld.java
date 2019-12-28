@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.misc.StructureLoader;
 
 public class GraveyardWorld {
@@ -25,7 +25,7 @@ public class GraveyardWorld {
 		int MainY = 3;
 		int MainZ = -10;
 
-		StructureLoader structLoader = new StructureLoader(HerobrineAI.getPluginCore().getInputStreamData("/res/graveyard_world.yml"));
+		StructureLoader structLoader = new StructureLoader(Herobrine.getPluginCore().getInputStreamData("/res/graveyard_world.yml"));
 		structLoader.Build(loc.getWorld(), MainX, MainY, MainZ);
 
 	}

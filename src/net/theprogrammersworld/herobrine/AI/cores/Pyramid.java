@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -15,7 +15,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Pyramid extends Core {
 
 	public Pyramid() {
-		super(CoreType.PYRAMID, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.PYRAMID, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -165,7 +165,7 @@ public class Pyramid extends Core {
 
 	public void BuildPyramid(World world, int X, int Y, int Z) {
 
-		if (HerobrineAI.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
+		if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
 
 			AICore.log.info("Creating pyramid at " + X + "," + Y + "," + Z);
 

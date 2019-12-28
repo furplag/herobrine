@@ -4,14 +4,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
 public class DestroyTorches extends Core {
 
 	public DestroyTorches() {
-		super(CoreType.DESTROY_TORCHES, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.DESTROY_TORCHES, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -19,22 +19,22 @@ public class DestroyTorches extends Core {
 	}
 
 	public CoreResult destroyTorches(Location loc) {
-		if (HerobrineAI.getPluginCore().getConfigDB().DestroyTorches == true) {
+		if (Herobrine.getPluginCore().getConfigDB().DestroyTorches == true) {
 
 			int x = loc.getBlockX();
 			int y = loc.getBlockY();
 			int z = loc.getBlockZ();
 			World world = loc.getWorld();
 
-			int i = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); // Y
-			int ii = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); // X
-			int iii = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); // Z
+			int i = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); // Y
+			int ii = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); // X
+			int iii = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); // Z
 
-			for (i = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); i <= HerobrineAI.getPluginCore()
+			for (i = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); i <= Herobrine.getPluginCore()
 					.getConfigDB().DestroyTorchesRadius; i++) {
-				for (ii = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); ii <= HerobrineAI
+				for (ii = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); ii <= Herobrine
 						.getPluginCore().getConfigDB().DestroyTorchesRadius; ii++) {
-					for (iii = -(HerobrineAI.getPluginCore().getConfigDB().DestroyTorchesRadius); iii <= HerobrineAI
+					for (iii = -(Herobrine.getPluginCore().getConfigDB().DestroyTorchesRadius); iii <= Herobrine
 							.getPluginCore().getConfigDB().DestroyTorchesRadius; iii++) {
 						if (world.getBlockAt(x + ii, y + i, z + iii).getType() == Material.TORCH) {
 							world.getBlockAt(x + ii, y + i, z + iii).breakNaturally();

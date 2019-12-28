@@ -12,7 +12,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
@@ -23,7 +23,7 @@ import net.theprogrammersworld.herobrine.misc.StructureLoader;
 public class Temple extends Core {
 
 	public Temple() {
-		super(CoreType.TEMPLE, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -168,7 +168,7 @@ public class Temple extends Core {
 
 		Location loc = new Location(world, X, Y, Z);
 
-		if (HerobrineAI.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
+		if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
 
 			int MainX = loc.getBlockX();
 			int MainY = loc.getBlockY();
@@ -176,15 +176,15 @@ public class Temple extends Core {
 
 			// Main blocks
 
-			new StructureLoader(HerobrineAI.getPluginCore().getInputStreamData("/res/temple.yml")).Build(loc.getWorld(),
+			new StructureLoader(Herobrine.getPluginCore().getInputStreamData("/res/temple.yml")).Build(loc.getWorld(),
 					MainX, MainY, MainZ);
 			loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).setType(Material.CHEST);
 			// Mob spawn
-			if (!HerobrineAI.isNPCDisabled) {
-				if (HerobrineAI.getPluginCore().getConfigDB().UseNPC_Guardian) {
+			if (!Herobrine.isNPCDisabled) {
+				if (Herobrine.getPluginCore().getConfigDB().UseNPC_Guardian) {
 					Location mobloc = new Location(loc.getWorld(), MainX + 6, MainY + 0, MainZ + 4);
-					for (int i = 1; i <= HerobrineAI.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
-						HerobrineAI.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
+					for (int i = 1; i <= Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
+						Herobrine.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
 					}
 				}
 			}
@@ -194,7 +194,7 @@ public class Temple extends Core {
 			ItemStack item = null;
 			ArrayList<String> newLore = new ArrayList<String>();
 			
-			if (chance < 4 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactBow) {
+			if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
 				
 				item = new ItemStack(Material.BOW);
 				newLore.add("Herobrine�s artifact");
@@ -203,7 +203,7 @@ public class Temple extends Core {
 				item.addEnchantment(Enchantment.ARROW_FIRE, 1);
 				item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
 				
-			} else if (chance < 8 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactSword) {
+			} else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
 				
 				item = new ItemStack(Material.DIAMOND_SWORD);
 				newLore.add("Herobrine�s artifact");
@@ -213,7 +213,7 @@ public class Temple extends Core {
 				item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
 				item.addEnchantment(Enchantment.DURABILITY, 3);
 				
-			} else if (chance < 12 && HerobrineAI.getPluginCore().getConfigDB().UseArtifactApple) {
+			} else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
 				
 				item = new ItemStack(Material.GOLDEN_APPLE);
 				newLore.add("Herobrine�s artifact");
@@ -221,8 +221,8 @@ public class Temple extends Core {
 				item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
 			} else {
-				if (HerobrineAI.getPluginCore().getConfigDB().UseAncientSword) {
-					item = HerobrineAI.getPluginCore().getAICore().createAncientSword();
+				if (Herobrine.getPluginCore().getConfigDB().UseAncientSword) {
+					item = Herobrine.getPluginCore().getAICore().createAncientSword();
 					item.addEnchantment(Enchantment.KNOCKBACK, 2);
 					item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
 				}

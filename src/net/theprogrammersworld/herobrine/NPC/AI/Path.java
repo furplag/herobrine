@@ -5,7 +5,7 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.World;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 
 public class Path {
@@ -19,9 +19,9 @@ public class Path {
 	private int stepNow = 0;
 	private int maxSteps = Utils.getRandomGen().nextInt(3) + 3;
 	
-	protected HerobrineAI PluginCore;
+	protected Herobrine PluginCore;
 
-	public Path(float _x, float _z, HerobrineAI plugin) {
+	public Path(float _x, float _z, Herobrine plugin) {
 
 		PluginCore = plugin;
 		

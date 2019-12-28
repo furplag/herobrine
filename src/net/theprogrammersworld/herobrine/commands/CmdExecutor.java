@@ -10,7 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdExecutor implements CommandExecutor {
 
@@ -20,8 +20,8 @@ public class CmdExecutor implements CommandExecutor {
 			"reload", "cancel", "allworlds", "position", "attack", "haunt", "heads", 
 			"bury", "curse", "burn", "pyramid", "cave", "temple", "graveyard" };
 
-	public CmdExecutor(HerobrineAI p) {
-		log = HerobrineAI.log;
+	public CmdExecutor(Herobrine p) {
+		log = Herobrine.log;
 
 		subCommands.put("reload", new CmdReload(p, log));
 		subCommands.put("cancel", new CmdCancel(p, log));
@@ -43,7 +43,7 @@ public class CmdExecutor implements CommandExecutor {
 
 		ArrayList<String> helpMessage = new ArrayList<String>();
 
-		helpMessage.add(ChatColor.GREEN + "[HerobrineAI] Command list");
+		helpMessage.add(ChatColor.GREEN + "[Herobrine] Command list");
 		helpMessage.add(ChatColor.GREEN + "/hb-ai help - shows all commands");
 
 		for (String v : helpCommandOrder)

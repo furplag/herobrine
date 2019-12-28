@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
@@ -23,13 +23,13 @@ public class InventoryListener implements Listener {
 
 			Object[] data = { event.getPlayer(), event.getInventory() };
 
-			HerobrineAI.getPluginCore().getAICore().getCore(CoreType.BOOK).RunCore(data);
+			Herobrine.getPluginCore().getAICore().getCore(CoreType.BOOK).RunCore(data);
 
 			if (new Random().nextInt(100) > 97) {
 
-				if (HerobrineAI.getPluginCore().getConfigDB().UseHeads) {
+				if (Herobrine.getPluginCore().getConfigDB().UseHeads) {
 					if (event.getInventory().firstEmpty() != -1) {
-						if (HerobrineAI.getPluginCore().getAICore().getResetLimits().isHead()) {
+						if (Herobrine.getPluginCore().getAICore().getResetLimits().isHead()) {
 							event.getInventory().setItem(event.getInventory().firstEmpty(),
 									ItemName.CreateSkull(event.getPlayer().getUniqueId(), event.getPlayer().getName()));
 						}
@@ -46,14 +46,14 @@ public class InventoryListener implements Listener {
 			|| event.getInventory().getType() == InventoryType.FURNACE
 			|| event.getInventory().getType() == InventoryType.WORKBENCH) {
 			
-			if (HerobrineAI.getPluginCore().getConfigDB().useWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
+			if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
 				
-				if (HerobrineAI.getPluginCore().getConfigDB().PlaceSigns == true
-					&& HerobrineAI.getPluginCore().getSupport().checkSigns(event.getPlayer().getLocation())) {
+				if (Herobrine.getPluginCore().getConfigDB().PlaceSigns == true
+					&& Herobrine.getPluginCore().getSupport().checkSigns(event.getPlayer().getLocation())) {
 					
-					if (HerobrineAI.getPluginCore().getAICore().getResetLimits().isSign()) {
+					if (Herobrine.getPluginCore().getAICore().getResetLimits().isSign()) {
 						Object[] data = { event.getPlayer().getLocation(), event.getPlayer().getLocation() };
-						HerobrineAI.getPluginCore().getAICore().getCore(CoreType.SIGNS).RunCore(data);
+						Herobrine.getPluginCore().getAICore().getCore(CoreType.SIGNS).RunCore(data);
 					}
 				}
 			}

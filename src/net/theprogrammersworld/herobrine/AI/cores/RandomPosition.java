@@ -9,7 +9,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import net.theprogrammersworld.herobrine.ConfigDB;
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -23,7 +23,7 @@ public class RandomPosition extends Core {
 	private boolean RandomMoveIsPlayer = false;
 
 	public RandomPosition() {
-		super(CoreType.RANDOM_POSITION, AppearType.APPEAR, HerobrineAI.getPluginCore());
+		super(CoreType.RANDOM_POSITION, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public int getRandomTicks() {
@@ -59,14 +59,14 @@ public class RandomPosition extends Core {
 						newloc.setY(newloc.getY() + 1.5);
 						PluginCore.HerobrineNPC.lookAtPoint(newloc);
 						randomTicks = 0;
-						AICore.log.info("[HerobrineAI] Herobrine is now in RandomLocation mode.");
+						AICore.log.info("[Herobrine] Herobrine is now in RandomLocation mode.");
 						PluginCore.getAICore().Start_RM();
 						PluginCore.getAICore().Start_RS();
 						PluginCore.getAICore().Start_CG();
 						RandomMoveIsPlayer = false;
 						return new CoreResult(true, "Herobrine is now in WalkingMode.");
 					} else {
-						AICore.log.info("[HerobrineAI] RandomPosition Failed!");
+						AICore.log.info("[Herobrine] RandomPosition Failed!");
 						return setRandomPosition(world);
 					}
 				}
@@ -138,7 +138,7 @@ public class RandomPosition extends Core {
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH
 						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE) {
 
-					AICore.log.info("[HerobrineAI] RandomLocation "
+					AICore.log.info("[Herobrine] RandomLocation "
 							+ world.getBlockAt(randx, randy - 1, randz).getType().toString() + " is X:" + randx + " Y:"
 							+ randy + " Z:" + randz);
 					return new Location(world, (float) randx + 0.5, (float) randy, (float) randz);
@@ -154,7 +154,7 @@ public class RandomPosition extends Core {
 	public void RandomMove() {
 		if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION && AICore.isTarget == false
 				&& RandomMoveIsPlayer == false) {
-			HerobrineAI.HerobrineHP = HerobrineAI.HerobrineMaxHP;
+			Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 
 			if (Utils.getRandomGen().nextInt(5) == 3) {
 				Location loc = PluginCore.HerobrineNPC.getBukkitEntity().getLocation();

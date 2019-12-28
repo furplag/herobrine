@@ -2,14 +2,14 @@ package net.theprogrammersworld.herobrine.AI.cores;
 
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
 public class Burn extends Core {
 
 	public Burn() {
-		super(CoreType.BURN, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.BURN, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override

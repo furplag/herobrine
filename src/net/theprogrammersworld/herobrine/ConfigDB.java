@@ -176,7 +176,7 @@ public class ConfigDB {
 			useBookMessages.add("... before i was dead.");
 			UseCustomItemsList.add("ItemExample");
 
-			log.info("[HerobrineAI] Creating new Config ...");
+			log.info("[Herobrine] Creating new Config ...");
 			config.set("config.ShowInterval", 144000);
 			config.set("config.ShowRate", 2);
 			config.set("config.HitPlayer", true);
@@ -334,37 +334,37 @@ public class ConfigDB {
 		HerobrineUUID = config.getString("config.HerobrineUUID");
 		HerobrineName = config.getString("config.HerobrineName");
 		
-		HerobrineAI.HerobrineMaxHP = HerobrineHP;
-		HerobrineAI.getPluginCore().getAICore().Stop_MAIN();
-		HerobrineAI.getPluginCore().getAICore().Start_MAIN();
-		HerobrineAI.getPluginCore().getAICore().Stop_BD();
-		HerobrineAI.getPluginCore().getAICore().Start_BD();
-		HerobrineAI.getPluginCore().getAICore().Stop_RC();
-		HerobrineAI.getPluginCore().getAICore().Start_RC();
-		HerobrineAI.AvailableWorld = false;
-		HerobrineAI.getPluginCore().getAICore().getResetLimits().updateFromConfig();
+		Herobrine.HerobrineMaxHP = HerobrineHP;
+		Herobrine.getPluginCore().getAICore().Stop_MAIN();
+		Herobrine.getPluginCore().getAICore().Start_MAIN();
+		Herobrine.getPluginCore().getAICore().Stop_BD();
+		Herobrine.getPluginCore().getAICore().Start_BD();
+		Herobrine.getPluginCore().getAICore().Stop_RC();
+		Herobrine.getPluginCore().getAICore().Start_RC();
+		Herobrine.AvailableWorld = false;
+		Herobrine.getPluginCore().getAICore().getResetLimits().updateFromConfig();
 
-		if (HerobrineAI.getPluginCore().HerobrineNPC != null) {
-			HerobrineAI.getPluginCore().HerobrineNPC.setItemInHand(ItemInHand.getItemStack());
+		if (Herobrine.getPluginCore().HerobrineNPC != null) {
+			Herobrine.getPluginCore().HerobrineNPC.setItemInHand(ItemInHand.getItemStack());
 		}
 
 		if (isStartupDone) {
 
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(HerobrineAI.getPluginCore(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 				public void run() {
 					for (int i = 0; i <= useWorlds.size() - 1; i++) {
 						if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(useWorlds.get(i)))) {
-							HerobrineAI.AvailableWorld = true;
+							Herobrine.AvailableWorld = true;
 						}
 					}
 
-					if (HerobrineAI.AvailableWorld == false) {
+					if (Herobrine.AvailableWorld == false) {
 						log.warning("**********************************************************");
-						log.warning("[HerobrineAI] There are no available worlds for Herobrine!");
+						log.warning("[Herobrine] There are no available worlds for Herobrine!");
 						log.warning("**********************************************************");
 					} else {
 						log.info("**********************************************************");
-						log.info("[HerobrineAI] No problems detected.");
+						log.info("[Herobrine] No problems detected.");
 						log.info("**********************************************************");
 					}
 				}

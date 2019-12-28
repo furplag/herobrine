@@ -7,7 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
@@ -17,7 +17,7 @@ public class BuryPlayer extends Core {
 	public Block savedBlock2 = null;
 
 	public BuryPlayer() {
-		super(CoreType.BURY_PLAYER, AppearType.NORMAL, HerobrineAI.getPluginCore());
+		super(CoreType.BURY_PLAYER, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -25,7 +25,7 @@ public class BuryPlayer extends Core {
 	}
 
 	public CoreResult FindPlace(Player player){
-        if(HerobrineAI.getPluginCore().getSupport().checkBuild(player.getLocation())){	
+        if(Herobrine.getPluginCore().getSupport().checkBuild(player.getLocation())){	
 			Location loc = (Location) player.getLocation();
 			
 			int[][] blocks = {

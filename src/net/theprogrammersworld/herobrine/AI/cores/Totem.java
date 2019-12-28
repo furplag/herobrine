@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
@@ -17,7 +17,7 @@ import net.theprogrammersworld.herobrine.AI.Message;
 public class Totem extends Core {
 
 	public Totem() {
-		super(CoreType.TOTEM, AppearType.APPEAR, HerobrineAI.getPluginCore());
+		super(CoreType.TOTEM, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {

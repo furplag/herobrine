@@ -43,9 +43,9 @@ import net.theprogrammersworld.herobrine.listeners.InventoryListener;
 import net.theprogrammersworld.herobrine.listeners.PlayerListener;
 import net.theprogrammersworld.herobrine.listeners.WorldListener;
 
-public class HerobrineAI extends JavaPlugin implements Listener {
+public class Herobrine extends JavaPlugin implements Listener {
 
-	private static HerobrineAI pluginCore;
+	private static Herobrine pluginCore;
 	private AICore aicore;
 	private ConfigDB configdb;
 	private Support support;
@@ -82,7 +82,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 				this.setEnabled(false);
 			}
 		} else {
-			log.warning("[HerobrineAI] Custom NPCs have been disabled. (Incompatibility error!)");
+			log.warning("[Herobrine] Custom NPCs have been disabled. (Incompatibility error!)");
 		}
 		
 		getServer().getPluginManager().registerEvents(this, this);
@@ -95,7 +95,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		
 		isInitDone = true;
 		
-		HerobrineAI.pluginCore = this;
+		Herobrine.pluginCore = this;
 		
 		this.configdb = new ConfigDB(log);
 
@@ -137,7 +137,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		// Graveyard World
 
 		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrineai_graveyard") == null) {
-			log.info("[HerobrineAI] Creating Graveyard world...");
+			log.info("[Herobrine] Creating Graveyard world...");
 			
 			WorldCreator wc = new WorldCreator("world_herobrineai_graveyard");
 			wc.generateStructures(false);
@@ -147,7 +147,7 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			
 			GraveyardWorld.Create();
 		}
-		log.info("[HerobrineAI] Plugin loaded! Version: ");
+		log.info("[Herobrine] Plugin loaded! Version: ");
 
 		// Init Block Types
 
@@ -179,9 +179,9 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 
 		pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
-				if (Utils.getRandomGen().nextInt(4) == 2 && HerobrineAI.getPluginCore().getAICore().getCoreTypeNow()
+				if (Utils.getRandomGen().nextInt(4) == 2 && Herobrine.getPluginCore().getAICore().getCoreTypeNow()
 						.equals(CoreType.RANDOM_POSITION)) {
-					pathMng.setPath(new Path(Utils.getRandomGen().nextInt(15) - 7f, Utils.getRandomGen().nextInt(15) - 7f, HerobrineAI.getPluginCore()));
+					pathMng.setPath(new Path(Utils.getRandomGen().nextInt(15) - 7f, Utils.getRandomGen().nextInt(15) - 7f, Herobrine.getPluginCore()));
 				}
 			}
 		}, 1 * 200L, 1 * 200L);
@@ -216,13 +216,13 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 			aicore.Stop_RP();
 			aicore.Stop_RS();
 			aicore.disableAll();
-			log.info("[HerobrineAI] Plugin disabled!");
+			log.info("[Herobrine] Plugin disabled!");
 		}
 
 	}
 
 	public java.io.InputStream getInputStreamData(String src) {
-		return HerobrineAI.class.getResourceAsStream(src);
+		return Herobrine.class.getResourceAsStream(src);
 	}
 
 	public AICore getAICore() {
@@ -235,9 +235,9 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		return this.entMng;
 	}
 
-	public static HerobrineAI getPluginCore() {
+	public static Herobrine getPluginCore() {
 
-		return HerobrineAI.pluginCore;
+		return Herobrine.pluginCore;
 
 	}
 
@@ -297,18 +297,18 @@ public class HerobrineAI extends JavaPlugin implements Listener {
 		
 			if(sender == null){			
 				if (!opCheck)
-					log.info("[HerobrineAI] Player is an OP.");
+					log.info("[Herobrine] Player is an OP.");
 				else if (!creativeCheck)
-					log.info("[HerobrineAI] Player is in creative mode.");
+					log.info("[Herobrine] Player is in creative mode.");
 				else if (!ignoreCheck)
-					log.info("[HerobrineAI] Player has ignore permission.");			
+					log.info("[Herobrine] Player has ignore permission.");			
 			}else{
 				if (!opCheck)
-					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is an OP.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] Player is an OP.");
 				else if (!creativeCheck)
-					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player is in creative mode.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] Player is in creative mode.");
 				else if (!ignoreCheck)
-					sender.sendMessage(ChatColor.RED + "[HerobrineAI] Player has ignore permission.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] Player has ignore permission.");
 			}
 			
 			return false;

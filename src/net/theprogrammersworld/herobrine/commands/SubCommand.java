@@ -5,14 +5,14 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public abstract class SubCommand {
 	
-	protected HerobrineAI plugin;
+	protected Herobrine plugin;
 	protected Logger logger;
 	
-	public SubCommand(HerobrineAI plugin, Logger log){
+	public SubCommand(Herobrine plugin, Logger log){
 		this.plugin = plugin;
 		this.logger = log;
 	}

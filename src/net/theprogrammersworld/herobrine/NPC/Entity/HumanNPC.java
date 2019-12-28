@@ -5,7 +5,7 @@ import net.minecraft.server.v1_15_R1.EnumHand;
 import net.minecraft.server.v1_15_R1.PacketPlayInArmAnimation;
 import net.minecraft.server.v1_15_R1.PlayerChunkMap;
 import net.minecraft.server.v1_15_R1.WorldServer;
-import net.theprogrammersworld.herobrine.HerobrineAI;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -74,9 +74,9 @@ public class HumanNPC {
 		// After Herobrine moves, check if any players are in Herobrine's line of sight.
 		boolean doActivationTeleport = false;
 		for(Player p : Bukkit.getOnlinePlayers())
-			doActivationTeleport = doActivationTeleport || HerobrineAI.getPluginCore().getAICore().toggleHerobrinePlayerVisibilityNoTeleport(p);
+			doActivationTeleport = doActivationTeleport || Herobrine.getPluginCore().getAICore().toggleHerobrinePlayerVisibilityNoTeleport(p);
 		if(doActivationTeleport)
-			HerobrineAI.getPluginCore().getAICore().visibilityActivationTeleport();
+			Herobrine.getPluginCore().getAICore().visibilityActivationTeleport();
 	}
 
 	public PlayerInventory getInventory() {
