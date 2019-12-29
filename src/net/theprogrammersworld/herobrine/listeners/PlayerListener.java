@@ -1,5 +1,9 @@
 package net.theprogrammersworld.herobrine.listeners;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
@@ -17,6 +21,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -46,6 +51,35 @@ public class PlayerListener implements Listener {
 		equalsLoreA.add("Herobrine artifact");
 		equalsLoreA.add("Apple of Death");
 		PluginCore = plugin;
+	}
+	
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+		// Check if the user has a Graveyard cache. If they do, this means they are stuck in the Graveyard and
+		// need teleported out.
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PluginCore, new Runnable() {
+			@Override
+			public void run() {
+				String graveyardCachePath = "plugins/Herobrine/pregraveyard_caches/" + event.getPlayer().getUniqueId();
+				if(new File(graveyardCachePath).exists()) {
+					try {
+						FileReader cache = new FileReader(graveyardCachePath);
+						String cacheDataString = "";
+						int charVal = cache.read();
+						while(charVal != -1) {
+							cacheDataString += (char) charVal;
+							charVal = cache.read();
+						}
+						cache.close();
+						String[] cacheData = cacheDataString.split("\n");
+						event.getPlayer().teleport(new Location(Bukkit.getServer().getWorld(cacheData[3]), Double.parseDouble(cacheData[0]),
+								Double.parseDouble(cacheData[1]), Double.parseDouble(cacheData[2])));
+						new File(graveyardCachePath).delete();
+					} catch (FileNotFoundException e) {e.printStackTrace();}
+					catch (IOException e) {e.printStackTrace();}
+				}
+			}
+		}, 20L); // 20L = 1 sec
 	}
 
 	@EventHandler
