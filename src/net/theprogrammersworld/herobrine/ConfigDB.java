@@ -337,29 +337,19 @@ public class ConfigDB {
 		Herobrine.AvailableWorld = false;
 		Herobrine.getPluginCore().getAICore().getResetLimits().updateFromConfig();
 
-		if (Herobrine.getPluginCore().HerobrineNPC != null) {
+		if (Herobrine.getPluginCore().HerobrineNPC != null)
 			Herobrine.getPluginCore().HerobrineNPC.setItemInHand(ItemInHand.getItemStack());
-		}
 
 		if (isStartupDone) {
 
 			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 				public void run() {
-					for (int i = 0; i <= useWorlds.size() - 1; i++) {
-						if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(useWorlds.get(i)))) {
+					for (int i = 0; i <= useWorlds.size() - 1; i++)
+						if (Bukkit.getServer().getWorlds().contains(Bukkit.getServer().getWorld(useWorlds.get(i))))
 							Herobrine.AvailableWorld = true;
-						}
-					}
 
-					if (Herobrine.AvailableWorld == false) {
-						log.warning("**********************************************************");
+					if (Herobrine.AvailableWorld == false)
 						log.warning("[Herobrine] There are no available worlds for Herobrine!");
-						log.warning("**********************************************************");
-					} else {
-						log.info("**********************************************************");
-						log.info("[Herobrine] No problems detected.");
-						log.info("**********************************************************");
-					}
 				}
 			}, 1L);
 
