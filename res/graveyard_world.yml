@@ -1,3032 +1,3032 @@
 DATA:
   '0':
     X: 3
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '1':
     X: 3
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '2':
     X: 3
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '3':
     X: 3
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '4':
     X: 2
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '5':
     X: 2
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '6':
     X: 2
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '7':
     X: 2
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '8':
     X: 2
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '9':
     X: 2
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '10':
     X: 7
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '11':
     X: 7
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '12':
     X: 7
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '13':
     X: 6
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '14':
     X: 2
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '15':
     X: 2
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '16':
     X: 2
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '17':
     X: 2
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '18':
     X: 2
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '19':
     X: 2
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '20':
     X: 2
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '21':
     X: 2
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '22':
     X: 2
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '23':
     X: 2
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '24':
     X: 6
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '25':
     X: 6
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '26':
     X: 6
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '27':
     X: 5
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '28':
     X: 5
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '29':
     X: 2
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '30':
     X: 5
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '31':
     X: 2
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '32':
     X: 5
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '33':
     X: 2
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '34':
     X: 5
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '35':
     X: 2
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '36':
     X: 5
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '37':
     X: 2
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '38':
     X: 2
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '39':
     X: 1
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '40':
     X: 1
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '41':
     X: 1
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '42':
     X: 1
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '43':
     X: 5
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '44':
     X: 5
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '45':
     X: 4
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '46':
     X: 4
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '47':
     X: 4
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '48':
     X: 4
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '49':
     X: 1
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '50':
     X: 3
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '51':
     X: 1
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '52':
     X: 3
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '53':
     X: 1
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '54':
     X: 3
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '55':
     X: 1
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '56':
     X: 3
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '57':
     X: 1
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '58':
     X: 1
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '59':
     X: 1
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '60':
     X: 1
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '61':
     X: 1
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '62':
     X: 1
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '63':
     X: 3
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '64':
     X: 3
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '65':
     X: 3
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '66':
     X: 3
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '67':
     X: 2
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '68':
     X: 2
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '69':
     X: 1
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '70':
     X: 2
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '71':
     X: 1
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '72':
     X: 2
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '73':
     X: 1
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '74':
     X: 1
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '75':
     X: 1
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '76':
     X: 1
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '77':
     X: 1
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'DIRT'
   '78':
     X: 1
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'DIRT'
   '79':
     X: 1
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '80':
     X: 1
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '81':
     X: 0
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '82':
     X: 0
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '83':
     X: 1
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '84':
     X: 1
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '85':
     X: 1
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '86':
     X: 1
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '87':
     X: 1
-    Y: 1
+    Y: 3
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '88':
     X: 1
-    Y: 1
+    Y: 3
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '89':
     X: 0
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '90':
     X: 1
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '91':
     X: 0
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '92':
     X: 1
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '93':
     X: 0
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '94':
     X: 0
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '95':
     X: 0
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '96':
     X: 0
-    Y: 1
+    Y: 3
     Z: 20
     MATERIAL: 'OAK_FENCE'
   '97':
     X: 0
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '98':
     X: 0
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '99':
     X: 0
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '100':
     X: 0
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '101':
     X: 0
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '102':
     X: 0
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '103':
     X: 0
-    Y: 1
+    Y: 3
     Z: 19
     MATERIAL: 'OAK_FENCE'
   '104':
     X: 0
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_FENCE'
   '105':
     X: 0
-    Y: 1
+    Y: 3
     Z: 17
     MATERIAL: 'OAK_FENCE'
   '106':
     X: 0
-    Y: 1
+    Y: 3
     Z: 16
     MATERIAL: 'OAK_FENCE'
   '107':
     X: 0
-    Y: 1
+    Y: 3
     Z: 15
     MATERIAL: 'OAK_FENCE'
   '108':
     X: 0
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_FENCE'
   '109':
     X: 0
-    Y: 1
+    Y: 3
     Z: 13
     MATERIAL: 'OAK_FENCE'
   '110':
     X: 0
-    Y: 1
+    Y: 3
     Z: 12
     MATERIAL: 'OAK_FENCE'
   '111':
     X: 0
-    Y: 1
+    Y: 3
     Z: 11
     MATERIAL: 'OAK_FENCE'
   '112':
     X: 0
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_FENCE'
   '113':
     X: 0
-    Y: 1
+    Y: 3
     Z: 9
     MATERIAL: 'OAK_FENCE'
   '114':
     X: 0
-    Y: 1
+    Y: 3
     Z: 8
     MATERIAL: 'OAK_FENCE'
   '115':
     X: 0
-    Y: 1
+    Y: 3
     Z: 7
     MATERIAL: 'OAK_FENCE'
   '116':
     X: 0
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_FENCE'
   '117':
     X: 0
-    Y: 1
+    Y: 3
     Z: 5
     MATERIAL: 'OAK_FENCE'
   '118':
     X: 0
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'OAK_FENCE'
   '119':
     X: 0
-    Y: 1
+    Y: 3
     Z: 3
     MATERIAL: 'OAK_FENCE'
   '120':
     X: 0
-    Y: 1
+    Y: 3
     Z: 2
     MATERIAL: 'OAK_FENCE'
   '121':
     X: 0
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'OAK_FENCE'
   '122':
     X: 0
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '123':
     X: 14
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '124':
     X: 14
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '125':
     X: 14
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '126':
     X: 14
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '127':
     X: 14
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '128':
     X: 14
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '129':
     X: 14
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '130':
     X: 14
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '131':
     X: 14
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '132':
     X: 14
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '133':
     X: 14
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '134':
     X: 14
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '135':
     X: 14
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '136':
     X: 14
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '137':
     X: 14
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '138':
     X: 14
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '139':
     X: 14
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '140':
     X: 14
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'MYCELIUM'
   '141':
     X: 14
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '142':
     X: 14
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '143':
     X: 14
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'MYCELIUM'
   '144':
     X: 14
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '145':
     X: 13
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '146':
     X: 13
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '147':
     X: 13
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '148':
     X: 13
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '149':
     X: 13
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '150':
     X: 13
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '151':
     X: 13
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '152':
     X: 13
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '153':
     X: 9
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '154':
     X: 9
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '155':
     X: 8
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '156':
     X: 8
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '157':
     X: 8
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '158':
     X: 8
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '159':
     X: 8
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '160':
     X: 8
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '161':
     X: 8
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '162':
     X: 8
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '163':
     X: 8
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '164':
     X: 8
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '165':
     X: 8
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '166':
     X: 8
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '167':
     X: 8
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '168':
     X: 8
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '169':
     X: 8
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '170':
     X: 8
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '171':
     X: 8
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '172':
     X: 8
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '173':
     X: 8
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '174':
     X: 8
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '175':
     X: 8
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '176':
     X: 8
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '177':
     X: 7
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '178':
     X: 7
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '179':
     X: 7
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '180':
     X: 7
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '181':
     X: 7
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '182':
     X: 7
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '183':
     X: 13
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '184':
     X: 13
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '185':
     X: 13
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '186':
     X: 12
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '187':
     X: 12
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '188':
     X: 12
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '189':
     X: 7
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '190':
     X: 7
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '191':
     X: 7
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '192':
     X: 7
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '193':
     X: 7
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '194':
     X: 7
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '195':
     X: 7
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '196':
     X: 7
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '197':
     X: 7
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '198':
     X: 7
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '199':
     X: 7
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '200':
     X: 7
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'MYCELIUM'
   '201':
     X: 7
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '202':
     X: 7
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '203':
     X: 7
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '204':
     X: 7
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '205':
     X: 6
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '206':
     X: 6
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '207':
     X: 6
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '208':
     X: 6
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '209':
     X: 6
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '210':
     X: 6
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '211':
     X: 6
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '212':
     X: 6
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '213':
     X: 6
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '214':
     X: 6
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '215':
     X: 6
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '216':
     X: 6
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '217':
     X: 6
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '218':
     X: 6
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '219':
     X: 6
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '220':
     X: 6
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '221':
     X: 13
-    Y: 2
+    Y: 4
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '222':
     X: 6
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '223':
     X: 13
-    Y: 2
+    Y: 4
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '224':
     X: 6
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '225':
     X: 13
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '226':
     X: 6
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '227':
     X: 12
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '228':
     X: 6
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '229':
     X: 6
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '230':
     X: 11
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '231':
     X: 6
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '232':
     X: 10
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '233':
     X: 5
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '234':
     X: 10
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '235':
     X: 5
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '236':
     X: 9
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '237':
     X: 9
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '238':
     X: 5
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '239':
     X: 5
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '240':
     X: 8
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '241':
     X: 5
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '242':
     X: 8
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '243':
     X: 5
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '244':
     X: 5
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '245':
     X: 7
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '246':
     X: 5
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '247':
     X: 6
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '248':
     X: 5
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '249':
     X: 6
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '250':
     X: 5
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '251':
     X: 5
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '252':
     X: 5
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '253':
     X: 5
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '254':
     X: 5
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '255':
     X: 4
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '256':
     X: 4
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '257':
     X: 5
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '258':
     X: 5
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '259':
     X: 5
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '260':
     X: 3
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '261':
     X: 5
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '262':
     X: 2
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '263':
     X: 5
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '264':
     X: 1
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '265':
     X: 5
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '266':
     X: 1
-    Y: 2
+    Y: 4
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '267':
     X: 5
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '268':
     X: 1
-    Y: 2
+    Y: 4
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '269':
     X: 5
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '270':
     X: 1
-    Y: 2
+    Y: 4
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '271':
     X: 5
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '272':
     X: 5
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '273':
     X: 4
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '274':
     X: 4
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '275':
     X: 4
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '276':
     X: 4
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '277':
     X: 4
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '278':
     X: 14
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '279':
     X: 4
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '280':
     X: 14
-    Y: 1
+    Y: 3
     Z: 20
     MATERIAL: 'OAK_FENCE'
   '281':
     X: 4
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '282':
     X: 14
-    Y: 1
+    Y: 3
     Z: 19
     MATERIAL: 'OAK_FENCE'
   '283':
     X: 4
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '284':
     X: 14
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_FENCE'
   '285':
     X: 4
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '286':
     X: 14
-    Y: 1
+    Y: 3
     Z: 17
     MATERIAL: 'OAK_FENCE'
   '287':
     X: 4
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '288':
     X: 14
-    Y: 1
+    Y: 3
     Z: 16
     MATERIAL: 'OAK_FENCE'
   '289':
     X: 14
-    Y: 1
+    Y: 3
     Z: 15
     MATERIAL: 'OAK_FENCE'
   '290':
     X: 14
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_FENCE'
   '291':
     X: 14
-    Y: 1
+    Y: 3
     Z: 13
     MATERIAL: 'OAK_FENCE'
   '292':
     X: 14
-    Y: 1
+    Y: 3
     Z: 12
     MATERIAL: 'OAK_FENCE'
   '293':
     X: 14
-    Y: 1
+    Y: 3
     Z: 11
     MATERIAL: 'OAK_FENCE'
   '294':
     X: 14
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_FENCE'
   '295':
     X: 14
-    Y: 1
+    Y: 3
     Z: 9
     MATERIAL: 'OAK_FENCE'
   '296':
     X: 14
-    Y: 1
+    Y: 3
     Z: 8
     MATERIAL: 'OAK_FENCE'
   '297':
     X: 14
-    Y: 1
+    Y: 3
     Z: 7
     MATERIAL: 'OAK_FENCE'
   '298':
     X: 14
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_FENCE'
   '299':
     X: 14
-    Y: 1
+    Y: 3
     Z: 5
     MATERIAL: 'OAK_FENCE'
   '300':
     X: 14
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'OAK_FENCE'
   '301':
     X: 14
-    Y: 1
+    Y: 3
     Z: 3
     MATERIAL: 'OAK_FENCE'
   '302':
     X: 14
-    Y: 1
+    Y: 3
     Z: 2
     MATERIAL: 'OAK_FENCE'
   '303':
     X: 14
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'OAK_FENCE'
   '304':
     X: 14
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '305':
     X: 13
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '306':
     X: 13
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '307':
     X: 13
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '308':
     X: 13
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '309':
     X: 13
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '310':
     X: 13
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '311':
     X: 13
-    Y: 1
+    Y: 3
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '312':
     X: 13
-    Y: 1
+    Y: 3
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '313':
     X: 13
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '314':
     X: 13
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '315':
     X: 12
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '316':
     X: 12
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '317':
     X: 12
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '318':
     X: 12
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '319':
     X: 11
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '320':
     X: 11
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '321':
     X: 11
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '322':
     X: 11
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '323':
     X: 11
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '324':
     X: 11
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '325':
     X: 11
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '326':
     X: 11
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '327':
     X: 10
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '328':
     X: 10
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '329':
     X: 10
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '330':
     X: 10
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '331':
     X: 9
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '332':
     X: 9
-    Y: 1
+    Y: 3
     Z: 18
     MATERIAL: 'OAK_SIGN'
   '333':
     X: 9
-    Y: 1
+    Y: 3
     Z: 14
     MATERIAL: 'OAK_SIGN'
   '334':
     X: 9
-    Y: 1
+    Y: 3
     Z: 10
     MATERIAL: 'OAK_SIGN'
   '335':
     X: 9
-    Y: 1
+    Y: 3
     Z: 6
     MATERIAL: 'OAK_SIGN'
   '336':
     X: 9
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '337':
     X: 9
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '338':
     X: 9
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '339':
     X: 8
-    Y: 1
+    Y: 3
     Z: 21
     MATERIAL: 'OAK_FENCE'
   '340':
     X: 8
-    Y: 1
+    Y: 3
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '341':
     X: 8
-    Y: 1
+    Y: 3
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '342':
     X: 8
-    Y: 1
+    Y: 3
     Z: 0
     MATERIAL: 'OAK_FENCE'
   '343':
     X: 13
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '344':
     X: 13
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '345':
     X: 13
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '346':
     X: 13
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '347':
     X: 13
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '348':
     X: 13
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '349':
     X: 13
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '350':
     X: 13
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '351':
     X: 13
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '352':
     X: 13
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '353':
     X: 13
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'DIRT'
   '354':
     X: 13
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'DIRT'
   '355':
     X: 13
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '356':
     X: 13
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '357':
     X: 12
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '358':
     X: 12
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '359':
     X: 12
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '360':
     X: 12
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '361':
     X: 12
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '362':
     X: 12
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '363':
     X: 12
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '364':
     X: 12
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '365':
     X: 12
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '366':
     X: 12
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '367':
     X: 12
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '368':
     X: 12
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '369':
     X: 12
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '370':
     X: 12
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '371':
     X: 12
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '372':
     X: 12
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '373':
     X: 12
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '374':
     X: 12
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '375':
     X: 12
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '376':
     X: 12
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '377':
     X: 12
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '378':
     X: 12
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '379':
     X: 11
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '380':
     X: 11
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '381':
     X: 11
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '382':
     X: 11
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '383':
     X: 11
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '384':
     X: 11
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '385':
     X: 11
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '386':
     X: 11
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '387':
     X: 11
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '388':
     X: 11
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '389':
     X: 11
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '390':
     X: 11
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '391':
     X: 11
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '392':
     X: 11
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '393':
     X: 0
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '394':
     X: 0
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '395':
     X: 0
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '396':
     X: 0
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '397':
     X: 0
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '398':
     X: 0
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'MYCELIUM'
   '399':
     X: 0
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '400':
     X: 0
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '401':
     X: 0
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'MYCELIUM'
   '402':
     X: 0
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '403':
     X: 11
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '404':
     X: 11
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '405':
     X: 11
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '406':
     X: 11
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '407':
     X: 11
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '408':
     X: 11
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '409':
     X: 11
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '410':
     X: 11
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '411':
     X: 10
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '412':
     X: 10
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'MYCELIUM'
   '413':
     X: 10
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'MYCELIUM'
   '414':
     X: 10
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '415':
     X: 11
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '416':
     X: 10
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '417':
     X: 11
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '418':
     X: 10
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'MYCELIUM'
   '419':
     X: 11
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '420':
     X: 10
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'MYCELIUM'
   '421':
     X: 10
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '422':
     X: 10
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '423':
     X: 10
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '424':
     X: 10
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '425':
     X: 10
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '426':
     X: 10
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'MYCELIUM'
   '427':
     X: 9
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '428':
     X: 10
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '429':
     X: 9
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '430':
     X: 10
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '431':
     X: 9
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '432':
     X: 8
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '433':
     X: 10
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '434':
     X: 10
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '435':
     X: 8
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '436':
     X: 10
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '437':
     X: 8
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '438':
     X: 10
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '439':
     X: 7
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '440':
     X: 10
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '441':
     X: 7
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '442':
     X: 10
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '443':
     X: 7
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '444':
     X: 10
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '445':
     X: 6
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '446':
     X: 10
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '447':
     X: 6
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '448':
     X: 10
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '449':
     X: 6
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '450':
     X: 10
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '451':
     X: 5
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '452':
     X: 5
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '453':
     X: 9
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '454':
     X: 9
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '455':
     X: 5
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '456':
     X: 9
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '457':
     X: 4
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '458':
     X: 9
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '459':
     X: 4
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '460':
     X: 9
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '461':
     X: 4
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '462':
     X: 9
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '463':
     X: 3
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '464':
     X: 9
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '465':
     X: 3
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '466':
     X: 9
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '467':
     X: 3
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '468':
     X: 9
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '469':
     X: 2
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '470':
     X: 9
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '471':
     X: 2
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '472':
     X: 2
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '473':
     X: 9
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '474':
     X: 9
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '475':
     X: 1
-    Y: 5
+    Y: 7
     Z: 3
     MATERIAL: 'OAK_STAIRS'
   '476':
     X: 9
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '477':
     X: 1
-    Y: 5
+    Y: 7
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '478':
     X: 9
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '479':
     X: 1
-    Y: 5
+    Y: 7
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '480':
     X: 9
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '481':
     X: 13
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '482':
     X: 9
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '483':
     X: 13
-    Y: 4
+    Y: 6
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '484':
     X: 9
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '485':
     X: 13
-    Y: 4
+    Y: 6
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '486':
     X: 9
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '487':
     X: 13
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '488':
     X: 9
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '489':
     X: 12
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '490':
     X: 9
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '491':
     X: 12
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '492':
     X: 11
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '493':
     X: 11
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '494':
     X: 10
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '495':
     X: 10
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '496':
     X: 9
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '497':
     X: 9
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '498':
     X: 8
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '499':
     X: 8
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '500':
     X: 7
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '501':
     X: 7
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '502':
     X: 6
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '503':
     X: 6
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '504':
     X: 5
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '505':
     X: 5
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '506':
     X: 4
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '507':
     X: 4
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '508':
     X: 3
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '509':
     X: 3
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '510':
     X: 2
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '511':
     X: 2
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '512':
     X: 1
-    Y: 4
+    Y: 6
     Z: 4
     MATERIAL: 'OAK_STAIRS'
   '513':
     X: 1
-    Y: 4
+    Y: 6
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '514':
     X: 1
-    Y: 4
+    Y: 6
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '515':
     X: 1
-    Y: 4
+    Y: 6
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '516':
     X: 13
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '517':
     X: 13
-    Y: 3
+    Y: 5
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '518':
     X: 13
-    Y: 3
+    Y: 5
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '519':
     X: 13
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '520':
     X: 12
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '521':
     X: 12
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '522':
     X: 11
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '523':
     X: 11
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '524':
     X: 10
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '525':
     X: 10
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '526':
     X: 9
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '527':
     X: 9
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '528':
     X: 8
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '529':
     X: 8
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '530':
     X: 7
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '531':
     X: 7
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '532':
     X: 6
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '533':
     X: 6
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '534':
     X: 5
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '535':
     X: 5
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '536':
     X: 4
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '537':
     X: 4
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '538':
     X: 3
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '539':
     X: 3
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '540':
     X: 2
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '541':
     X: 2
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '542':
     X: 1
-    Y: 3
+    Y: 5
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '543':
     X: 4
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'MYCELIUM'
   '544':
     X: 4
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '545':
     X: 4
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '546':
     X: 4
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'MYCELIUM'
   '547':
     X: 4
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'MYCELIUM'
   '548':
     X: 4
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '549':
     X: 4
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '550':
     X: 4
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '551':
     X: 4
-    Y: 0
+    Y: 2
     Z: 3
     MATERIAL: 'MYCELIUM'
   '552':
     X: 4
-    Y: 0
+    Y: 2
     Z: 2
     MATERIAL: 'MYCELIUM'
   '553':
     X: 1
-    Y: 3
+    Y: 5
     Z: 3
     MATERIAL: 'STONE_BRICKS'
   '554':
     X: 1
-    Y: 3
+    Y: 5
     Z: 2
     MATERIAL: 'STONE_BRICKS'
   '555':
     X: 1
-    Y: 3
+    Y: 5
     Z: 1
     MATERIAL: 'STONE_BRICKS'
   '556':
     X: 13
-    Y: 2
+    Y: 4
     Z: 4
     MATERIAL: 'STONE_BRICKS'
   '557':
     X: 4
-    Y: 0
+    Y: 2
     Z: 1
     MATERIAL: 'DIRT'
   '558':
     X: 4
-    Y: 0
+    Y: 2
     Z: 0
     MATERIAL: 'MYCELIUM'
   '559':
     X: 3
-    Y: 0
+    Y: 2
     Z: 21
     MATERIAL: 'MYCELIUM'
   '560':
     X: 3
-    Y: 0
+    Y: 2
     Z: 20
     MATERIAL: 'STONE_BRICKS'
   '561':
     X: 3
-    Y: 0
+    Y: 2
     Z: 19
     MATERIAL: 'STONE_BRICKS'
   '562':
     X: 3
-    Y: 0
+    Y: 2
     Z: 18
     MATERIAL: 'MYCELIUM'
   '563':
     X: 3
-    Y: 0
+    Y: 2
     Z: 17
     MATERIAL: 'MYCELIUM'
   '564':
     X: 3
-    Y: 0
+    Y: 2
     Z: 16
     MATERIAL: 'STONE_BRICKS'
   '565':
     X: 3
-    Y: 0
+    Y: 2
     Z: 15
     MATERIAL: 'STONE_BRICKS'
   '566':
     X: 3
-    Y: 0
+    Y: 2
     Z: 14
     MATERIAL: 'MYCELIUM'
   '567':
     X: 3
-    Y: 0
+    Y: 2
     Z: 13
     MATERIAL: 'MYCELIUM'
   '568':
     X: 3
-    Y: 0
+    Y: 2
     Z: 12
     MATERIAL: 'STONE_BRICKS'
   '569':
     X: 3
-    Y: 0
+    Y: 2
     Z: 11
     MATERIAL: 'STONE_BRICKS'
   '570':
     X: 3
-    Y: 0
+    Y: 2
     Z: 10
     MATERIAL: 'MYCELIUM'
   '571':
     X: 3
-    Y: 0
+    Y: 2
     Z: 9
     MATERIAL: 'MYCELIUM'
   '572':
     X: 3
-    Y: 0
+    Y: 2
     Z: 8
     MATERIAL: 'STONE_BRICKS'
   '573':
     X: 3
-    Y: 0
+    Y: 2
     Z: 7
     MATERIAL: 'STONE_BRICKS'
   '574':
     X: 3
-    Y: 0
+    Y: 2
     Z: 6
     MATERIAL: 'MYCELIUM'
   '575':
     X: 3
-    Y: 0
+    Y: 2
     Z: 5
     MATERIAL: 'MYCELIUM'
   '576':
     X: 3
-    Y: 0
+    Y: 2
     Z: 4
     MATERIAL: 'DIRT'
   '577':
     X: 7
-    Y: 2
+    Y: 4
     Z: 21
     MATERIAL: 'REDSTONE_TORCH'
   '578':
     X: 8
-    Y: 1
+    Y: 3
     Z: 17
     MATERIAL: 'REDSTONE_TORCH'
   '579':
     X: 8
-    Y: 1
+    Y: 3
     Z: 15
     MATERIAL: 'REDSTONE_TORCH'
   '580':
     X: 8
-    Y: 1
+    Y: 3
     Z: 13
     MATERIAL: 'REDSTONE_TORCH'
   '581':
     X: 0
-    Y: 2
+    Y: 4
     Z: 11
     MATERIAL: 'REDSTONE_TORCH'
   '582':
     X: 8
-    Y: 1
+    Y: 3
     Z: 11
     MATERIAL: 'REDSTONE_TORCH'
   '583':
     X: 0
-    Y: 2
+    Y: 4
     Z: 8
     MATERIAL: 'REDSTONE_TORCH'
   '584':
     X: 8
-    Y: 1
+    Y: 3
     Z: 9
     MATERIAL: 'REDSTONE_TORCH'
   '585':
     X: 0
-    Y: 2
+    Y: 4
     Z: 5
     MATERIAL: 'REDSTONE_TORCH'
   '586':
     X: 8
-    Y: 1
+    Y: 3
     Z: 7
     MATERIAL: 'REDSTONE_TORCH'
   '587':
     X: 8
-    Y: 1
+    Y: 3
     Z: 5
     MATERIAL: 'REDSTONE_TORCH'
   '588':
     X: 11
-    Y: 2
+    Y: 4
     Z: 21
     MATERIAL: 'REDSTONE_TORCH'
   '589':
     X: 6
-    Y: 1
+    Y: 3
     Z: 5
     MATERIAL: 'REDSTONE_TORCH'
   '590':
     X: 3
-    Y: 2
+    Y: 4
     Z: 21
     MATERIAL: 'REDSTONE_TORCH'
   '591':
     X: 0
-    Y: 2
+    Y: 4
     Z: 21
     MATERIAL: 'REDSTONE_TORCH'
   '592':
     X: 0
-    Y: 2
+    Y: 4
     Z: 17
     MATERIAL: 'REDSTONE_TORCH'
   '593':
     X: 0
-    Y: 2
+    Y: 4
     Z: 14
     MATERIAL: 'REDSTONE_TORCH'
   '594':
     X: 6
-    Y: 1
+    Y: 3
     Z: 17
     MATERIAL: 'REDSTONE_TORCH'
   '595':
     X: 14
-    Y: 2
+    Y: 4
     Z: 21
     MATERIAL: 'REDSTONE_TORCH'
   '596':
     X: 6
-    Y: 1
+    Y: 3
     Z: 15
     MATERIAL: 'REDSTONE_TORCH'
   '597':
     X: 14
-    Y: 2
+    Y: 4
     Z: 17
     MATERIAL: 'REDSTONE_TORCH'
   '598':
     X: 6
-    Y: 1
+    Y: 3
     Z: 13
     MATERIAL: 'REDSTONE_TORCH'
   '599':
     X: 14
-    Y: 2
+    Y: 4
     Z: 14
     MATERIAL: 'REDSTONE_TORCH'
   '600':
     X: 6
-    Y: 1
+    Y: 3
     Z: 11
     MATERIAL: 'REDSTONE_TORCH'
   '601':
     X: 14
-    Y: 2
+    Y: 4
     Z: 11
     MATERIAL: 'REDSTONE_TORCH'
   '602':
     X: 6
-    Y: 1
+    Y: 3
     Z: 9
     MATERIAL: 'REDSTONE_TORCH'
   '603':
     X: 14
-    Y: 2
+    Y: 4
     Z: 8
     MATERIAL: 'REDSTONE_TORCH'
   '604':
     X: 6
-    Y: 1
+    Y: 3
     Z: 7
     MATERIAL: 'REDSTONE_TORCH'
   '605':
     X: 14
-    Y: 2
+    Y: 4
     Z: 5
     MATERIAL: 'REDSTONE_TORCH'
   LENGTH: 606
