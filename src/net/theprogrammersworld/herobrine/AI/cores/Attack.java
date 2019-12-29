@@ -105,7 +105,7 @@ public class Attack extends Core {
 					Location ploc = (Location) AICore.PlayerTarget.getLocation();
 					ploc.setY(ploc.getY() + 1.5);
 					PluginCore.HerobrineNPC.lookAtPoint(ploc);
-					if (PluginCore.getConfigDB().Lighting == true) {
+					if (PluginCore.getConfigDB().Lightning == true) {
 						int lchance = Utils.getRandomGen().nextInt(100);
 
 						if (lchance > 75) {

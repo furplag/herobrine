@@ -108,7 +108,7 @@ public class Haunt extends Core {
 						}
 					}
 
-					if (PluginCore.getConfigDB().Lighting == true) {
+					if (PluginCore.getConfigDB().Lightning == true) {
 
 						int lchance = randxgen.nextInt(100);
 

@@ -22,7 +22,7 @@ public class ConfigDB {
 	public int ShowRate = 2;
 	public boolean HitPlayer = true;
 	public boolean SendMessages = true;
-	public boolean Lighting = true;
+	public boolean Lightning = true;
 	public boolean DestroyTorches = true;
 	public int DestroyTorchesRadius = 5;
 	public int ShowInterval = 144000;
@@ -178,7 +178,7 @@ public class ConfigDB {
 			config.set("config.ShowRate", 2);
 			config.set("config.HitPlayer", true);
 			config.set("config.SendMessages", true);
-			config.set("config.Lighting", false);
+			config.set("config.Lightning", false);
 			config.set("config.DestroyTorches", true);
 			config.set("config.DestroyTorchesRadius", 5);
 			config.set("config.Worlds", useWorlds);
@@ -269,7 +269,7 @@ public class ConfigDB {
 		ShowRate = config.getInt("config.ShowRate");
 		HitPlayer = config.getBoolean("config.HitPlayer");
 		SendMessages = config.getBoolean("config.SendMessages");
-		Lighting = config.getBoolean("config.Lighting");
+		Lightning = config.getBoolean("config.Lightning");
 		DestroyTorches = config.getBoolean("config.DestroyTorches");
 		DestroyTorchesRadius = config.getInt("config.DestroyTorchesRadius");
 		useWorlds = config.getStringList("config.Worlds");
