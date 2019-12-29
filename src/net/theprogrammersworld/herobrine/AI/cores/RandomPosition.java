@@ -66,17 +66,17 @@ public class RandomPosition extends Core {
 						RandomMoveIsPlayer = false;
 						return new CoreResult(true, "Herobrine is now in WalkingMode.");
 					} else {
-						AICore.log.info("[Herobrine] RandomPosition Failed!");
+						AICore.log.info("[Herobrine] RandomPosition Failed.");
 						return setRandomPosition(world);
 					}
 				}
 			} else {
-				return new CoreResult(false, "WalkingMode - Find location failed!");
+				return new CoreResult(false, "WalkingMode - Find location failed.");
 			}
 		} else {
-			return new CoreResult(false, "WalkingMode is disabled!");
+			return new CoreResult(false, "WalkingMode is disabled.");
 		}
-		return new CoreResult(false, "WalkingMode failed!");
+		return new CoreResult(false, "WalkingMode failed.");
 	}
 
 	public Location getRandomLocation(World world) {

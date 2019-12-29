@@ -113,6 +113,6 @@ public class Totem extends Core {
 
 		}
 		
-		return new CoreResult(false, "Totem called!");
+		return new CoreResult(false, "Herobrine's totem called!");
 	}
 }

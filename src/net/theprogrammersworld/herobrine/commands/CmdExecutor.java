@@ -44,7 +44,7 @@ public class CmdExecutor implements CommandExecutor {
 		ArrayList<String> helpMessage = new ArrayList<String>();
 
 		helpMessage.add(ChatColor.GREEN + "[Herobrine] Command list");
-		helpMessage.add(ChatColor.GREEN + "/hb-ai help - shows all commands");
+		helpMessage.add(ChatColor.GREEN + "/herobrine help - shows all commands");
 
 		for (String v : helpCommandOrder)
 			helpMessage.add(((SubCommand) subCommands.get(v)).help());
@@ -77,8 +77,8 @@ public class CmdExecutor implements CommandExecutor {
 		} else if (subcmd == null)
 			return false;
 
-		if (player != null && !player.hasPermission("hb-ai." + args[0])) {
-			player.sendMessage(ChatColor.RED + "Insufficient permission!");
+		if (player != null && !player.hasPermission("herobrine." + args[0])) {
+			player.sendMessage(ChatColor.RED + "Error: You do not have permission to use this command.");
 			return true;
 		}
 

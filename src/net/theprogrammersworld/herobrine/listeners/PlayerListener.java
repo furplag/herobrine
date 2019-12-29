@@ -153,7 +153,7 @@ public class PlayerListener implements Listener {
 										}
 									}
 								} else {
-									event.getPlayer().sendMessage(ChatColor.RED + "Apple of Death is recharging!");
+									event.getPlayer().sendMessage(ChatColor.RED + "Apple of Death is recharging.");
 								}
 							}
 						}

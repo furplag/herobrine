@@ -59,7 +59,6 @@ public class Herobrine extends JavaPlugin implements Listener {
 	
 	public static String versionStr = "UNDEFINED";
 	public static boolean isNPCDisabled = false;
-	public static String bukkit_ver_string = "1.15.1";
 	public static int HerobrineHP = 200;
 	public static int HerobrineMaxHP = 200;
 	public static final boolean isDebugging = false;
@@ -82,7 +81,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 				this.setEnabled(false);
 			}
 		} else {
-			log.warning("[Herobrine] Custom NPCs have been disabled. (Incompatibility error!)");
+			log.warning("[Herobrine] Custom NPCs have been disabled due to an incompatibility error.");
 		}
 		
 		getServer().getPluginManager().registerEvents(this, this);
@@ -102,24 +101,19 @@ public class Herobrine extends JavaPlugin implements Listener {
 		this.NPCman = new NPCCore(this);
 
 		// Initialize PathManager
-
 		this.pathMng = new PathManager();
 
 		// Initialize AICore
-
 		this.aicore = new AICore();
 
 		// Initialize EntityManager
-
 		this.entMng = new EntityManager();
 
 		// Config loading
-
 		configdb.Startup();
 		configdb.Reload();
 
 		// Spawn Herobrine
-
 		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
 				(float) 0);
 		nowloc.setYaw((float) 1);
@@ -129,10 +123,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 		HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
 
 		// Graveyard World
-
-		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrine_graveyard") == null) {
-			log.info("[Herobrine] Creating Graveyard world...");
-			
+		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrine_graveyard") == null) {			
 			WorldCreator wc = new WorldCreator("world_herobrine_graveyard");
 			wc.generateStructures(false);
 			org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
@@ -147,11 +138,8 @@ public class Herobrine extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
 		getServer().getPluginManager().registerEvents(new WorldListener(), this);
-		
-		log.info("[Herobrine] Plugin loaded! Version: ");
 
 		// Init Block Types
-
 		AllowedBlocks.add(Material.AIR);
 		AllowedBlocks.add(Material.SNOW);
 		AllowedBlocks.add(Material.RAIL);
@@ -195,7 +183,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 		// Command Executors
 		this.getCommand("hb").setExecutor((CommandExecutor) new CmdExecutor(this));
-		this.getCommand("hb-ai").setExecutor((CommandExecutor) new CmdExecutor(this));
+		this.getCommand("hero").setExecutor((CommandExecutor) new CmdExecutor(this));
 
 		// Support initialize
 		this.support = new Support();
@@ -203,7 +191,6 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 	@Override
 	public void onDisable() {
-
 		if (isInitDone) {
 			this.entMng.killAllMobs();
 			Bukkit.getServer().getScheduler().cancelTask(pathUpdateINT);
@@ -216,9 +203,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 			aicore.Stop_RP();
 			aicore.Stop_RS();
 			aicore.disableAll();
-			log.info("[Herobrine] Plugin disabled!");
 		}
-
 	}
 
 	public java.io.InputStream getInputStreamData(String src) {
@@ -226,9 +211,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 	}
 
 	public AICore getAICore() {
-
 		return this.aicore;
-
 	}
 
 	public EntityManager getEntityManager() {
@@ -236,24 +219,19 @@ public class Herobrine extends JavaPlugin implements Listener {
 	}
 
 	public static Herobrine getPluginCore() {
-
 		return Herobrine.pluginCore;
-
 	}
 
 	public void HerobrineSpawn(Location loc) {
 		HerobrineNPC = (HumanNPC) NPCman.spawnHumanNPC(ChatColor.WHITE + "Herobrine", loc);
 		HerobrineNPC.getBukkitEntity().setMetadata("NPC", new FixedMetadataValue(this, true));
 		HerobrineEntityID = HerobrineNPC.getBukkitEntity().getEntityId();
-
 	}
 
 	public void HerobrineRemove() {
-
 		HerobrineEntityID = 0;
 		HerobrineNPC = null;
 		NPCman.removeAll();
-
 	}
 
 	public ConfigDB getConfigDB() {
@@ -287,7 +265,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 			creativeCheck = false;
 		}
 		
-		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
+		if (configdb.UseIgnorePermission && player.hasPermission("herobrine.ignore")) {
 			ignoreCheck = false;
 		}
 
@@ -297,18 +275,18 @@ public class Herobrine extends JavaPlugin implements Listener {
 		
 			if(sender == null){			
 				if (!opCheck)
-					log.info("[Herobrine] Player is an OP.");
+					log.info("[Herobrine] " + player.getDisplayName() + " is an OP.");
 				else if (!creativeCheck)
-					log.info("[Herobrine] Player is in creative mode.");
+					log.info("[Herobrine] " + player.getDisplayName() + " is in creative mode.");
 				else if (!ignoreCheck)
-					log.info("[Herobrine] Player has ignore permission.");			
+					log.info("[Herobrine] " + player.getDisplayName() + " has ignore permission.");			
 			}else{
 				if (!opCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] Player is an OP.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " is an OP.");
 				else if (!creativeCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] Player is in creative mode.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " is in creative mode.");
 				else if (!ignoreCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] Player has ignore permission.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " has ignore permission.");
 			}
 			
 			return false;
@@ -330,7 +308,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 			creativeCheck = false;
 		}
 		
-		if (configdb.UseIgnorePermission && player.hasPermission("hb-ai.ignore")) {
+		if (configdb.UseIgnorePermission && player.hasPermission("herobrine.ignore")) {
 			ignoreCheck = false;
 		}
 

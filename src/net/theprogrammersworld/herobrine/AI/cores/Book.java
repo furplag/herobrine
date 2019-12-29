@@ -33,19 +33,19 @@ public class Book extends Core {
 					if (chest.firstEmpty() != -1) {
 						if (Herobrine.getPluginCore().getAICore().getResetLimits().isBook()) {
 							chest.setItem(chest.firstEmpty(), newBook());
-							return new CoreResult(true, "Book created!");
+							return new CoreResult(true, "Herobrine's book created.");
 						}
 					} else {
-						return new CoreResult(false, "Book create failed!");
+						return new CoreResult(false, "Herobrine's book creation failed.");
 					}
 				} else {
-					return new CoreResult(false, "Books are not allowed!");
+					return new CoreResult(false, "Herobrine's books are prohibited.");
 				}
 			} else {
-				return new CoreResult(false, "Player is not in allowed world!");
+				return new CoreResult(false, player.getDisplayName() + " is in a world that Herobrine is not allowed in.");
 			}
 		}
-		return new CoreResult(false, "Book create failed!");
+		return new CoreResult(false, "Herobrine's book creation failed.");
 	}
 
 	public ItemStack newBook() {

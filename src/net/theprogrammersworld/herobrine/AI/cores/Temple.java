@@ -86,7 +86,7 @@ public class Temple extends Core {
 					}
 					if (canBuild == true) {
 						Create(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-						return new CoreResult(true, "Creating temple near " + player.getName() + "!");
+						return new CoreResult(true, "Creating a temple near " + player.getDisplayName() + ".");
 					}
 				}
 
@@ -94,7 +94,7 @@ public class Temple extends Core {
 
 		}
 
-		return new CoreResult(false, "Cannot find a good place for Temple.");
+		return new CoreResult(false, "Cannot find a good place to create a temple.");
 
 	}
 
@@ -155,12 +155,12 @@ public class Temple extends Core {
 			}
 			if (canBuild == true) {
 				Create(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-				return new CoreResult(true, "Creating temple!");
+				return new CoreResult(true, "Creating temple.");
 			}
 
 		}
 
-		return new CoreResult(false, "Cannot find a good place for Temple.");
+		return new CoreResult(false, "Cannot find a good place to create a temple.");
 
 	}
 

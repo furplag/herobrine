@@ -40,7 +40,7 @@ public class Curse extends Core {
 			}, i * 150L);
 		}
 
-		return new CoreResult(true, "Player cursed!");
+		return new CoreResult(true, player.getDisplayName() + " has been cursed by Herobrine.");
 	}
 
 }

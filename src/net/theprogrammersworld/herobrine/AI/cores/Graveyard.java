@@ -73,12 +73,12 @@ public class Graveyard extends Core {
 				AICore.isTarget = true;
 				Bukkit.getServer().getWorld("world_herobrine_graveyard").setStorm(false);
 				
-				return new CoreResult(true, "Player successfully teleported!");
+				return new CoreResult(true, player.getDisplayName() + " was successfully teleported to Herobrine's Graveyard.");
 			} else {
-				return new CoreResult(false, "Player has Ancient Sword.");
+				return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they have an Ancient Sword.");
 			}
 		}
-		return new CoreResult(false, "Graveyard world is not allowed!");
+		return new CoreResult(false, "Herobrine's Graveyard is disabled.");
 	}
 
 	public void Start() {

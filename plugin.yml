@@ -9,4 +9,4 @@ commands:
     herobrine:
       description: Main command.
       usage: /herobrine help
-      aliases: [hero, hb-ai, hb]
+      aliases: [hero, hb]

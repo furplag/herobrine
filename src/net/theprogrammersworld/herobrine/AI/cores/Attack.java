@@ -35,14 +35,14 @@ public class Attack extends Core {
 		if (!PluginCore.getAICore().checkAncientSword(player.getInventory())) {
 			if (PluginCore.getSupport().checkAttack(player.getLocation())) {
 				if (!PluginCore.canAttackPlayerNoMSG(player)) {
-					return new CoreResult(false, "This player is protected.");
+					return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they are protected.");
 				}
 
 				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 				ticksToEnd = 0;
 				AICore.PlayerTarget = player;
 				AICore.isTarget = true;
-				AICore.log.info("[Herobrine] Teleporting to target. (" + AICore.PlayerTarget.getName() + ")");
+				AICore.log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
 				Object[] data = { ploc };
 				PluginCore.getAICore().getCore(CoreType.DESTROY_TORCHES).RunCore(data);
@@ -59,12 +59,12 @@ public class Attack extends Core {
 
 				StartHandler();
 
-				return new CoreResult(true, "Herobrine attacks " + player.getName() + "!");
+				return new CoreResult(true, "Herobrine is currently attacking " + player.getName() + ".");
 			} else {
-				return new CoreResult(false, "Player is in secure area.");
+				return new CoreResult(false, AICore.PlayerTarget.getDisplayName() + " cannot be attacked because they are in a protected area.");
 			}
 		} else {
-			return new CoreResult(false, "Player has Ancient Sword.");
+			return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they have an Ancient Sword.");
 		}
 	}
 

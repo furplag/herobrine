@@ -34,7 +34,7 @@ public class SoundF extends Core{
 		
        player.playSound(player.getLocation(),sounds[Utils.getRandomGen().nextInt(sounds.length)],(float) 0.75,(float) 0.75);
        
-       return new CoreResult(true,"SoundF is starting!");
+       return new CoreResult(true,"SoundF is starting.");
 	}
 	
 }

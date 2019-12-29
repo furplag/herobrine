@@ -67,27 +67,27 @@ public class Support {
 	public void CheckForPlugins() {
 		if (ResidenceCore.Check()) {
 			B_Residence = true;
-			Herobrine.log.info("[Herobrine] Residence plugin detected!");
+			Herobrine.log.info("[Herobrine] Residence plugin detected on server");
 		}
 		if (GriefPreventionCore.Check()) {
 			B_GriefPrevention = true;
-			Herobrine.log.info("[Herobrine] GriefPrevention plugin detected!");
+			Herobrine.log.info("[Herobrine] GriefPrevention plugin detected on server");
 		}
 		if (TownyCore.Check()) {
 			B_Towny = true;
-			Herobrine.log.info("[Herobrine] Towny plugin detected!");
+			Herobrine.log.info("[Herobrine] Towny plugin detected on server");
 		}
 		if (WorldGuard.Check()) {
 			B_WorldGuard = true;
-			Herobrine.log.info("[Herobrine] WorldGuard plugin detected!");
+			Herobrine.log.info("[Herobrine] WorldGuard plugin detected on server");
 		}
 		if (PreciousStones.Check()) {
 			B_PreciousStones = true;
-			Herobrine.log.info("[Herobrine] PreciousStones plugin detected!");
+			Herobrine.log.info("[Herobrine] PreciousStones plugin detected on server");
 		}
 		if (Factions.Check()) {
 			B_Factions = true;
-			Herobrine.log.info("[Herobrine] Factions plugin detected!");
+			Herobrine.log.info("[Herobrine] Factions plugin detected on server");
 		}
 	}
 

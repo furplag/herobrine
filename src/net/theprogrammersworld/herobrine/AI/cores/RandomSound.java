@@ -31,7 +31,7 @@ public class RandomSound extends Core {
 			multip++;
 		}
 
-		return new CoreResult(true, "Starting sound play to target!");
+		return new CoreResult(true, "Herobrine haunted the target with sound.");
 	}
 
 }

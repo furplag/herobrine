@@ -79,13 +79,13 @@ public class Pyramid extends Core {
 				}
 				if (canBuild == true) {
 					BuildPyramid(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-					return new CoreResult(true, "Creating a pyramid!");
+					return new CoreResult(true, "Creating a pyramid.");
 
 				}
 
 			}
 		}
-		return new CoreResult(false, "Cannot create a pyramid!");
+		return new CoreResult(false, "Cannot create a pyramid.");
 
 	}
 
@@ -150,7 +150,7 @@ public class Pyramid extends Core {
 										i3 + loc.getBlockZ()
 										);
 							
-							return new CoreResult(true, "Creating a pyramid!");
+							return new CoreResult(true, "Creating a pyramid.");
 						}
 					}
 
@@ -159,7 +159,7 @@ public class Pyramid extends Core {
 			}
 
 		}
-		return new CoreResult(false, "Cannot create a pyramid!");
+		return new CoreResult(false, "Cannot create a pyramid.");
 
 	}
 

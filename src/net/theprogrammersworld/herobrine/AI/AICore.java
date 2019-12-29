@@ -104,7 +104,7 @@ public class AICore {
 		resetLimits = new ResetLimits();
 
 		plugin = Herobrine.getPluginCore();
-		log.info("[Herobrine] Debug mode enabled!");
+		log.info("[Herobrine] Herobrine is now running in debug mode.");
 		FindPlayer();
 		StartIntervals();
 
@@ -186,12 +186,12 @@ public class AICore {
 
 								CancelTarget(CoreType.ANY);
 								isTarget = true;
-								log.info("[Herobrine] Target founded, starting AI now! (" + targetPlayer.getName()+ ")");
+								log.info("[Herobrine] Target found. Starting AI now. (" + targetPlayer.getName()+ ")");
 								setCoreTypeNow(CoreType.START);
 								StartAI();
 
 							} else {
-								log.info("[Herobrine] Target is in the safe world! ("+ targetPlayer.getLocation().getWorld().getName() + ")");
+								log.info("[Herobrine] Target is in a safe world. ("+ targetPlayer.getLocation().getWorld().getName() + ")");
 								FindPlayer();
 							}
 
@@ -235,7 +235,7 @@ public class AICore {
 				isTarget = false;
 				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 				
-				log.info("[Herobrine] Target cancelled.");
+				log.info("[Herobrine] Cancelled target.");
 				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0);
 				
 				nowloc.setYaw(1.f);
@@ -260,7 +260,7 @@ public class AICore {
 				int chance = Utils.getRandomGen().nextInt(100);
 				if (chance <= 10) {
 					if (Herobrine.getPluginCore().getConfigDB().UseGraveyardWorld == true) {
-						log.info("[Herobrine] Teleporting target to Graveyard world.");
+						log.info("[Herobrine] Teleporting " + PlayerTarget.getDisplayName() + " to Herobrine's Graveyard.");
 
 						getCore(CoreType.GRAVEYARD).RunCore(data);
 

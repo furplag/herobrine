@@ -38,14 +38,14 @@ public class DestroyTorches extends Core {
 							.getPluginCore().getConfigDB().DestroyTorchesRadius; iii++) {
 						if (world.getBlockAt(x + ii, y + i, z + iii).getType() == Material.TORCH) {
 							world.getBlockAt(x + ii, y + i, z + iii).breakNaturally();
-							return new CoreResult(true, "Torches destroyed!");
+							return new CoreResult(true, "Torches successfully destroyed by Herobrine.");
 						}
 					}
 				}
 			}
 
 		}
-		return new CoreResult(false, "Cannot destroy torches.");
+		return new CoreResult(false, "Herobrine could not destroy the torches.");
 	}
 
 }

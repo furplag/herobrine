@@ -37,7 +37,7 @@ public class Haunt extends Core {
 	public CoreResult setHauntTarget(Player player) {
 		if (PluginCore.getSupport().checkHaunt(player.getLocation())) {
 			if (!PluginCore.canAttackPlayerNoMSG(player)) {
-				return new CoreResult(false, "This player is protected.");
+				return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they are protected.");
 			}
 			spawnedWolves = 0;
 			spawnedBats = 0;
@@ -45,15 +45,15 @@ public class Haunt extends Core {
 			isFirst = true;
 			AICore.isTarget = true;
 			AICore.PlayerTarget = player;
-			AICore.log.info("[Herobrine] Hauntig player!");
+			AICore.log.info("[Herobrine] " + player.getDisplayName() + " is now being haunted by Herobrine.");
 			Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			loc.setY(-20);
 			PluginCore.HerobrineNPC.moveTo(loc);
 
 			StartHandler();
-			return new CoreResult(true, "Herobrine haunts " + player.getName() + "!");
+			return new CoreResult(true, player.getDisplayName() + " is now being haunted by Herobrine.");
 		}
-		return new CoreResult(false, "Player is in secure area!");
+		return new CoreResult(false, player.getDisplayName() + " cannot be haunted because they are in a secure area.");
 	}
 
 	public void StartHandler() {

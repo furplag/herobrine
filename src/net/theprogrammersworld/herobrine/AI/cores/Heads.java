@@ -68,19 +68,19 @@ public class Heads extends Core {
 							}
 						}, 1 * 100L);
 
-						return new CoreResult(true, "Spawned some heads near " + player.getName() + "!");
+						return new CoreResult(true, "Herobrine spawned heads near " + player.getDisplayName() + ".");
 
 					} else {
-						return new CoreResult(false, "Heads are disabled!");
+						return new CoreResult(false, "Herobrine head-spawning is disabled.");
 					}
 				} else {
-					return new CoreResult(false, "Player is in secure area!");
+					return new CoreResult(false, player.getDisplayName() + " cannot be haunted with heads because they are in a secure area.");
 				}
 			} else {
-				return new CoreResult(false, "Player is offline.");
+				return new CoreResult(false, "Player cannot be haunted with heads because they are offline.");
 			}
 		} else {
-			return new CoreResult(false, "Action is on cooldown.");
+			return new CoreResult(false, "Herobrine head-spawning is on a cooldown period.");
 		}
 	}
 

@@ -16,7 +16,7 @@ public class Burn extends Core {
 	public CoreResult CallCore(Object[] data) {
 		Player player = (Player) data[0];
 		player.setFireTicks(800);
-		return new CoreResult(true,"Player burned!");
+		return new CoreResult(true, player.getDisplayName() + " was burned by Herobrine.");
 	}
 
 }

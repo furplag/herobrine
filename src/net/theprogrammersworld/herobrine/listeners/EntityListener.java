@@ -252,7 +252,7 @@ public class EntityListener implements Listener {
 					}
 				} else if (dEvent.getDamager() instanceof Zombie) {
 					Zombie zmb = (Zombie) dEvent.getDamager();
-					if (zmb.getCustomName() == "Artifact Guardian" || zmb.getCustomName() == "Herobrine�s Warrior") {
+					if (zmb.getCustomName() == "Artifact Guardian" || zmb.getCustomName() == "Herobrine Warrior") {
 
 						dEvent.setDamage(dEvent.getDamage() * 3);
 					}

@@ -30,7 +30,7 @@ public class Signs extends Core {
 
 	public CoreResult placeSign(Location loc, Location ploc) {
 		boolean status = false;
-		log.info("Generating sign location...");
+		log.info("Generating sign...");
 
 		if (loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY(), loc.getBlockZ()).getType() == Material.AIR
 				&& loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY() - 1, loc.getBlockZ())
@@ -62,9 +62,9 @@ public class Signs extends Core {
 		}
 
 		if (status) {
-			return new CoreResult(true, "Sign placed!");
+			return new CoreResult(true, "Sign generated successfully.");
 		} else {
-			return new CoreResult(false, "Cannot place a sign!");
+			return new CoreResult(false, "Sign generation failed.");
 		}
 	}
 

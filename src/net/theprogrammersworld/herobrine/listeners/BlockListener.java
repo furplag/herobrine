@@ -73,7 +73,7 @@ public class BlockListener implements Listener {
 			}
 		}
 
-		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrineai_graveyard")) {
+		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrine_graveyard")) {
 			event.setCancelled(true);
 			return;
 		}
@@ -82,7 +82,7 @@ public class BlockListener implements Listener {
 
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
-		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrineai_graveyard")) {
+		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrine_graveyard")) {
 			event.setCancelled(true);
 			return;
 		} else {
@@ -98,7 +98,7 @@ public class BlockListener implements Listener {
 
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
-		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrineai_graveyard")) {
+		if (event.getBlock().getWorld() == Bukkit.getServer().getWorld("world_herobrine_graveyard")) {
 			event.setCancelled(true);
 			return;
 		}

@@ -66,7 +66,7 @@ public class BuryPlayer extends Core {
 					Bury(loc.getWorld(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), player);
 					return new CoreResult(true, player.getDisplayName() + " was buried by Herobrine.");
 				} else {
-					return new CoreResult(false, "Player in protect zone,You can't bury him.");
+					return new CoreResult(false, player.getDisplayName() + " is in a protected area and cannot be buried.");
 				}
 			}
 		} else {

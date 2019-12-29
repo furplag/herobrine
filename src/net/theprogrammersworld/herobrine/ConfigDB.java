@@ -172,8 +172,7 @@ public class ConfigDB {
 			useBookMessages.add("White eyes in dark...");
 			useBookMessages.add("... was last what I saw ...");
 			useBookMessages.add("... before i was dead.");
-
-			log.info("[Herobrine] Creating new Config ...");
+			
 			config.set("config.ShowInterval", 144000);
 			config.set("config.ShowRate", 2);
 			config.set("config.HitPlayer", true);
@@ -349,7 +348,7 @@ public class ConfigDB {
 							Herobrine.AvailableWorld = true;
 
 					if (Herobrine.AvailableWorld == false)
-						log.warning("[Herobrine] There are no available worlds for Herobrine!");
+						log.warning("[Herobrine] There are no worlds available for Herobrine to spawn in.");
 				}
 			}, 1L);
 

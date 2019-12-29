@@ -36,19 +36,19 @@ public class BuildCave extends Core {
 
 						GenerateCave(loc);
 
-						return new CoreResult(false, "Cave created!");
+						return new CoreResult(false, "Cave created.");
 
 					} else {
-						return new CoreResult(false, "Roll failed!");
+						return new CoreResult(false, "Cave generation failed.");
 					}
 				} else {
-					return new CoreResult(false, "Location must be under 60 of Y.");
+					return new CoreResult(false, "Caves can only be generated in locations where the Y coordinate is less than or equal to 60.");
 				}
 			} else {
 				return new CoreResult(false, "Cannot build stuff.");
 			}
 		} else {
-			return new CoreResult(false, "Player is in secure location.");
+			return new CoreResult(false, "Player is in a secure location.");
 		}
 
 	}
@@ -62,13 +62,13 @@ public class BuildCave extends Core {
 
 				GenerateCave(loc);
 
-				return new CoreResult(false, "Cave created!");
+				return new CoreResult(false, "Cave created.");
 
 			} else {
-				return new CoreResult(false, "Location must be under 60 of Y.");
+				return new CoreResult(false, "Caves can only be generated in locations where the Y coordinate is less than or equal to 60.");
 			}
 		} else {
-			return new CoreResult(false, "Player is in secure location.");
+			return new CoreResult(false, "Player is in a secure location.");
 		}
 
 	}
@@ -135,7 +135,7 @@ public class BuildCave extends Core {
 				PlaceRedstoneTorch(_loc.getWorld(), _loc.getBlockX(), _loc.getBlockY(), _loc.getBlockZ());
 			}
 
-			AICore.log.info("Cave created!");
+			AICore.log.info("Cave created.");
 
 		}
 	}
