@@ -66,13 +66,11 @@ public class ConfigDB {
 	public int HerobrineHP = 150;
 	public int BuildInterval = 72000;
 	public boolean UseHeads = true;
-	public boolean UseCustomItems = false;
 	public boolean UseAncientSword = true;
 	public boolean UseNPC_Guardian = true;
 	public boolean UseNPC_Warrior = true;
 	public boolean UseNPC_Demon = true;
 	public CustomID ItemInHand = null;
-	public ArrayList<String> UseCustomItemsList = new ArrayList<String>();
 	public boolean Explosions = true;
 	public boolean Burn = true;
 	public boolean Curse = true;
@@ -174,7 +172,6 @@ public class ConfigDB {
 			useBookMessages.add("White eyes in dark...");
 			useBookMessages.add("... was last what I saw ...");
 			useBookMessages.add("... before i was dead.");
-			UseCustomItemsList.add("ItemExample");
 
 			log.info("[Herobrine] Creating new Config ...");
 			config.set("config.ShowInterval", 144000);
@@ -226,8 +223,6 @@ public class ConfigDB {
 			config.set("config.SecuredArea.Signs", true);
 			config.set("config.SecuredArea.Books", true);
 			config.set("config.UseHeads", true);
-			config.set("config.UseCustomItems", false);
-			config.set("config.CustomItemsList", UseCustomItemsList);
 			config.set("config.UseAncientSword", true);
 			config.set("config.UseNPC.Guardian", true);
 			config.set("config.UseNPC.Warrior", true);
@@ -317,8 +312,6 @@ public class ConfigDB {
 		SecuredArea_Signs = config.getBoolean("config.SecuredArea.Signs");
 		SecuredArea_Books = config.getBoolean("config.SecuredArea.Books");
 		UseHeads = config.getBoolean("config.UseHeads");
-		UseCustomItems = config.getBoolean("config.UseCustomItems");
-		UseCustomItemsList = (ArrayList<String>) config.getStringList("config.CustomItemsList");
 		UseAncientSword = config.getBoolean("config.UseAncientSword");
 		UseNPC_Guardian = config.getBoolean("config.UseNPC.Guardian");
 		UseNPC_Warrior = config.getBoolean("config.UseNPC.Warrior");
