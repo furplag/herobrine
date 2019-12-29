@@ -208,7 +208,6 @@ public class Herobrine extends JavaPlugin implements Listener {
 			this.entMng.killAllMobs();
 			Bukkit.getServer().getScheduler().cancelTask(pathUpdateINT);
 			NPCman.DisableTask();
-			aicore.CancelTarget(CoreType.ANY);
 			aicore.Stop_BD();
 			aicore.Stop_CG();
 			aicore.Stop_MAIN();

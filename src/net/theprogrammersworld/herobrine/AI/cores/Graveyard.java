@@ -1,5 +1,8 @@
 package net.theprogrammersworld.herobrine.AI.cores;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -56,6 +59,7 @@ public class Graveyard extends Core {
 				savedZ = loc.getZ();
 				savedWorld = loc.getWorld();
 				savedPlayer = player;
+				cachePreGraveyardPositionToDisk(loc, player);
 				loc.setWorld(Bukkit.getServer().getWorld("world_herobrine_graveyard"));
 				loc.setX(-2.49);
 				loc.setY(4);
@@ -119,6 +123,7 @@ public class Graveyard extends Core {
 			}
 			
 			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ));
+			deletePreGraveyardCache(savedPlayer);
 
 		} else {
 			Location ploc = (Location) savedPlayer.getLocation();
@@ -159,4 +164,21 @@ public class Graveyard extends Core {
 		return new Location(savedWorld, savedX, savedY, savedZ);
 	}
 
+	private void cachePreGraveyardPositionToDisk(Location loc, Player player) {
+		// Saves a cache of the given player's position prior to getting transported to the graveyard to the disk.
+		try {
+			FileWriter cache = new FileWriter("plugins/Herobrine/pregraveyard_caches/" + player.getUniqueId());
+			cache.write(Double.toString(loc.getX()) + '\n');
+			cache.write(Double.toString(loc.getY()) + '\n');
+			cache.write(Double.toString(loc.getZ()) + '\n');
+			cache.write(loc.getWorld().getName());
+			cache.close();
+		} catch (IOException e) {e.printStackTrace();}
+	}
+	
+	private void deletePreGraveyardCache(Player player) {
+		// Deletes the cache of the given player's position prior to getting teleported to the graveyard.
+		new File("plugins/Herobrine/pregraveyard_caches/" + player.getUniqueId()).delete();
+	}
+	
 }
