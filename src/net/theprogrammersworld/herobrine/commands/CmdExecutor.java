@@ -98,9 +98,9 @@ public class CmdExecutor implements CommandExecutor {
 
 		if (!subcmd.execute(player, args))
 			if (player == null)
-				log.info("Usage: " + subcmd.help());
+				log.info(ChatColor.stripColor("Usage: " + subcmd.help() + " - " + subcmd.helpDesc()));
 			else
-				player.sendMessage("Usage: " + subcmd.help());
+				player.sendMessage("Usage: " + subcmd.help() + " - " + subcmd.helpDesc());
 
 		return true;
 
