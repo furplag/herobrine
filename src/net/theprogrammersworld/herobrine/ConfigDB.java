@@ -43,6 +43,7 @@ public class ConfigDB {
 	public List<String> useSignMessages = new ArrayList<String>();;
 	public List<String> useBookMessages = new ArrayList<String>();;
 	public boolean BuildPyramids = true;
+	public int BuildPyramidOnChunkPercentage = 5;
 	public boolean UseGraveyardWorld = true;
 	public boolean BuryPlayers = true;
 	public boolean SpawnWolves = true;
@@ -53,6 +54,7 @@ public class ConfigDB {
 	public int WalkingModeFromXRadius = 0;
 	public int WalkingModeFromZRadius = 0;
 	public boolean BuildTemples = true;
+	public int BuildTempleOnChunkPercentage = 5;
 	public boolean UseArtifactBow = true;
 	public boolean UseArtifactSword = true;
 	public boolean UseArtifactApple = true;
@@ -204,6 +206,7 @@ public class ConfigDB {
 			config.set("config.Drops.DIAMOND.count", 1);
 			config.set("config.Drops.DIAMOND.chance", 20);
 			config.set("config.BuildPyramids", true);
+			config.set("config.BuildPyramidOnChunkPercentage", 5);
 			config.set("config.UseGraveyardWorld", true);
 			config.set("config.BuryPlayers", true);
 			config.set("config.SpawnWolves", true);
@@ -215,6 +218,7 @@ public class ConfigDB {
 			config.set("config.WalkingModeRadius.FromZ", 0);
 			config.set("config.BuildInterval", 72000);
 			config.set("config.BuildTemples", true);
+			config.set("config.BuildTempleOnChunkPercentage", 5);
 			config.set("config.UseArtifacts.Bow", true);
 			config.set("config.UseArtifacts.Sword", true);
 			config.set("config.UseArtifacts.Apple", true);
@@ -296,6 +300,7 @@ public class ConfigDB {
 		useSignMessages = config.getStringList("config.SignMessages");
 		useBookMessages = config.getStringList("config.BookMessages");
 		BuildPyramids = config.getBoolean("config.BuildPyramids");
+		BuildPyramidOnChunkPercentage = config.getInt("config.BuildPyramidOnChunkPercentage");
 		UseGraveyardWorld = config.getBoolean("config.UseGraveyardWorld");
 		BuryPlayers = config.getBoolean("config.BuryPlayers");
 		SpawnWolves = config.getBoolean("config.SpawnWolves");
@@ -307,6 +312,7 @@ public class ConfigDB {
 		WalkingModeFromZRadius = config.getInt("config.WalkingModeRadius.FromZ");
 		BuildInterval = config.getInt("config.BuildInterval");
 		BuildTemples = config.getBoolean("config.BuildTemples");
+		BuildTempleOnChunkPercentage = config.getInt("config.BuildTempleOnChunkPercentage");
 		UseArtifactBow = config.getBoolean("config.UseArtifacts.Bow");
 		UseArtifactSword = config.getBoolean("config.UseArtifacts.Sword");
 		UseArtifactApple = config.getBoolean("config.UseArtifacts.Apple");

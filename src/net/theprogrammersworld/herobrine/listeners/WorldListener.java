@@ -21,22 +21,19 @@ public class WorldListener implements Listener{
 			if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(world.getName())){
 
 			 if (Herobrine.getPluginCore().getConfigDB().BuildTemples==true){
-			
-				 if (new Random().nextInt(2)==1){
+				 int templeChance = Herobrine.getPluginCore().getConfigDB().BuildTempleOnChunkPercentage;
+				 if (new Random().nextInt(100) + 1 <= templeChance){
 					 Object[] data = {event.getChunk()};
-				
-					Herobrine.getPluginCore().getAICore().getCore(CoreType.TEMPLE).RunCore(data);
+					 Herobrine.getPluginCore().getAICore().getCore(CoreType.TEMPLE).RunCore(data);
 				 }
-			 
 			 }
 			 
 			 if (Herobrine.getPluginCore().getConfigDB().BuildPyramids==true){
-					
-				 if (new Random().nextInt(30)==4){
+				 int pyramidChance = Herobrine.getPluginCore().getConfigDB().BuildPyramidOnChunkPercentage;
+				 if (new Random().nextInt(100) + 1 <= pyramidChance){
 					 Object[] data = {event.getChunk()};
 				     Herobrine.getPluginCore().getAICore().getCore(CoreType.PYRAMID).RunCore(data);
 				 }
-			 
 			 }
 		}
 	}
