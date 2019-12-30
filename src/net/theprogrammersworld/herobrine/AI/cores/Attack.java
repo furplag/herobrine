@@ -55,7 +55,7 @@ public class Attack extends Core {
 
 				PluginCore.HerobrineNPC.moveTo(tploc);
 
-				Message.SendMessage(AICore.PlayerTarget);
+				Message.sendRandomMessage(AICore.PlayerTarget);
 
 				StartHandler();
 

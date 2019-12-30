@@ -8,7 +8,7 @@ import net.theprogrammersworld.herobrine.Herobrine;
 
 public class Message {
 
-	public static void SendMessage(Player player) {
+	public static void sendRandomMessage(Player player) {
 		if (Herobrine.getPluginCore().getConfigDB().SendMessages == true) {
 
 			int count = Herobrine.getPluginCore().getConfigDB().useMessages.size();

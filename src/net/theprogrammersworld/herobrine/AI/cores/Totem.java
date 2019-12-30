@@ -49,7 +49,7 @@ public class Totem extends Core {
 								&& ploc.getX() - 10 < loc.getX() && ploc.getZ() + 10 > loc.getZ()
 								&& ploc.getZ() - 10 < loc.getZ()) {
 
-							Message.SendMessage(onlinePlayer);
+							Message.sendRandomMessage(onlinePlayer);
 							if (PluginCore.getConfigDB().UsePotionEffects) {
 								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
 								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
@@ -97,7 +97,7 @@ public class Totem extends Core {
 								&& ploc.getZ() - 20 < loc.getZ()
 								) {
 
-								Message.SendMessage(onlinePlayer);
+								Message.sendRandomMessage(onlinePlayer);
 								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
 								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
 								onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
