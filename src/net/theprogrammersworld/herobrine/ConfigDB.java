@@ -81,6 +81,7 @@ public class ConfigDB {
 	public String HerobrineUUID = "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2";
 	public String HerobrineName = "Herobrine";
 	public String HerobrineWorldName = "world_herobrine_graveyard";
+	public boolean ShowInTabList = false;
 
 	private boolean isStartupDone = false;
 
@@ -238,6 +239,7 @@ public class ConfigDB {
 			config.set("config.HerobrineUUID", "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2");
 			config.set("config.HerobrineName", "Herobrine");
 			config.set("config.HerobrineWorldName", "world_herobrine_graveyard");
+			config.set("config.ShowInTabList", false);
 
 			try {
 				config.save(configF);
@@ -328,6 +330,7 @@ public class ConfigDB {
 		HerobrineUUID = config.getString("config.HerobrineUUID");
 		HerobrineName = config.getString("config.HerobrineName");
 		HerobrineWorldName = config.getString("config.HerobrineWorldName");
+		ShowInTabList = config.getBoolean("config.ShowInTabList");
 		
 		Herobrine.HerobrineMaxHP = HerobrineHP;
 		Herobrine.getPluginCore().getAICore().Stop_MAIN();

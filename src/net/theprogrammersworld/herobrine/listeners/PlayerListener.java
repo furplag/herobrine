@@ -12,6 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Jukebox;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
@@ -28,6 +29,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
+import net.minecraft.server.v1_15_R1.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_15_R1.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
@@ -55,6 +58,11 @@ public class PlayerListener implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
+		// If the persistent tab list entry for Herobrine is enabled, send an "add player" packet to the user on login.
+		if(Herobrine.getPluginCore().getConfigDB().ShowInTabList)
+			((CraftPlayer) event.getPlayer()).getHandle().playerConnection.sendPacket(
+					new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+		
 		// Check if the user has a Graveyard cache. If they do, this means they are stuck in the Graveyard and
 		// need teleported out.
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PluginCore, new Runnable() {
@@ -276,8 +284,9 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onPlayerMoveEvent(PlayerMoveEvent event) {
-		// Dynamically toggle Herobrine's visibility to players as a workaround to the persistent tab list entry.
-		PluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
+		// Dynamically toggle Herobrine's visibility to players as a workaround to the persistent tab list entry if the persistent entry is disabled.
+		if(!Herobrine.getPluginCore().getConfigDB().ShowInTabList)
+			PluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
 		
 		// Prevent player from moving when in Herobrine's Graveyard.
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {

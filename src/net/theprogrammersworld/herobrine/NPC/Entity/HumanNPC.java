@@ -71,12 +71,14 @@ public class HumanNPC {
 	public void Teleport(Location loc) {
 		getEntity().getBukkitEntity().teleport(loc);
 		
-		// After Herobrine moves, check if any players are in Herobrine's line of sight.
-		boolean doActivationTeleport = false;
-		for(Player p : Bukkit.getOnlinePlayers())
-			doActivationTeleport = doActivationTeleport || Herobrine.getPluginCore().getAICore().toggleHerobrinePlayerVisibilityNoTeleport(p);
-		if(doActivationTeleport)
-			Herobrine.getPluginCore().getAICore().visibilityActivationTeleport();
+		// After Herobrine moves, check if any players are in Herobrine's line of sight if the persistent tab list entry is disabled.
+		if(!Herobrine.getPluginCore().getConfigDB().ShowInTabList) {
+			boolean doActivationTeleport = false;
+			for(Player p : Bukkit.getOnlinePlayers())
+				doActivationTeleport = doActivationTeleport || Herobrine.getPluginCore().getAICore().toggleHerobrinePlayerVisibilityNoTeleport(p);
+			if(doActivationTeleport)
+				Herobrine.getPluginCore().getAICore().visibilityActivationTeleport();
+		}
 	}
 
 	public PlayerInventory getInventory() {
