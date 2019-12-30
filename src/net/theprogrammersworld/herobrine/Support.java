@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import net.theprogrammersworld.herobrine.support.FactionsHook;
 import net.theprogrammersworld.herobrine.support.GriefPreventionHook;
 import net.theprogrammersworld.herobrine.support.PreciousStonesHook;
+import net.theprogrammersworld.herobrine.support.RedProtectHook;
 import net.theprogrammersworld.herobrine.support.ResidenceHook;
 import net.theprogrammersworld.herobrine.support.TownyHook;
 import net.theprogrammersworld.herobrine.support.WorldGuardHook;
@@ -18,12 +19,14 @@ public class Support {
 	private boolean B_WorldGuard = false;
 	private boolean B_PreciousStones = false;
 	private boolean B_Factions = false;
+	private boolean B_RedProtect = false;
 	private ResidenceHook ResidenceCore = null;
 	private GriefPreventionHook GriefPreventionCore = null;
 	private TownyHook TownyCore = null;
 	private WorldGuardHook WorldGuard = null;
 	private PreciousStonesHook PreciousStones = null;
 	private FactionsHook Factions = null;
+	private RedProtectHook RedProtect = null;
 
 	public Support() {
 		ResidenceCore = new ResidenceHook();
@@ -32,6 +35,7 @@ public class Support {
 		WorldGuard = new WorldGuardHook();
 		PreciousStones = new PreciousStonesHook();
 		Factions = new FactionsHook();
+		RedProtect = new RedProtectHook();
 		
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
 			public void run() {
@@ -62,6 +66,10 @@ public class Support {
 
 	public boolean isFactions() {
 		return B_Factions;
+	}
+	
+	public boolean isRedProtect() {
+		return B_RedProtect;
 	}
 
 	public void CheckForPlugins() {
@@ -94,18 +102,19 @@ public class Support {
 	public boolean isSecuredArea(Location loc) {		
 		if (B_Residence) 
 			return ResidenceCore.isSecuredArea(loc);		
-		else if (B_GriefPrevention) 
+		if (B_GriefPrevention) 
 			return GriefPreventionCore.isSecuredArea(loc);
-		else if (B_Towny)
+		if (B_Towny)
 			return TownyCore.isSecuredArea(loc);
-		else if (B_WorldGuard)
+		if (B_WorldGuard)
 			return WorldGuard.isSecuredArea(loc);
-		else if (B_PreciousStones) 
+		if (B_PreciousStones) 
 			return PreciousStones.isSecuredArea(loc);
-		else if (B_Factions) 
+		if (B_Factions) 
 			return Factions.isSecuredArea(loc);
-		else
-			return false;
+		if (B_RedProtect)
+			return RedProtect.isSecuredArea(loc);
+		return false;
 	}
 
 	public boolean checkBuild(final Location loc) {
