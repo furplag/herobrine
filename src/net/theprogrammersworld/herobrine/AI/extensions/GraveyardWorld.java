@@ -11,7 +11,7 @@ public class GraveyardWorld {
 
 	public static void Create() {
 
-		Location loc = new Location(Bukkit.getServer().getWorld("world_herobrine_graveyard"), 0, 3, 0);
+		Location loc = new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), 0, 3, 0);
 
 		for (int x = -50; x <= 50; x++) {
 			for (int z = -50; z <= 50; z++) {

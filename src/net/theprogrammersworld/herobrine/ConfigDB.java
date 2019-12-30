@@ -80,6 +80,7 @@ public class ConfigDB {
 	public boolean UseIgnorePermission = true;
 	public String HerobrineUUID = "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2";
 	public String HerobrineName = "Herobrine";
+	public String HerobrineWorldName = "world_herobrine_graveyard";
 
 	private boolean isStartupDone = false;
 
@@ -236,6 +237,7 @@ public class ConfigDB {
 			config.set("config.UseIgnorePermission", true);
 			config.set("config.HerobrineUUID", "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2");
 			config.set("config.HerobrineName", "Herobrine");
+			config.set("config.HerobrineWorldName", "world_herobrine_graveyard");
 
 			try {
 				config.save(configF);
@@ -325,6 +327,7 @@ public class ConfigDB {
 		UseIgnorePermission = config.getBoolean("config.UseIgnorePermission");
 		HerobrineUUID = config.getString("config.HerobrineUUID");
 		HerobrineName = config.getString("config.HerobrineName");
+		HerobrineWorldName = config.getString("config.HerobrineWorldName");
 		
 		Herobrine.HerobrineMaxHP = HerobrineHP;
 		Herobrine.getPluginCore().getAICore().Stop_MAIN();
@@ -361,7 +364,7 @@ public class ConfigDB {
 		ArrayList<String> allWorlds = new ArrayList<String>();
 		List<World> worlds_ = Bukkit.getWorlds();
 		for (int i = 0; i <= worlds_.size() - 1; i++) {
-			if (!worlds_.get(i).getName().equalsIgnoreCase("world_herobrine_graveyard")) {
+			if (!worlds_.get(i).getName().equalsIgnoreCase(HerobrineWorldName)) {
 				allWorlds.add(worlds_.get(i).getName());
 			}
 		}

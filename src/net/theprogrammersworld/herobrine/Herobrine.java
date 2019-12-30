@@ -123,8 +123,8 @@ public class Herobrine extends JavaPlugin implements Listener {
 		HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
 
 		// Graveyard World
-		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld("world_herobrine_graveyard") == null) {			
-			WorldCreator wc = new WorldCreator("world_herobrine_graveyard");
+		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld(configdb.HerobrineWorldName) == null) {			
+			WorldCreator wc = new WorldCreator(configdb.HerobrineWorldName);
 			wc.generateStructures(false);
 			org.bukkit.WorldType type = org.bukkit.WorldType.FLAT;
 			wc.type(type);

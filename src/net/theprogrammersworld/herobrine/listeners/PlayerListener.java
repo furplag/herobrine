@@ -213,7 +213,7 @@ public class PlayerListener implements Listener {
 			if (AICore.PlayerTarget == event.getPlayer()
 					&& PluginCore.getAICore().getCoreTypeNow() == CoreType.GRAVEYARD
 					&& event.getPlayer().getLocation().getWorld() == Bukkit.getServer()
-							.getWorld("world_herobrine_graveyard")
+							.getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)
 					&& AICore.isTarget) {
 
 				if (Utils.getRandomGen().nextBoolean()) {
@@ -281,9 +281,9 @@ public class PlayerListener implements Listener {
 		
 		// Prevent player from moving when in Herobrine's Graveyard.
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
-			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld("world_herobrine_graveyard")) {
+			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)) {
 				Player player = (Player) event.getPlayer();
-				player.teleport(new Location(Bukkit.getServer().getWorld("world_herobrine_graveyard"), -2.49f, 4.f,
+				player.teleport(new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49f, 4.f,
 						10.69f, -179.85f, 0.44999f));
 			}
 		}
