@@ -49,6 +49,7 @@ public class CmdExecutor implements CommandExecutor {
 
 		ArrayList<String> helpMessage = new ArrayList<String>();
 		HashMap<String, String> helpMessageDesc = new HashMap<>();
+		HashMap<String, String> permissionNode = new HashMap<>();
 		
 		helpMessage.add(ChatColor.GREEN + "/herobrine help");
 		helpMessageDesc.put(helpMessage.get(0), ChatColor.GREEN + "Shows this list of Herobrine commands");
@@ -56,6 +57,7 @@ public class CmdExecutor implements CommandExecutor {
 		for (String v : helpCommandOrder) {
 			helpMessage.add(((SubCommand) subCommands.get(v)).help());
 			helpMessageDesc.put(((SubCommand) subCommands.get(v)).help(), ((SubCommand) subCommands.get(v)).helpDesc());
+			permissionNode.put(((SubCommand) subCommands.get(v)).help(), v);
 		}
 
 		if (player == null) {
@@ -66,9 +68,11 @@ public class CmdExecutor implements CommandExecutor {
 		else {
 			player.sendMessage(ChatColor.RED + "[Herobrine] Command List (hover over commands for more info)");
 			for (String v : helpMessage) {
-				IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
-						"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
-				((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help));
+				if(player.hasPermission("herobrine." + permissionNode.get(v))) {
+					IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
+							"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
+					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help));
+				}
 			}
 		}
 
