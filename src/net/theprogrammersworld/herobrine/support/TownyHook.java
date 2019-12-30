@@ -3,9 +3,7 @@ package net.theprogrammersworld.herobrine.support;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-import com.palmergames.bukkit.towny.Towny;
-import com.palmergames.bukkit.towny.object.TownBlock;
-import com.palmergames.bukkit.towny.object.TownyUniverse;
+import com.palmergames.bukkit.towny.TownyAPI;
 
 public class TownyHook {
 	public boolean Check() {
@@ -14,10 +12,6 @@ public class TownyHook {
 	}
 
 	public boolean isSecuredArea(Location loc) {
-
-		Towny towny = (Towny) Bukkit.getServer().getPluginManager().getPlugin("Towny");
-		towny.getTownyUniverse();
-		TownBlock block = TownyUniverse.getTownBlock(loc);
-		return (block != null);
+		return (TownyAPI.getInstance().getTownBlock(loc) != null);
 	}
 }
