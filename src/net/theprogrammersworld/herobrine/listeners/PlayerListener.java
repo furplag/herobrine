@@ -88,6 +88,11 @@ public class PlayerListener implements Listener {
 				}
 			}
 		}, 20L); // 20L = 1 sec
+		
+		// If a newer version of Herobrine is available and the player is an OP, display a message to the OP stating that a new version is available.
+		if(Herobrine.getPluginCore().getConfigDB().newVersionFound && event.getPlayer().isOp())
+			event.getPlayer().sendMessage(ChatColor.RED + "A new version of Herobrine is available. To "
+					+ "get it, go to www.theprogrammersworld.net/Herobrine and click \"Download\".");
 	}
 
 	@EventHandler

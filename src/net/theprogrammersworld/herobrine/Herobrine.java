@@ -42,6 +42,7 @@ import net.theprogrammersworld.herobrine.listeners.EntityListener;
 import net.theprogrammersworld.herobrine.listeners.InventoryListener;
 import net.theprogrammersworld.herobrine.listeners.PlayerListener;
 import net.theprogrammersworld.herobrine.listeners.WorldListener;
+import net.theprogrammersworld.herobrine.misc.UpdateScanner;
 
 public class Herobrine extends JavaPlugin implements Listener {
 
@@ -187,6 +188,10 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 		// Support initialize
 		this.support = new Support();
+		
+		// If the plugin configuration has updated checking turned on, start the thread responsible for performing the check.
+		if(configdb.CheckForUpdates)
+			new Thread(new UpdateScanner()).start();
 	}
 
 	@Override

@@ -82,7 +82,10 @@ public class ConfigDB {
 	public String HerobrineName = "Herobrine";
 	public String HerobrineWorldName = "world_herobrine_graveyard";
 	public boolean ShowInTabList = false;
+	public boolean CheckForUpdates = true;
 
+	public boolean newVersionFound = false;
+	
 	private boolean isStartupDone = false;
 
 	public ConfigDB(Logger l) {
@@ -240,6 +243,7 @@ public class ConfigDB {
 			config.set("config.HerobrineName", "Herobrine");
 			config.set("config.HerobrineWorldName", "world_herobrine_graveyard");
 			config.set("config.ShowInTabList", false);
+			config.set("config.CheckForUpdates", true);
 
 			try {
 				config.save(configF);
@@ -331,6 +335,7 @@ public class ConfigDB {
 		HerobrineName = config.getString("config.HerobrineName");
 		HerobrineWorldName = config.getString("config.HerobrineWorldName");
 		ShowInTabList = config.getBoolean("config.ShowInTabList");
+		CheckForUpdates = this.config.getBoolean("config.CheckForUpdates");
 		
 		Herobrine.HerobrineMaxHP = HerobrineHP;
 		Herobrine.getPluginCore().getAICore().Stop_MAIN();
