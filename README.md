@@ -1,37 +1,27 @@
-# HerobrineAI
-[![Build Status](http://jenkins.logicshard.com/buildStatus/icon?job=HerobrineAI)](http://jenkins.logicshard.com/job/HerobrineAI/)
+# Herobrine 2 #
 
-=========
+----
 
-HerobrineAI is server-side bukkit plugin for Minecraft that creates Herobrine with custom AI and skin.  
-Plugin has many features and it is based on the legend of Herobrine.  
+[Herobrine Home Page](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=1) | [Downloads](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=2) | [Changelog](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=5) | [Configuration](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=4) | [Commands & Permissions](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=3) | [Internal Bug Reporting](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=24)
 
-Contributing 
----------
-This is an old project and there are some parts of code that are poorly written, feel free to pull any refactored code.
+----
 
-Building
----------
-**Maven with jdk7+ is required**
+**[Download latest version now.](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=9) A complete listing of all versions of Herobrine is available under the "[Plugin Downloads](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=10)" tab.**
 
-**1. Clone project**  
-```
-git clone git://github.com/jakub1221/HerobrineAI.git 
-```
+Herobrine 2 is a derivative of the [Herobrine AI](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=11) plugin for Bukkit, originally written by Bukkit plugin developer [Jakub1221](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=12).
+ 
+### What software license is this plugin distributed under? ###
 
-**2. Install maven with jdk**  
-[Tutorial here](http://maven.apache.org/install.html)
+As per the requirements set by the original developer, Herobrine 2 is distributed under the MIT License. The original copy of the MIT License that was distributed with Herobrine AI can be found [here](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=13).
 
-**3. Install Craftbukkit**  
-Plugin uses NMS code that is located in craftbukkit.  
-In order to get craftbukkit installed to local maven repository you need to run [BuildTools](https://www.spigotmc.org/wiki/buildtools/).
+### How do I contribute? ###
 
-**4. Build plugin**  
-```
-mvn clean install
-```
-Plugin will be located in target directory after building is done.
+To contribute to the project, fork the Herobrine 2 repository, make whatever changes you desire to the code, and submit a pull request. I will review your changes and merge them if they are acceptable. Any changes, whether they are bug fixes or new features, are welcome.
 
-Downloads
----------
-You can download latest build from jenkins site [here](http://jenkins.logicshard.com/job/HerobrineAI/).
+In order to contribute, you will need to acquire Spigot by making use of the [Spigot BuildTools](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=14). After you have compiled Spigot, place a copy of the compiled build of the Spigot jar in the folder named 'libs' within your copy of the repository.
+
+The recommended IDE for working on this project is [Eclipse](https://theprogrammersworld.net/adflyBitbucketRedirs.php?redirid=15).
+
+### Contribution guidelines ###
+
+Pull requests that do not provide detail on what changes were made to the code will be denied without a review. Please provide adequate information on the changes you made to the code.
