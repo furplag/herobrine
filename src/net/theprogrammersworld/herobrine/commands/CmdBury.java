@@ -23,17 +23,17 @@ public class CmdBury extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be buried because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be buried because they are offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkHaunt(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be buried because they are in a secure area.");
 				return true;
 			}
 			
@@ -41,9 +41,9 @@ public class CmdBury extends SubCommand {
 			Object[] data = { target };
 			
 			if (plugin.getAICore().getCore(CoreType.BURY_PLAYER).RunCore(data).getResult()) 
-				sendMessage(player, ChatColor.RED + "[Herobrine] Buried " + args[1] + "!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Herobrine has buried " + args[1] + ".");
 			else
-				sendMessage(player, ChatColor.RED + "[Herobrine] Cannot find good place!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " could not be buried because there is no good place to bury them.");
 					
 			return true;
 		}
@@ -53,7 +53,12 @@ public class CmdBury extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai bury <player name>";
+		return ChatColor.GREEN + "/herobrine bury <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Buries the specified player";
 	}
 
 }

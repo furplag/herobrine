@@ -21,6 +21,8 @@ public abstract class SubCommand {
 	
 	public abstract String help();
 	
+	public abstract String helpDesc();
+	
 	protected void sendMessage(Player player, String message){
 		if(player == null)
 			logger.info(ChatColor.stripColor(message));

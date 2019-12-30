@@ -23,23 +23,22 @@ public class CmdGraveyard extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be sent to Herobrine's Graveyard because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be sent to Herobrine's Graveyard because they are offline.");
 				return true;
 			}
 			
 			if (AICore.isTarget == false) {			
 				plugin.getAICore().GraveyardTeleport(Bukkit.getServer().getPlayer(args[1]));
-				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " is now in the Graveyard world!");		
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " is now in the Herobrine's Graveyard.");		
 			} else {
-				sendMessage(player,ChatColor.RED
-								   + "[Herobrine] Herobrine already has target! Use "
-								   + ChatColor.GREEN + "/hb-ai cancel" + ChatColor.RED
-								   + " to cancel current target");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Another player is already in Herobrine's Graveyard. Use "
+						+ ChatColor.GREEN + "/herobrine cancel" + ChatColor.RED + " to teleport the current player out of "
+						+ "the graveyard.");
 			}
 			
 			return true;
@@ -50,7 +49,12 @@ public class CmdGraveyard extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai graveyard <player name>";
+		return ChatColor.GREEN + "/herobrine graveyard <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Temporarily teleports the specified player to Herobrine's Graveyard";
 	}
 
 }

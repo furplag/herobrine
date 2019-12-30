@@ -8,8 +8,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
+import net.minecraft.server.v1_15_R1.IChatBaseComponent;
+import net.minecraft.server.v1_15_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_15_R1.PacketPlayOutChat;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdExecutor implements CommandExecutor {
@@ -42,19 +46,29 @@ public class CmdExecutor implements CommandExecutor {
 	public void ShowHelp(Player player) {
 
 		ArrayList<String> helpMessage = new ArrayList<String>();
+		HashMap<String, String> helpMessageDesc = new HashMap<>();
+		
+		helpMessage.add(ChatColor.GREEN + "/herobrine help");
+		helpMessageDesc.put(helpMessage.get(0), ChatColor.GREEN + "Shows this list of Herobrine commands");
 
-		helpMessage.add(ChatColor.GREEN + "[Herobrine] Command list");
-		helpMessage.add(ChatColor.GREEN + "/herobrine help - shows all commands");
-
-		for (String v : helpCommandOrder)
+		for (String v : helpCommandOrder) {
 			helpMessage.add(((SubCommand) subCommands.get(v)).help());
+			helpMessageDesc.put(((SubCommand) subCommands.get(v)).help(), ((SubCommand) subCommands.get(v)).helpDesc());
+		}
 
-		if (player == null)
+		if (player == null) {
+			log.info("[Herobrine] Command List");
 			for (String v : helpMessage)
-				log.info(ChatColor.stripColor(v));
-		else
-			for (String v : helpMessage)
-				player.sendMessage(v);
+				log.info(ChatColor.stripColor(v + " - " + helpMessageDesc.get(v)));
+		}
+		else {
+			player.sendMessage(ChatColor.RED + "[Herobrine] Command List (hover over commands for more info)");
+			for (String v : helpMessage) {
+				IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
+						"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
+				((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help));
+			}
+		}
 
 	}
 

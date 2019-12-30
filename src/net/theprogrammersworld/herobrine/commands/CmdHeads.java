@@ -23,17 +23,17 @@ public class CmdHeads extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted with heads because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted with heads because they are offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkBuild(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted with heads because they are in a secure area.");
 				return true;
 			}
 			
@@ -48,7 +48,12 @@ public class CmdHeads extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai heads <player name>";
+		return ChatColor.GREEN + "/herobrine heads <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Spawns the specified player's heads near the specified player";
 	}
 
 }

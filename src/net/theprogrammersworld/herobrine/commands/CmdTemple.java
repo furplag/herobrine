@@ -23,26 +23,27 @@ public class CmdTemple extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A temple cannot be built near " + args[1] + " because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A temple cannot be built near " + args[1] + " because they are offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkBuild(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A temple cannot be built near " + args[1] + " because they are in a secure area.");
 				return true;
 			}	
 			
 			Object[] data = { target }; 
 
 			if (plugin.getAICore().getCore(CoreType.TEMPLE).RunCore(data).getResult()) 
-				sendMessage(player, ChatColor.RED + "[Herobrine] Creating temple near " + args[1] + "!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Generating a temple near " + args[1] + ".");
 			else
-				sendMessage(player, ChatColor.RED + "[Herobrine] Cannot find good place for temple!");
+				sendMessage(player, ChatColor.RED+ "[Herobrine] A temple could not be generated near " + args[1]
+						+ " because there is no good place for it near them.");
 				
 			
 			return true;
@@ -54,7 +55,12 @@ public class CmdTemple extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai temple <player name>";
+		return ChatColor.GREEN + "/herobrine temple <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Builds a temple near the specified player";
 	}
 
 }

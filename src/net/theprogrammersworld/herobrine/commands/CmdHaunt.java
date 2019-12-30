@@ -23,28 +23,27 @@ public class CmdHaunt extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted because they are offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkHaunt(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be haunted because they are in a secure area.");
 				return true;
 			}
 			
 			if (AICore.isTarget == false) {			
 				plugin.getAICore().setHauntTarget(target);
-				sendMessage(player, ChatColor.RED + "[Herobrine] Herobrine is now haunting " + args[1] + "!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Herobrine is now haunting " + args[1] + ".");
 				
 			} else {
-				sendMessage(player,ChatColor.RED + "[Herobrine] Herobrine already has target! Use "
-								  + ChatColor.GREEN + "/hb-ai cancel" + ChatColor.RED
-                                  + " to cancel current target.");
+				sendMessage(player,ChatColor.RED + "[Herobrine] Herobrine is already haunting another player. Use " + ChatColor.GREEN
+						+ "/herobrine cancel" + ChatColor.RED + " to cancel the current haunting.");
 			}
 			
 			return true;
@@ -56,7 +55,12 @@ public class CmdHaunt extends SubCommand {
 
 	@Override
 	public String help() {	
-		return ChatColor.GREEN + "/hb-ai haunt <player name>";
+		return ChatColor.GREEN + "/herobrine haunt";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Sends Herobrine to haunt the specified player";
 	}
 
 }

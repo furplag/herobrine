@@ -61,7 +61,12 @@ public class CmdAttack extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai attack <player name>";
+		return ChatColor.GREEN + "/herobrine attack <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Sends Herobrine to attack to the specified player";
 	}
 
 }

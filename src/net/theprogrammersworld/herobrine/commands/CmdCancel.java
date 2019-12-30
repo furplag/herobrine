@@ -18,14 +18,19 @@ public class CmdCancel extends SubCommand {
 	public boolean execute(Player player, String[] args) {
 		
 		plugin.getAICore().CancelTarget(CoreType.ANY);
-		sendMessage(player, ChatColor.RED + "[Herobrine] Target cancelled!");
+		sendMessage(player, ChatColor.RED + "[Herobrine] The current Herobrine victim has been saved.");
 		
 		return true;
 	}
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai cancel";
+		return ChatColor.GREEN + "/herobrine cancel";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Cancels Herobrine's current target";
 	}
 
 }

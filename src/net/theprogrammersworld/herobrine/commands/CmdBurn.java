@@ -24,12 +24,12 @@ public class CmdBurn extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be attacked because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] " + args[1] + " cannot be attacked because they are offline.");
 				return true;
 			}
 
@@ -44,7 +44,12 @@ public class CmdBurn extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai burn <player name>";
+		return ChatColor.GREEN + "/herobrine burn <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Burns the specified player";
 	}
 
 }

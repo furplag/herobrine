@@ -23,26 +23,27 @@ public class CmdPyramid extends SubCommand {
 			Player target = Bukkit.getServer().getPlayer(args[1]);
 			
 			if (target == null) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A pyramid cannot be built near " + args[1] + " because they are offline.");
 				return true;
 			}
 			
 			if (!target.isOnline()) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is offline.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A pyramid cannot be built near " + args[1] + " because they are offline.");
 				return true;
 			}
 			
 			if (!plugin.getSupport().checkBuild(target.getLocation())) {
-				sendMessage(player, ChatColor.RED + "[Herobrine] Player is in secure area.");
+				sendMessage(player, ChatColor.RED + "[Herobrine] A pyramid cannot be built near " + args[1] + " because they are in a secure area.");
 				return true;
 			}
 			
 			Object[] data = { target };
 			
 			if (plugin.getAICore().getCore(CoreType.PYRAMID).RunCore(data).getResult()) 
-				sendMessage(player, ChatColor.RED + "[Herobrine] Creating pyramind near "+ args[1] + "!");
+				sendMessage(player, ChatColor.RED + "[Herobrine] Generating a pyramid near " + args[1] + ".");
 			else 
-				sendMessage(player, ChatColor.RED+ "[Herobrine] Cannot find good place for a pyramid!");		
+				sendMessage(player, ChatColor.RED+ "[Herobrine] A pyramid could not be generated near " + args[1]
+						+ " because there is no good place for it near them.");		
 			
 			return true;
 		} 
@@ -52,7 +53,12 @@ public class CmdPyramid extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai pyramid <player name>";
+		return ChatColor.GREEN + "/herobrine pyramid <player>";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Builds a pyramid near the specified player";
 	}
 
 }

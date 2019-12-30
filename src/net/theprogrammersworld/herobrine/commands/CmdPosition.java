@@ -7,7 +7,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import net.theprogrammersworld.herobrine.Herobrine;
-import net.theprogrammersworld.herobrine.AI.AICore;
 
 public class CmdPosition extends SubCommand {
 
@@ -16,28 +15,24 @@ public class CmdPosition extends SubCommand {
 	}
 
 	@Override
-	public boolean execute(Player player, String[] args) {
-		
-		sendMessage(player, ChatColor.RED + "[Herobrine] Position");
-		
+	public boolean execute(Player player, String[] args) {		
 		Location loc = plugin.HerobrineNPC.getBukkitEntity().getLocation();
 		
-		sendMessage(player, ChatColor.RED 
+		sendMessage(player, ChatColor.GREEN + "[Herobrine] Position - "
 				+ "World: "+ loc.getWorld().getName()
-				+ " X: " + ((int) loc.getX())
-				+ " Y: " +((int) loc.getY())
-				+ " Z: " +((int) loc.getZ())
-				);
-		
-		sendMessage(player, ChatColor.RED + "InWalkingMode: " + AICore.getStringWalkingMode());
-		sendMessage(player, ChatColor.RED + "Available World: "+ plugin.getAvailableWorldString());
+				+ ", Coordinates: (" + (int) loc.getX() + ", " + (int) loc.getY() + ", " + (int) loc.getZ() + ")");
 		
 		return true;
 	}
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai position";
+		return ChatColor.GREEN + "/herobrine position";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Displays Herobrine's coordinates";
 	}
 
 }

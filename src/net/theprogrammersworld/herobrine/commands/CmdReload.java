@@ -17,14 +17,19 @@ public class CmdReload extends SubCommand {
 	public boolean execute(Player player, String[] args) {
 		
 		plugin.getConfigDB().Reload();
-		sendMessage(player, ChatColor.RED + "[Herobrine] Config reloaded!");
+		sendMessage(player, ChatColor.RED + "[Herobrine] Herobrine configuration file reloaded.");
 		
 		return true;
 	}
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/hb-ai reload";
+		return ChatColor.GREEN + "/herobrine reload";
+	}
+
+	@Override
+	public String helpDesc() {
+		return ChatColor.GREEN + "Reloads the Herobrine configuration file";
 	}
 
 }
