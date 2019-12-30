@@ -89,6 +89,9 @@ public class ConfigDB {
 	public boolean newVersionFound = false;
 	
 	private boolean isStartupDone = false;
+	
+	final public String pluginVersionString = Bukkit.getServer().getPluginManager().getPlugin("Herobrine")
+			.getDescription().getVersion();
 
 	public ConfigDB(Logger l) {
 		this.log = l;
