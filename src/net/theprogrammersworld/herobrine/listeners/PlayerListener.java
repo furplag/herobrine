@@ -216,6 +216,7 @@ public class PlayerListener implements Listener {
 			event.setCancelled(true);
 			PluginCore.getAICore().playerBedEnter(player);
 		}
+		event.useBed();
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
