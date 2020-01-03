@@ -72,6 +72,7 @@ public class ConfigDB {
 	public boolean UseNPC_Guardian = true;
 	public boolean UseNPC_Warrior = true;
 	public boolean UseNPC_Demon = true;
+	public boolean SpawnDemonsOnPlayerBedEnter = true;
 	public CustomID ItemInHand = null;
 	public boolean Explosions = true;
 	public boolean Burn = true;
@@ -101,6 +102,7 @@ public class ConfigDB {
 	public File npcF = new File("plugins/Herobrine/npc.yml");
 
 	public void Startup() {
+		boolean configUpdated = false;
 		new File("plugins/Herobrine/pregraveyard_caches").mkdirs();
 
 		if (!configF.exists())
@@ -238,6 +240,7 @@ public class ConfigDB {
 			config.set("config.UseNPC.Guardian", true);
 			config.set("config.UseNPC.Warrior", true);
 			config.set("config.UseNPC.Demon", true);
+			config.set("config.SpawnDemonsOnPlayerBedEnter", true);
 			config.set("config.ItemInHand", "AIR");
 			config.set("config.Explosions", true);
 			config.set("config.Burn", true);
@@ -256,6 +259,19 @@ public class ConfigDB {
 				config.save(configF);
 			} catch (IOException e) {
 
+				e.printStackTrace();
+			}
+		}
+		else if(!config.contains("config.SpawnDemonsOnPlayerBedEnter")) {
+			config.set("config.SpawnDemonsOnPlayerBedEnter", true);
+			configUpdated = true;
+		}
+		
+		if(configUpdated) {
+			try {
+				config.save(configF);
+				log.info("[Herobrine] The Herobrine configuration file was updated with new parameters for Herobrine v" + pluginVersionString + ".");
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -332,6 +348,7 @@ public class ConfigDB {
 		UseNPC_Guardian = config.getBoolean("config.UseNPC.Guardian");
 		UseNPC_Warrior = config.getBoolean("config.UseNPC.Warrior");
 		UseNPC_Demon = config.getBoolean("config.UseNPC.Demon");
+		SpawnDemonsOnPlayerBedEnter = config.getBoolean("config.SpawnDemonsOnPlayerBedEnter");
 		ItemInHand = new CustomID(config.getString("config.ItemInHand"));
 		Explosions = config.getBoolean("config.Explosions");
 		Burn = config.getBoolean("config.Burn");

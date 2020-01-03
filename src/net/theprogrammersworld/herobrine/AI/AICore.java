@@ -156,10 +156,9 @@ public class AICore {
 			GraveyardTeleport(player);
 		} else if (chance < 50) {
 			setHauntTarget(player);
-		} else {
-			if (Herobrine.getPluginCore().getConfigDB().UseNPC_Demon && !Herobrine.isNPCDisabled) {
-				Herobrine.getPluginCore().getEntityManager().spawnCustomSkeleton(player.getLocation(), MobType.DEMON);
-			}
+		} else if (Herobrine.getPluginCore().getConfigDB().SpawnDemonsOnPlayerBedEnter && Herobrine.getPluginCore().getConfigDB().UseNPC_Demon
+				&& !Herobrine.isNPCDisabled) {
+			Herobrine.getPluginCore().getEntityManager().spawnCustomSkeleton(player.getLocation(), MobType.DEMON);
 		}
 	}
 
