@@ -3,9 +3,9 @@ package net.theprogrammersworld.herobrine.support;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
 
 public class WorldGuardHook {
@@ -15,10 +15,9 @@ public class WorldGuardHook {
 	}
 
 	public boolean isSecuredArea(Location loc) {
-		
-		RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
-		RegionQuery query = container.createQuery();
-		ApplicableRegionSet set = query.getApplicableRegions(new com.sk89q.worldedit.util.Location(null, loc.getX(), loc.getY(), loc.getZ()));
+		RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
+		com.sk89q.worldedit.util.Location we_loc = BukkitAdapter.adapt(loc);
+		ApplicableRegionSet set = query.getApplicableRegions(new com.sk89q.worldedit.util.Location(we_loc.getExtent(), we_loc.getX(), we_loc.getY(), we_loc.getZ()));
 		if (set != null) {
 			return set.size() != 0;
 		}
