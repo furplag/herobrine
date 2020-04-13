@@ -1,5 +1,6 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
+import net.minecraft.server.v1_15_R1.ChunkProviderServer;
 import net.minecraft.server.v1_15_R1.EntityPlayer;
 import net.minecraft.server.v1_15_R1.EnumHand;
 import net.minecraft.server.v1_15_R1.PacketPlayInArmAnimation;
@@ -33,7 +34,8 @@ public class HumanNPC {
 	}
 
 	public void ArmSwingAnimation() {
-		PlayerChunkMap playerChunkMap = ((WorldServer) this.entity.world).getChunkProvider().playerChunkMap;
+		ChunkProviderServer chunkProvider = ((WorldServer) this.entity.world).getChunkProvider();
+		PlayerChunkMap playerChunkMap = chunkProvider.playerChunkMap;
 		PlayerChunkMap.EntityTracker playerchunkmap_entitytracker = playerChunkMap.trackedEntities.get(this.entity.getId());
 		
 		if(playerchunkmap_entitytracker != null) {

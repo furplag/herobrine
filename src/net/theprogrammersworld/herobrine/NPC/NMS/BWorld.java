@@ -3,6 +3,7 @@ package net.theprogrammersworld.herobrine.NPC.NMS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.minecraft.server.v1_15_R1.ChunkProviderServer;
 import net.minecraft.server.v1_15_R1.PlayerChunkMap;
 import net.minecraft.server.v1_15_R1.WorldServer;
 
@@ -24,7 +25,8 @@ public class BWorld {
 	}
 
 	public PlayerChunkMap getPlayerManager() {
-		return wServer.getChunkProvider().playerChunkMap;
+		ChunkProviderServer chunkProvider = ((WorldServer) wServer).getChunkProvider();
+		return chunkProvider.playerChunkMap;
 	}
 
 	public CraftWorld getCraftWorld() {
