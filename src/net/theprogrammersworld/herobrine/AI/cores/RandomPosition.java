@@ -115,7 +115,8 @@ public class RandomPosition extends Core {
 			randz = randz + PluginCore.getConfigDB().WalkingModeFromZRadius;
 
 			if (world != null) {
-				randy = world.getHighestBlockYAt(randx, randz);
+				//randy = world.getHighestBlockYAt(randx, randz); - Try to restore this line for any release after 1.15.2.
+				randy = Utils.getRandomGen().nextInt(257); // Temporary fix for what appears to be a bug with getHighestBlockYAt() in 1.15.2.
 			} else {
 				return null;
 			}
