@@ -73,7 +73,7 @@ public class CmdExecutor implements CommandExecutor {
 				if(player.hasPermission("herobrine." + permissionNode.get(v))) {
 					IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
 							"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
-					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help, ChatMessageType.CHAT, null));
+					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help, ChatMessageType.CHAT, player.getUniqueId()));
 				}
 			}
 		}
