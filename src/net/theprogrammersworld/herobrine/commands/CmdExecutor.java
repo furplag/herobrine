@@ -8,12 +8,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.server.v1_15_R1.IChatBaseComponent;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_15_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_16_R1.ChatMessageType;
+import net.minecraft.server.v1_16_R1.IChatBaseComponent;
+import net.minecraft.server.v1_16_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_16_R1.PacketPlayOutChat;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdExecutor implements CommandExecutor {
@@ -72,7 +73,7 @@ public class CmdExecutor implements CommandExecutor {
 				if(player.hasPermission("herobrine." + permissionNode.get(v))) {
 					IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
 							"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
-					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help));
+					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help, ChatMessageType.CHAT, null));
 				}
 			}
 		}

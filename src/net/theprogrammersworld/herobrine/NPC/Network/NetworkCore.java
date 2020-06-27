@@ -1,7 +1,7 @@
 package net.theprogrammersworld.herobrine.NPC.Network;
 
-import net.minecraft.server.v1_15_R1.EnumProtocolDirection;
-import net.minecraft.server.v1_15_R1.NetworkManager;
+import net.minecraft.server.v1_16_R1.EnumProtocolDirection;
+import net.minecraft.server.v1_16_R1.NetworkManager;
 
 public class NetworkCore extends NetworkManager {
 

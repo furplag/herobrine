@@ -9,15 +9,15 @@ import java.util.Random;
 
 import org.bukkit.Color;
 
-import net.minecraft.server.v1_15_R1.ChatComponentText;
-import net.minecraft.server.v1_15_R1.Entity;
-import net.minecraft.server.v1_15_R1.EntityTypes;
-import net.minecraft.server.v1_15_R1.GenericAttributes;
-import net.minecraft.server.v1_15_R1.World;
+import net.minecraft.server.v1_16_R1.ChatComponentText;
+import net.minecraft.server.v1_16_R1.Entity;
+import net.minecraft.server.v1_16_R1.EntityTypes;
+import net.minecraft.server.v1_16_R1.GenericAttributes;
+import net.minecraft.server.v1_16_R1.World;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
-public class CustomSkeleton extends net.minecraft.server.v1_15_R1.EntitySkeleton implements CustomEntity {
+public class CustomSkeleton extends net.minecraft.server.v1_16_R1.EntitySkeleton implements CustomEntity {
 
 	private MobType mobType = null;
 	

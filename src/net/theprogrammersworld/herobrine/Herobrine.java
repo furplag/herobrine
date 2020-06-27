@@ -22,10 +22,10 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.minecraft.server.v1_15_R1.Entity;
-import net.minecraft.server.v1_15_R1.EntityTypes;
-import net.minecraft.server.v1_15_R1.EnumCreatureType;
-import net.minecraft.server.v1_15_R1.IRegistry;
+import net.minecraft.server.v1_16_R1.Entity;
+import net.minecraft.server.v1_16_R1.EntityTypes;
+import net.minecraft.server.v1_16_R1.EnumCreatureType;
+import net.minecraft.server.v1_16_R1.IRegistry;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.AI.extensions.GraveyardWorld;
@@ -335,7 +335,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 	
 	private static <T extends Entity> void addCustomEntity(String customName, EntityTypes.b<T> _func, EnumCreatureType enumCreatureType) {
 		// Registers a custom entity. Adapted from https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
-		EntityTypes.a<?> entity = EntityTypes.a.a(_func, enumCreatureType);
+		EntityTypes.Builder<?> entity = EntityTypes.Builder.a(_func, enumCreatureType);
 		entity.b();
 		IRegistry.a(IRegistry.ENTITY_TYPE, customName, entity.a(customName));
 	}
