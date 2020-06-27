@@ -80,73 +80,67 @@ public class RandomPosition extends Core {
 	}
 
 	public Location getRandomLocation(World world) {
+		int r_nxtX = PluginCore.getConfigDB().WalkingModeXRadius;
+		int nxtX = r_nxtX;
+		if (nxtX < 0) {
+			nxtX = -nxtX;
+		}
+		int r_nxtZ = PluginCore.getConfigDB().WalkingModeZRadius;
+		int nxtZ = r_nxtZ;
+		if (nxtZ < 0) {
+			nxtZ = -nxtZ;
+		}
+		int randx = Utils.getRandomGen().nextInt(nxtX);
 
-		int i = 0;
-		for (i = 0; i <= 100; i++) {
+		int randy = 0;
 
-			int r_nxtX = PluginCore.getConfigDB().WalkingModeXRadius;
-			int nxtX = r_nxtX;
-			if (nxtX < 0) {
-				nxtX = -nxtX;
-			}
-			int r_nxtZ = PluginCore.getConfigDB().WalkingModeZRadius;
-			int nxtZ = r_nxtZ;
-			if (nxtZ < 0) {
-				nxtZ = -nxtZ;
-			}
-			int randx = Utils.getRandomGen().nextInt(nxtX);
+		int randz = Utils.getRandomGen().nextInt(nxtZ);
 
-			int randy = 0;
+		int randxp = Utils.getRandomGen().nextInt(1);
 
-			int randz = Utils.getRandomGen().nextInt(nxtZ);
+		int randzp = Utils.getRandomGen().nextInt(1);
 
-			int randxp = Utils.getRandomGen().nextInt(1);
-
-			int randzp = Utils.getRandomGen().nextInt(1);
-
-			if (randxp == 0 && randx != 0) {
-				randx = -(randx);
-			}
-			if (randzp == 0 && randz != 0) {
-				randz = -(randz);
-			}
-
-			randx = randx + PluginCore.getConfigDB().WalkingModeFromXRadius;
-			randz = randz + PluginCore.getConfigDB().WalkingModeFromZRadius;
-
-			if (world != null) {
-				randy = world.getHighestBlockYAt(randx, randz);
-			} else {
-				return null;
-			}
-
-			if (world.getBlockAt(randx, randy, randz).getType() == Material.AIR
-					&& world.getBlockAt(randx, randy + 1, randz).getType() == Material.AIR) {
-				if (world.getBlockAt(randx, randy - 1, randz).getType() != Material.AIR
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WATER
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.LAVA
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.GRASS
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SNOW
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.ACACIA_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.BIRCH_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.DARK_OAK_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.JUNGLE_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.OAK_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SPRUCE_LEAVES
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WHEAT
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.TORCH
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH
-						&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE) {
-
-					AICore.log.info("[Herobrine] RandomLocation "
-							+ world.getBlockAt(randx, randy - 1, randz).getType().toString() + " is X:" + randx + " Y:"
-							+ randy + " Z:" + randz);
-					return new Location(world, (float) randx + 0.5, (float) randy, (float) randz);
-
-				}
-			}
+		if (randxp == 0 && randx != 0) {
+			randx = -(randx);
+		}
+		if (randzp == 0 && randz != 0) {
+			randz = -(randz);
 		}
 
+		randx = randx + PluginCore.getConfigDB().WalkingModeFromXRadius;
+		randz = randz + PluginCore.getConfigDB().WalkingModeFromZRadius;
+
+		if (world != null) {
+			randy = world.getHighestBlockYAt(randx, randz);
+		} else {
+			return null;
+		}
+
+		if (world.getBlockAt(randx, randy, randz).getType() == Material.AIR
+				&& world.getBlockAt(randx, randy + 1, randz).getType() == Material.AIR) {
+			if (world.getBlockAt(randx, randy - 1, randz).getType() != Material.AIR
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WATER
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.LAVA
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.GRASS
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SNOW
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.ACACIA_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.BIRCH_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.DARK_OAK_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.JUNGLE_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.OAK_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SPRUCE_LEAVES
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WHEAT
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.TORCH
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH
+					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE) {
+
+				AICore.log.info("[Herobrine] RandomLocation "
+						+ world.getBlockAt(randx, randy - 1, randz).getType().toString() + " is X:" + randx + " Y:"
+						+ randy + " Z:" + randz);
+				return new Location(world, (float) randx + 0.5, (float) randy, (float) randz);
+
+			}
+		}
 		return null;
 
 	}
