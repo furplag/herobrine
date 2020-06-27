@@ -3,7 +3,7 @@ main: net.theprogrammersworld.herobrine.Herobrine
 version: 2.0.3
 description: "Bring Herobrine to your Spigot-based Minecraft server!"
 website: https://www.theprogrammersworld.net
-api-version: 1.15
+api-version: 1.16
 load: STARTUP
 commands:
     herobrine:
