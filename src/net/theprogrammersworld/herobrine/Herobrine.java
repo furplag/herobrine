@@ -169,8 +169,8 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 		pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
-				if (Utils.getRandomGen().nextInt(4) == 2 && Herobrine.getPluginCore().getAICore().getCoreTypeNow()
-						.equals(CoreType.RANDOM_POSITION)) {
+				if (Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.ANY) ||
+						Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.RANDOM_POSITION)) {
 					pathMng.setPath(new Path(Utils.getRandomGen().nextInt(15) - 7f, Utils.getRandomGen().nextInt(15) - 7f, Herobrine.getPluginCore()));
 				}
 			}

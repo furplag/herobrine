@@ -12,7 +12,8 @@ public class PathManager {
 	}
 
 	public void update() {
-		if (pathNow != null && Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.RANDOM_POSITION)) {
+		if (pathNow != null && (Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.ANY) ||
+				Herobrine.getPluginCore().getAICore().getCoreTypeNow().equals(CoreType.RANDOM_POSITION))) {
 			pathNow.update();
 		}
 	}
