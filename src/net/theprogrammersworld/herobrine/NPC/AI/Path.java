@@ -109,13 +109,13 @@ public class Path {
 					}
 				}
 
-				newloc.setY(world.getHighestBlockYAt(newloc) - 1);
+				newloc.setY(world.getHighestBlockYAt(newloc) + 1);
 
 				if (world.getBlockAt(newloc).getType().isSolid()) {
 
 					newloc.setY(newloc.getWorld().getHighestBlockYAt(newloc) + 1.5f);
 					PluginCore.HerobrineNPC.lookAtPoint(newloc);
-					newloc.setY(newloc.getWorld().getHighestBlockYAt(newloc));
+					newloc.setY(newloc.getWorld().getHighestBlockYAt(newloc) + 1);
 					PluginCore.HerobrineNPC.moveTo(newloc);
 				}
 				
