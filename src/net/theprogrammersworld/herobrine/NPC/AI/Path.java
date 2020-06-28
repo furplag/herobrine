@@ -109,7 +109,7 @@ public class Path {
 					}
 				}
 
-				newloc.setY(world.getHighestBlockYAt(newloc) + 1);
+				newloc.setY(world.getHighestBlockYAt(newloc));
 
 				if (world.getBlockAt(newloc).getType().isSolid()) {
 
