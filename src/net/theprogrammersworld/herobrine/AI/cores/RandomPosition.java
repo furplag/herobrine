@@ -116,33 +116,34 @@ public class RandomPosition extends Core {
 			return null;
 		}
 
-		if (world.getBlockAt(randx, randy, randz).getType() == Material.AIR
-				&& world.getBlockAt(randx, randy + 1, randz).getType() == Material.AIR) {
-			if (world.getBlockAt(randx, randy - 1, randz).getType() != Material.AIR
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WATER
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.LAVA
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.GRASS
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SNOW
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.ACACIA_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.BIRCH_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.DARK_OAK_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.JUNGLE_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.OAK_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.SPRUCE_LEAVES
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.WHEAT
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.TORCH
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE_TORCH
-					&& world.getBlockAt(randx, randy - 1, randz).getType() != Material.REDSTONE) {
+		if (world.getBlockAt(randx, randy + 1, randz).getType() == Material.AIR
+				&& world.getBlockAt(randx, randy + 2, randz).getType() == Material.AIR) {
+			if (world.getBlockAt(randx, randy, randz).getType() != Material.AIR
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.WATER
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.LAVA
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.GRASS
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.SNOW
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.ACACIA_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.BIRCH_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.DARK_OAK_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.JUNGLE_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.OAK_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.SPRUCE_LEAVES
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.WHEAT
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.TORCH
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.REDSTONE_TORCH
+					&& world.getBlockAt(randx, randy, randz).getType() != Material.REDSTONE) {
 
+				randy++;
+				
 				AICore.log.info("[Herobrine] RandomLocation "
-						+ world.getBlockAt(randx, randy - 1, randz).getType().toString() + " is X:" + randx + " Y:"
+						+ world.getBlockAt(randx, randy, randz).getType().toString() + " is X:" + randx + " Y:"
 						+ randy + " Z:" + randz);
-				return new Location(world, (float) randx + 0.5, (float) randy, (float) randz);
+				return new Location(world, (float) randx, (float) randy, (float) randz);
 
 			}
 		}
 		return null;
-
 	}
 
 	public void RandomMove() {
