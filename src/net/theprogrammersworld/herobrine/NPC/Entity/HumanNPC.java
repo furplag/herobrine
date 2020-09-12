@@ -1,11 +1,11 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.v1_16_R1.ChunkProviderServer;
-import net.minecraft.server.v1_16_R1.EntityPlayer;
-import net.minecraft.server.v1_16_R1.EnumHand;
-import net.minecraft.server.v1_16_R1.PacketPlayInArmAnimation;
-import net.minecraft.server.v1_16_R1.PlayerChunkMap;
-import net.minecraft.server.v1_16_R1.WorldServer;
+import net.minecraft.server.v1_16_R2.ChunkProviderServer;
+import net.minecraft.server.v1_16_R2.EntityPlayer;
+import net.minecraft.server.v1_16_R2.EnumHand;
+import net.minecraft.server.v1_16_R2.PacketPlayInArmAnimation;
+import net.minecraft.server.v1_16_R2.PlayerChunkMap;
+import net.minecraft.server.v1_16_R2.WorldServer;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;
@@ -122,8 +122,8 @@ public class HumanNPC {
 		if (newYaw > 0.0D || newYaw < 180.0D) {
 			entity.yaw = (float) (newYaw - 90.0);
 			entity.pitch = (float) newPitch;
-			entity.aL = (float) (newYaw - 90.0);
-			entity.aJ = (float) (newYaw - 90.0);
+			entity.aE = (float) (newYaw - 90.0);
+			entity.aC = (float) (newYaw - 90.0);
 		}
 
 	}

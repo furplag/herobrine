@@ -1,11 +1,11 @@
 package net.theprogrammersworld.herobrine.NPC.Network;
 
-import net.minecraft.server.v1_16_R1.Packet;
+import net.minecraft.server.v1_16_R2.Packet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
