@@ -25,3 +25,17 @@ The recommended IDE for working on this project is [Eclipse](https://theprogramm
 ### Contribution guidelines ###
 
 Pull requests that do not provide detail on what changes were made to the code will be denied without a review. Please provide adequate information on the changes you made to the code.
+
+### Building/Compiling ###
+
+To build this project you will need a few things.
+- Java JDK
+- Gradle
+- Spigot's Buildtools.jar
+
+1. Run buildtools.jar
+2. Clone this repository.
+3. Run `gradle build` inside the cloned repository.
+4. The jar file will be in `build/libs/Herobrine.jar`.
+
+Voila!
