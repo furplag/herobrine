@@ -1,41 +1,30 @@
 package net.theprogrammersworld.herobrine.listeners;
 
+import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.theprogrammersworld.herobrine.AI.AICore;
+import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.Herobrine;
+import net.theprogrammersworld.herobrine.Utils;
+import net.theprogrammersworld.herobrine.misc.ItemName;
+import org.bukkit.*;
+import org.bukkit.block.Jukebox;
+import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.*;
+import org.bukkit.inventory.ItemStack;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerBedEnterEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.ItemStack;
-
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo;
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
-import net.theprogrammersworld.herobrine.Herobrine;
-import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
-import net.theprogrammersworld.herobrine.misc.ItemName;
 
 public class PlayerListener implements Listener {
 
@@ -209,18 +198,21 @@ public class PlayerListener implements Listener {
 
 	}
 
-	@EventHandler
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onPlayerEnterBed(PlayerBedEnterEvent event) {
+		PlayerBedEnterEvent.BedEnterResult result = event.getBedEnterResult();
+		if (!result.equals(PlayerBedEnterEvent.BedEnterResult.OK)) {
+			return;
+		}
+
 		if (Utils.getRandomGen().nextInt(100) > 75) {
 			Player player = event.getPlayer();
 			event.setCancelled(true);
 			PluginCore.getAICore().playerBedEnter(player);
 		}
-		event.useBed();
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 
