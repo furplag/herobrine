@@ -1,7 +1,10 @@
 package net.theprogrammersworld.herobrine.AI.cores;
 
-import java.util.Random;
-
+import net.theprogrammersworld.herobrine.AI.AICore;
+import net.theprogrammersworld.herobrine.AI.Core;
+import net.theprogrammersworld.herobrine.AI.CoreResult;
+import net.theprogrammersworld.herobrine.Herobrine;
+import net.theprogrammersworld.herobrine.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,11 +13,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
 
-import net.theprogrammersworld.herobrine.Herobrine;
-import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core;
-import net.theprogrammersworld.herobrine.AI.CoreResult;
+import java.util.Random;
 
 public class Haunt extends Core {
 
@@ -104,6 +103,7 @@ public class Haunt extends Core {
 							Wolf wolf = (Wolf) ploc.getWorld().spawnEntity(ploc, EntityType.WOLF);
 							wolf.setAdult();
 							wolf.setAngry(true);
+							wolf.setTarget(AICore.PlayerTarget);
 							spawnedWolves++;
 						}
 					}
