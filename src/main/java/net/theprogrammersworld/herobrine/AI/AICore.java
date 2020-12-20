@@ -8,14 +8,14 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.v1_16_R2.EntityPlayer;
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo;
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.server.v1_16_R3.EntityPlayer;
+import net.minecraft.server.v1_16_R3.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_16_R3.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;

@@ -1,8 +1,8 @@
 package net.theprogrammersworld.herobrine.NPC.Network;
 
-import net.minecraft.server.v1_16_R2.EntityPlayer;
-import net.minecraft.server.v1_16_R2.Packet;
-import net.minecraft.server.v1_16_R2.PlayerConnection;
+import net.minecraft.server.v1_16_R3.EntityPlayer;
+import net.minecraft.server.v1_16_R3.Packet;
+import net.minecraft.server.v1_16_R3.PlayerConnection;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
 
 public class NetworkHandler extends PlayerConnection {

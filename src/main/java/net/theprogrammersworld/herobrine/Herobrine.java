@@ -22,10 +22,10 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.minecraft.server.v1_16_R2.Entity;
-import net.minecraft.server.v1_16_R2.EntityTypes;
-import net.minecraft.server.v1_16_R2.EnumCreatureType;
-import net.minecraft.server.v1_16_R2.IRegistry;
+import net.minecraft.server.v1_16_R3.Entity;
+import net.minecraft.server.v1_16_R3.EntityTypes;
+import net.minecraft.server.v1_16_R3.EnumCreatureType;
+import net.minecraft.server.v1_16_R3.IRegistry;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.AI.extensions.GraveyardWorld;

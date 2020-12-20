@@ -1,7 +1,7 @@
 package net.theprogrammersworld.herobrine.listeners;
 
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo;
-import net.minecraft.server.v1_16_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.server.v1_16_R3.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_16_R3.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.Herobrine;
@@ -9,7 +9,7 @@ import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 import org.bukkit.*;
 import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

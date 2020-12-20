@@ -2,8 +2,8 @@ package net.theprogrammersworld.herobrine.NPC;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import net.minecraft.server.v1_16_R2.Entity;
-import net.minecraft.server.v1_16_R2.PlayerInteractManager;
+import net.minecraft.server.v1_16_R3.Entity;
+import net.minecraft.server.v1_16_R3.PlayerInteractManager;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;

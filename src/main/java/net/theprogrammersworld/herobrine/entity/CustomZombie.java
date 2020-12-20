@@ -7,14 +7,14 @@ import org.bukkit.Material;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.v1_16_R2.ChatComponentText;
-import net.minecraft.server.v1_16_R2.Entity;
-import net.minecraft.server.v1_16_R2.EntityTypes;
-import net.minecraft.server.v1_16_R2.GenericAttributes;
-import net.minecraft.server.v1_16_R2.World;
+import net.minecraft.server.v1_16_R3.ChatComponentText;
+import net.minecraft.server.v1_16_R3.Entity;
+import net.minecraft.server.v1_16_R3.EntityTypes;
+import net.minecraft.server.v1_16_R3.GenericAttributes;
+import net.minecraft.server.v1_16_R3.World;
 import net.theprogrammersworld.herobrine.Herobrine;
 
-public class CustomZombie extends net.minecraft.server.v1_16_R2.EntityZombie implements CustomEntity {
+public class CustomZombie extends net.minecraft.server.v1_16_R3.EntityZombie implements CustomEntity {
 
 	private MobType mobType = null;
 	

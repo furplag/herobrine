@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot:1.16.3-R0.1-SNAPSHOT'  // The full Spigot server with no shadowing. Requires mavenLocal.
+    compileOnly 'org.spigotmc:spigot:1.16.4-R0.1-SNAPSHOT'  // The full Spigot server with no shadowing. Requires mavenLocal.
     implementation name: 'Factions'
     implementation name: 'GriefPrevention'
     implementation name: 'MassiveCore'

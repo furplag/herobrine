@@ -13,33 +13,33 @@ public class EntityManager {
 	public void spawnCustomZombie(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_16_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R2.CraftWorld) world).getHandle();
+		net.minecraft.server.v1_16_R3.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R3.CraftWorld) world).getHandle();
 		CustomZombie zmb = new CustomZombie(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
-		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);
+		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()),zmb);
 		
 	}
 	
    public void spawnCustomSkeleton(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_16_R2.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R2.CraftWorld) world).getHandle();
+		net.minecraft.server.v1_16_R3.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R3.CraftWorld) world).getHandle();
 		CustomSkeleton zmb = new CustomSkeleton(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
-		mobList.put(new Integer(zmb.getBukkitEntity().getEntityId()),zmb);
+		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()), zmb);
 	}
 	
 	public boolean isCustomMob(int id){
-		return mobList.containsKey(new Integer(id));
+		return mobList.containsKey(Integer.valueOf(id));
 	}
 	
 	public CustomEntity getMobType(int id){
-		return mobList.get(new Integer(id));
+		return mobList.get(Integer.valueOf(id));
 	}
 	
 	public void removeMob(int id){
-		mobList.get(new Integer(id)).Kill();
-		mobList.remove(new Integer(id));
+		mobList.get(Integer.valueOf(id)).Kill();
+		mobList.remove(Integer.valueOf(id));
 	}
 	
 	public void removeAllMobs(){
