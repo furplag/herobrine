@@ -72,20 +72,34 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
-		// Custom Entity Injection
-		if (!isNPCDisabled) {
-			try {
-				addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
-				addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
-			} catch (Exception e) {
-				e.printStackTrace();
-				this.setEnabled(false);
-			}
-		} else {
-			log.warning("[Herobrine] Custom NPCs have been disabled due to an incompatibility error.");
+		// Check a server class name to determine if the plugin is compatible with the Spigot server version.
+		// If it is not, print an error message and disable the plugin.
+		boolean continueWithEnable = true;
+		try {
+			Class.forName("net.minecraft.server.v1_16_R3.Entity");
+		} catch (ClassNotFoundException e) {
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not "
+					+ "compatible with this server's Spigot version and will be disabled.");
+			getServer().getPluginManager().disablePlugin(this);
+			continueWithEnable = false;
 		}
 		
-		getServer().getPluginManager().registerEvents(this, this);
+		if (continueWithEnable) {
+			// Custom Entity Injection
+			if (!isNPCDisabled) {
+				try {
+					addCustomEntity("mzombie", CustomZombie::new, EnumCreatureType.MONSTER);
+					addCustomEntity("mskeleton", CustomSkeleton::new, EnumCreatureType.MONSTER);
+				} catch (Exception e) {
+					e.printStackTrace();
+					getServer().getPluginManager().disablePlugin(this);
+				}
+			} else {
+				log.warning("[Herobrine] Custom NPCs have been disabled due to an incompatibility error.");
+			}
+			
+			getServer().getPluginManager().registerEvents(this, this);
+		}
 	}
 	
 	@EventHandler
