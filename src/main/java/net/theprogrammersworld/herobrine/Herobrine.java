@@ -72,16 +72,32 @@ public class Herobrine extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		boolean continueWithEnable = true;
+		
+		// Check for a PaperSpigot package to determine if the server is running PaperSpigot. If it is,
+		// print an error and disable the plugin.
+		try {
+			Class.forName("com.destroystokyo.paper.PaperVersionFetcher");
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Herobrine does not support "
+					+ "PaperSpigot due to API-breaking changes that cause the plugin to not function reliably "
+					+ "on servers that use it. To use Herobrine, please upgrade your server to Spigot.");
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Please do not request support "
+					+ "for PaperSpigot. Your request will be ignored.");
+			continueWithEnable = false;
+			getServer().getPluginManager().disablePlugin(this);
+		} catch (ClassNotFoundException e) {};
+		
 		// Check a server class name to determine if the plugin is compatible with the Spigot server version.
 		// If it is not, print an error message and disable the plugin.
-		boolean continueWithEnable = true;
-		try {
-			Class.forName("net.minecraft.server.v1_16_R3.Entity");
-		} catch (ClassNotFoundException e) {
-			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not "
-					+ "compatible with this server's Spigot version and will be disabled.");
-			getServer().getPluginManager().disablePlugin(this);
-			continueWithEnable = false;
+		if (continueWithEnable) {
+			try {
+				Class.forName("net.minecraft.server.v1_16_R3.Entity");
+			} catch (ClassNotFoundException e) {
+				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not "
+						+ "compatible with this server's Spigot version and will be disabled.");
+				continueWithEnable = false;
+				getServer().getPluginManager().disablePlugin(this);
+			}
 		}
 		
 		if (continueWithEnable) {
