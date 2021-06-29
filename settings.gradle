@@ -9,10 +9,7 @@
 
 pluginManagement {
 	repositories {
-		maven {
-			name = "eldonexus"
-			url = "https://eldonexus.de/repository/maven-releases/"
-		}
+		maven { url = "https://eldonexus.de/repository/maven-releases/" }
 		gradlePluginPortal()
 	}
 }
