@@ -1,11 +1,11 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.v1_16_R3.ChunkProviderServer;
-import net.minecraft.server.v1_16_R3.EntityPlayer;
-import net.minecraft.server.v1_16_R3.EnumHand;
-import net.minecraft.server.v1_16_R3.PacketPlayInArmAnimation;
-import net.minecraft.server.v1_16_R3.PlayerChunkMap;
-import net.minecraft.server.v1_16_R3.WorldServer;
+import net.minecraft.server.level.ChunkProviderServer;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.world.EnumHand;
+import net.minecraft.network.protocol.game.PacketPlayInArmAnimation;
+import net.minecraft.server.level.PlayerChunkMap;
+import net.minecraft.server.level.WorldServer;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;

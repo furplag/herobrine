@@ -13,7 +13,7 @@ public class EntityManager {
 	public void spawnCustomZombie(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_16_R3.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R3.CraftWorld) world).getHandle();
+		net.minecraft.world.level.World mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
 		CustomZombie zmb = new CustomZombie(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
 		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()),zmb);
@@ -23,7 +23,7 @@ public class EntityManager {
    public void spawnCustomSkeleton(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.server.v1_16_R3.World mcWorld = ((org.bukkit.craftbukkit.v1_16_R3.CraftWorld) world).getHandle();
+		net.minecraft.world.level.World mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
 		CustomSkeleton zmb = new CustomSkeleton(mcWorld,loc,mbt);
 		mcWorld.addEntity(zmb);
 		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()), zmb);

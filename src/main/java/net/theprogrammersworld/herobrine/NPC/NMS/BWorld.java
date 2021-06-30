@@ -3,12 +3,12 @@ package net.theprogrammersworld.herobrine.NPC.NMS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.minecraft.server.v1_16_R3.ChunkProviderServer;
-import net.minecraft.server.v1_16_R3.PlayerChunkMap;
-import net.minecraft.server.v1_16_R3.WorldServer;
+import net.minecraft.server.level.ChunkProviderServer;
+import net.minecraft.server.level.PlayerChunkMap;
+import net.minecraft.server.level.WorldServer;
 
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_16_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 
 public class BWorld {
 	

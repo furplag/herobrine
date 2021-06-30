@@ -1,19 +1,19 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.v1_16_R3.Entity;
-import net.minecraft.server.v1_16_R3.EntityHuman;
-import net.minecraft.server.v1_16_R3.EntityPlayer;
-import net.minecraft.server.v1_16_R3.EnumGamemode;
-import net.minecraft.server.v1_16_R3.EnumMoveType;
-import net.minecraft.server.v1_16_R3.PlayerInteractManager;
-import net.minecraft.server.v1_16_R3.Vec3D;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.EntityHuman;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.world.level.EnumGamemode;
+import net.minecraft.world.entity.EnumMoveType;
+import net.minecraft.server.level.PlayerInteractManager;
+import net.minecraft.world.phys.Vec3D;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
 import net.theprogrammersworld.herobrine.NPC.NMS.BWorld;
 import net.theprogrammersworld.herobrine.NPC.Network.NetworkHandler;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_16_R3.CraftServer;
-import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
