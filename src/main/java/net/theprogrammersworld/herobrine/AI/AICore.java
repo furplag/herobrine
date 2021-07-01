@@ -13,9 +13,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.level.EntityPlayer;
-import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
-import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
@@ -678,15 +678,15 @@ public class AICore {
 		boolean playerCanSeeHerobrine = p.hasLineOfSight(Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity());
 		if(playerCanSeeHerobrine && !visibilityList.contains(p)) {
 			// If player p can see Herobrine but visibilty is not already enabled, then enable it.
-			EntityPlayer pcon = ((CraftPlayer) p).getHandle();
-			pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+			ServerPlayer pcon = ((CraftPlayer) p).getHandle();
+			pcon.connection.send(new ClientboundPlayerInfoPacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
 			visibilityList.add(p);
 			return true;
 		}
 		else if(!playerCanSeeHerobrine && visibilityList.contains(p)) {
 			// If player p cannot see Herobrine but visibility is still enabled, then disable it.
-			EntityPlayer pcon = ((CraftPlayer) p).getHandle();
-			pcon.playerConnection.sendPacket(new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.REMOVE_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+			ServerPlayer pcon = ((CraftPlayer) p).getHandle();
+			pcon.connection.send(new ClientboundPlayerInfoPacket(Action.REMOVE_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
 			visibilityList.remove(p);
 		}
 		return false;

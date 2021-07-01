@@ -1,7 +1,7 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import net.minecraft.server.level.ChunkProviderServer;
-import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.EnumHand;
 import net.minecraft.network.protocol.game.PacketPlayInArmAnimation;
 import net.minecraft.server.level.PlayerChunkMap;
@@ -17,7 +17,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 public class HumanNPC {
 
-	private EntityPlayer entity;
+	private ServerPlayer entity;
 	private final int id;
 
 	public HumanNPC(HumanEntity humanEntity, int id) {
@@ -29,7 +29,7 @@ public class HumanNPC {
 		return this.id;
 	}
 
-	public EntityPlayer getEntity() {
+	public ServerPlayer getEntity() {
 		return this.entity;
 	}
 

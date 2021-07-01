@@ -9,24 +9,24 @@ import java.util.Random;
 
 import org.bukkit.Color;
 
-import net.minecraft.network.chat.ChatComponentText;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.attributes.GenericAttributes;
-import net.minecraft.world.level.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.Level;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
-public class CustomSkeleton extends net.minecraft.world.entity.monster.EntitySkeleton implements CustomEntity {
+public class CustomSkeleton extends net.minecraft.world.entity.monster.Skeleton implements CustomEntity {
 
 	private MobType mobType = null;
 	
-	public CustomSkeleton(EntityTypes<? extends Entity> entitytypes, World world) {
-		super(EntityTypes.SKELETON, world);
+	public CustomSkeleton(EntityType<? extends Entity> entitytypes, Level world) {
+		super(EntityType.SKELETON, world);
 	}
 
-	public CustomSkeleton(World world, Location loc, MobType mbt) {
-		super(EntityTypes.SKELETON, world);
+	public CustomSkeleton(Level world, Location loc, MobType mbt) {
+		super(EntityType.SKELETON, world);
 		this.mobType = mbt;
 		if (mbt == MobType.DEMON) {
 			spawnDemon(loc);
@@ -35,10 +35,10 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.EntitySke
 
 	public void spawnDemon(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
-		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
-		this.setCustomName(new ChatComponentText("Demon"));
+		this.setCustomName(new TextComponent("Demon"));
 
 		Skeleton entityCast = (Skeleton) this.getBukkitEntity();
 		
@@ -51,8 +51,8 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.EntitySke
 
 	}
 
-	public CustomSkeleton(World world) {
-		super(EntityTypes.SKELETON, world);
+	public CustomSkeleton(Level world) {
+		super(EntityType.SKELETON, world);
 	}
 
 	@Override

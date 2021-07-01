@@ -2,7 +2,7 @@ package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.EntityHuman;
-import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.EnumGamemode;
 import net.minecraft.world.entity.EnumMoveType;
 import net.minecraft.server.level.PlayerInteractManager;
@@ -17,7 +17,7 @@ import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
-public class HumanEntity extends EntityPlayer {
+public class HumanEntity extends Player {
 
 	private CraftPlayer cplayer = null;
 

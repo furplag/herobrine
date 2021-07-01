@@ -20,7 +20,7 @@ public class NetworkUtils {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			if (world == player.getWorld()) {
 				if (location.distanceSquared(player.getLocation()) <= radius) {
-					((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+					((CraftPlayer) player).getHandle().connection.send(packet);
 				}
 			}
 		}

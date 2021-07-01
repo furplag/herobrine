@@ -1,7 +1,7 @@
 package net.theprogrammersworld.herobrine.listeners;
 
-import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
-import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.Herobrine;
@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
@@ -49,8 +48,8 @@ public class PlayerListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		// If the persistent tab list entry for Herobrine is enabled, send an "add player" packet to the user on login.
 		if(Herobrine.getPluginCore().getConfigDB().ShowInTabList)
-			((CraftPlayer) event.getPlayer()).getHandle().playerConnection.sendPacket(
-					new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+			((CraftPlayer) event.getPlayer()).getHandle().connection.send(
+					new ClientboundPlayerInfoPacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
 		
 		// Check if the user has a Graveyard cache. If they do, this means they are stuck in the Graveyard and
 		// need teleported out.
@@ -87,7 +86,7 @@ public class PlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 
-		if (event.getAction() == Action.LEFT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+		if (event.getAction() == org.bukkit.event.block.Action.LEFT_CLICK_BLOCK || event.getAction() == org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK) {
 			if (event.getClickedBlock() != null && event.getPlayer().getInventory().getItemInMainHand() != null) {
 
 				ItemStack itemInHand = event.getPlayer().getInventory().getItemInMainHand();

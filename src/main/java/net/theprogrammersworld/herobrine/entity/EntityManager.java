@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 public class EntityManager {
 	
@@ -13,9 +14,9 @@ public class EntityManager {
 	public void spawnCustomZombie(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.world.level.World mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
+		net.minecraft.world.level.Level mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
 		CustomZombie zmb = new CustomZombie(mcWorld,loc,mbt);
-		mcWorld.addEntity(zmb);
+		mcWorld.addEntity(zmb, SpawnReason.CUSTOM);
 		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()),zmb);
 		
 	}
@@ -23,9 +24,9 @@ public class EntityManager {
    public void spawnCustomSkeleton(Location loc,MobType mbt){
 		
 		World world = loc.getWorld();
-		net.minecraft.world.level.World mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
+		net.minecraft.world.level.Level mcWorld = ((org.bukkit.craftbukkit.v1_17_R1.CraftWorld) world).getHandle();
 		CustomSkeleton zmb = new CustomSkeleton(mcWorld,loc,mbt);
-		mcWorld.addEntity(zmb);
+		mcWorld.addEntity(zmb, SpawnReason.CUSTOM);
 		mobList.put(Integer.valueOf(zmb.getBukkitEntity().getEntityId()), zmb);
 	}
 	

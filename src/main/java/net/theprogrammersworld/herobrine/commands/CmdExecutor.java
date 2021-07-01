@@ -11,10 +11,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.network.chat.ChatMessageType;
-import net.minecraft.network.chat.IChatBaseComponent;
-import net.minecraft.network.chat.IChatBaseComponent.ChatSerializer;
-import net.minecraft.network.protocol.game.PacketPlayOutChat;
+import net.minecraft.network.chat.ChatType;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component.Serializer;
+import net.minecraft.network.protocol.game.ClientboundChatPacket;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdExecutor implements CommandExecutor {
@@ -71,9 +71,9 @@ public class CmdExecutor implements CommandExecutor {
 			player.sendMessage(ChatColor.RED + "[Herobrine] Command List (hover over commands for more info)");
 			for (String v : helpMessage) {
 				if(player.hasPermission("herobrine." + permissionNode.get(v))) {
-					IChatBaseComponent help = ChatSerializer.a("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
+					TextComponent help = (TextComponent) Serializer.fromJson("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
 							"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
-					((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(help, ChatMessageType.CHAT, player.getUniqueId()));
+					((CraftPlayer) player).getHandle().connection.send(new ClientboundChatPacket(help, ChatType.CHAT, player.getUniqueId()));
 				}
 			}
 		}

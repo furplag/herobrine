@@ -7,23 +7,23 @@ import org.bukkit.Material;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.network.chat.ChatComponentText;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.attributes.GenericAttributes;
-import net.minecraft.world.level.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.Level;
 import net.theprogrammersworld.herobrine.Herobrine;
 
-public class CustomZombie extends net.minecraft.world.entity.monster.EntityZombie implements CustomEntity {
+public class CustomZombie extends net.minecraft.world.entity.monster.Zombie implements CustomEntity {
 
 	private MobType mobType = null;
 	
-	public CustomZombie(EntityTypes<? extends Entity> entitytypes, World world) {
-		super(EntityTypes.ZOMBIE, world);
+	public CustomZombie(EntityType<? extends Entity> entitytypes, Level world) {
+		super(EntityType.ZOMBIE, world);
 	}
 
-	public CustomZombie(World world, Location loc, MobType mbt) {
-		super(EntityTypes.ZOMBIE, world);
+	public CustomZombie(Level world, Location loc, MobType mbt) {
+		super(EntityType.ZOMBIE, world);
 		this.mobType = mbt;
 		if (mbt == MobType.ARTIFACT_GUARDIAN) {
 			spawnArtifactGuardian(loc);
@@ -34,11 +34,11 @@ public class CustomZombie extends net.minecraft.world.entity.monster.EntityZombi
 
 	private void spawnArtifactGuardian(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
-		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Guardian.Speed"));
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 
-		this.setCustomName(new ChatComponentText("Artifact Guardian"));
+		this.setCustomName(new TextComponent("Artifact Guardian"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 
@@ -54,11 +54,11 @@ public class CustomZombie extends net.minecraft.world.entity.monster.EntityZombi
 
 	private void spawnHerobrineWarrior(Location loc) {
 
-		this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
-		this.getAttributeInstance(GenericAttributes.MAX_HEALTH).setValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Warrior.Speed"));
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 
-		this.setCustomName(new ChatComponentText("Herobrine Warrior"));
+		this.setCustomName(new TextComponent("Herobrine Warrior"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 
@@ -72,8 +72,8 @@ public class CustomZombie extends net.minecraft.world.entity.monster.EntityZombi
 
 	}
 
-	public CustomZombie(World world) {
-		super(EntityTypes.ZOMBIE, world);
+	public CustomZombie(Level world) {
+		super(EntityType.ZOMBIE, world);
 		mobType = null;
 	}
 

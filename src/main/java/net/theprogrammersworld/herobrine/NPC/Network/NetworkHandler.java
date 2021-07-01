@@ -1,6 +1,6 @@
 package net.theprogrammersworld.herobrine.NPC.Network;
 
-import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.network.PlayerConnection;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
