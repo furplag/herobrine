@@ -2,10 +2,10 @@ package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import net.minecraft.server.level.ChunkProviderServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.EnumHand;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.network.protocol.game.PacketPlayInArmAnimation;
-import net.minecraft.server.level.PlayerChunkMap;
-import net.minecraft.server.level.WorldServer;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.ServerLevel;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;
@@ -34,12 +34,12 @@ public class HumanNPC {
 	}
 
 	public void ArmSwingAnimation() {
-		ChunkProviderServer chunkProvider = ((WorldServer) this.entity.world).getChunkProvider();
+		ChunkProviderServer chunkProvider = ((ServerLevel) this.entity.world).getChunkProvider();
 		PlayerChunkMap playerChunkMap = chunkProvider.playerChunkMap;
 		PlayerChunkMap.EntityTracker playerchunkmap_entitytracker = playerChunkMap.trackedEntities.get(this.entity.getId());
 		
 		if(playerchunkmap_entitytracker != null) {
-			playerchunkmap_entitytracker.broadcast(new PacketPlayInArmAnimation(EnumHand.MAIN_HAND));
+			playerchunkmap_entitytracker.broadcast(new PacketPlayInArmAnimation(InteractionHand.MAIN_HAND));
 		}
 	}
 

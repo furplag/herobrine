@@ -1,16 +1,16 @@
 package net.theprogrammersworld.herobrine.NPC.Network;
 
-import net.minecraft.network.protocol.EnumProtocolDirection;
-import net.minecraft.network.NetworkManager;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.Connection;
 
-public class NetworkCore extends NetworkManager {
+public class NetworkCore extends Connection {
 
 	public NetworkCore() {
-		super(EnumProtocolDirection.SERVERBOUND);
+		super(PacketFlow.SERVERBOUND);
 	}
 
 	@Override
-	public void a() {
+	public void tick() {
 
 	}
 

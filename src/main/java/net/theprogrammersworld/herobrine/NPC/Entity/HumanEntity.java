@@ -3,7 +3,7 @@ package net.theprogrammersworld.herobrine.NPC.Entity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.EntityHuman;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.EnumGamemode;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.entity.EnumMoveType;
 import net.minecraft.server.level.PlayerInteractManager;
 import net.minecraft.world.phys.Vec3D;
@@ -24,7 +24,7 @@ public class HumanEntity extends Player {
 	public HumanEntity(final NPCCore npcCore, final BWorld world, final GameProfile s, final PlayerInteractManager playerInteractManager) {
 		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s, playerInteractManager);
 
-		playerInteractManager.b(EnumGamemode.SURVIVAL);
+		playerInteractManager.b(GameType.SURVIVAL);
 
 		playerConnection = new NetworkHandler(npcCore, this);
 		fauxSleeping = true;

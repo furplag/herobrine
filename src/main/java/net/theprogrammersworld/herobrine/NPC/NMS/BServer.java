@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.WorldServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;

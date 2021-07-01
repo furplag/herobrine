@@ -4,8 +4,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.server.level.ChunkProviderServer;
-import net.minecraft.server.level.PlayerChunkMap;
-import net.minecraft.server.level.WorldServer;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.ServerLevel;
 
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
@@ -13,7 +13,7 @@ import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 public class BWorld {
 	
 	private CraftWorld cWorld;
-	private WorldServer wServer;
+	private ServerLevel wServer;
 
 	public BWorld(final World world) {
 		try {
@@ -24,8 +24,8 @@ public class BWorld {
 		}
 	}
 
-	public PlayerChunkMap getPlayerManager() {
-		ChunkProviderServer chunkProvider = ((WorldServer) wServer).getChunkProvider();
+	public ChunkMap getPlayerManager() {
+		ChunkProviderServer chunkProvider = ((ServerLevel) wServer).getChunkProvider();
 		return chunkProvider.playerChunkMap;
 	}
 
@@ -33,7 +33,7 @@ public class BWorld {
 		return cWorld;
 	}
 
-	public WorldServer getWorldServer() {
+	public ServerLevel getWorldServer() {
 		return wServer;
 	}
 }
