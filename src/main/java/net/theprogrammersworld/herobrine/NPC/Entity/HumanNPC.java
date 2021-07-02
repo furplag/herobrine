@@ -90,7 +90,7 @@ public class HumanNPC {
 
 	public void removeFromWorld() {
 		try {
-			entity.getWorldServer().removeEntity(entity);
+			entity.getLevel().getChunkProvider().removeEntity(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
