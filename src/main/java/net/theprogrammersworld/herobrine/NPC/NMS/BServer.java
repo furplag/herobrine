@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.server.dedicated.DedicatedServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.MinecraftServer;
 
 import org.bukkit.Bukkit;
@@ -32,12 +33,12 @@ public class BServer {
 	}
 
 	public void stop() {
-		mcServer.safeShutdown(true);
+		mcServer.halt(true);
 	}
 
 	public void sendConsoleCommand(String cmd) {
 		if (mcServer.isRunning()) {
-			((DedicatedServer) mcServer).issueCommand(cmd, mcServer.getServerCommandListener());
+			((DedicatedServer) mcServer).handleConsoleInput(cmd, mcServer.createCommandSourceStack());
 		}
 	}
 
@@ -45,9 +46,9 @@ public class BServer {
 		return cServer.getLogger();
 	}
 
-	public List<WorldServer> getWorldServers() {
-		List<WorldServer> worlds = new ArrayList<>();
-		for (WorldServer world:mcServer.getWorlds())
+	public List<ServerLevel> getWorldServers() {
+		List<ServerLevel> worlds = new ArrayList<>();
+		for (ServerLevel world:mcServer.getAllLevels())
 			worlds.add(world);
 		return worlds;
 	}

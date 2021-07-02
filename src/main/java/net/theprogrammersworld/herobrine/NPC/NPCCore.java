@@ -3,7 +3,7 @@ package net.theprogrammersworld.herobrine.NPC;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.PlayerInteractManager;
+import net.minecraft.server.level.ServerPlayerGameMode;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
@@ -106,7 +106,7 @@ public class NPCCore {
 	public HumanNPC spawnHumanNPC(String name, Location l, int id) {
 
 		final BWorld world = server.getWorld(l.getWorld().getName());
-		final HumanEntity humanEntity = new HumanEntity(this, world, HerobrineGameProfile, new PlayerInteractManager(world.getWorldServer()));		
+		final HumanEntity humanEntity = new HumanEntity(this, world, HerobrineGameProfile, new ServerPlayerGameMode(world.getWorldServer()));		
 		humanEntity.setLocation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
 		world.getWorldServer().addEntity(humanEntity);
 		final HumanNPC humannpc = new HumanNPC(humanEntity, id);
