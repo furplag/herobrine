@@ -72,7 +72,7 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.Skeleton 
 	}
 
 	@Override
-	public MobType getMobType() {
+	public MobType getHerobrineMobType() {
 		return this.mobType;
 	}
 

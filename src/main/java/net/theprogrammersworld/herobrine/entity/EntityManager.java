@@ -34,7 +34,7 @@ public class EntityManager {
 		return mobList.containsKey(Integer.valueOf(id));
 	}
 	
-	public CustomEntity getMobType(int id){
+	public CustomEntity getHerobrineMobType(int id){
 		return mobList.get(Integer.valueOf(id));
 	}
 	

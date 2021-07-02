@@ -98,9 +98,8 @@ public class CustomZombie extends net.minecraft.world.entity.monster.Zombie impl
 		}
 		setHealth(0.0f);
 	}
-
-	@Override
-	public MobType getMobType() {
+	
+	public MobType getHerobrineMobType() {
 		return this.mobType;
 	}
 

@@ -3,6 +3,6 @@ package net.theprogrammersworld.herobrine.entity;
 public interface CustomEntity {
 
 	public void Kill();
-	public MobType getMobType();
+	public MobType getHerobrineMobType();
 	
 }
