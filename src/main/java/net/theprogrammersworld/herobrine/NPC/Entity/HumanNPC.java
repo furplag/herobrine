@@ -1,12 +1,7 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.network.protocol.game.PacketPlayInArmAnimation;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.server.level.ChunkMap.TrackedEntity;
-import net.minecraft.server.level.ServerLevel;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;
@@ -35,13 +30,7 @@ public class HumanNPC {
 	}
 
 	public void ArmSwingAnimation() {
-		ServerChunkCache chunkProvider = this.entity.getLevel().getChunkProvider();
-		ChunkMap playerChunkMap = chunkProvider.chunkMap;
-		ChunkMap.TrackedEntity playerchunkmap_entitytracker = playerChunkMap.trackedEntities.get(this.entity.getId());
-		
-		if(playerchunkmap_entitytracker != null) {
-			playerchunkmap_entitytracker.broadcast(new PacketPlayInArmAnimation(InteractionHand.MAIN_HAND));
-		}
+		entity.swing(InteractionHand.MAIN_HAND);
 	}
 
 	public void HurtAnimation() {
@@ -60,11 +49,11 @@ public class HumanNPC {
 	}
 
 	public String getName() {
-		return ((HumanEntity) getEntity()).getName();
+		return getEntity().getName().getString();
 	}
 
 	public void setPitch(float pitch) {
-		((HumanEntity) getEntity()).pitch = pitch;
+		((HumanEntity) getEntity()).setXRot(pitch);
 	}
 
 	public void moveTo(Location loc) {
@@ -97,7 +86,7 @@ public class HumanNPC {
 	}
 
 	public void setYaw(float yaw) {
-		((EntityPlayer) getEntity()).yaw = yaw;
+		((ServerPlayer) getEntity()).setYRot(yaw);
 	}
 
 	public void lookAtPoint(Location point) {
@@ -121,16 +110,16 @@ public class HumanNPC {
 		}
 
 		if (newYaw > 0.0D || newYaw < 180.0D) {
-			entity.yaw = (float) (newYaw - 90.0);
-			entity.pitch = (float) newPitch;
-			entity.aE = (float) (newYaw - 90.0);
-			entity.aC = (float) (newYaw - 90.0);
+			entity.setYRot((float) (newYaw - 90.0));
+			entity.setXRot((float) newPitch);
+			entity.flyingSpeed = (float) (newYaw - 90.0);
+			entity.yHeadRot = (float) (newYaw - 90.0);
 		}
 
 	}
 
 	public void setYawA(float yaw) {
-		((EntityPlayer) getEntity()).yaw = yaw;
+		((ServerPlayer) getEntity()).setYRot(yaw);
 	}
 
 	public org.bukkit.entity.Entity getBukkitEntity() {
