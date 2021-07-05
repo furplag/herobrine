@@ -50,7 +50,7 @@ task obfuscate(type: Exec) {
 	commandLine 'java', '-jar', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar', '-i', 'libs/' + rootProject.name + '.jar',
 		'-o', 'libs/' + rootProject.name + '-obf.jar', '-m',
 		ext.homeDir + '/.m2/repository/org/spigotmc/minecraft-server/1.17-R0.1-SNAPSHOT/minecraft-server-1.17-R0.1-SNAPSHOT-maps-mojang.txt',
-		'--reverse'
+		'--reverse', '--live'
 }
 
 task deobfuscate(type: Exec) {
@@ -61,5 +61,6 @@ task deobfuscate(type: Exec) {
 	ext.homeDir = project.gradle.gradleUserHomeDir.parent
 	commandLine 'java', '-jar', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar', '-i', 'libs/' + rootProject.name + '-obf.jar',
 		'-o', 'libs/' + rootProject.name + '.jar', '-m',
-		ext.homeDir + '/.m2/repository/org/spigotmc/minecraft-server/1.17-R0.1-SNAPSHOT/minecraft-server-1.17-R0.1-SNAPSHOT-maps-spigot.csrg'
+		ext.homeDir + '/.m2/repository/org/spigotmc/minecraft-server/1.17-R0.1-SNAPSHOT/minecraft-server-1.17-R0.1-SNAPSHOT-maps-spigot.csrg',
+		'--live'
 }
