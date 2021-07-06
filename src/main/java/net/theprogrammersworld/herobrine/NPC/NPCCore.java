@@ -3,7 +3,6 @@ package net.theprogrammersworld.herobrine.NPC;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerLevel;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
@@ -13,9 +12,9 @@ import net.theprogrammersworld.herobrine.NPC.Network.NetworkCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -109,13 +108,7 @@ public class NPCCore {
 		final BWorld world = server.getWorld(l.getWorld().getName());
 		final HumanEntity humanEntity = new HumanEntity(this, world, HerobrineGameProfile);
 		humanEntity.forceSetPositionRotation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
-		ServerLevel serverLevel = world.getWorldServer();
-		serverLevel.entityManager.addNewEntity(humanEntity);
-		try {
-			serverLevel.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		world.getCraftWorld().addEntity(humanEntity, SpawnReason.CUSTOM);
 		final HumanNPC humannpc = new HumanNPC(humanEntity, id);
 		npcs.add(humannpc);
 		
