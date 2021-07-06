@@ -144,15 +144,6 @@ public class Herobrine extends JavaPlugin implements Listener {
 		configdb.Startup();
 		configdb.Reload();
 
-		// Spawn Herobrine
-		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
-				(float) 0);
-		nowloc.setYaw((float) 1);
-		nowloc.setPitch((float) 1);
-		HerobrineSpawn(nowloc);
-
-		HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
-
 		// Graveyard World
 		if (this.configdb.UseGraveyardWorld == true && Bukkit.getServer().getWorld(configdb.HerobrineWorldName) == null) {			
 			WorldCreator wc = new WorldCreator(configdb.HerobrineWorldName);
@@ -163,6 +154,15 @@ public class Herobrine extends JavaPlugin implements Listener {
 			
 			GraveyardWorld.Create();
 		}
+		
+		// Spawn Herobrine
+		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
+				(float) 0);
+		nowloc.setYaw((float) 1);
+		nowloc.setPitch((float) 1);
+		HerobrineSpawn(nowloc);
+
+		HerobrineNPC.setItemInHand(configdb.ItemInHand.getItemStack());
 		
 		getServer().getPluginManager().registerEvents(new EntityListener(this), this);
 		getServer().getPluginManager().registerEvents(new BlockListener(), this);
