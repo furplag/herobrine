@@ -30,7 +30,7 @@ To build this project you will need:
 To build the project:
 
 1. Clone this repository.
-2. Run `gradlew productionMappedJar` inside the cloned repository.
+2. Run `gradlew productionMappedJar` inside the root directory of the cloned repository.
 3. The jar file will be in `build/libs/Herobrine.jar`.
 
 Voila!
