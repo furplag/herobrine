@@ -13,7 +13,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 public class HumanNPC {
 
-	private ServerPlayer entity;
+	private HumanEntity entity;
 	private final int id;
 
 	public HumanNPC(HumanEntity humanEntity, int id) {
@@ -110,10 +110,9 @@ public class HumanNPC {
 		}
 
 		if (newYaw > 0.0D || newYaw < 180.0D) {
-			entity.setYRot((float) (newYaw - 90.0));
 			entity.setXRot((float) newPitch);
-			entity.flyingSpeed = (float) (newYaw - 90.0);
-			entity.yHeadRot = (float) (newYaw - 90.0);
+			entity.setYRot((float) (newYaw - 90.0));
+			entity.getBukkitEntity().setFlySpeed((float) (newYaw - 90.0) / 360);
 		}
 
 	}
