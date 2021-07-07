@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'com.github.yannicklamprecht.spigot.tools' version '1.0.1'
+    id 'xyz.jpenilla.special-gradle' version '1.0.0-SNAPSHOT'
 }
 
 java {
@@ -34,34 +34,8 @@ dependencies {
 }
 
 tasks {
-	spigotTools {
-		mojangMapped.set(true)
-		version.set("1.17")
-		outputClassifier.set("spigot-mapped")
-	}
-}
-
-task genReleaseJar {
-	group = 'spigottools'
-	description = 'Generates a Spigot-mapped version of the jar for use with Spigot.'
-	ext.toolingDir = System.getProperty("user.dir")
-	ext.homeDir = project.gradle.gradleUserHomeDir.parent
-	
-	doLast {
-		exec {
-			workingDir "${buildDir}"
-			commandLine 'java', '-jar', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar', '-i', 'libs/' + rootProject.name + '.jar',
-				'-o', 'libs/' + rootProject.name + '-obf.jar', '-m',
-				ext.homeDir + '/.m2/repository/org/spigotmc/minecraft-server/1.17-R0.1-SNAPSHOT/minecraft-server-1.17-R0.1-SNAPSHOT-maps-mojang.txt',
-				'--reverse', '--live'
-		}
-		
-		exec {
-			workingDir "${buildDir}"
-			commandLine 'java', '-jar', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar', '-i', 'libs/' + rootProject.name + '-obf.jar',
-				'-o', 'libs/' + rootProject.name + '-final.jar', '-m',
-				ext.homeDir + '/.m2/repository/org/spigotmc/minecraft-server/1.17-R0.1-SNAPSHOT/minecraft-server-1.17-R0.1-SNAPSHOT-maps-spigot.csrg',
-				'--live'
-		}
+	specialGradle {
+		minecraftVersion.set("1.17")
+		specialSourceVersion.set("1.10.0")
 	}
 }

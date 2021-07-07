@@ -9,7 +9,7 @@
 
 pluginManagement {
 	repositories {
-		maven { url = "https://eldonexus.de/repository/maven-releases/" }
+		maven { url = "https://repo.jpenilla.xyz/snapshots/" }
 		gradlePluginPortal()
 	}
 }
