@@ -34,7 +34,7 @@ import net.theprogrammersworld.herobrine.AI.cores.RandomExplosion;
 import net.theprogrammersworld.herobrine.AI.cores.RandomPosition;
 import net.theprogrammersworld.herobrine.AI.cores.RandomSound;
 import net.theprogrammersworld.herobrine.AI.cores.Signs;
-import net.theprogrammersworld.herobrine.AI.cores.SoundF;
+import net.theprogrammersworld.herobrine.AI.cores.SoundCore;
 import net.theprogrammersworld.herobrine.AI.cores.Temple;
 import net.theprogrammersworld.herobrine.AI.cores.Totem;
 import net.theprogrammersworld.herobrine.entity.MobType;
@@ -92,7 +92,7 @@ public class AICore {
 		AllCores.add(new Pyramid());
 		AllCores.add(new RandomPosition());
 		AllCores.add(new Signs());
-		AllCores.add(new SoundF());
+		AllCores.add(new SoundCore());
 		AllCores.add(new Temple());
 		AllCores.add(new Totem());
 		AllCores.add(new Heads());

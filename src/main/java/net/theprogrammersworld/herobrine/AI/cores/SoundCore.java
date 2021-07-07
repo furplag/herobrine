@@ -8,9 +8,9 @@ import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
-public class SoundF extends Core{
+public class SoundCore extends Core{
 
-	public SoundF(){
+	public SoundCore(){
 		super(CoreType.SOUNDF,AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 	
