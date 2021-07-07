@@ -171,6 +171,8 @@ public class Graveyard extends Core {
 			cache.write(Double.toString(loc.getX()) + '\n');
 			cache.write(Double.toString(loc.getY()) + '\n');
 			cache.write(Double.toString(loc.getZ()) + '\n');
+			cache.write(Double.toString(loc.getPitch()) + '\n');
+			cache.write(Double.toString(loc.getYaw()) + '\n');
 			cache.write(loc.getWorld().getName());
 			cache.close();
 		} catch (IOException e) {e.printStackTrace();}

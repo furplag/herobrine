@@ -68,8 +68,21 @@ public class PlayerListener implements Listener {
 						}
 						cache.close();
 						String[] cacheData = cacheDataString.split("\n");
-						event.getPlayer().teleport(new Location(Bukkit.getServer().getWorld(cacheData[3]), Double.parseDouble(cacheData[0]),
-								Double.parseDouble(cacheData[1]), Double.parseDouble(cacheData[2])));
+						
+						// If the cacheData length is 4, then the cache is from a version of the plugin prior to 2.2.0 and only contains the
+						// player's (X, Y, Z) coordinates and the world. Otherwise, the cache also contains the player's pitch and yaw. Parse
+						// the data appropriately and teleport them.
+						Location tpDest = new Location(null, Double.parseDouble(cacheData[0]), Double.parseDouble(cacheData[1]), Double.parseDouble(cacheData[2]));
+						if (cacheData.length == 4) {
+							tpDest.setWorld(Bukkit.getServer().getWorld(cacheData[3]));
+						}
+						else {
+							tpDest.setPitch(Float.parseFloat(cacheData[3]));
+							tpDest.setYaw(Float.parseFloat(cacheData[4]));
+							tpDest.setWorld(Bukkit.getServer().getWorld(cacheData[5]));
+						}
+						event.getPlayer().teleport(tpDest);
+
 						new File(graveyardCachePath).delete();
 					} catch (FileNotFoundException e) {e.printStackTrace();}
 					catch (IOException e) {e.printStackTrace();}
