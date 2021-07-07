@@ -10,12 +10,12 @@ import net.minecraft.server.level.ServerLevel;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 
-public class BWorld {
+public class NMSWorld {
 	
 	private CraftWorld cWorld;
 	private ServerLevel wServer;
 
-	public BWorld(final World world) {
+	public NMSWorld(final World world) {
 		try {
 			cWorld = (CraftWorld) world;
 			wServer = cWorld.getHandle();

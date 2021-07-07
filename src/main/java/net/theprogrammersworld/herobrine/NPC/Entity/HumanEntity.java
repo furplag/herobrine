@@ -5,7 +5,7 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
-import net.theprogrammersworld.herobrine.NPC.NMS.BWorld;
+import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
 import net.theprogrammersworld.herobrine.NPC.Network.NetworkHandler;
 
 import org.bukkit.Bukkit;
@@ -18,7 +18,7 @@ public class HumanEntity extends ServerPlayer {
 
 	private CraftPlayer cplayer = null;
 
-	public HumanEntity(final NPCCore npcCore, final BWorld world, final GameProfile s) {
+	public HumanEntity(final NPCCore npcCore, final NMSWorld world, final GameProfile s) {
 		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s);
 
 		this.setGameMode(GameType.SURVIVAL);

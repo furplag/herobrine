@@ -14,15 +14,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
 
-public class BServer { 
+public class NMSServer { 
 	
-	private static BServer ins;
+	private static NMSServer ins;
 	private MinecraftServer mcServer;
 	private CraftServer cServer;
 	private Server server;
-	private HashMap<String, BWorld> worlds = new HashMap<String, BWorld>();
+	private HashMap<String, NMSWorld> worlds = new HashMap<String, NMSWorld>();
 
-	private BServer() {
+	private NMSServer() {
 		server = Bukkit.getServer();
 		try {
 			cServer = (CraftServer) server;
@@ -57,18 +57,18 @@ public class BServer {
 		return server;
 	}
 
-	public BWorld getWorld(String worldName) {
+	public NMSWorld getWorld(String worldName) {
 		if (worlds.containsKey(worldName)) {
 			return worlds.get(worldName);
 		}
-		BWorld w = new BWorld(ins.getServer().getWorld(worldName));
+		NMSWorld w = new NMSWorld(ins.getServer().getWorld(worldName));
 		worlds.put(worldName, w);
 		return w;
 	}
 
-	public static BServer getInstance() {
+	public static NMSServer getInstance() {
 		if (ins == null) {
-			ins = new BServer();
+			ins = new NMSServer();
 		}
 		return ins;
 	}

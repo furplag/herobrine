@@ -6,8 +6,8 @@ import net.minecraft.world.entity.Entity;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
-import net.theprogrammersworld.herobrine.NPC.NMS.BServer;
-import net.theprogrammersworld.herobrine.NPC.NMS.BWorld;
+import net.theprogrammersworld.herobrine.NPC.NMS.NMSServer;
+import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
 import net.theprogrammersworld.herobrine.NPC.Network.NetworkCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -23,9 +23,9 @@ import java.util.UUID;
 public class NPCCore {
 
 	private ArrayList<HumanNPC> npcs = new ArrayList<HumanNPC>();
-	private BServer server;
+	private NMSServer server;
 	private int taskid;
-	private Map<World, BWorld> bworlds = new HashMap<World, BWorld>();
+	private Map<World, NMSWorld> bworlds = new HashMap<World, NMSWorld>();
 	private NetworkCore networkCore;
 	public static JavaPlugin plugin;
 	public boolean isInLoaded = false;
@@ -50,7 +50,7 @@ public class NPCCore {
 
 	public NPCCore(JavaPlugin plugin) {
 		
-		server = BServer.getInstance();
+		server = NMSServer.getInstance();
 		
 		networkCore = new NetworkCore();
 		
@@ -83,12 +83,12 @@ public class NPCCore {
 		npcs.clear();
 	}
 
-	public BWorld getBWorld(World world) {
-		BWorld bworld = bworlds.get(world);
+	public NMSWorld getBWorld(World world) {
+		NMSWorld bworld = bworlds.get(world);
 		if (bworld != null) {
 			return bworld;
 		}
-		bworld = new BWorld(world);
+		bworld = new NMSWorld(world);
 		bworlds.put(world, bworld);
 		return bworld;
 	}
@@ -105,7 +105,7 @@ public class NPCCore {
 
 	public HumanNPC spawnHumanNPC(String name, Location l, int id) {
 
-		final BWorld world = server.getWorld(l.getWorld().getName());
+		final NMSWorld world = server.getWorld(l.getWorld().getName());
 		final HumanEntity humanEntity = new HumanEntity(this, world, HerobrineGameProfile);
 		humanEntity.forceSetPositionRotation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
 		world.getCraftWorld().addEntity(humanEntity, SpawnReason.CUSTOM);
@@ -126,7 +126,7 @@ public class NPCCore {
 		return null;
 	}
 
-	public BServer getServer() {
+	public NMSServer getServer() {
 		return server;
 	}
 
