@@ -23,10 +23,12 @@ Pull requests that do not provide detail on what changes were made to the code w
 ### Building/Compiling ###
 
 To build this project you will need:
+
 - Java JDK (version 16 or newer)
 - Git
 
 To build the project:
+
 1. Clone this repository.
 2. Run `gradlew productionMappedJar` inside the cloned repository.
 3. The jar file will be in `build/libs/Herobrine.jar`.
