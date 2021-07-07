@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 
 import net.theprogrammersworld.herobrine.Herobrine;
 
-public class CmdPosition extends SubCommand {
+public class CmdLocation extends SubCommand {
 
-	public CmdPosition(Herobrine plugin, Logger log) {
+	public CmdLocation(Herobrine plugin, Logger log) {
 		super(plugin, log);
 	}
 
@@ -18,7 +18,7 @@ public class CmdPosition extends SubCommand {
 	public boolean execute(Player player, String[] args) {		
 		Location loc = plugin.HerobrineNPC.getBukkitEntity().getLocation();
 		
-		sendMessage(player, ChatColor.GREEN + "[Herobrine] Position - "
+		sendMessage(player, ChatColor.GREEN + "[Herobrine] Location - "
 				+ "World: "+ loc.getWorld().getName()
 				+ ", Coordinates: (" + (int) loc.getX() + ", " + (int) loc.getY() + ", " + (int) loc.getZ() + ")");
 		
@@ -27,12 +27,12 @@ public class CmdPosition extends SubCommand {
 
 	@Override
 	public String help() {
-		return ChatColor.GREEN + "/herobrine position";
+		return ChatColor.GREEN + "/herobrine location";
 	}
 
 	@Override
 	public String helpDesc() {
-		return ChatColor.GREEN + "Displays Herobrine's coordinates";
+		return ChatColor.GREEN + "Displays Herobrine's location";
 	}
 
 }

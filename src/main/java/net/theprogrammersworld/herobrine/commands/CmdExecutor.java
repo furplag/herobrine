@@ -22,7 +22,7 @@ public class CmdExecutor implements CommandExecutor {
 	private Logger log = null;
 	private HashMap<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
 	private String[] helpCommandOrder = {
-			"reload", "pluginreport", "cancel", "allworlds", "position", "attack", "haunt", "heads",
+			"reload", "pluginreport", "cancel", "allworlds", "location", "attack", "haunt", "heads",
 			"bury", "curse", "burn", "pyramid", "cave", "temple", "graveyard", "speakrandom", "speak" };
 
 	public CmdExecutor(Herobrine p) {
@@ -40,7 +40,7 @@ public class CmdExecutor implements CommandExecutor {
 		subCommands.put("cave", new CmdCave(p, log));
 		subCommands.put("graveyard", new CmdGraveyard(p, log));
 		subCommands.put("allworlds", new CmdAllWorlds(p, log));
-		subCommands.put("position", new CmdPosition(p, log));
+		subCommands.put("location", new CmdLocation(p, log));
 		subCommands.put("heads", new CmdHeads(p, log));
 		subCommands.put("speakrandom", new CmdSpeakRandom(p, log));
 		subCommands.put("speak", new CmdSpeak(p, log));
