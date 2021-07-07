@@ -33,7 +33,7 @@ dependencies {
 
 tasks {
 	specialGradle {
-		minecraftVersion.set("1.17")
+		minecraftVersion.set("1.17.1")
 		specialSourceVersion.set("1.10.0")
 	}
 }
