@@ -25,6 +25,8 @@ public class Graveyard extends Core {
 	private double savedX = 0;
 	private double savedY = 0;
 	private double savedZ = 0;
+	private float savedPitch = 0;
+	private float savedYaw = 0;
 	private World savedWorld = null;
 	private Player savedPlayer = null;
 
@@ -57,6 +59,8 @@ public class Graveyard extends Core {
 				savedX = loc.getX();
 				savedY = loc.getY();
 				savedZ = loc.getZ();
+				savedPitch = loc.getPitch();
+				savedYaw = loc.getYaw();
 				savedWorld = loc.getWorld();
 				savedPlayer = player;
 				cachePreGraveyardPositionToDisk(loc, player);
@@ -122,7 +126,7 @@ public class Graveyard extends Core {
 				Herobrine.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
 			}
 			
-			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ));
+			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ, savedPitch, savedYaw));
 			deletePreGraveyardCache(savedPlayer);
 
 		} else {
@@ -161,7 +165,7 @@ public class Graveyard extends Core {
 	}
 
 	public Location getSavedLocation() {
-		return new Location(savedWorld, savedX, savedY, savedZ);
+		return new Location(savedWorld, savedX, savedY, savedZ, savedPitch, savedYaw);
 	}
 
 	private void cachePreGraveyardPositionToDisk(Location loc, Player player) {
