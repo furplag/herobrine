@@ -55,7 +55,7 @@ public class Graveyard extends Core {
 
 				Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName).setTime(15000);
 				AICore.PlayerTarget = player;
-				Location loc = (Location) player.getLocation();
+				Location loc = player.getLocation();
 				savedX = loc.getX();
 				savedY = loc.getY();
 				savedZ = loc.getZ();
