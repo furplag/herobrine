@@ -79,7 +79,7 @@ public class HumanNPC {
 
 	public void removeFromWorld() {
 		try {
-			entity.getLevel().getChunkProvider().removeEntity(entity);
+			entity.getBukkitEntity().remove();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
