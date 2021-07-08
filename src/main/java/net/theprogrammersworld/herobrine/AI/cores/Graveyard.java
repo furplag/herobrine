@@ -126,7 +126,10 @@ public class Graveyard extends Core {
 				Herobrine.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
 			}
 			
-			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ, savedPitch, savedYaw));
+			// It looks like when the call to the teleport function is made here, pitch and yaw get reversed, so they are deliberately reversed here.
+			// (Or maybe when the pitch and yaw values are extracted earlier, they are reversed? Not really sure.) This change was added v2.2.0 for
+			// Spigot 1.17.
+			savedPlayer.teleport(new Location(savedWorld, savedX, savedY, savedZ, savedYaw, savedPitch));
 			deletePreGraveyardCache(savedPlayer);
 
 		} else {
