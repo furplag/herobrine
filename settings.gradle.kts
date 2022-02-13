@@ -9,9 +9,9 @@
 
 pluginManagement {
 	repositories {
-		maven { url = "https://repo.jpenilla.xyz/snapshots/" }
 		gradlePluginPortal()
+		maven("https://papermc.io/repo/repository/maven-public/")
 	}
 }
 
-rootProject.name = 'Herobrine 2'
+rootProject.name = "Herobrine 2"
