@@ -297,18 +297,18 @@ public class Herobrine extends JavaPlugin implements Listener {
 		
 			if(sender == null){			
 				if (!opCheck)
-					log.info("[Herobrine] " + player.getDisplayName() + " is an OP.");
+					log.info("[Herobrine] " + player.displayName() + " is an OP.");
 				else if (!creativeCheck)
-					log.info("[Herobrine] " + player.getDisplayName() + " is in creative mode.");
+					log.info("[Herobrine] " + player.displayName() + " is in creative mode.");
 				else if (!ignoreCheck)
-					log.info("[Herobrine] " + player.getDisplayName() + " has ignore permission.");			
+					log.info("[Herobrine] " + player.displayName() + " has ignore permission.");			
 			}else{
 				if (!opCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " is an OP.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.displayName() + " is an OP.");
 				else if (!creativeCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " is in creative mode.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.displayName() + " is in creative mode.");
 				else if (!ignoreCheck)
-					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.getDisplayName() + " has ignore permission.");
+					sender.sendMessage(ChatColor.RED + "[Herobrine] " + player.displayName() + " has ignore permission.");
 			}
 			
 			return false;

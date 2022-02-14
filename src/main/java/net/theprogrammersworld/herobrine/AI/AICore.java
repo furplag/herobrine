@@ -259,7 +259,7 @@ public class AICore {
 				int chance = Utils.getRandomGen().nextInt(100);
 				if (chance <= 10) {
 					if (Herobrine.getPluginCore().getConfigDB().UseGraveyardWorld == true) {
-						log.info("[Herobrine] Teleporting " + PlayerTarget.getDisplayName() + " to Herobrine's Graveyard.");
+						log.info("[Herobrine] Teleporting " + PlayerTarget.displayName() + " to Herobrine's Graveyard.");
 
 						getCore(CoreType.GRAVEYARD).RunCore(data);
 

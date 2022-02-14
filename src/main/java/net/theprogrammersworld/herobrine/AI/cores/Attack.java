@@ -35,7 +35,7 @@ public class Attack extends Core {
 		if (!PluginCore.getAICore().checkAncientSword(player.getInventory())) {
 			if (PluginCore.getSupport().checkAttack(player.getLocation())) {
 				if (!PluginCore.canAttackPlayerNoMSG(player)) {
-					return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they are protected.");
+					return new CoreResult(false, player.displayName() + " cannot be attacked because they are protected.");
 				}
 
 				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
@@ -61,10 +61,10 @@ public class Attack extends Core {
 
 				return new CoreResult(true, "Herobrine is currently attacking " + player.getName() + ".");
 			} else {
-				return new CoreResult(false, AICore.PlayerTarget.getDisplayName() + " cannot be attacked because they are in a protected area.");
+				return new CoreResult(false, AICore.PlayerTarget.displayName() + " cannot be attacked because they are in a protected area.");
 			}
 		} else {
-			return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they have an Ancient Sword.");
+			return new CoreResult(false, player.displayName() + " cannot be attacked because they have an Ancient Sword.");
 		}
 	}
 
