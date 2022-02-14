@@ -31,6 +31,10 @@ tasks {
 	assemble {
 		dependsOn(reobfJar)
 	}
+	
+	reobfJar {
+		outputJar.set(layout.buildDirectory.file("libs/Herobrine 2.jar"))
+	}
 }
 
 java {
