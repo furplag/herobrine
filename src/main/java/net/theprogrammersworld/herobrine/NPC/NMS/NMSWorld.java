@@ -8,7 +8,7 @@ import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerLevel;
 
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
 
 public class NMSWorld {
 	
@@ -25,7 +25,7 @@ public class NMSWorld {
 	}
 
 	public ChunkMap getPlayerManager() {
-		ServerChunkCache chunkProvider = ((ServerLevel) wServer).getChunkProvider();
+		ServerChunkCache chunkProvider = ((ServerLevel) wServer).getChunkSource();
 		return chunkProvider.chunkMap;
 	}
 

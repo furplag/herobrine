@@ -9,8 +9,8 @@ import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
 import net.theprogrammersworld.herobrine.NPC.Network.NetworkHandler;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
