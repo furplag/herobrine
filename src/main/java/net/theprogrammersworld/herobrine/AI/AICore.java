@@ -14,7 +14,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import net.minecraft.server.level.ServerPlayer;
-import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
 import net.theprogrammersworld.herobrine.Herobrine;
@@ -631,23 +630,23 @@ public class AICore {
 	public ItemStack createAncientSword() {
 		ItemStack item = new ItemStack(Material.GOLDEN_SWORD);
 		String name = "Ancient Sword";
-		ArrayList<Component> lore = new ArrayList<Component>();
-		lore.add(Component.text("Ancient Sword"));
-		lore.add(Component.text("A very old and mysterious sword"));
-		lore.add(Component.text("that protects aganist Herobrine."));
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add("Ancient Sword");
+		lore.add("A very old and mysterious sword");
+		lore.add("that protects aganist Herobrine.");
 		item = ItemName.setNameAndLore(item, name, lore);
 		return item;
 	}
 
 	public boolean isAncientSword(ItemStack item) {
-		ArrayList<Component> lore = new ArrayList<Component>();
-		lore.add(Component.text("Ancient Sword"));
-		lore.add(Component.text("A very old and mysterious sword"));
-		lore.add(Component.text("that protects aganist Herobrine."));
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add("Ancient Sword");
+		lore.add("A very old and mysterious sword");
+		lore.add("that protects aganist Herobrine.");
 		if (item != null) {
 			if (item.getItemMeta() != null) {
-				if (item.getItemMeta().hasLore()) {
-					ArrayList<Component> ilore = (ArrayList<Component>) item.getItemMeta().lore();
+				if (item.getItemMeta().getLore() != null) {
+					ArrayList<String> ilore = (ArrayList<String>) item.getItemMeta().getLore();
 					if (ilore.containsAll(lore)) {
 						return true;
 

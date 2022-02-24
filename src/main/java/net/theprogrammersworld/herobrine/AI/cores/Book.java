@@ -8,7 +8,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -58,14 +57,14 @@ public class Book extends Core {
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta meta = (BookMeta) book.getItemMeta();
 
-		ArrayList<Component> list = new ArrayList<Component>();
+		ArrayList<String> list = new ArrayList<String>();
 
 		meta.setTitle("");
 		meta.setAuthor("");
 
-		list.add(0, Component.text(Herobrine.getPluginCore().getConfigDB().useBookMessages.get(chance)));
+		list.add(0, (String) Herobrine.getPluginCore().getConfigDB().useBookMessages.get(chance));
 
-		meta.pages(list);
+		meta.setPages(list);
 
 		book.setItemMeta(meta);
 

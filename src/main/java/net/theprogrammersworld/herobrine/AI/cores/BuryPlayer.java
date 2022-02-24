@@ -7,7 +7,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
-import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
@@ -99,7 +98,7 @@ public class BuryPlayer extends Core {
 		Block signblock = signloc.add(0, 0D, 0).getBlock();
 		signblock.setType(Material.OAK_SIGN);
 		Sign sign = (Sign) signblock.getState();
-		sign.line(1, Component.text(playername));
+		sign.setLine(1, playername);
 		sign.update();
 		loc.getWorld().getBlockAt(X, Y - 1, Z).setType(Material.STONE_BRICKS, false);
 		loc.getWorld().getBlockAt(X, Y - 1, Z - 1).setType(Material.STONE_BRICKS, false);

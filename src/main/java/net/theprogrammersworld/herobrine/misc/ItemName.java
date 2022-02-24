@@ -12,8 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import net.kyori.adventure.text.Component;
-
 public class ItemName {
 
 	public static ItemMeta meta = null;
@@ -30,28 +28,28 @@ public class ItemName {
 
 	public static ItemStack setName(ItemStack item, String name) {
 		meta = item.getItemMeta();
-		meta.displayName(Component.text(name));
+		meta.setDisplayName(name);
 		item.setItemMeta(meta);
 		return item;
 	}
 
-	public static ItemStack setLore(ItemStack item, ArrayList<Component> lore) {
+	public static ItemStack setLore(ItemStack item, ArrayList<String> lore) {
 		meta = item.getItemMeta();
-		meta.lore(lore);
+		meta.setLore(lore);
 		item.setItemMeta(meta);
 		return item;
 	}
 
-	public static ItemStack setNameAndLore(ItemStack item, String name, ArrayList<Component> lore) {
+	public static ItemStack setNameAndLore(ItemStack item, String name, ArrayList<String> lore) {
 		meta = item.getItemMeta();
-		meta.displayName(Component.text(name));
-		meta.lore(lore);
+		meta.setDisplayName(name);
+		meta.setLore(lore);
 		item.setItemMeta(meta);
 		return item;
 	}
 
-	public static ArrayList<Component> getLore(ItemStack item) {
-		return (ArrayList<Component>) item.getItemMeta().lore();
+	public static ArrayList<String> getLore(ItemStack item) {
+		return (ArrayList<String>) item.getItemMeta().getLore();
 	}
 
 	public static String getName(ItemStack item) {
@@ -63,7 +61,7 @@ public class ItemName {
 		final SkullMeta skullmeta = (SkullMeta) skull.getItemMeta();
 
 		skullmeta.setOwningPlayer(Bukkit.getOfflinePlayer(uuid));
-		skullmeta.displayName(Component.text(ChatColor.RESET + data));
+		skullmeta.setDisplayName(ChatColor.RESET + data);
 
 		skull.setItemMeta(skullmeta);
 		

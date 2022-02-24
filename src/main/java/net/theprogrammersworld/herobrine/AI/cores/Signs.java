@@ -9,7 +9,6 @@ import org.bukkit.block.Sign;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
 
-import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.ConsoleLogger;
@@ -89,7 +88,7 @@ public class Signs extends Core {
 				((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
 				sign.setBlockData(blockData);
 				
-				sign.line(1, Component.text(Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg)));
+				sign.setLine(1, Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
 				sign.update();
 			}
 		}
