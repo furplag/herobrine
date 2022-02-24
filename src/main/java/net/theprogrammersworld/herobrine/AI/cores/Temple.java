@@ -12,6 +12,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
@@ -192,13 +193,13 @@ public class Temple extends Core {
 			Random generator = Utils.getRandomGen();
 			int chance = generator.nextInt(15);
 			ItemStack item = null;
-			ArrayList<String> newLore = new ArrayList<String>();
+			ArrayList<Component> newLore = new ArrayList<Component>();
 			
 			if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
 				
 				item = new ItemStack(Material.BOW);
-				newLore.add("Herobrine artifact");
-				newLore.add("Bow of Teleporting");
+				newLore.add(Component.text("Herobrine artifact"));
+				newLore.add(Component.text("Bow of Teleporting"));
 				item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
 				item.addEnchantment(Enchantment.ARROW_FIRE, 1);
 				item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
@@ -206,8 +207,8 @@ public class Temple extends Core {
 			} else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
 				
 				item = new ItemStack(Material.DIAMOND_SWORD);
-				newLore.add("Herobrine artifact");
-				newLore.add("Sword of Lightning");
+				newLore.add(Component.text("Herobrine artifact"));
+				newLore.add(Component.text("Sword of Lightning"));
 				item = ItemName.setNameAndLore(item, "Sword of Lightning", newLore);
 				item.addEnchantment(Enchantment.KNOCKBACK, 2);
 				item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
@@ -216,8 +217,8 @@ public class Temple extends Core {
 			} else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
 				
 				item = new ItemStack(Material.GOLDEN_APPLE);
-				newLore.add("Herobrine artifact");
-				newLore.add("Apple of Death");
+				newLore.add(Component.text("Herobrine artifact"));
+				newLore.add(Component.text("Apple of Death"));
 				item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
 			} else {

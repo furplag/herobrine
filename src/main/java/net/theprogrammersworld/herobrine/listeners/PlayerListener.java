@@ -1,5 +1,6 @@
 package net.theprogrammersworld.herobrine.listeners;
 
+import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
 import net.theprogrammersworld.herobrine.AI.AICore;
@@ -27,8 +28,8 @@ import java.util.ArrayList;
 
 public class PlayerListener implements Listener {
 
-	private ArrayList<String> equalsLoreS = new ArrayList<String>();
-	private ArrayList<String> equalsLoreA = new ArrayList<String>();
+	private ArrayList<Component> equalsLoreS = new ArrayList<Component>();
+	private ArrayList<Component> equalsLoreA = new ArrayList<Component>();
 	private ArrayList<LivingEntity> LivingEntities = new ArrayList<LivingEntity>();
 	private Location le_loc = null;
 	private Location p_loc = null;
@@ -37,10 +38,10 @@ public class PlayerListener implements Listener {
 	private Herobrine PluginCore = null;
 
 	public PlayerListener(Herobrine plugin) {
-		equalsLoreS.add("Herobrine artifact");
-		equalsLoreS.add("Sword of Lightning");
-		equalsLoreA.add("Herobrine artifact");
-		equalsLoreA.add("Apple of Death");
+		equalsLoreS.add(Component.text("Herobrine artifact"));
+		equalsLoreS.add(Component.text("Sword of Lightning"));
+		equalsLoreA.add(Component.text("Herobrine artifact"));
+		equalsLoreA.add(Component.text("Apple of Death"));
 		PluginCore = plugin;
 	}
 	
@@ -281,7 +282,7 @@ public class PlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerDeathEvent(PlayerDeathEvent event) {
 		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
-			event.setDeathMessage("");
+			event.deathMessage(Component.text(""));
 
 			PluginCore.HerobrineRemove();
 

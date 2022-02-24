@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.ChatColor;
 import net.theprogrammersworld.herobrine.Herobrine;
 
@@ -20,7 +21,7 @@ public class CmdSpeak extends SubCommand {
 			String message = "<Herobrine>";
 			for(int x = 1; x < args.length; x++)
 				message += " " + args[x];
-			Bukkit.broadcastMessage(message);
+			Bukkit.getServer().broadcast(Component.text(message));
 			return true;
 		}
 		return false;

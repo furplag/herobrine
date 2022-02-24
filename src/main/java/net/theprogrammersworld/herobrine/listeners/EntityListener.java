@@ -25,6 +25,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.*;
@@ -37,16 +38,16 @@ import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 public class EntityListener implements Listener {
 
 	private ItemStack itemInHand = null;
-	private ArrayList<String> equalsLore = new ArrayList<String>();
-	private ArrayList<String> equalsLoreS = new ArrayList<String>();
-	private ArrayList<String> getLore = new ArrayList<String>();
+	private ArrayList<Component> equalsLore = new ArrayList<Component>();
+	private ArrayList<Component> equalsLoreS = new ArrayList<Component>();
+	private ArrayList<Component> getLore = new ArrayList<Component>();
 	private Herobrine PluginCore = null;
 
 	public EntityListener(Herobrine plugin) {
-		equalsLore.add("Herobrine artifact");
-		equalsLore.add("Bow of Teleporting");
-		equalsLoreS.add("Herobrine artifact");
-		equalsLoreS.add("Sword of Lightning");
+		equalsLore.add(Component.text("Herobrine artifact"));
+		equalsLore.add(Component.text("Bow of Teleporting"));
+		equalsLoreS.add(Component.text("Herobrine artifact"));
+		equalsLoreS.add(Component.text("Sword of Lightning"));
 		PluginCore = plugin;
 	}
 
