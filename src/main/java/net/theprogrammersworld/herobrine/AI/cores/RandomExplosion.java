@@ -28,13 +28,13 @@ public class RandomExplosion extends Core {
 				loc.getWorld().createExplosion(new Location(loc.getWorld(), x, y, z), 1.0f);
 
 			} else {
-				return new CoreResult(true, "Herobrine cannot produce an explosion near " + player.displayName() +
+				return new CoreResult(true, "Herobrine cannot produce an explosion near " + player.getDisplayName() +
 						" because they are in a secure area.");
 			}
 		} else {
 			return new CoreResult(true, "Herobrine explosions are not allowed.");
 		}
-		return new CoreResult(true, "Herobrine produced an explosion near " + player.displayName() + ".");
+		return new CoreResult(true, "Herobrine produced an explosion near " + player.getDisplayName() + ".");
 	}
 
 }

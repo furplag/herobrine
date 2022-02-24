@@ -64,17 +64,17 @@ public class BuryPlayer extends Core {
 						&& Herobrine.getPluginCore().getSupport().checkBuild(loc.getWorld()
 								.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 2).getLocation())) {
 					Bury(loc.getWorld(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), player);
-					return new CoreResult(true, player.displayName() + " was buried by Herobrine.");
+					return new CoreResult(true, player.getDisplayName() + " was buried by Herobrine.");
 				} else {
-					return new CoreResult(false, player.displayName() + " is in a protected area and cannot be buried.");
+					return new CoreResult(false, player.getDisplayName() + " is in a protected area and cannot be buried.");
 				}
 			}
 		} else {
-			return new CoreResult(false, player.displayName()
+			return new CoreResult(false, player.getDisplayName()
 					+ " could not be buried because a good burial location could not be found.");
 		}
 		return new CoreResult(false,
-				player.displayName() + " could not be buried because a good burial location could not be found.");
+				player.getDisplayName() + " could not be buried because a good burial location could not be found.");
 	}
 
 	public void Bury(World world, int X, int Y, int Z, Player player) {

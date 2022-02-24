@@ -42,7 +42,7 @@ public class Book extends Core {
 					return new CoreResult(false, "Herobrine's books are prohibited.");
 				}
 			} else {
-				return new CoreResult(false, player.displayName() + " is in a world that Herobrine is not allowed in.");
+				return new CoreResult(false, player.getDisplayName() + " is in a world that Herobrine is not allowed in.");
 			}
 		}
 		return new CoreResult(false, "Herobrine's book creation failed.");

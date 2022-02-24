@@ -86,7 +86,7 @@ public class Temple extends Core {
 					}
 					if (canBuild == true) {
 						Create(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-						return new CoreResult(true, "Creating a temple near " + player.displayName() + ".");
+						return new CoreResult(true, "Creating a temple near " + player.getDisplayName() + ".");
 					}
 				}
 

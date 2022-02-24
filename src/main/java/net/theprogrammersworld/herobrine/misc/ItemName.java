@@ -53,7 +53,7 @@ public class ItemName {
 	}
 
 	public static String getName(ItemStack item) {
-		return item.getItemMeta().displayName().toString();
+		return item.getItemMeta().getDisplayName();
 	}
 
 	public static ItemStack CreateSkull(final UUID uuid, final String data) {
