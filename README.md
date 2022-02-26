@@ -24,13 +24,13 @@ Pull requests that do not provide detail on what changes were made to the code w
 
 To build this project you will need:
 
-- Java JDK (version 16 or newer)
+- Java JDK (version 17 or newer)
 - Git
 
 To build the project:
 
 1. Clone this repository.
-2. Run `gradlew productionMappedJar` inside the root directory of the cloned repository.
+2. Run `gradlew build` inside the root directory of the cloned repository.
 3. The jar file will be in `build/libs/Herobrine 2.jar`.
 
 Voila!
