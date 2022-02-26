@@ -252,6 +252,7 @@ public class AICore {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void StartAI() {
 		if (PlayerTarget.isOnline() && isTarget) {
 			if (PlayerTarget.isDead() == false) {
@@ -638,6 +639,7 @@ public class AICore {
 		return item;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean isAncientSword(ItemStack item) {
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("Ancient Sword");

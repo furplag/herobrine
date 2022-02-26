@@ -272,6 +272,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 		return this.pathMng;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean canAttackPlayer(Player player, Player sender) {
 
 		boolean opCheck = true;

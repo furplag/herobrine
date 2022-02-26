@@ -19,6 +19,7 @@ public class Book extends Core {
 		super(CoreType.BOOK, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
+	@SuppressWarnings("deprecation")
 	public CoreResult CallCore(Object[] data) {
 		Player player = (Player) data[0];
 
@@ -48,6 +49,7 @@ public class Book extends Core {
 		return new CoreResult(false, "Herobrine's book creation failed.");
 	}
 
+	@SuppressWarnings("deprecation")
 	public ItemStack newBook() {
 
 		int count = Herobrine.getPluginCore().getConfigDB().useBookMessages.size();

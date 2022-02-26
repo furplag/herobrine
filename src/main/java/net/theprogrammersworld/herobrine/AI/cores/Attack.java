@@ -31,6 +31,7 @@ public class Attack extends Core {
 		return setAttackTarget((Player) data[0]);
 	}
 
+	@SuppressWarnings("deprecation")
 	public CoreResult setAttackTarget(Player player) {
 		if (!PluginCore.getAICore().checkAncientSword(player.getInventory())) {
 			if (PluginCore.getSupport().checkAttack(player.getLocation())) {

@@ -16,6 +16,7 @@ public class Curse extends Core {
 		super(CoreType.CURSE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public CoreResult CallCore(Object[] data) {
 
