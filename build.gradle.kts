@@ -1,42 +1,39 @@
+val minecraft_version="1.18.1"
+val spigot_version="1.18.1-R0.1-SNAPSHOT"
+
 plugins {
 	`java-library`
-	id("io.papermc.paperweight.userdev") version "1.3.3"
+	id("io.github.rancraftplayz.remapper") version "1.0.0"
 }
 
 repositories {
-    mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+	mavenCentral()
+	maven("https://repo.spongepowered.org/maven")
+	maven("https://maven.elmakers.com/repository/")
+	mavenLocal()
 
-    // libs folder (TODO: transfer away from this!)
-    flatDir {
-        dirs = setOf(file("libs"))
-    }
+	// libs folder (TODO: transfer away from this!)
+	flatDir {
+		dirs = setOf(file("libs"))
+	}
 }
 
 dependencies {
 	implementation(":Factions")
 	implementation(":GriefPrevention")
 	implementation(":MassiveCore")
-    implementation(":PreciousStones")
-    implementation(":RedProtect")
-    implementation(":Residence")
-    implementation(":Towny")
-    implementation(":WorldEdit")
-    implementation(":WorldGuard")
-    paperDevBundle("1.18.1-R0.1-SNAPSHOT")
+	implementation(":PreciousStones")
+	implementation(":RedProtect")
+	implementation(":Residence")
+	implementation(":Towny")
+	implementation(":WorldEdit")
+	implementation(":WorldGuard")
+	compileOnly("org.spigotmc:spigot:${spigot_version}:remapped-mojang")
+	remapLib("org.spigotmc:spigot:${spigot_version}:remapped-mojang")
 }
 
-tasks {
-	assemble {
-		dependsOn(reobfJar)
-	}
-	
-	reobfJar {
-		outputJar.set(layout.buildDirectory.file("libs/Herobrine 2.jar"))
-	}
+spigot {
+	version = minecraft_version
 }
 
-java {
-	toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-}
+tasks.named("jar") { finalizedBy("remapJar") } 
