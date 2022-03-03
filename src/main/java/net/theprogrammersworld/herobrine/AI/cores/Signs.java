@@ -68,7 +68,6 @@ public class Signs extends Core {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	public void createSign(Location loc, Location ploc) {
 
 		Random randcgen = Utils.getRandomGen();

@@ -278,7 +278,6 @@ public class PlayerListener implements Listener {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerDeathEvent(PlayerDeathEvent event) {
 		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {

@@ -38,7 +38,6 @@ public class Graveyard extends Core {
 		return Teleport((Player) data[0]);
 	}
 
-	@SuppressWarnings("deprecation")
 	public CoreResult Teleport(Player player) {
 		if (Herobrine.getPluginCore().getConfigDB().UseGraveyardWorld == true) {
 			if (!Herobrine.getPluginCore().getAICore().checkAncientSword(player.getInventory())) {

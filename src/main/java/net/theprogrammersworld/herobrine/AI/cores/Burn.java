@@ -12,7 +12,6 @@ public class Burn extends Core {
 		super(CoreType.BURN, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public CoreResult CallCore(Object[] data) {
 		Player player = (Player) data[0];

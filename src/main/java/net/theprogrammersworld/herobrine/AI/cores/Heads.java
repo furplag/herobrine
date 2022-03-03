@@ -26,7 +26,6 @@ public class Heads extends Core {
 		super(CoreType.HEADS, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
-	@SuppressWarnings("deprecation")
 	public CoreResult CallCore(Object[] data) {
 		if (isCalled == false) {
 			if (Bukkit.getPlayer((String) data[0]).isOnline()) {

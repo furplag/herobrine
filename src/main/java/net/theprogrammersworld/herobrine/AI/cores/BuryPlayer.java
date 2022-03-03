@@ -24,7 +24,6 @@ public class BuryPlayer extends Core {
 		return FindPlace((Player) data[0]);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public CoreResult FindPlace(final Player player) {
 		if (Herobrine.getPluginCore().getSupport().checkBuild(player.getLocation())) {
 			final Location loc = player.getLocation();
@@ -93,7 +92,6 @@ public class BuryPlayer extends Core {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void RegenBlocks(World world, int X, int Y, int Z, String playername) {
 		Location loc = new Location(world, X, Y, Z);
 		Location signloc = new Location(world, X, Y, Z - 2);

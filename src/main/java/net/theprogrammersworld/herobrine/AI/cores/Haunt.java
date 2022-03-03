@@ -33,7 +33,6 @@ public class Haunt extends Core {
 		return setHauntTarget((Player) data[0]);
 	}
 
-	@SuppressWarnings("deprecation")
 	public CoreResult setHauntTarget(Player player) {
 		if (PluginCore.getSupport().checkHaunt(player.getLocation())) {
 			if (!PluginCore.canAttackPlayerNoMSG(player)) {

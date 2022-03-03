@@ -26,7 +26,6 @@ public class ItemName {
 		return i;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack setName(ItemStack item, String name) {
 		meta = item.getItemMeta();
 		meta.setDisplayName(name);
@@ -34,7 +33,6 @@ public class ItemName {
 		return item;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack setLore(ItemStack item, ArrayList<String> lore) {
 		meta = item.getItemMeta();
 		meta.setLore(lore);
@@ -42,7 +40,6 @@ public class ItemName {
 		return item;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack setNameAndLore(ItemStack item, String name, ArrayList<String> lore) {
 		meta = item.getItemMeta();
 		meta.setDisplayName(name);
@@ -51,17 +48,14 @@ public class ItemName {
 		return item;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static ArrayList<String> getLore(ItemStack item) {
 		return (ArrayList<String>) item.getItemMeta().getLore();
 	}
 
-	@SuppressWarnings("deprecation")
 	public static String getName(ItemStack item) {
 		return item.getItemMeta().getDisplayName();
 	}
 
-	@SuppressWarnings("deprecation")
 	public static ItemStack CreateSkull(final UUID uuid, final String data) {
 		final ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
 		final SkullMeta skullmeta = (SkullMeta) skull.getItemMeta();

@@ -14,7 +14,6 @@ public class RandomExplosion extends Core {
 		super(CoreType.RANDOM_EXPLOSION, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public CoreResult CallCore(Object[] data) {
 

@@ -14,7 +14,6 @@ public class CmdSpeak extends SubCommand {
 		super(plugin, log);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean execute(Player player, String[] args) {
 		if (args.length > 1) {

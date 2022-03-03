@@ -35,7 +35,6 @@ public class Temple extends Core {
 	}
 	
 	// TODO Change this nonsense
-	@SuppressWarnings("deprecation")
 	public CoreResult FindPlacePlayer(Player player) {
 
 		Location loc = player.getLocation();
