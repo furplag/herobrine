@@ -1,9 +1,8 @@
-val minecraft_version="1.18.1"
 val spigot_version="1.18.1-R0.1-SNAPSHOT"
 
 plugins {
 	`java-library`
-	id("io.github.rancraftplayz.remapper") version "1.0.0"
+	id("io.github.patrick.remapper") version "1.1.0"
 }
 
 repositories {
@@ -29,11 +28,8 @@ dependencies {
 	implementation(":WorldEdit")
 	implementation(":WorldGuard")
 	compileOnly("org.spigotmc:spigot:${spigot_version}:remapped-mojang")
-	remapLib("org.spigotmc:spigot:${spigot_version}:remapped-mojang")
+	mojangMapping("org.spigotmc:minecraft-server:${spigot_version}:maps-mojang@txt")
+	spigotMapping("org.spigotmc:minecraft-server:${spigot_version}:maps-spigot@csrg")
 }
 
-spigot {
-	version = minecraft_version
-}
-
-tasks.named("jar") { finalizedBy("remapJar") } 
+tasks.named("jar") { finalizedBy("remap") } 
