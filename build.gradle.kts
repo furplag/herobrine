@@ -2,7 +2,7 @@ val spigot_version="1.18.1-R0.1-SNAPSHOT"
 
 plugins {
 	`java-library`
-	id("io.github.patrick.remapper") version "1.1.0"
+	id("io.github.patrick.remapper") version "1.1.2"
 }
 
 repositories {
