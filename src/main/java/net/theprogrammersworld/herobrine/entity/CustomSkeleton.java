@@ -12,6 +12,7 @@ import org.bukkit.Color;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.theprogrammersworld.herobrine.Herobrine;
@@ -35,10 +36,10 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.Skeleton 
 
 	public void spawnDemon(Location loc) {
 
-		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
-		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
-		this.setCustomName(new TextComponent("Demon"));
+		((LivingEntity) this).getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
+		((LivingEntity) this).getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
+		((LivingEntity) this).setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
+		((Entity) this).setCustomName(new TextComponent("Demon"));
 
 		Skeleton entityCast = (Skeleton) this.getBukkitEntity();
 		
@@ -68,7 +69,7 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.Skeleton 
 								.getInt("npc.Demon.Drops." + item + ".Count")));
 			}
 		}
-		setHealth(0.0f);
+		((LivingEntity) this).setHealth(0.0f);
 	}
 
 	@Override

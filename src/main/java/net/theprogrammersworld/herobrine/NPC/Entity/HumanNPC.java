@@ -2,6 +2,7 @@ package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 import org.bukkit.Bukkit;
@@ -53,7 +54,7 @@ public class HumanNPC {
 	}
 
 	public void setPitch(float pitch) {
-		((HumanEntity) getEntity()).setXRot(pitch);
+		((Entity) getEntity()).setXRot(pitch);
 	}
 
 	public void moveTo(Location loc) {
@@ -86,7 +87,7 @@ public class HumanNPC {
 	}
 
 	public void setYaw(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		((Entity) getEntity()).setYRot(yaw);
 	}
 
 	public void lookAtPoint(Location point) {
@@ -110,15 +111,15 @@ public class HumanNPC {
 		}
 
 		if (newYaw > 0.0D || newYaw < 180.0D) {
-			entity.setXRot((float) newPitch);
-			entity.setYRot((float) (newYaw - 90.0));
+			((Entity) entity).setXRot((float) newPitch);
+			((Entity) entity).setYRot((float) (newYaw - 90.0));
 			entity.getBukkitEntity().setFlySpeed((float) (newYaw - 90.0) / 360);
 		}
 
 	}
 
 	public void setYawA(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		((Entity) getEntity()).setYRot(yaw);
 	}
 
 	public org.bukkit.entity.Entity getBukkitEntity() {
