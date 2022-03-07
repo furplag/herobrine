@@ -1,8 +1,8 @@
-val spigot_version="1.18.1-R0.1-SNAPSHOT"
+val mc_version="1.18.1"
 
 plugins {
 	`java-library`
-	id("io.github.patrick.remapper") version "1.1.2"
+	id("io.github.patrick.remapper") version "1.2.0"
 }
 
 repositories {
@@ -27,9 +27,13 @@ dependencies {
 	implementation(":Towny")
 	implementation(":WorldEdit")
 	implementation(":WorldGuard")
-	compileOnly("org.spigotmc:spigot:${spigot_version}:remapped-mojang")
-	mojangMapping("org.spigotmc:minecraft-server:${spigot_version}:maps-mojang@txt")
-	spigotMapping("org.spigotmc:minecraft-server:${spigot_version}:maps-spigot@csrg")
+	compileOnly("org.spigotmc:spigot:${mc_version}-R0.1-SNAPSHOT:remapped-mojang")
+}
+
+tasks {
+	remap {
+		version.set("${mc_version}")
+	}
 }
 
 tasks.named("jar") { finalizedBy("remap") } 
