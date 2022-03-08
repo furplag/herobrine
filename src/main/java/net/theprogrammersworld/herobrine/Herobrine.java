@@ -1,7 +1,9 @@
 package net.theprogrammersworld.herobrine;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -25,7 +27,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.core.Holder;
+import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
 import net.theprogrammersworld.herobrine.AI.extensions.GraveyardWorld;
@@ -78,7 +83,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 		// If it is not, print an error message and disable the plugin.
 		if (continueWithEnable) {
 			try {
-				Class.forName("org.bukkit.craftbukkit.v1_18_R1.CraftArt");
+				Class.forName("org.bukkit.craftbukkit.v1_18_R2.CraftArt");
 			} catch (ClassNotFoundException e) {
 				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not "
 						+ "compatible with this server's Spigot version and will be disabled.");
@@ -352,9 +357,34 @@ public class Herobrine extends JavaPlugin implements Listener {
 	
 	private static <T extends Entity> void addCustomEntity(String customName, EntityType.EntityFactory<T> _func, MobCategory enumCreatureType) {
 		// Registers a custom entity. Adapted from https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
-		EntityType.Builder<?> entity = EntityType.Builder.of(_func, enumCreatureType);
-		entity.noSummon();
-		Registry.register(Registry.ENTITY_TYPE, customName, entity.build(customName));
+		// As of 1.18.2, this function was updated to unfreeze and freeze the entity registry when adding a new custom entity. Additionally, a conditional
+		// check was added to prevent the plugin from crashing due to an attempt to add the same custom entity twice.
+		if (!Registry.ENTITY_TYPE.getOptional(new ResourceLocation(customName)).isPresent()) {
+			unfreezeRegistry();
+			EntityType.Builder<?> entity = EntityType.Builder.of(_func, enumCreatureType);
+			entity.noSummon();
+			Registry.register(Registry.ENTITY_TYPE, customName, entity.build(customName));
+			Registry.ENTITY_TYPE.freeze();
+		}
 	}
-
+	
+	private static void unfreezeRegistry() {
+		// As of 1.18.2, registries are frozen once NMS is done adding to them, so we have to do some super hacky things to add custom entities now.
+		// Adapted from https://github.com/iSach/UltraCosmetics/blob/7f8bbfd2a540559888b89dae7eee4dec482ab7c9/v1_18_R2/src/main/java/be/isach/ultracosmetics/
+		//	v1_18_R2/customentities/CustomEntities.java#L75-L104
+		final String INTRUSIVE_HOLDER_CACHE = "bN";
+		final String FROZEN = "bL";
+	    Class<?> registryClass = MappedRegistry.class;
+	    try {
+	        Field intrusiveHolderCache = registryClass.getDeclaredField(INTRUSIVE_HOLDER_CACHE);
+	        intrusiveHolderCache.setAccessible(true);
+	        intrusiveHolderCache.set(Registry.ENTITY_TYPE, new IdentityHashMap<EntityType<?>, Holder.Reference<EntityType<?>>>());
+	        Field frozen = registryClass.getDeclaredField(FROZEN);
+	        frozen.setAccessible(true);
+	        frozen.set(Registry.ENTITY_TYPE, false);
+	    } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+	        e.printStackTrace();
+	        return;
+	    }
+	}
 }
