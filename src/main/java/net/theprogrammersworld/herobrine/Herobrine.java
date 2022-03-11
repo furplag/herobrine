@@ -47,7 +47,6 @@ import net.theprogrammersworld.herobrine.listeners.EntityListener;
 import net.theprogrammersworld.herobrine.listeners.InventoryListener;
 import net.theprogrammersworld.herobrine.listeners.PlayerListener;
 import net.theprogrammersworld.herobrine.listeners.WorldListener;
-import net.theprogrammersworld.herobrine.misc.UpdateScanner;
 
 public class Herobrine extends JavaPlugin implements Listener {
 

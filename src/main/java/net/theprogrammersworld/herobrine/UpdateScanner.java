@@ -1,4 +1,4 @@
-package net.theprogrammersworld.herobrine.misc;
+package net.theprogrammersworld.herobrine;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,8 +7,6 @@ import java.net.URL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
-
-import net.theprogrammersworld.herobrine.Herobrine;
 
 public class UpdateScanner implements Runnable {
 
