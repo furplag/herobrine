@@ -209,7 +209,7 @@ public class RandomPosition extends Core {
 						&& ploc.getY() + 7 > loc.getY()
 						&& ploc.getY() - 7 < loc.getY()) {
 						
-						loc.setY(-20);
+						loc.setY(-100);
 						PluginCore.HerobrineNPC.moveTo(loc);
 						PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
 						RandomMoveIsPlayer = false;

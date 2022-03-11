@@ -181,7 +181,7 @@ public class Attack extends Core {
 
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
 
-				ploc.setY(-20);
+				ploc.setY(-100);
 
 				for(int i=0; i < 5; i++){
 					for(float j=0; j < 2; j+= 0.5f){

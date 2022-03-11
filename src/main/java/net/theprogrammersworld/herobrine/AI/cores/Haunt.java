@@ -46,7 +46,7 @@ public class Haunt extends Core {
 			AICore.PlayerTarget = player;
 			AICore.log.info("[Herobrine] " + player.getDisplayName() + " is now being haunted by Herobrine.");
 			Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-			loc.setY(-20);
+			loc.setY(-100);
 			PluginCore.HerobrineNPC.moveTo(loc);
 
 			StartHandler();

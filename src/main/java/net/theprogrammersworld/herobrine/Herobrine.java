@@ -157,7 +157,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 		}
 		
 		// Spawn Herobrine
-		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -20,
+		Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -100,
 				(float) 0);
 		nowloc.setYaw((float) 1);
 		nowloc.setPitch((float) 1);

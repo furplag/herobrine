@@ -212,7 +212,7 @@ public class AICore {
 				Stop_RM();
 				Stop_RS();
 				Stop_CG();
-				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0);
+				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -100.f, 0);
 				
 				nowloc.setYaw(1.f);
 				nowloc.setPitch(1.f);
@@ -235,7 +235,7 @@ public class AICore {
 				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 				
 				log.info("[Herobrine] Cancelled target.");
-				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0);
+				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -100.f, 0);
 				
 				nowloc.setYaw(1.f);
 				nowloc.setPitch(1.f);
@@ -478,7 +478,7 @@ public class AICore {
 			}
 		}
 		
-		ploc.setY(-20);
+		ploc.setY(-100);
 		Herobrine.getPluginCore().HerobrineNPC.moveTo(ploc);
 
 	}
@@ -695,7 +695,7 @@ public class AICore {
 	public void visibilityActivationTeleport() {
 		// Makes Herobrine visible to players that should be able to see him by quickly teleporting him out of the map and back to where he previously was.
 		Location original = Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().getLocation();
-		Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
+		Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(new Location(Bukkit.getServer().getWorlds().get(0), 0, -100, 0));
 		Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(original);
 	}
 	

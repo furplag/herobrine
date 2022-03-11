@@ -209,7 +209,7 @@ public class EntityListener implements Listener {
 						} else {
 							if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
 								Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-								newloc.setY(-20);
+								newloc.setY(-100);
 								PluginCore.HerobrineNPC.moveTo(newloc);
 								PluginCore.getAICore().CancelTarget(CoreType.ANY);
 							}
@@ -217,7 +217,7 @@ public class EntityListener implements Listener {
 					} else {
 						if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
 							Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-							newloc.setY(-20);
+							newloc.setY(-100);
 							PluginCore.HerobrineNPC.moveTo(newloc);
 							PluginCore.getAICore().CancelTarget(CoreType.ANY);
 						}
