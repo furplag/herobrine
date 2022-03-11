@@ -302,8 +302,8 @@ public class PlayerListener implements Listener {
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)) {
 				Player player = (Player) event.getPlayer();
-				player.teleport(new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49f, 4.f,
-						10.69f, -179.85f, 0.44999f));
+				player.teleport(new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49f,
+						Herobrine.getPluginCore().getConfigDB().graveyardYCoord, 10.69f, -179.85f, 0.44999f));
 			}
 		}
 

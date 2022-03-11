@@ -89,6 +89,15 @@ public class ConfigDB {
 
 	public boolean newVersionFound = false;
 	
+	/* Starting with Minecraft 1.18, the Y coordinate used for the flat world generated for Herobrine's Graveyard is -61 instead of 3.
+	 * This elevation change required graveyard generation as well as Herobrine and player location management to be shifted down to
+	 * accommodate it. This change is only applied to graveyard worlds generated on 1.18 or newer, however, and would cause graveyards
+	 * generated on older versions to not show Herobrine or the player in the right place. To work around this, we now use the
+	 * "graveyardYCoord" variable to indicate the Y coordinate that should be used for Herobrine and the player when in the graveyard
+	 * world. The default stored value is the one used for graveyard generated on 1.18 or newer. A conditional check will be used
+	 * to change this value to 4 as part of the server launch process if doing so is appropriate. */
+	public double graveyardYCoord = -60;
+	
 	private boolean isStartupDone = false;
 	
 	final public String pluginVersionString = Bukkit.getServer().getPluginManager().getPlugin("Herobrine")

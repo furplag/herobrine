@@ -66,7 +66,7 @@ public class Graveyard extends Core {
 				cachePreGraveyardPositionToDisk(loc, player);
 				loc.setWorld(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName));
 				loc.setX(-2.49);
-				loc.setY(4);
+				loc.setY(Herobrine.getPluginCore().getConfigDB().graveyardYCoord);
 				loc.setZ(10.69);
 				loc.setYaw(-179.85f);
 				loc.setPitch(0.44999f);
@@ -88,7 +88,8 @@ public class Graveyard extends Core {
 	public void Start() {
 
 		ticks = 0;
-		PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49, 4, -4.12));
+		PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName),
+				-2.49, Herobrine.getPluginCore().getConfigDB().graveyardYCoord, -4.12));
 		HandlerInterval();
 
 	}
@@ -138,17 +139,21 @@ public class Graveyard extends Core {
 			PluginCore.HerobrineNPC.lookAtPoint(ploc);
 			if (ticks == 1) {
 				PluginCore.HerobrineNPC.moveTo(
-						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49, 4, -4.12));
+						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49,
+								Herobrine.getPluginCore().getConfigDB().graveyardYCoord, -4.12));
 			} else if (ticks == 40) {
 				PluginCore.HerobrineNPC.moveTo(
-						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49, 4, -0.5));
+						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49,
+								Herobrine.getPluginCore().getConfigDB().graveyardYCoord, -0.5));
 			} else if (ticks == 60) {
 				PluginCore.HerobrineNPC.moveTo(
-						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49, 4, 5.1));
+						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49,
+								Herobrine.getPluginCore().getConfigDB().graveyardYCoord, 5.1));
 
 			} else if (ticks == 84) {
 				PluginCore.HerobrineNPC.moveTo(
-						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49, 4, 7.5));
+						new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName), -2.49,
+								Herobrine.getPluginCore().getConfigDB().graveyardYCoord, 7.5));
 
 			}
 
