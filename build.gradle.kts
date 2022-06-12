@@ -2,7 +2,7 @@ val mc_version="1.18.2"
 
 plugins {
 	`java-library`
-	id("io.github.patrick.remapper") version "1.2.0"
+	id("io.github.patrick.remapper") version "1.3.0"
 }
 
 repositories {
@@ -28,6 +28,11 @@ dependencies {
 	implementation(":WorldEdit")
 	implementation(":WorldGuard")
 	compileOnly("org.spigotmc:spigot:${mc_version}-R0.1-SNAPSHOT:remapped-mojang")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks {
