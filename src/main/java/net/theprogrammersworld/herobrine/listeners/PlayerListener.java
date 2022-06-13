@@ -9,7 +9,7 @@ import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 import org.bukkit.*;
 import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
