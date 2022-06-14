@@ -7,7 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -38,7 +38,7 @@ public class CustomZombie extends net.minecraft.world.entity.monster.Zombie impl
 		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.HP"));
 
-		this.setCustomName(new TextComponent("Artifact Guardian"));
+		this.setCustomName(Component.literal("Artifact Guardian"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 
@@ -58,7 +58,7 @@ public class CustomZombie extends net.minecraft.world.entity.monster.Zombie impl
 		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Warrior.HP"));
 
-		this.setCustomName(new TextComponent("Herobrine Warrior"));
+		this.setCustomName(Component.literal("Herobrine Warrior"));
 
 		Zombie entityCast = (Zombie) this.getBukkitEntity();
 

@@ -9,7 +9,7 @@ import java.util.Random;
 
 import org.bukkit.Color;
 
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -38,7 +38,7 @@ public class CustomSkeleton extends net.minecraft.world.entity.monster.Skeleton 
 		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getDouble("npc.Demon.Speed"));
 		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
 		this.setHealth(Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Demon.HP"));
-		this.setCustomName(new TextComponent("Demon"));
+		this.setCustomName(Component.literal("Demon"));
 
 		Skeleton entityCast = (Skeleton) this.getBukkitEntity();
 		
