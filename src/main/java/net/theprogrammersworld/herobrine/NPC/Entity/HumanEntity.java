@@ -19,7 +19,7 @@ public class HumanEntity extends ServerPlayer {
 	private CraftPlayer cplayer = null;
 
 	public HumanEntity(final NPCCore npcCore, final NMSWorld world, final GameProfile s) {
-		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s);
+		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s, null);
 
 		this.setGameMode(GameType.SURVIVAL);
 
