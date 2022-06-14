@@ -1,9 +1,9 @@
 name: Herobrine
 main: net.theprogrammersworld.herobrine.Herobrine
-version: 2.3.1
+version: 2.4.0
 description: "Bring Herobrine to your Spigot-based Minecraft server!"
 website: https://www.theprogrammersworld.net
-api-version: 1.18
+api-version: 1.19
 load: STARTUP
 commands:
     herobrine:
