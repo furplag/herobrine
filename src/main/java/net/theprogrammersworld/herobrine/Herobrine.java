@@ -381,8 +381,9 @@ public class Herobrine extends JavaPlugin implements Listener {
 		// As of 1.18.2, registries are frozen once NMS is done adding to them, so we have to do some super hacky things to add custom entities now.
 		// Adapted from https://github.com/iSach/UltraCosmetics/blob/7f8bbfd2a540559888b89dae7eee4dec482ab7c9/v1_18_R2/src/main/java/be/isach/ultracosmetics/
 		//	v1_18_R2/customentities/CustomEntities.java#L75-L104
-		final String INTRUSIVE_HOLDER_CACHE = "bN";
-		final String FROZEN = "bL";
+		// Obfuscated fields are from https://github.com/iSach/UltraCosmetics/blob/master/v1_19_R1/src/main/java/be/isach/ultracosmetics/v1_19_R1/ObfuscatedFields.java
+		final String INTRUSIVE_HOLDER_CACHE = "cc";
+		final String FROZEN = "ca";
 	    Class<?> registryClass = MappedRegistry.class;
 	    try {
 	        Field intrusiveHolderCache = registryClass.getDeclaredField(INTRUSIVE_HOLDER_CACHE);
