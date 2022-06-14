@@ -8,13 +8,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.Component.Serializer;
-import net.minecraft.network.protocol.game.ClientboundChatPacket;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdExecutor implements CommandExecutor {
@@ -71,9 +69,9 @@ public class CmdExecutor implements CommandExecutor {
 			player.sendMessage(ChatColor.RED + "[Herobrine] Command List (hover over commands for more info)");
 			for (String v : helpMessage) {
 				if(player.hasPermission("herobrine." + permissionNode.get(v))) {
-					TextComponent help = (TextComponent) Serializer.fromJson("{\"text\":\"\",\"extra\":[{\"text\":\"" + v + 
-							"\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + helpMessageDesc.get(v) + "\"}}]}");
-					((CraftPlayer) player).getHandle().connection.send(new ClientboundChatPacket(help, ChatType.CHAT, player.getUniqueId()));
+					TextComponent help = new TextComponent(v);
+					help.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(helpMessageDesc.get(v))));
+					player.spigot().sendMessage(help);
 				}
 			}
 		}
