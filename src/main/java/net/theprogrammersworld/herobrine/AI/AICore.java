@@ -2,20 +2,22 @@ package net.theprogrammersworld.herobrine.AI;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoRemovePacket;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket.Action;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
-import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core.CoreType;
@@ -213,10 +215,10 @@ public class AICore {
 				Stop_RS();
 				Stop_CG();
 				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -100.f, 0);
-				
+
 				nowloc.setYaw(1.f);
 				nowloc.setPitch(1.f);
-				
+
 				Herobrine.getPluginCore().HerobrineNPC.moveTo(nowloc);
 				CoreNow = CoreType.ANY;
 				Herobrine.getPluginCore().getPathManager().setPath(null);
@@ -233,13 +235,13 @@ public class AICore {
 				_ticks = 0;
 				isTarget = false;
 				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
-				
+
 				log.info("[Herobrine] Cancelled target.");
 				Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -100.f, 0);
-				
+
 				nowloc.setYaw(1.f);
 				nowloc.setPitch(1.f);
-				
+
 				Herobrine.getPluginCore().HerobrineNPC.moveTo(nowloc);
 				CoreNow = CoreType.ANY;
 				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
@@ -354,7 +356,7 @@ public class AICore {
 		if (Utils.getRandomGen().nextBoolean()) {
 			if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 				log.info("[Herobrine] Finding pyramid target...");
-				
+
 				Player player = Utils.getRandomPlayer();
 				if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(player.getLocation().getWorld().getName())) {
 
@@ -387,9 +389,9 @@ public class AICore {
 			if (Utils.getRandomGen().nextBoolean()) {
 				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 					log.info("[Herobrine] Finding temple target...");
-					
+
 					Player player = Utils.getRandomPlayer();
-					
+
 					if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(player.getLocation().getWorld().getName())) {
 						if (Utils.getRandomGen().nextBoolean()) {
 							Object[] data = { player };
@@ -407,9 +409,9 @@ public class AICore {
 		if (Herobrine.getPluginCore().getConfigDB().BuildStuff == true) {
 			if (Utils.getRandomGen().nextBoolean()) {
 				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
-					
+
 					Player player = Utils.getRandomPlayer();
-					
+
 					if (Herobrine.getPluginCore().getConfigDB().useWorlds
 							.contains(player.getLocation().getWorld().getName())) {
 
@@ -477,7 +479,7 @@ public class AICore {
 				hbloc.getWorld().playEffect(hbloc, Effect.SMOKE, 80);
 			}
 		}
-		
+
 		ploc.setY(-100);
 		Herobrine.getPluginCore().HerobrineNPC.moveTo(ploc);
 
@@ -671,7 +673,7 @@ public class AICore {
 
 		return false;
 	}
-	
+
 	public boolean toggleHerobrinePlayerVisibilityNoTeleport(Player p) {
 		// Toggles the visibility of Herobrine for the given player. This function does not perform the "visibility activation teleport".
 		// If an activiation teleport should be performed, returns true, otherwise, false.
@@ -679,26 +681,26 @@ public class AICore {
 		if(playerCanSeeHerobrine && !visibilityList.contains(p)) {
 			// If player p can see Herobrine but visibilty is not already enabled, then enable it.
 			ServerPlayer pcon = ((CraftPlayer) p).getHandle();
-			pcon.connection.send(new ClientboundPlayerInfoPacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+			pcon.connection.send(new ClientboundPlayerInfoUpdatePacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
 			visibilityList.add(p);
 			return true;
 		}
 		else if(!playerCanSeeHerobrine && visibilityList.contains(p)) {
 			// If player p cannot see Herobrine but visibility is still enabled, then disable it.
 			ServerPlayer pcon = ((CraftPlayer) p).getHandle();
-			pcon.connection.send(new ClientboundPlayerInfoPacket(Action.REMOVE_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+			pcon.connection.send(new ClientboundPlayerInfoRemovePacket(List.of(Herobrine.getPluginCore().HerobrineNPC.getEntity().getUUID())));
 			visibilityList.remove(p);
 		}
 		return false;
 	}
-	
+
 	public void visibilityActivationTeleport() {
 		// Makes Herobrine visible to players that should be able to see him by quickly teleporting him out of the map and back to where he previously was.
 		Location original = Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().getLocation();
 		Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(new Location(Bukkit.getServer().getWorlds().get(0), 0, -100, 0));
 		Herobrine.getPluginCore().HerobrineNPC.getBukkitEntity().teleport(original);
 	}
-	
+
 	public void toggleHerobrinePlayerVisibility(Player p) {
 		// Toggles the visibility of Herobrine for the given player. Most of the work is passed off to toggleHerobrinePlayerVisibilityNoTeleport().
 		if(toggleHerobrinePlayerVisibilityNoTeleport(p)) {
