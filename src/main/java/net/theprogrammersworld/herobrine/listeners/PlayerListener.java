@@ -1,29 +1,40 @@
 package net.theprogrammersworld.herobrine.listeners;
 
-import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket;
-import net.minecraft.network.protocol.game.ClientboundPlayerInfoPacket.Action;
-import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
-import net.theprogrammersworld.herobrine.Herobrine;
-import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.misc.ItemName;
-import org.bukkit.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerBedEnterEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket.Action;
+import net.theprogrammersworld.herobrine.Herobrine;
+import net.theprogrammersworld.herobrine.Utils;
+import net.theprogrammersworld.herobrine.AI.AICore;
+import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.misc.ItemName;
 
 public class PlayerListener implements Listener {
 
@@ -43,14 +54,14 @@ public class PlayerListener implements Listener {
 		equalsLoreA.add("Apple of Death");
 		PluginCore = plugin;
 	}
-	
+
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		// If the persistent tab list entry for Herobrine is enabled, send an "add player" packet to the user on login.
 		if(Herobrine.getPluginCore().getConfigDB().ShowInTabList)
 			((CraftPlayer) event.getPlayer()).getHandle().connection.send(
-					new ClientboundPlayerInfoPacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
-		
+					new ClientboundPlayerInfoUpdatePacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+
 		// Check if the user has a Graveyard cache. If they do, this means they are stuck in the Graveyard and
 		// need teleported out.
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PluginCore, new Runnable() {
@@ -68,7 +79,7 @@ public class PlayerListener implements Listener {
 						}
 						cache.close();
 						String[] cacheData = cacheDataString.split("\n");
-						
+
 						// If the cacheData length is 4, then the cache is from a version of the plugin prior to 2.2.0 and only contains the
 						// player's (X, Y, Z) coordinates and the world. Otherwise, the cache also contains the player's pitch and yaw. Parse
 						// the data appropriately and teleport them.
@@ -89,7 +100,7 @@ public class PlayerListener implements Listener {
 				}
 			}
 		}, 20L); // 20L = 1 sec
-		
+
 		// If a newer version of Herobrine is available and the player is an OP, display a message to the OP stating that a new version is available.
 		if(Herobrine.getPluginCore().getConfigDB().newVersionFound && event.getPlayer().isOp())
 			event.getPlayer().sendMessage(ChatColor.RED + "A new version of Herobrine is available. To "
@@ -120,10 +131,10 @@ public class PlayerListener implements Listener {
 
 							} else if (ItemName.getLore(itemInHand).containsAll(equalsLoreA)
 									   && PluginCore.getConfigDB().UseArtifactApple) {
-								
+
 								timestamp = System.currentTimeMillis() / 1000;
 								canUse = false;
-								
+
 								if (PluginCore.PlayerApple.containsKey(event.getPlayer())) {
 									if (PluginCore.PlayerApple.get(event.getPlayer()) < timestamp) {
 										PluginCore.PlayerApple.remove(event.getPlayer());
@@ -269,7 +280,7 @@ public class PlayerListener implements Listener {
 					&& herobrineLocation.getBlockX() < -PluginCore.getConfigDB().WalkingModeXRadius
 					&& herobrineLocation.getBlockZ() > PluginCore.getConfigDB().WalkingModeZRadius
 					&& herobrineLocation.getBlockZ() < -PluginCore.getConfigDB().WalkingModeZRadius) {
-					
+
 					PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
 					PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
 
@@ -297,7 +308,7 @@ public class PlayerListener implements Listener {
 		// Dynamically toggle Herobrine's visibility to players as a workaround to the persistent tab list entry if the persistent entry is disabled.
 		if(!Herobrine.getPluginCore().getConfigDB().ShowInTabList)
 			PluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
-		
+
 		// Prevent player from moving when in Herobrine's Graveyard.
 		if (event.getPlayer().getEntityId() != PluginCore.HerobrineEntityID) {
 			if (event.getPlayer().getWorld() == Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)) {

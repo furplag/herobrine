@@ -12,10 +12,10 @@ import net.minecraft.server.MinecraftServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.craftbukkit.v1_19_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_19_R2.CraftServer;
 
-public class NMSServer { 
-	
+public class NMSServer {
+
 	private static NMSServer ins;
 	private MinecraftServer mcServer;
 	private CraftServer cServer;
