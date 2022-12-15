@@ -27,7 +27,7 @@ dependencies {
 	implementation(":Towny")
 	implementation(":WorldEdit")
 	implementation(":WorldGuard")
-	compileOnly("org.spigotmc:spigot:${mc_version}-R0.1-SNAPSHOT:remapped-mojang")
+	implementation("org.spigotmc:spigot:${mc_version}-R0.1-SNAPSHOT:remapped-mojang")
 }
 
 java {
@@ -41,4 +41,6 @@ tasks {
 	}
 }
 
-tasks.named("jar") { finalizedBy("remap") } 
+tasks.named("jar") { finalizedBy("remap") }
+
+version="2.5.0-SNAPSHOT"
