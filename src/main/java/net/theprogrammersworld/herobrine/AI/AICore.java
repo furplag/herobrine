@@ -688,7 +688,7 @@ public class AICore {
 		else if(!playerCanSeeHerobrine && visibilityList.contains(p)) {
 			// If player p cannot see Herobrine but visibility is still enabled, then disable it.
 			ServerPlayer pcon = ((CraftPlayer) p).getHandle();
-			pcon.connection.send(new ClientboundPlayerInfoRemovePacket(List.of(p.getUniqueId())));
+			pcon.connection.send(new ClientboundPlayerInfoRemovePacket(List.of(Herobrine.getPluginCore().HerobrineNPC.getEntity().getUUID())));
 			visibilityList.remove(p);
 		}
 		return false;
