@@ -41,4 +41,6 @@ tasks {
 	}
 }
 
-tasks.named("jar") { finalizedBy("remap") } 
+tasks.named("jar") { finalizedBy("remap") }
+
+version="2.5.0-SNAPSHOT-20221216"
