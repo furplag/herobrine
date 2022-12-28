@@ -83,7 +83,7 @@ public class ConfigDB {
 	public boolean UseIgnorePermission = true;
 	public String HerobrineUUID = "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2";
 	public String HerobrineName = "Herobrine";
-	public String HerobrineWorldName = "world_herobrine_graveyard";
+	public String HerobrineWorldName = "herobrine";
 	public boolean ShowInTabList = false;
 	public boolean CheckForUpdates = true;
 
