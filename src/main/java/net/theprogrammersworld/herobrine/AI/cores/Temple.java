@@ -22,215 +22,150 @@ import net.theprogrammersworld.herobrine.misc.StructureLoader;
 
 public class Temple extends Core {
 
-	public Temple() {
-		super(CoreType.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
-	}
+  public Temple() {
+    super(CoreType.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
+  }
 
-	public CoreResult CallCore(Object[] data) {
-		if (data[0] instanceof Player) {
-			return FindPlacePlayer((Player) data[0]);
-		} else {
-			return FindPlacePlayer((Chunk) data[0]);
-		}
-	}
-	
-	// TODO Change this nonsense
-	public CoreResult FindPlacePlayer(Player player) {
+  @Override
+  public CoreResult CallCore(Object[] data) {
+    if (data[0] instanceof Player player) {
+      return FindPlacePlayer(player);
+    } else if (data[0] instanceof Chunk chunk) {
+      return FindPlaceInChunk(chunk);
+    }
 
-		Location loc = player.getLocation();
+    return new CoreResult(false, "Cannot find a good place to create a temple.");
+  }
 
-		boolean canBuild = true;
-		int i1 = 0;
-		int i2 = 0;
-		int i3 = 0;
-		int i4 = 0;
-		int i5 = 0;
-		int i6 = 0;
+  // TODO Change this nonsense
+  private CoreResult FindPlacePlayer(Player player) {
+    final Location location = player.getLocation();
+    for (int y1 = -5; y1 <= 5; y1++) {// Y
+      for (int x1 = -20; x1 <= 20; x1++) {// X
+        for (int z1 = -20; z1 <= 20; z1++) {// Z
+          boolean canBuild = true;
+          for (int y2 = -1; y2 <= 12; y2++) {// Y
+            for (int x2 = 0; x2 <= 11; x2++) {// X
+              for (int z2 = 0; z2 <= 10; z2++) {// Z
+                if ((x1 + x2) == 0 && (y1 + y2) == 0 && (z1 + z2) == 0) {
+                  canBuild = false;
+                }
+                if (y2 == -1) {
+                  canBuild = canBuild && location.getWorld().getBlockAt(x1 + x2 + location.getBlockX(), y1 + y2 + location.getBlockY(), z1 + z2 + location.getBlockZ()).getType().isSolid();
+                } else {
+                  canBuild = canBuild && !location.getWorld().getBlockAt(x1 + x2 + location.getBlockX(), y1 + y2 + location.getBlockY(), z1 + z2 + location.getBlockZ()).getType().isSolid();
+                }
+              }
+            }
+          }
+          if (canBuild) {
+            Create(location.getWorld(), x1 + location.getBlockX(), y1 + location.getBlockY(), z1 + location.getBlockZ());
 
-		for (i1 = -5; i1 <= 5; i1++) {// Y
-			for (i2 = -20; i2 <= 20; i2++) {// X
-				for (i3 = -20; i3 <= 20; i3++) {// Z
-					canBuild = true;
+            return new CoreResult(true, "Creating a temple near %s.".formatted(player.getDisplayName()));
+          }
+        }
+      }
+    }
 
-					for (i4 = -1; i4 <= 12; i4++) {// Y
-						for (i5 = 0; i5 <= 11; i5++) {// X
-							for (i6 = 0; i6 <= 10; i6++) {// Z
+    return new CoreResult(false, "Cannot find a good place to create a temple.");
+  }
 
-								if (player.getLocation().getBlockX() == i2 + i5 + loc.getBlockX()
-										&& player.getLocation().getBlockY() == i1 + i4 + loc.getBlockY()
-										&& player.getLocation().getBlockZ() == i3 + i6 + loc.getBlockZ()) {
-									canBuild = false;
-								}
-								if (i4 == -1) {
-									if (canBuild == true) {
-										if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
-											canBuild = true;
-										} else {
-											canBuild = false;
-										}
-									}
-								} else {
-									if (canBuild == true) {
-										if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(), i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
-											canBuild = true;
-										} else {
-											canBuild = false;
-										}
-									}
+  private CoreResult FindPlaceInChunk(Chunk chunk) {
 
-								}
+    final Location location = chunk.getWorld().getHighestBlockAt(chunk.getBlock(2, 0, 2).getLocation()).getLocation();
+    for (int y1 = -5; y1 <= 5; y1++) {// Y
+      boolean canBuild = true;
+      for (int y2 = -1; y2 <= 12; y2++) {// Y
+        for (int x = 0; x <= 11; x++) {// X
+          for (int z = 0; z <= 10; z++) {// Z
+            if (x == 0 && (y1 + y2) == 0 && z == 0) {
+              canBuild = false;
+            }
+            if (y2 == -1) {
+              canBuild = canBuild && location.getWorld().getBlockAt(x + location.getBlockX(), y1 + y2 + location.getBlockY(), z + location.getBlockZ()).getType().isSolid();
+            } else {
+              canBuild = canBuild && !location.getWorld().getBlockAt(x + location.getBlockX(), y1 + y2 + location.getBlockY(), z + location.getBlockZ()).getType().isSolid();
+            }
+          }
+        }
+      }
+      if (canBuild) {
+        Create(location.getWorld(), location.getBlockX(), y1 + location.getBlockY(), location.getBlockZ());
 
-							}
+        return new CoreResult(true, "Creating temple.");
+      }
 
-						}
-					}
-					if (canBuild == true) {
-						Create(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-						return new CoreResult(true, "Creating a temple near " + player.getDisplayName() + ".");
-					}
-				}
+    }
 
-			}
+    return new CoreResult(false, "Cannot find a good place to create a temple.");
+  }
 
-		}
+  public void Create(World world, int X, int Y, int Z) {
 
-		return new CoreResult(false, "Cannot find a good place to create a temple.");
+    Location loc = new Location(world, X, Y, Z);
 
-	}
+    if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
 
-	public CoreResult FindPlacePlayer(Chunk chunk) {
+      int MainX = loc.getBlockX();
+      int MainY = loc.getBlockY();
+      int MainZ = loc.getBlockZ();
 
-		Location loc = chunk.getBlock(2, 0, 2).getLocation();
-		loc = loc.getWorld().getHighestBlockAt(loc).getLocation();
+      // Main blocks
 
-		boolean canBuild = true;
-		int i1 = 0;
-		int i2 = 0;
-		int i3 = 0;
-		int i4 = 0;
-		int i5 = 0;
-		int i6 = 0;
+      new StructureLoader(Herobrine.getPluginCore().getInputStreamData("/res/temple.yml")).Build(loc.getWorld(), MainX, MainY, MainZ);
+      loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).setType(Material.CHEST);
+      // Mob spawn
+      if (!Herobrine.isNPCDisabled) {
+        if (Herobrine.getPluginCore().getConfigDB().UseNPC_Guardian) {
+          Location mobloc = new Location(loc.getWorld(), MainX + 6, MainY + 0, MainZ + 4);
+          for (int i = 1; i <= Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
+            Herobrine.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
+          }
+        }
+      }
+      // Chest
+      Random generator = Utils.getRandomGen();
+      int chance = generator.nextInt(15);
+      ItemStack item = null;
+      ArrayList<String> newLore = new ArrayList<String>();
 
-		i1 = 0;
-		i2 = 0;
-		i3 = 0;
-		i4 = 0;
-		i5 = 0;
-		i6 = 0;
+      if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
 
-		for (i1 = -5; i1 <= 5; i1++) {// Y
+        item = new ItemStack(Material.BOW);
+        newLore.add("Herobrine artifact");
+        newLore.add("Bow of Teleporting");
+        item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
+        item.addEnchantment(Enchantment.ARROW_FIRE, 1);
+        item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
 
-			canBuild = true;
+      } else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
 
-			for (i4 = -1; i4 <= 12; i4++) {// Y
-				for (i5 = 0; i5 <= 11; i5++) {// X
-					for (i6 = 0; i6 <= 10; i6++) {// Z
+        item = new ItemStack(Material.DIAMOND_SWORD);
+        newLore.add("Herobrine artifact");
+        newLore.add("Sword of Lightning");
+        item = ItemName.setNameAndLore(item, "Sword of Lightning", newLore);
+        item.addEnchantment(Enchantment.KNOCKBACK, 2);
+        item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+        item.addEnchantment(Enchantment.DURABILITY, 3);
 
-						if (loc.getBlockX() == i2 + i5 + loc.getBlockX() && loc.getBlockY() == i1 + i4 + loc.getBlockY()
-								&& loc.getBlockZ() == i3 + i6 + loc.getBlockZ()) {
-							canBuild = false;
-						}
-						if (i4 == -1) {
-							if (canBuild == true) {
-								if (loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(), i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
-									canBuild = true;
-								} else {
-									canBuild = false;
-								}
-							}
-						} else {
-							if (canBuild == true) {
-								if (!loc.getWorld().getBlockAt(i2 + i5 + loc.getBlockX(),i1 + i4 + loc.getBlockY(), i3 + i6 + loc.getBlockZ()).getType().isSolid()) {
-									canBuild = true;
-								} else {
-									canBuild = false;
-								}
-							}
+      } else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
 
-						}
+        item = new ItemStack(Material.GOLDEN_APPLE);
+        newLore.add("Herobrine artifact");
+        newLore.add("Apple of Death");
+        item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
-					}
+      } else {
+        if (Herobrine.getPluginCore().getConfigDB().UseAncientSword) {
+          item = Herobrine.getPluginCore().getAICore().createAncientSword();
+          item.addEnchantment(Enchantment.KNOCKBACK, 2);
+          item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+        }
+      }
 
-				}
-			}
-			if (canBuild == true) {
-				Create(loc.getWorld(), i2 + loc.getBlockX(), i1 + loc.getBlockY(), i3 + loc.getBlockZ());
-				return new CoreResult(true, "Creating temple.");
-			}
-
-		}
-
-		return new CoreResult(false, "Cannot find a good place to create a temple.");
-
-	}
-
-	public void Create(World world, int X, int Y, int Z) {
-
-		Location loc = new Location(world, X, Y, Z);
-
-		if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
-
-			int MainX = loc.getBlockX();
-			int MainY = loc.getBlockY();
-			int MainZ = loc.getBlockZ();
-
-			// Main blocks
-
-			new StructureLoader(Herobrine.getPluginCore().getInputStreamData("/res/temple.yml")).Build(loc.getWorld(),
-					MainX, MainY, MainZ);
-			loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).setType(Material.CHEST);
-			// Mob spawn
-			if (!Herobrine.isNPCDisabled) {
-				if (Herobrine.getPluginCore().getConfigDB().UseNPC_Guardian) {
-					Location mobloc = new Location(loc.getWorld(), MainX + 6, MainY + 0, MainZ + 4);
-					for (int i = 1; i <= Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
-						Herobrine.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
-					}
-				}
-			}
-			// Chest			
-			Random generator = Utils.getRandomGen();
-			int chance = generator.nextInt(15);
-			ItemStack item = null;
-			ArrayList<String> newLore = new ArrayList<String>();
-			
-			if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
-				
-				item = new ItemStack(Material.BOW);
-				newLore.add("Herobrine artifact");
-				newLore.add("Bow of Teleporting");
-				item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
-				item.addEnchantment(Enchantment.ARROW_FIRE, 1);
-				item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
-				
-			} else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
-				
-				item = new ItemStack(Material.DIAMOND_SWORD);
-				newLore.add("Herobrine artifact");
-				newLore.add("Sword of Lightning");
-				item = ItemName.setNameAndLore(item, "Sword of Lightning", newLore);
-				item.addEnchantment(Enchantment.KNOCKBACK, 2);
-				item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
-				item.addEnchantment(Enchantment.DURABILITY, 3);
-				
-			} else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
-				
-				item = new ItemStack(Material.GOLDEN_APPLE);
-				newLore.add("Herobrine artifact");
-				newLore.add("Apple of Death");
-				item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
-
-			} else {
-				if (Herobrine.getPluginCore().getConfigDB().UseAncientSword) {
-					item = Herobrine.getPluginCore().getAICore().createAncientSword();
-					item.addEnchantment(Enchantment.KNOCKBACK, 2);
-					item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
-				}
-			}
-
-			Chest chest = (Chest) loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).getState();
-			chest.getBlockInventory().setItem(chest.getInventory().firstEmpty(), item);
-		}
-	}
+      Chest chest = (Chest) loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).getState();
+      chest.getBlockInventory().setItem(chest.getInventory().firstEmpty(), item);
+    }
+  }
 
 }
