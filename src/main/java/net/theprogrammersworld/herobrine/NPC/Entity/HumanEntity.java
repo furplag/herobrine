@@ -1,18 +1,18 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.entity.MoverType;
+import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_19_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+
+import com.mojang.authlib.GameProfile;
+
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.Vec3;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
 import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
 import net.theprogrammersworld.herobrine.NPC.Network.NetworkHandler;
-
-import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_19_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
-
-import com.mojang.authlib.GameProfile;
 
 public class HumanEntity extends ServerPlayer {
 
