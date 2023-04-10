@@ -198,7 +198,7 @@ public class RandomPosition extends Core {
 
 			for (Player player : onlinePlayers) {
 				
-				if (PluginCore.HerobrineEntityID != player.getEntityId()) {
+				if (PluginCore.entityId != player.getEntityId()) {
 					Location ploc = (Location) player.getLocation();
 					
 					if (ploc.getWorld() == loc.getWorld() 

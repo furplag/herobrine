@@ -108,7 +108,7 @@ public class EntityListener implements Listener {
 		if(lv == null)
 			return;
 		
-		if (lv.getEntityId() == PluginCore.HerobrineEntityID) {
+		if (lv.getEntityId() == PluginCore.entityId) {
 			e.setCancelled(true);
 			return;
 		}
@@ -149,7 +149,7 @@ public class EntityListener implements Listener {
 	@EventHandler
 	public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
 
-		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
+		if (event.getEntity().getEntityId() == PluginCore.entityId) {
 			event.setCancelled(true);
 			event.setDamage(0);
 			return;
@@ -159,7 +159,7 @@ public class EntityListener implements Listener {
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		if (event.getEntity().getEntityId() == PluginCore.HerobrineEntityID) {
+		if (event.getEntity().getEntityId() == PluginCore.entityId) {
 			if (event instanceof EntityDamageByEntityEvent) {
 
 				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
@@ -178,7 +178,7 @@ public class EntityListener implements Listener {
 
 						} else {
 							Herobrine.HerobrineHP -= event.getDamage();
-							PluginCore.HerobrineNPC.HurtAnimation();
+							PluginCore.HerobrineNPC.hurtAnimation();
 							AICore.log.info("HIT: " + event.getDamage());
 						}
 					} else if (dEvent.getDamager() instanceof Projectile) {
@@ -201,7 +201,7 @@ public class EntityListener implements Listener {
 
 								} else {
 									Herobrine.HerobrineHP -= event.getDamage();
-									PluginCore.HerobrineNPC.HurtAnimation();
+									PluginCore.HerobrineNPC.hurtAnimation();
 									AICore.log.info("HIT: " + event.getDamage());
 								}
 
@@ -269,7 +269,7 @@ public class EntityListener implements Listener {
 			if (event.getCause() != null) {
 				if (event.getCause() == DamageCause.LIGHTNING) {
 					if (event.getEntity() instanceof Player) {
-						if (event.getEntity().getEntityId() != PluginCore.HerobrineEntityID) {
+						if (event.getEntity().getEntityId() != PluginCore.entityId) {
 							Player player = (Player) event.getEntity();
 							if (player.getInventory().getItemInMainHand() != null) {
 								if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {

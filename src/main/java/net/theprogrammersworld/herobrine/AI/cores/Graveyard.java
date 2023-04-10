@@ -44,7 +44,7 @@ public class Graveyard extends Core {
 				LivingEntities = Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName).getLivingEntities();
 				for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
-					if (LivingEntities.get(i) instanceof Player || LivingEntities.get(i).getEntityId() == PluginCore.HerobrineEntityID) {
+					if (LivingEntities.get(i) instanceof Player || LivingEntities.get(i).getEntityId() == PluginCore.entityId) {
 					} else {
 
 						LivingEntities.get(i).remove();
@@ -109,7 +109,7 @@ public class Graveyard extends Core {
 		for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
 			if (LivingEntities.get(i) instanceof Player
-					|| LivingEntities.get(i).getEntityId() == PluginCore.HerobrineEntityID) {
+					|| LivingEntities.get(i).getEntityId() == PluginCore.entityId) {
 			} else {
 
 				LivingEntities.get(i).remove();

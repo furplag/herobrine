@@ -17,7 +17,7 @@ public class Utils {
 
   public static Player getRandomPlayer() {/* @formatter:off */
     return Optional.ofNullable(Bukkit.getServer().getOnlinePlayers()).orElseGet(ArrayList::new)
-      .parallelStream().filter((_e) -> _e.getEntityId() != Herobrine.getPluginCore().HerobrineEntityID)
+      .parallelStream().filter((_e) -> _e.getEntityId() != Herobrine.getPluginCore().entityId)
       .findAny().orElse(null);
   /* @formatter:on */}
 }
