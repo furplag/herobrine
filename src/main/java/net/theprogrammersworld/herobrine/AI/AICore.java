@@ -9,7 +9,7 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -179,7 +179,7 @@ public class AICore {
 						log.info("[Herobrine] Finding target...");
 						Player targetPlayer = Utils.getRandomPlayer();
 
-						if (targetPlayer.getEntityId() != Herobrine.getPluginCore().HerobrineEntityID) {
+						if (targetPlayer.getEntityId() != Herobrine.getPluginCore().entityId) {
 
 							if (Herobrine.getPluginCore().getConfigDB().useWorlds
 									.contains(targetPlayer.getLocation().getWorld().getName())
@@ -441,7 +441,7 @@ public class AICore {
 
 				Player player = Utils.getRandomPlayer();
 
-				if (player.getEntityId() != Herobrine.getPluginCore().HerobrineEntityID) {
+				if (player.getEntityId() != Herobrine.getPluginCore().entityId) {
 					if (Herobrine.getPluginCore().getConfigDB().useWorlds
 							.contains(player.getLocation().getWorld().getName())) {
 						Object[] data = { player };

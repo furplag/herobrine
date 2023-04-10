@@ -1,39 +1,33 @@
 package net.theprogrammersworld.herobrine.NPC.NMS;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.server.level.ServerLevel;
+import java.io.IOException;
 
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R3.CraftWorld;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.ServerChunkCache;
+import net.minecraft.server.level.ServerLevel;
+
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public class NMSWorld {
 
-	private CraftWorld cWorld;
-	private ServerLevel wServer;
+  private final CraftWorld craftWorld;
+  private final ServerLevel worldServer;
 
-	public NMSWorld(final World world) {
-		try {
-			cWorld = (CraftWorld) world;
-			wServer = cWorld.getHandle();
-		} catch (Exception ex) {
-			Logger.getLogger("Minecraft").log(Level.SEVERE, null, ex);
-		}
-	}
+  public ChunkMap getPlayerManager() {
+    try (ServerChunkCache chunkProvider = worldServer.getChunkSource()) {
+      return chunkProvider.chunkMap;
+    } catch (IOException e) {}
 
-	public ChunkMap getPlayerManager() {
-		ServerChunkCache chunkProvider = ((ServerLevel) wServer).getChunkSource();
-		return chunkProvider.chunkMap;
-	}
+    return null;
+  }
 
-	public CraftWorld getCraftWorld() {
-		return cWorld;
-	}
-
-	public ServerLevel getWorldServer() {
-		return wServer;
-	}
+  public static NMSWorld of(final World world) {
+    return new NMSWorld((CraftWorld) world, ((CraftWorld) world).getHandle());
+  }
 }

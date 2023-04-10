@@ -1,9 +1,5 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.theprogrammersworld.herobrine.Herobrine;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
@@ -11,29 +7,26 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import lombok.Getter;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.theprogrammersworld.herobrine.Herobrine;
+
 public class HumanNPC {
 
-	private HumanEntity entity;
-	private final int id;
+    @Getter private HumanEntity entity;
+	@Getter private final int id;
 
 	public HumanNPC(HumanEntity humanEntity, int id) {
 		this.entity = humanEntity;
 		this.id = id;
 	}
 
-	public int getID() {
-		return this.id;
-	}
-
-	public ServerPlayer getEntity() {
-		return this.entity;
-	}
-
-	public void ArmSwingAnimation() {
+	public void armSwingAnimation() {
 		entity.swing(InteractionHand.MAIN_HAND);
 	}
 
-	public void HurtAnimation() {
+	public void hurtAnimation() {
 		LivingEntity ent = (LivingEntity) entity.getBukkitEntity();
 
 		double healthBefore = ent.getHealth();
@@ -62,7 +55,7 @@ public class HumanNPC {
 
 	public void Teleport(Location loc) {
 		getEntity().getBukkitEntity().teleport(loc);
-		
+
 		// After Herobrine moves, check if any players are in Herobrine's line of sight if the persistent tab list entry is disabled.
 		if(!Herobrine.getPluginCore().getConfigDB().ShowInTabList) {
 			boolean doActivationTeleport = false;
