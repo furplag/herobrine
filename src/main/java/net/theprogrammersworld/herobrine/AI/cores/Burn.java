@@ -9,7 +9,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Burn extends Core {
 
 	public Burn() {
-		super(CoreType.BURN, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.BURN, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override

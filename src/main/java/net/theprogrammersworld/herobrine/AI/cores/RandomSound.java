@@ -9,7 +9,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class RandomSound extends Core {
 
 	public RandomSound() {
-		super(CoreType.RANDOM_SOUND, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.RANDOM_SOUND, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class RandomSound extends Core {
 				@Override
 				public void run() {
 
-					Herobrine.getPluginCore().getAICore().getCore(CoreType.SOUNDF).RunCore(data);
+					Herobrine.getPluginCore().getAICore().getCore(Core.Type.SOUNDF).RunCore(data);
 
 				}
 

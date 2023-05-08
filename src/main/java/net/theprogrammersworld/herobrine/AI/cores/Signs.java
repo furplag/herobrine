@@ -19,7 +19,7 @@ import net.theprogrammersworld.herobrine.misc.BlockChanger;
 public class Signs extends Core {
 
 	public Signs() {
-		super(CoreType.SIGNS, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.SIGNS, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -70,24 +70,24 @@ public class Signs extends Core {
 
 	public void createSign(Location loc, Location ploc) {
 
-		Random randcgen = Utils.getRandomGen();
+		Random randcgen = Utils.getRandom();
 		int chance = randcgen.nextInt(100);
 		if (chance > (100 - Herobrine.getPluginCore().getConfigDB().SignChance)) {
-			Random randgen = Utils.getRandomGen();
+			Random randgen = Utils.getRandom();
 			int count = Herobrine.getPluginCore().getConfigDB().useSignMessages.size();
 			int randmsg = randgen.nextInt(count);
 
 			Block signblock = loc.add(0, 0D, 0).getBlock();
 			Block undersignblock = signblock.getLocation().subtract(0D, 1D, 0D).getBlock();
 			if (!signblock.getType().isSolid() && undersignblock.getType().isSolid()) {
-				
+
 				signblock.setType(Material.OAK_SIGN);
 				Sign sign = (Sign) signblock.getState();
 
 				BlockData blockData = sign.getBlockData();
 				((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
 				sign.setBlockData(blockData);
-				
+
 				sign.setLine(1, Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
 				sign.update();
 			}

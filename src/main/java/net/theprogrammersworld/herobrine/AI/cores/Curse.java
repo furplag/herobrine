@@ -13,7 +13,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Curse extends Core {
 
 	public Curse() {
-		super(CoreType.CURSE, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.CURSE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override

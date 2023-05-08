@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.support.PluginSupport;
 
+@Slf4j(topic = "Minecraft")
 public final class Support {
 
   private final Set<PluginSupport> availablePlugins = new HashSet<>();
@@ -16,7 +18,7 @@ public final class Support {
   public Support() {/* @formatter:off */
     Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
       @Override public void run() {
-        availablePlugins.addAll(PluginSupport.supportPlugins.parallelStream().filter(PluginSupport::isAvailable).peek((_p) -> Herobrine.log.info("[Herobrine] %s plugin detected on server".formatted(_p.getPluginName()))).collect(Collectors.toSet()));
+        availablePlugins.addAll(PluginSupport.supportPlugins.parallelStream().filter(PluginSupport::isAvailable).peek((_p) -> log.info("[Herobrine] %s plugin detected on server".formatted(_p.getPluginName()))).collect(Collectors.toSet()));
       }
     }, 1 * 2L);
   /* @formatter:on */}

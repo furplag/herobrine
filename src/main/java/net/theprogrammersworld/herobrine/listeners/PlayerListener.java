@@ -35,7 +35,7 @@ import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket.Act
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
 public class PlayerListener implements Listener {
@@ -132,7 +132,7 @@ public class PlayerListener implements Listener {
 
               if (ItemName.getLore(itemInHand).containsAll(equalsLoreS) && PluginCore.getConfigDB().UseArtifactSword) {
 
-                if (Utils.getRandomGen().nextBoolean()) {
+                if (Utils.getRandom().nextBoolean()) {
                   event.getPlayer().getLocation().getWorld().strikeLightning(event.getClickedBlock().getLocation());
                 }
 
@@ -210,7 +210,7 @@ public class PlayerListener implements Listener {
                 final Player player = event.getPlayer();
                 PluginCore.getAICore();
                 AICore.isDiscCalled = true;
-                PluginCore.getAICore().CancelTarget(CoreType.ANY);
+                PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 
                 Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
                   public void run() {
@@ -233,7 +233,7 @@ public class PlayerListener implements Listener {
       return;
     }
 
-    if (Utils.getRandomGen().nextInt(100) > 75) {
+    if (Utils.getRandom().nextInt(100) > 75) {
       Player player = event.getPlayer();
       event.setCancelled(true);
       PluginCore.getAICore().playerBedEnter(player);
@@ -245,11 +245,11 @@ public class PlayerListener implements Listener {
     if (!Herobrine.isHerobrine(event.getPlayer().getEntityId())) {
 
       if (AICore.PlayerTarget == event.getPlayer()
-          && PluginCore.getAICore().getCoreTypeNow() == CoreType.GRAVEYARD && event.getPlayer().getLocation()
+          && PluginCore.getAICore().getCurrent() == Core.Type.GRAVEYARD && event.getPlayer().getLocation()
               .getWorld() == Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)
           && AICore.isTarget) {
 
-        if (Utils.getRandomGen().nextBoolean()) {
+        if (Utils.getRandom().nextBoolean()) {
           event.getPlayer().teleport(PluginCore.getAICore().getGraveyard().getSavedLocation());
         }
       }
@@ -275,7 +275,7 @@ public class PlayerListener implements Listener {
         return;
       }
 
-      if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+      if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
 
         Location herobrineLocation = PluginCore.HerobrineNPC.getEntity().getBukkitEntity().getLocation();
 
@@ -284,7 +284,7 @@ public class PlayerListener implements Listener {
             && herobrineLocation.getBlockZ() > PluginCore.getConfigDB().WalkingModeZRadius
             && herobrineLocation.getBlockZ() < -PluginCore.getConfigDB().WalkingModeZRadius) {
 
-          PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
+          PluginCore.getAICore().CancelTarget(Core.Type.RANDOM_POSITION);
           PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
 
         }

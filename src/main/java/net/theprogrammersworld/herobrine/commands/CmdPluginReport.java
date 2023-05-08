@@ -11,7 +11,6 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,8 +20,8 @@ import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdPluginReport extends SubCommand {
 
-	public CmdPluginReport(Herobrine plugin, Logger log) {
-		super(plugin, log);
+	public CmdPluginReport(Herobrine plugin) {
+		super(plugin);
 	}
 
 	@Override
@@ -69,14 +68,14 @@ public class CmdPluginReport extends SubCommand {
 	public String helpDesc() {
 		return ChatColor.GREEN + "See theprogrammersworld.net/Herobrine/internalBugReporting.php for documentation on this command";
 	}
-	
+
 	private String sendBugReport(Player player, String[] messageWords) {
 		// Collect the necessary information and POST it to the server where bug reports will be
 		// collected. Based on the result of the submission, return a string.
 		// (0 = report failed, 1 = unofficial version, 2 = unsupported version, Report ID => success)
 		String report;
 		String checksum;
-		
+
 		// Collect basic information including the UUID of the player who made the submission, the
 		// IP address of the server, the port on which the server is running, and the plugin version.
 		String serverIP = getServerIP();
@@ -86,7 +85,7 @@ public class CmdPluginReport extends SubCommand {
 		} catch (Exception e) {
 			playerUUID = "CONSOLE";
 		}
-		
+
 		try {
 			// Get the contents of the configuration file.
 			File configFile = new File("plugins" + File.separator + "Herobrine" + File.separator + "config.yml");
@@ -95,21 +94,21 @@ public class CmdPluginReport extends SubCommand {
 			configFileInputStream.read(configFileBytes);
 			configFileInputStream.close();
 			String configFileString = new String(configFileBytes, "UTF-8");
-			
+
 			report = "Server IP Address: " + serverIP + "\r\n" +
 					"Submission UUID: " + playerUUID + "\r\n" +
 					"Server Port: " + Bukkit.getServer().getPort() + "\r\n" +
 					"Version: " + Herobrine.getPluginCore().getConfigDB().pluginVersionString + "\r\n\r\n" +
 					"Plugin Configuration File:\r\n" + configFileString + " \r\n\r\n";
-			
+
 			// Assemble the array of words in to a single message.
 			for(int x = 1; x < messageWords.length; x++) {
 				report += messageWords[x] + " ";
 			}
-			
+
 			// Determine the MD5 hash of the plugin.
 			checksum = computeMD5();
-			
+
 			// After all of the necessary information has been acquired, submit the report.
 			try {
 				String postData = URLEncoder.encode("report", "UTF-8") + "=" + URLEncoder.encode(report, "UTF-8") +
@@ -122,7 +121,7 @@ public class CmdPluginReport extends SubCommand {
 				OutputStreamWriter wr = new OutputStreamWriter(urlConn.getOutputStream());
 				wr.write(postData);
 				wr.flush();
-				
+
 				BufferedReader rd = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
 				String serverResponse = rd.readLine();
 				rd.close();
@@ -133,7 +132,7 @@ public class CmdPluginReport extends SubCommand {
 		// The report failed because for some reason, the server could not be reached.
 		return "0";
 	}
-	
+
 	private String getServerIP() {
 		// Get the IP address of the server by calling a page on the website that will return the IP.
 		URL ipFetchURL;
@@ -149,7 +148,7 @@ public class CmdPluginReport extends SubCommand {
 			return "";
 		}
 	}
-	
+
 	private String computeMD5() {
 		// Determine the MD5 hash of the plugin.
 		File pluginFile = new File(CmdPluginReport.class.getProtectionDomain().getCodeSource().getLocation().getPath());
@@ -160,9 +159,9 @@ public class CmdPluginReport extends SubCommand {
             MessageDigest md = MessageDigest.getInstance("MD5");
             FileInputStream fis = new FileInputStream(filepath);
             byte[] dataBytes = new byte[1024];
-            int nread = 0; 
+            int nread = 0;
 
-            while((nread = fis.read(dataBytes)) != -1)  
+            while((nread = fis.read(dataBytes)) != -1)
                  md.update(dataBytes, 0, nread);
 
             byte[] mdbytes = md.digest();

@@ -17,13 +17,13 @@ public class BuryPlayer extends Core {
 	public Block savedBlock2 = null;
 
 	public BuryPlayer() {
-		super(CoreType.BURY_PLAYER, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.BURY_PLAYER, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
 		return FindPlace((Player) data[0]);
 	}
-	
+
 	public CoreResult FindPlace(final Player player) {
 		if (Herobrine.getPluginCore().getSupport().checkBuild(player.getLocation())) {
 			final Location loc = player.getLocation();
@@ -103,7 +103,7 @@ public class BuryPlayer extends Core {
 		loc.getWorld().getBlockAt(X, Y - 1, Z).setType(Material.STONE_BRICKS, false);
 		loc.getWorld().getBlockAt(X, Y - 1, Z - 1).setType(Material.STONE_BRICKS, false);
 	}
-	
+
 	private boolean isSolidBlock(Material m) {
 		return m.isSolid();
 	}

@@ -14,7 +14,7 @@ import net.theprogrammersworld.herobrine.AI.*;
 public class BuildCave extends Core {
 
 	public BuildCave() {
-		super(CoreType.BUILD_CAVE, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.BUILD_CAVE, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -30,7 +30,7 @@ public class BuildCave extends Core {
 			if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
 				if (loc.getBlockY() < 60) {
 
-					int chance = Utils.getRandomGen().nextInt(100);
+					int chance = Utils.getRandom().nextInt(100);
 					if (chance > (100 - Herobrine.getPluginCore().getConfigDB().CaveChance)) {
 						AICore.log.info("Creating cave...");
 
@@ -78,9 +78,9 @@ public class BuildCave extends Core {
 		if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
 
 			ArrayList<Location> redstoneTorchList = new ArrayList<Location>();
-			
-			Random rand = Utils.getRandomGen();
-			
+
+			Random rand = Utils.getRandom();
+
 			boolean goByX = rand.nextBoolean();
 			boolean goNegative = rand.nextBoolean();
 
@@ -94,14 +94,14 @@ public class BuildCave extends Core {
 			int maxL = rand.nextInt(10) + 4;
 			int iR = rand.nextInt(3) + 4;
 			int iNow = 0;
-			
+
 			while (iNow != iR) {
-				
+
 				iNow++;
 				goByX = rand.nextBoolean();
 				goNegative = rand.nextBoolean();
 				int i = 0;
-				
+
 				for (i = 0; i <= maxL; i++) {
 					finalX = 0;
 					finalZ = 0;
@@ -124,7 +124,7 @@ public class BuildCave extends Core {
 
 					loc.getWorld().getBlockAt(baseX, baseY, baseZ).breakNaturally(null);
 					loc.getWorld().getBlockAt(baseX, baseY + 1, baseZ).breakNaturally(null);
-					
+
 					if (rand.nextBoolean()) {
 						redstoneTorchList.add(new Location(loc.getWorld(), baseX, baseY, baseZ));
 					}
@@ -141,7 +141,7 @@ public class BuildCave extends Core {
 	}
 
 	public void PlaceRedstoneTorch(World world, int x, int y, int z) {
-		Random randgen = Utils.getRandomGen();
+		Random randgen = Utils.getRandom();
 		int chance = randgen.nextInt(100);
 		if (chance > 70) {
 			world.getBlockAt(x, y, z).setType(Material.REDSTONE_TORCH);

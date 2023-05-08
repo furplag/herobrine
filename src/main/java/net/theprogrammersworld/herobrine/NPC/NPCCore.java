@@ -20,7 +20,6 @@ import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
 import net.theprogrammersworld.herobrine.NPC.NMS.NMSServer;
-import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
 
 public class NPCCore {
 
@@ -70,7 +69,7 @@ public class NPCCore {
   }
 
   private HumanNPC spawnHumanNPC(String name, Location l, int id) {
-    final NMSWorld world = server.getWorld(l.getWorld().getName());
+    final NMSServer.World world = server.getWorld(l.getWorld().getName());
     world.getCraftWorld().addEntity(new HumanEntity(this, world, herobrineProfile) {{
       forceSetPositionRotation(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch());
       npcs.add(new HumanNPC(this, id));

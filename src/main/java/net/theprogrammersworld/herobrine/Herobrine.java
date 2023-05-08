@@ -1,14 +1,13 @@
 package net.theprogrammersworld.herobrine;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Logger;
 
 import javax.annotation.Nonnull;
 
@@ -28,6 +27,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.core.Holder;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
@@ -37,7 +37,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.extensions.GraveyardWorld;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
 import net.theprogrammersworld.herobrine.NPC.AI.Path;
@@ -53,7 +53,26 @@ import net.theprogrammersworld.herobrine.listeners.InventoryListener;
 import net.theprogrammersworld.herobrine.listeners.PlayerListener;
 import net.theprogrammersworld.herobrine.listeners.WorldListener;
 
-public class Herobrine extends JavaPlugin implements Listener {
+@Slf4j(topic = "Minecraft")
+public final class Herobrine extends JavaPlugin implements Listener {
+
+  public static final List<Material> allowedBlocks;
+  static {/* @formatter:off */allowedBlocks = Collections.unmodifiableList(List.of(
+      Material.AIR
+    , Material.SNOW
+    , Material.ACACIA_PRESSURE_PLATE, Material.BIRCH_PRESSURE_PLATE, Material.CRIMSON_PRESSURE_PLATE, Material.DARK_OAK_PRESSURE_PLATE
+    , Material.JUNGLE_PRESSURE_PLATE, Material.MANGROVE_PRESSURE_PLATE, Material.OAK_PRESSURE_PLATE, Material.SPRUCE_PRESSURE_PLATE, Material.WARPED_PRESSURE_PLATE
+    , Material.HEAVY_WEIGHTED_PRESSURE_PLATE, Material.LIGHT_WEIGHTED_PRESSURE_PLATE, Material.STONE_PRESSURE_PLATE
+    , Material.RAIL, Material.ACTIVATOR_RAIL, Material.DETECTOR_RAIL, Material.POWERED_RAIL
+    , Material.DEAD_BUSH, Material.VINE
+    , Material.DANDELION, Material.POPPY
+    , Material.ACACIA_BUTTON, Material.BIRCH_BUTTON, Material.CRIMSON_BUTTON, Material.DARK_OAK_BUTTON
+    , Material.JUNGLE_BUTTON, Material.MANGROVE_BUTTON, Material.OAK_BUTTON, Material.SPRUCE_BUTTON, Material.WARPED_BUTTON
+    , Material.STONE_BUTTON
+    , Material.LADDER, Material.LEVER, Material.REDSTONE, Material.REDSTONE_TORCH, Material.TORCH
+  ));/* @formatter:on */}
+
+  
 
   private static Herobrine pluginCore;
   private AICore aicore;
@@ -74,15 +93,12 @@ public class Herobrine extends JavaPlugin implements Listener {
   public static final boolean isDebugging = false;
   public static boolean AvailableWorld = false;
 
-  public static List<Material> AllowedBlocks = new ArrayList<Material>();
   public Map<Player, Long> PlayerApple = new HashMap<Player, Long>();
 
-  public static Logger log = Logger.getLogger("Minecraft");
 
   @Override
   public void onEnable() {
     boolean continueWithEnable = true;
-
     // Check a server class name to determine if the plugin is compatible with the
     // Spigot server version.
     // If it is not, print an error message and disable the plugin.
@@ -107,7 +123,7 @@ public class Herobrine extends JavaPlugin implements Listener {
           getServer().getPluginManager().disablePlugin(this);
         }
       } else {
-        log.warning("[Herobrine] Custom NPCs have been disabled due to an incompatibility error.");
+        log.warn("[Herobrine] Custom NPCs have been disabled due to an incompatibility error.");
       }
 
       getServer().getPluginManager().registerEvents(this, this);
@@ -123,7 +139,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 
     Herobrine.pluginCore = this;
 
-    this.configDB = new ConfigDB(log);
+    this.configDB = new ConfigDB();
 
     this.npcCore = new NPCCore();
 
@@ -169,9 +185,9 @@ public class Herobrine extends JavaPlugin implements Listener {
     }
 
     // Spawn Herobrine
-    Location nowloc = new Location((World) Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -100, (float) 0);
-    nowloc.setYaw((float) 1);
-    nowloc.setPitch((float) 1);
+    Location nowloc = new Location(Bukkit.getServer().getWorlds().get(0), (float) 0, (float) -100, (float) 0);
+    nowloc.setYaw(1f);
+    nowloc.setPitch(1f);
     HerobrineSpawn(nowloc);
 
     HerobrineNPC.setItemInHand(configDB.ItemInHand.getItemStack());
@@ -183,47 +199,19 @@ public class Herobrine extends JavaPlugin implements Listener {
     getServer().getPluginManager().registerEvents(new WorldListener(), this);
 
     // Init Block Types
-    AllowedBlocks.add(Material.AIR);
-    AllowedBlocks.add(Material.SNOW);
-    AllowedBlocks.add(Material.RAIL);
-    AllowedBlocks.add(Material.ACTIVATOR_RAIL);
-    AllowedBlocks.add(Material.DETECTOR_RAIL);
-    AllowedBlocks.add(Material.POWERED_RAIL);
-    AllowedBlocks.add(Material.DEAD_BUSH);
-    AllowedBlocks.add(Material.DANDELION);
-    AllowedBlocks.add(Material.POPPY);
-    AllowedBlocks.add(Material.ACACIA_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.BIRCH_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.DARK_OAK_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.JUNGLE_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.OAK_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.SPRUCE_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.STONE_PRESSURE_PLATE);
-    AllowedBlocks.add(Material.VINE);
-    AllowedBlocks.add(Material.TORCH);
-    AllowedBlocks.add(Material.REDSTONE);
-    AllowedBlocks.add(Material.REDSTONE_TORCH);
-    AllowedBlocks.add(Material.LEVER);
-    AllowedBlocks.add(Material.STONE_BUTTON);
-    AllowedBlocks.add(Material.LADDER);
 
     pathUpdateINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
       @Override
       public void run() {
-        if (Set.of(CoreType.ANY, CoreType.RANDOM_POSITION).contains(Herobrine.getPluginCore().getAICore().getCoreTypeNow())) {
+        if (Set.of(Core.Type.ANY, Core.Type.RANDOM_POSITION).contains(Herobrine.getPluginCore().getAICore().getCurrent())) {
           pathManager.setPath(new Path(ThreadLocalRandom.current().nextInt(15) - 7f, ThreadLocalRandom.current().nextInt(15) - 7f, Herobrine.getPluginCore()));
         }
       }
     }, 1 * 200L, 1 * 200L);
 
-    Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-      @Override
-      public void run() {
-        pathManager.update();
-      }
-    }, 1 * 5L, 1 * 5L);
+    Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {/* @formatter:off */
+      @Override public void run() { pathManager.update(); }
+    /* @formatter:on */}, 1 * 5L, 1 * 5L);
 
     // Command Executors
     this.getCommand("hb").setExecutor((CommandExecutor) new CmdExecutor(this));
@@ -307,6 +295,8 @@ public class Herobrine extends JavaPlugin implements Listener {
     return this.pathManager;
   }
 
+
+
   public boolean canAttackPlayer(Player player, Player sender) {
 
     boolean opCheck = true;
@@ -372,8 +362,7 @@ public class Herobrine extends JavaPlugin implements Listener {
     return opCheck && creativeCheck && ignoreCheck;
   }
 
-  private static <T extends Entity> void addCustomEntity(String customName, EntityType.EntityFactory<T> _func,
-      MobCategory enumCreatureType) {
+  private static <T extends Entity> void addCustomEntity(String customName, EntityType.EntityFactory<T> _func, MobCategory enumCreatureType) {
     // Registers a custom entity. Adapted from
     // https://www.spigotmc.org/threads/handling-custom-entity-registry-on-spigot-1-13.353426/#post-3447111
     // As of 1.18.2, this function was updated to unfreeze and freeze the entity
@@ -393,8 +382,7 @@ public class Herobrine extends JavaPlugin implements Listener {
     // As of 1.18.2, registries are frozen once NMS is done adding to them, so we
     // have to do some super hacky things to add custom entities now.
     // Adapted from
-    // https://github.com/iSach/UltraCosmetics/blob/7f8bbfd2a540559888b89dae7eee4dec482ab7c9/v1_18_R2/src/main/java/be/isach/ultracosmetics/
-    // v1_18_R2/customentities/CustomEntities.java#L75-L104
+    // https://github.com/iSach/UltraCosmetics/blob/7f8bbfd2a540559888b89dae7eee4dec482ab7c9/v1_18_R2/src/main/java/be/isach/ultracosmetics/v1_18_R2/customentities/CustomEntities.java#L75-L104
     // Obfuscated fields are from
     // https://github.com/iSach/UltraCosmetics/blob/master/v1_19_R1/src/main/java/be/isach/ultracosmetics/v1_19_R1/ObfuscatedFields.java
     final String INTRUSIVE_HOLDER_CACHE = "m";

@@ -33,4 +33,4 @@ tasks {
 
 tasks.named("jar") { finalizedBy("remap") }
 
-version="2.6.0-SNAPSHOT-atomikos-personalized"
+version="2.6.1-SNAPSHOT-atomikos-personalized"

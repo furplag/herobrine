@@ -17,7 +17,7 @@ import net.theprogrammersworld.herobrine.AI.Message;
 public class Totem extends Core {
 
 	public Totem() {
-		super(CoreType.TOTEM, AppearType.APPEAR, Herobrine.getPluginCore());
+		super(Core.Type.TOTEM, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -28,20 +28,20 @@ public class Totem extends Core {
 
 		AICore.isTotemCalled = false;
 		loc.getWorld().strikeLightning(loc);
-		
+
 		if (PluginCore.getConfigDB().TotemExplodes == true) {
 			loc.getWorld().createExplosion(loc, 5);
 		}
-		
+
 		if (Bukkit.getServer().getPlayer(caller) != null) {
-			
+
 			if (Bukkit.getServer().getPlayer(caller).isOnline()) {
-				PluginCore.getAICore().setCoreTypeNow(CoreType.TOTEM);
+				PluginCore.getAICore().setCurrent(Core.Type.TOTEM);
 				PluginCore.getAICore().setAttackTarget(Bukkit.getServer().getPlayer(caller));
 				Player player = (Player) Bukkit.getServer().getPlayer(caller);
 
 				Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
-				
+
 				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 					for(Player onlinePlayer : onlinePlayers) {
 						Location ploc = (Location) onlinePlayer.getLocation();
@@ -63,36 +63,36 @@ public class Totem extends Core {
 				Player target = null;
 
 				Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
-				
+
 				if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 					for(Player onlinePlayer : onlinePlayers) {
-						
+
 						Location ploc = (Location) onlinePlayer.getLocation();
-						
+
 						if (ploc.getX() + 10 > loc.getX() && ploc.getX() - 10 < loc.getX()
 							&& ploc.getZ() + 10 > loc.getZ() && ploc.getZ() - 10 < loc.getZ()) {
-						
+
 							target = onlinePlayer;
 							break;
 
 						}
-						
+
 					}
 
 				}
-				
+
 				if (target != null) {
 
-					PluginCore.getAICore().CancelTarget(CoreType.TOTEM);
+					PluginCore.getAICore().CancelTarget(Core.Type.TOTEM);
 					PluginCore.getAICore().setAttackTarget(target);
 					Player player = (Player) target;
 					if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 						for(Player onlinePlayer : onlinePlayers) {
-							
+
 							Location ploc = (Location) onlinePlayer.getLocation();
-							if (onlinePlayer.getName() != player.getName() 
+							if (onlinePlayer.getName() != player.getName()
 								&& ploc.getX() + 20 > loc.getX()
-								&& ploc.getX() - 20 < loc.getX() 
+								&& ploc.getX() - 20 < loc.getX()
 								&& ploc.getZ() + 20 > loc.getZ()
 								&& ploc.getZ() - 20 < loc.getZ()
 								) {
@@ -112,7 +112,7 @@ public class Totem extends Core {
 			}
 
 		}
-		
+
 		return new CoreResult(false, "Herobrine's totem called!");
 	}
 }

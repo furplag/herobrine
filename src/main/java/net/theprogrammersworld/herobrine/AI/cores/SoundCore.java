@@ -11,15 +11,15 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class SoundCore extends Core{
 
 	public SoundCore(){
-		super(CoreType.SOUNDF,AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.SOUNDF,AppearType.NORMAL, Herobrine.getPluginCore());
 	}
-	
+
 	public CoreResult CallCore(Object[] data){
         return playRandom((Player)data[0]);
 	}
-	
+
 	public CoreResult playRandom(Player player){
-		
+
 		Sound[] sounds = {
 				Sound.ENTITY_GHAST_SCREAM,
 				Sound.ENTITY_WITHER_DEATH,
@@ -30,11 +30,11 @@ public class SoundCore extends Core{
 				Sound.BLOCK_IRON_DOOR_OPEN,
 				Sound.BLOCK_IRON_DOOR_CLOSE
 				};
-		
-		
-       player.playSound(player.getLocation(),sounds[Utils.getRandomGen().nextInt(sounds.length)],(float) 0.75,(float) 0.75);
-       
+
+
+       player.playSound(player.getLocation(),sounds[Utils.getRandom().nextInt(sounds.length)],(float) 0.75,(float) 0.75);
+
        return new CoreResult(true,"SoundF is starting.");
 	}
-	
+
 }

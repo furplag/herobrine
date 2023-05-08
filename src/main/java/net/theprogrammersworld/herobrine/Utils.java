@@ -3,16 +3,14 @@ package net.theprogrammersworld.herobrine;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class Utils {
-
-  private static Random randomGen = new Random();
-
-  public static Random getRandomGen() {
-    return randomGen;
+  public static Random getRandom() {
+    return ThreadLocalRandom.current();
   }
 
   public static Player getRandomPlayer() {/* @formatter:off */

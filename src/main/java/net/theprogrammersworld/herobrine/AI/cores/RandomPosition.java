@@ -23,7 +23,7 @@ public class RandomPosition extends Core {
 	private boolean RandomMoveIsPlayer = false;
 
 	public RandomPosition() {
-		super(CoreType.RANDOM_POSITION, AppearType.APPEAR, Herobrine.getPluginCore());
+		super(Core.Type.RANDOM_POSITION, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public int getRandomTicks() {
@@ -50,7 +50,7 @@ public class RandomPosition extends Core {
 		if (PluginCore.getConfigDB().UseWalkingMode) {
 			if (randomTicks != 3) {
 				randomTicks++;
-				if (PluginCore.getAICore().getCoreTypeNow() != CoreType.RANDOM_POSITION && AICore.isTarget == false) {
+				if (PluginCore.getAICore().getCurrent() != Core.Type.RANDOM_POSITION && AICore.isTarget == false) {
 					Location newloc = (Location) getRandomLocation(world);
 					if (newloc != null) {
 
@@ -90,15 +90,15 @@ public class RandomPosition extends Core {
 		if (nxtZ < 0) {
 			nxtZ = -nxtZ;
 		}
-		int randx = Utils.getRandomGen().nextInt(nxtX);
+		int randx = Utils.getRandom().nextInt(nxtX);
 
 		int randy = 0;
 
-		int randz = Utils.getRandomGen().nextInt(nxtZ);
+		int randz = Utils.getRandom().nextInt(nxtZ);
 
-		int randxp = Utils.getRandomGen().nextInt(1);
+		int randxp = Utils.getRandom().nextInt(1);
 
-		int randzp = Utils.getRandomGen().nextInt(1);
+		int randzp = Utils.getRandom().nextInt(1);
 
 		if (randxp == 0 && randx != 0) {
 			randx = -(randx);
@@ -135,7 +135,7 @@ public class RandomPosition extends Core {
 					&& world.getBlockAt(randx, randy, randz).getType() != Material.REDSTONE) {
 
 				randy++;
-				
+
 				AICore.log.info("[Herobrine] RandomLocation "
 						+ world.getBlockAt(randx, randy, randz).getType().toString() + " is X:" + randx + " Y:"
 						+ randy + " Z:" + randz);
@@ -147,14 +147,14 @@ public class RandomPosition extends Core {
 	}
 
 	public void RandomMove() {
-		if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION && AICore.isTarget == false
+		if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION && AICore.isTarget == false
 				&& RandomMoveIsPlayer == false) {
 			Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 
-			if (Utils.getRandomGen().nextInt(5) == 3) {
+			if (Utils.getRandom().nextInt(5) == 3) {
 				Location loc = PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-				Path path = new Path((float) loc.getX() + Utils.getRandomGen().nextInt(30) - 15,
-									 (float) loc.getZ() + Utils.getRandomGen().nextInt(30) - 15,
+				Path path = new Path((float) loc.getX() + Utils.getRandom().nextInt(30) - 15,
+									 (float) loc.getZ() + Utils.getRandom().nextInt(30) - 15,
 									 PluginCore);
 				PluginCore.getPathManager().setPath(path);
 			}
@@ -165,17 +165,17 @@ public class RandomPosition extends Core {
 
 	public void CheckGravity() {
 
-		if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION && AICore.isTarget == false) {
+		if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION && AICore.isTarget == false) {
 
 			Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			World w = (World) hbloc.getWorld();
 			ConfigDB config = PluginCore.getConfigDB();
-			
+
 			if (hbloc.getBlockX() < config.WalkingModeXRadius + config.WalkingModeFromXRadius
 				&& hbloc.getBlockX() > (-config.WalkingModeXRadius) + config.WalkingModeFromXRadius
 				&& hbloc.getBlockZ() < config.WalkingModeZRadius + config.WalkingModeFromZRadius
 				&& hbloc.getBlockZ() > (-config.WalkingModeZRadius) + config.WalkingModeFromZRadius) {
-			
+
 				if (!w.getBlockAt(hbloc.getBlockX(), hbloc.getBlockY() - 1, hbloc.getBlockZ()).getType().isSolid()) {
 
 					hbloc.setY(hbloc.getY() - 1);
@@ -184,7 +184,7 @@ public class RandomPosition extends Core {
 
 				}
 			} else {
-				PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
+				PluginCore.getAICore().CancelTarget(Core.Type.RANDOM_POSITION);
 			}
 		}
 	}
@@ -193,38 +193,38 @@ public class RandomPosition extends Core {
 		boolean isThere = false;
 		Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 		Collection<? extends Player> onlinePlayers = Bukkit.getServer().getOnlinePlayers();
-		
+
 		if (Bukkit.getServer().getOnlinePlayers().size() > 0) {
 
 			for (Player player : onlinePlayers) {
-				
+
 				if (PluginCore.entityId != player.getEntityId()) {
 					Location ploc = (Location) player.getLocation();
-					
-					if (ploc.getWorld() == loc.getWorld() 
+
+					if (ploc.getWorld() == loc.getWorld()
 						&& ploc.getX() + 7 > loc.getX()
-						&& ploc.getX() - 7 < loc.getX() 
+						&& ploc.getX() - 7 < loc.getX()
 						&& ploc.getZ() + 7 > loc.getZ()
-						&& ploc.getZ() - 7 < loc.getZ() 
+						&& ploc.getZ() - 7 < loc.getZ()
 						&& ploc.getY() + 7 > loc.getY()
 						&& ploc.getY() - 7 < loc.getY()) {
-						
+
 						loc.setY(-100);
 						PluginCore.HerobrineNPC.moveTo(loc);
-						PluginCore.getAICore().CancelTarget(CoreType.RANDOM_POSITION);
+						PluginCore.getAICore().CancelTarget(Core.Type.RANDOM_POSITION);
 						RandomMoveIsPlayer = false;
 						PluginCore.getAICore().setAttackTarget(player);
 						break;
 					} else {
-						
-						if (ploc.getWorld() == loc.getWorld() 
+
+						if (ploc.getWorld() == loc.getWorld()
 							&& ploc.getX() + 15 > loc.getX()
 							&& ploc.getX() - 15 < loc.getX()
 							&& ploc.getZ() + 15 > loc.getZ()
-							&& ploc.getZ() - 15 < loc.getZ() 
+							&& ploc.getZ() - 15 < loc.getZ()
 							&& ploc.getY() + 15 > loc.getY()
 							&& ploc.getY() - 15 < loc.getY()) {
-							
+
 							ploc.setY(ploc.getY() + 1.5);
 							PluginCore.HerobrineNPC.lookAtPoint(ploc);
 							PluginCore.getPathManager().setPath(null);

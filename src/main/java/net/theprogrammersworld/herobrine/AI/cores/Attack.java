@@ -24,7 +24,7 @@ public class Attack extends Core {
 	private boolean isHandler = false;
 
 	public Attack() {
-		super(CoreType.ATTACK, AppearType.APPEAR, Herobrine.getPluginCore());
+		super(Core.Type.ATTACK, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -45,7 +45,7 @@ public class Attack extends Core {
 				AICore.log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
 				Object[] data = { ploc };
-				PluginCore.getAICore().getCore(CoreType.DESTROY_TORCHES).RunCore(data);
+				PluginCore.getAICore().getCore(Core.Type.DESTROY_TORCHES).RunCore(data);
 				if (PluginCore.getConfigDB().UsePotionEffects) {
 					AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
 					AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
@@ -90,15 +90,15 @@ public class Attack extends Core {
 		KeepLooking();
 		if (ticksToEnd == 1 || ticksToEnd % 16 == 0)
 			FollowHideRepeat();
-		
+
 	}
 
 	public void KeepLooking() {
 		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCoreTypeNow() == CoreType.ATTACK) {
+				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
 			if (AICore.PlayerTarget.isDead() == false) {
 				if (ticksToEnd == 160) {
-					PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+					PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 				} else {
 					ticksToEnd++;
 
@@ -106,18 +106,18 @@ public class Attack extends Core {
 					ploc.setY(ploc.getY() + 1.5);
 					PluginCore.HerobrineNPC.lookAtPoint(ploc);
 					if (PluginCore.getConfigDB().Lightning == true) {
-						int lchance = Utils.getRandomGen().nextInt(100);
+						int lchance = Utils.getRandom().nextInt(100);
 
 						if (lchance > 75) {
 							Location newloc = (Location) ploc;
-							int randx = Utils.getRandomGen().nextInt(50);
-							int randz = Utils.getRandomGen().nextInt(50);
-							if (Utils.getRandomGen().nextBoolean()) {
+							int randx = Utils.getRandom().nextInt(50);
+							int randz = Utils.getRandom().nextInt(50);
+							if (Utils.getRandom().nextBoolean()) {
 								newloc.setX(newloc.getX() + randx);
 							} else {
 								newloc.setX(newloc.getX() - randx);
 							}
-							if (Utils.getRandomGen().nextBoolean()) {
+							if (Utils.getRandom().nextBoolean()) {
 								newloc.setZ(newloc.getZ() + randz);
 							} else {
 								newloc.setZ(newloc.getZ() - randz);
@@ -131,30 +131,30 @@ public class Attack extends Core {
 
 				}
 			} else {
-				PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 			}
 		} else {
-			PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 		}
 	}
 
 	public void Follow() {
-		if (AICore.PlayerTarget.isOnline() 
+		if (AICore.PlayerTarget.isOnline()
 			&& AICore.isTarget
-			&& PluginCore.getAICore().getCoreTypeNow() == CoreType.ATTACK) {
-			
+			&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
+
 			if (AICore.PlayerTarget.isDead() == false) {
-				
+
 				if (PluginCore.getConfigDB().useWorlds.contains(AICore.PlayerTarget.getWorld().getName())
 					&& PluginCore.getSupport().checkAttack(AICore.PlayerTarget.getLocation())) {
-					
+
 					PluginCore.HerobrineNPC.moveTo(Position.getTeleportPosition(AICore.PlayerTarget.getLocation()));
 					Location ploc = (Location) AICore.PlayerTarget.getLocation();
 					ploc.setY(ploc.getY() + 1.5);
 					PluginCore.HerobrineNPC.lookAtPoint(ploc);
 					AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_BREATH, 0.75f, 0.75f);
 					if (PluginCore.getConfigDB().HitPlayer == true) {
-						int hitchance = Utils.getRandomGen().nextInt(100);
+						int hitchance = Utils.getRandom().nextInt(100);
 						if (hitchance < 55) {
 							AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_HURT, 0.75f, 0.75f);
 
@@ -163,20 +163,20 @@ public class Attack extends Core {
 						}
 					}
 				} else {
-					PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+					PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 				}
 			} else {
-				PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 			}
 		} else {
-			PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 		}
 
 	}
 
 	public void Hide() {
 		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCoreTypeNow() == CoreType.ATTACK) {
+				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
 			if (AICore.PlayerTarget.isDead() == false) {
 
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
@@ -192,25 +192,25 @@ public class Attack extends Core {
 				}
 
 				if (PluginCore.getConfigDB().SpawnBats) {
-					Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();			
+					Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
-					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);			
+					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
 				}
 
 				PluginCore.HerobrineNPC.moveTo(ploc);
 
 			} else {
-				PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 			}
 		} else {
-			PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 		}
 
 	}
 
 	public void FollowHideRepeat() {
 		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCoreTypeNow() == CoreType.ATTACK) {
+				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
 			if (AICore.PlayerTarget.isDead() == false) {
 				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
 					public void run() {
@@ -223,10 +223,10 @@ public class Attack extends Core {
 					}
 				}, 1 * 45L);
 			} else {
-				PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 			}
 		} else {
-			PluginCore.getAICore().CancelTarget(CoreType.ATTACK);
+			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
 		}
 	}
 }

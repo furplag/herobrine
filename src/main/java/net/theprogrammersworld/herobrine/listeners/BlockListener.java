@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
 
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.AICore;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.cores.Heads;
 
 public class BlockListener implements Listener {
@@ -71,7 +71,7 @@ public class BlockListener implements Listener {
   @EventHandler
   public void onBlockBreak(BlockBreakEvent event) {
     if (Herobrine.isGraveyard(event.getBlock().getWorld())
-        || ((Heads) Herobrine.getPluginCore().getAICore().getCore(CoreType.HEADS)).getHeadList().contains(event.getBlock())) {
+        || ((Heads) Herobrine.getPluginCore().getAICore().getCore(Core.Type.HEADS)).getHeadList().contains(event.getBlock())) {
       event.setCancelled(true);
     }
   }

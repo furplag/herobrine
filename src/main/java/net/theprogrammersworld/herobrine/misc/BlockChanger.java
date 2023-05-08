@@ -1,106 +1,47 @@
 package net.theprogrammersworld.herobrine.misc;
 
-import java.util.Random;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Skull;
 import org.bukkit.block.data.Rotatable;
 
 public class BlockChanger {
 
-	public static BlockFace getPlayerBlockFace(Location loc) {
+  private static final Map<Integer, BlockFace> directions;
+  static {/* @formatter:off */
+    directions = Map.ofEntries(
+        Map.entry(0, BlockFace.WEST)
+      , Map.entry(1, BlockFace.WEST_NORTH_WEST), Map.entry(2, BlockFace.NORTH_WEST), Map.entry(3, BlockFace.NORTH_NORTH_WEST)
+      , Map.entry(4, BlockFace.NORTH)
+      , Map.entry(5, BlockFace.NORTH_NORTH_EAST), Map.entry(6, BlockFace.NORTH_EAST), Map.entry(7, BlockFace.EAST_NORTH_EAST)
+      , Map.entry(8, BlockFace.EAST)
+      , Map.entry(9, BlockFace.EAST_SOUTH_EAST), Map.entry(10, BlockFace.SOUTH_EAST), Map.entry(11, BlockFace.SOUTH_SOUTH_EAST)
+      , Map.entry(12, BlockFace.SOUTH)
+      , Map.entry(13, BlockFace.SOUTH_SOUTH_WEST), Map.entry(14, BlockFace.SOUTH_WEST), Map.entry(15, BlockFace.WEST_SOUTH_WEST)
+  );/* @formatter:on */}
 
-		BlockFace dir = null;
-		float y = loc.getYaw();
-		if (y < 0) {
-			y += 360;
-		}
-		y %= 360;
-		int i = (int) ((y + 8) / 22.5);
-		switch (i) {
-		case 0:
-			dir = BlockFace.WEST;
-			break;
-		case 1:
-			dir = BlockFace.WEST_NORTH_WEST;
-			break;
-		case 2:
-			dir = BlockFace.NORTH_WEST;
-			break;
-		case 3:
-			dir = BlockFace.NORTH_NORTH_WEST;
-			break;
-		case 4:
-			dir = BlockFace.NORTH;
-			break;
-		case 5:
-			dir = BlockFace.NORTH_NORTH_EAST;
-			break;
-		case 6:
-			dir = BlockFace.NORTH_EAST;
-			break;
-		case 7:
-			dir = BlockFace.EAST_NORTH_EAST;
-			break;
-		case 8:
-			dir = BlockFace.EAST;
-			break;
-		case 9:
-			dir = BlockFace.EAST_SOUTH_EAST;
-			break;
-		case 10:
-			dir = BlockFace.SOUTH_EAST;
-			break;
-		case 11:
-			dir = BlockFace.SOUTH_SOUTH_EAST;
-			break;
-		case 12:
-			dir = BlockFace.SOUTH;
-			break;
-		case 13:
-			dir = BlockFace.SOUTH_SOUTH_WEST;
-			break;
-		case 14:
-			dir = BlockFace.SOUTH_WEST;
-			break;
-		case 15:
-			dir = BlockFace.WEST_SOUTH_WEST;
-			break;
-		default:
-			dir = BlockFace.WEST;
-			break;
-		}
+  public static BlockFace getPlayerBlockFace(final Location location) {
+    final float y = location.getYaw();
 
-		return dir;
+    return directions.getOrDefault(( int ) ((((y + (y < 0 ? 360 : 0)) % 360) + 8 ) / 22.5), BlockFace.WEST);
+  }
 
-	}
-
-	public static void PlaceSkull(final Location loc, final UUID uuid) {
-		final int chance = new Random().nextInt(4);
-		BlockFace bface;
-
-		if (chance == 0)
-			bface = BlockFace.WEST;
-		else if (chance == 1)
-			bface = BlockFace.EAST;
-		else if (chance == 2)
-			bface = BlockFace.SOUTH;
-		else
-			bface = BlockFace.NORTH;
-		
-		Block b = loc.getBlock();
-		b.setType(Material.PLAYER_HEAD);
-		Rotatable blockData = (Rotatable) b.getBlockData();
-		blockData.setRotation(bface);
-		b.setBlockData(blockData);
-		Skull skull = (Skull) b.getState();
-		skull.setOwningPlayer(Bukkit.getOfflinePlayer(uuid));
-		skull.update(true);
-
-	}
+  public static void PlaceSkull(final Location location, final UUID uuid) {
+    Optional.ofNullable(location.getBlock()).ifPresent((b) -> {
+      b.setType(Material.PLAYER_HEAD);
+      final Rotatable blockData = (Rotatable) b.getBlockData();
+      blockData.setRotation(Set.of(BlockFace.WEST, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH).stream().findFirst().orElse(BlockFace.WEST));
+      b.setBlockData(blockData);
+      final Skull skull = (Skull) b.getState();
+      skull.setOwningPlayer(Bukkit.getOfflinePlayer(uuid));
+      skull.update(true);
+    });
+  }
 }

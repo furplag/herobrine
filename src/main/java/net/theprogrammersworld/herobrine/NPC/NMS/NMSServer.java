@@ -1,5 +1,6 @@
 package net.theprogrammersworld.herobrine.NPC.NMS;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,22 +10,46 @@ import java.util.stream.StreamSupport;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.craftbukkit.v1_19_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_19_R3.CraftWorld;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 
 public class NMSServer {
+
+  @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+  @Getter
+  public static final class World {
+
+    private final CraftWorld craftWorld;
+    private final ServerLevel worldServer;
+
+    public ChunkMap getPlayerManager() {
+      try (ServerChunkCache chunkProvider = worldServer.getChunkSource()) {
+        return chunkProvider.chunkMap;
+      } catch (IOException e) {}
+
+      return null;
+    }
+
+    public static final World of(final org.bukkit.World world) {
+      return new World((CraftWorld) world, ((CraftWorld) world).getHandle());
+    }
+  }
 
   private static final class Singleton {
     private static final NMSServer nmsServer = new NMSServer();
   }
 
-
   private final Server server;
   @Getter private final MinecraftServer minecraftServer;
-  private Map<String, NMSWorld> worlds = new HashMap<String, NMSWorld>();
+  private Map<String, World> worlds = new HashMap<String, World>();
 
   private NMSServer() {
     server = Bukkit.getServer();
@@ -49,8 +74,8 @@ public class NMSServer {
     return server;
   }
 
-  public NMSWorld getWorld(String worldName) {
-    worlds.putIfAbsent(worldName, NMSWorld.of(getInstance().getServer().getWorld(worldName)));
+  public World getWorld(String worldName) {
+    worlds.putIfAbsent(worldName, World.of(getInstance().getServer().getWorld(worldName)));
 
     return worlds.get(worldName);
   }

@@ -12,13 +12,13 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.Vec3;
 import net.theprogrammersworld.herobrine.NPC.NPCCore;
-import net.theprogrammersworld.herobrine.NPC.NMS.NMSWorld;
+import net.theprogrammersworld.herobrine.NPC.NMS.NMSServer;
 
 public class HumanEntity extends ServerPlayer {
 
   private CraftPlayer craftPlayer = null;
 
-  public HumanEntity(final NPCCore npcCore, final NMSWorld world, final GameProfile gameProfile) {
+  public HumanEntity(final NPCCore npcCore, final NMSServer.World world, final GameProfile gameProfile) {
     super(npcCore.getServer().getMinecraftServer(), world.getWorldServer(), gameProfile);
     setGameMode(GameType.SURVIVAL);
     connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this);

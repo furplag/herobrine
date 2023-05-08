@@ -5,7 +5,7 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 import net.theprogrammersworld.herobrine.Herobrine;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.AI.Core;
 
 public class PathManager {
 
@@ -14,7 +14,7 @@ public class PathManager {
   private Path path;
 
   public void update() {
-    if (path != null && Set.of(CoreType.ANY, CoreType.RANDOM_POSITION).contains(Herobrine.getPluginCore().getAICore().getCoreTypeNow())) {
+    if (path != null && Set.of(Core.Type.ANY, Core.Type.RANDOM_POSITION).contains(Herobrine.getPluginCore().getAICore().getCurrent())) {
       path.update();
     }
   }

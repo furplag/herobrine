@@ -16,18 +16,18 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Book extends Core {
 
 	public Book() {
-		super(CoreType.BOOK, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.BOOK, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
 		Player player = (Player) data[0];
 
 		if (Herobrine.getPluginCore().getConfigDB().useWorlds.contains(player.getLocation().getWorld().getName())) {
-			
+
 			if (Herobrine.getPluginCore().getConfigDB().WriteBooks == true
 				&& Herobrine.getPluginCore().getSupport().checkBooks(player.getLocation())) {
-				
-				int chance = Utils.getRandomGen().nextInt(100);
+
+				int chance = Utils.getRandom().nextInt(100);
 				if (chance > (100 - Herobrine.getPluginCore().getConfigDB().BookChance)) {
 					Inventory chest = (Inventory) data[1];
 					if (chest.firstEmpty() != -1) {
@@ -52,7 +52,7 @@ public class Book extends Core {
 
 		int count = Herobrine.getPluginCore().getConfigDB().useBookMessages.size();
 
-		int chance = Utils.getRandomGen().nextInt(count);
+		int chance = Utils.getRandom().nextInt(count);
 
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta meta = (BookMeta) book.getItemMeta();

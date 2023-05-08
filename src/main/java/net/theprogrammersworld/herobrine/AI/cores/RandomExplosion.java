@@ -11,7 +11,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class RandomExplosion extends Core {
 
 	public RandomExplosion() {
-		super(CoreType.RANDOM_EXPLOSION, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.RANDOM_EXPLOSION, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	@Override
@@ -22,9 +22,9 @@ public class RandomExplosion extends Core {
 			if (PluginCore.getSupport().checkBuild(player.getLocation())) {
 
 				Location loc = player.getLocation();
-				int x = loc.getBlockX() + (Utils.getRandomGen().nextInt(16) - 8);
+				int x = loc.getBlockX() + (Utils.getRandom().nextInt(16) - 8);
 				int y = loc.getBlockY();
-				int z = loc.getBlockZ() + (Utils.getRandomGen().nextInt(16) - 8);
+				int z = loc.getBlockZ() + (Utils.getRandom().nextInt(16) - 8);
 				loc.getWorld().createExplosion(new Location(loc.getWorld(), x, y, z), 1.0f);
 
 			} else {

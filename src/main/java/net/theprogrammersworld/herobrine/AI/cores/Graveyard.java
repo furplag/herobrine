@@ -31,7 +31,7 @@ public class Graveyard extends Core {
 	private Player savedPlayer = null;
 
 	public Graveyard() {
-		super(CoreType.GRAVEYARD, AppearType.APPEAR, Herobrine.getPluginCore());
+		super(Core.Type.GRAVEYARD, AppearType.APPEAR, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -71,12 +71,12 @@ public class Graveyard extends Core {
 				loc.setYaw(-179.85f);
 				loc.setPitch(0.44999f);
 				player.teleport(loc);
-				
+
 				Start();
-				
+
 				AICore.isTarget = true;
 				Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName).setStorm(false);
-				
+
 				return new CoreResult(true, player.getDisplayName() + " was successfully teleported to Herobrine's Graveyard.");
 			} else {
 				return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they have an Ancient Sword.");
@@ -118,15 +118,15 @@ public class Graveyard extends Core {
 
 		}
 
-		if (savedPlayer.isDead() == true 
+		if (savedPlayer.isDead() == true
 			|| savedPlayer.isOnline() == false
 			|| savedPlayer.getLocation().getWorld() != Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)
 			|| this.ticks == 90 || AICore.isTarget == false) {
-			
+
 			if (AICore.PlayerTarget == savedPlayer) {
-				Herobrine.getPluginCore().getAICore().CancelTarget(CoreType.GRAVEYARD);
+				Herobrine.getPluginCore().getAICore().CancelTarget(Core.Type.GRAVEYARD);
 			}
-			
+
 			// It looks like when the call to the teleport function is made here, pitch and yaw get reversed, so they are deliberately reversed here.
 			// (Or maybe when the pitch and yaw values are extracted earlier, they are reversed? Not really sure.) This change was added v2.2.0 for
 			// Spigot 1.17.
@@ -157,11 +157,11 @@ public class Graveyard extends Core {
 
 			}
 
-			Random randomGen = Utils.getRandomGen();
-			
+			Random randomGen = Utils.getRandom();
+
 			if (randomGen.nextInt(4) == 1) {
 				Location newloc = new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName),
-						(double) randomGen.nextInt(400), (double) Utils.getRandomGen().nextInt(20) + 20,
+						(double) randomGen.nextInt(400), (double) Utils.getRandom().nextInt(20) + 20,
 						(double) randomGen.nextInt(400));
 				Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName).strikeLightning(newloc);
 			}
@@ -189,10 +189,10 @@ public class Graveyard extends Core {
 			cache.close();
 		} catch (IOException e) {e.printStackTrace();}
 	}
-	
+
 	private void deletePreGraveyardCache(Player player) {
 		// Deletes the cache of the given player's position prior to getting teleported to the graveyard.
 		new File("plugins/Herobrine/pregraveyard_caches/" + player.getUniqueId()).delete();
 	}
-	
+
 }

@@ -17,7 +17,7 @@ public class Path {
   private boolean zNegative;
   private boolean completed = false;
   private int stepNow = 0;
-  private int maxSteps = Utils.getRandomGen().nextInt(3) + 3;
+  private int maxSteps = Utils.getRandom().nextInt(3) + 3;
 
   protected Herobrine PluginCore;
 

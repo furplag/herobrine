@@ -23,7 +23,7 @@ import net.theprogrammersworld.herobrine.misc.StructureLoader;
 public class Temple extends Core {
 
   public Temple() {
-    super(CoreType.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
+    super(Core.Type.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
   }
 
   @Override
@@ -124,7 +124,7 @@ public class Temple extends Core {
         }
       }
       // Chest
-      Random generator = Utils.getRandomGen();
+      Random generator = Utils.getRandom();
       int chance = generator.nextInt(15);
       ItemStack item = null;
       ArrayList<String> newLore = new ArrayList<String>();

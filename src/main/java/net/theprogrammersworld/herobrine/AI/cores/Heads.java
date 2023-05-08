@@ -23,7 +23,7 @@ public class Heads extends Core {
 	private List<Block> headList = new ArrayList<Block>();
 
 	public Heads() {
-		super(CoreType.HEADS, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.HEADS, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -39,9 +39,9 @@ public class Heads extends Core {
 						int y = 0;
 						int x = -7;
 						int z = -7;
-						
-						Random randomGen = Utils.getRandomGen();
-						
+
+						Random randomGen = Utils.getRandom();
+
 						for (x = -7; x <= 7; x++) {
 							for (z = -7; z <= 7; z++) {
 								if (randomGen.nextInt(7) == randomGen.nextInt(7)) {

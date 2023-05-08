@@ -5,18 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.misc.CustomID;
 
+@Slf4j(topic = "Minecraft")
 public class ConfigDB {
 
-	private Logger log;
 	public YamlConfiguration config;
 	public YamlConfiguration npc;
 	public int ShowRate = 2;
@@ -88,7 +88,7 @@ public class ConfigDB {
 	public boolean CheckForUpdates = true;
 
 	public boolean newVersionFound = false;
-	
+
 	/* Starting with Minecraft 1.18, the Y coordinate used for the flat world generated for Herobrine's Graveyard is -61 instead of 3.
 	 * This elevation change required graveyard generation as well as Herobrine and player location management to be shifted down to
 	 * accommodate it. This change is only applied to graveyard worlds generated on 1.18 or newer, however, and would cause graveyards
@@ -97,15 +97,11 @@ public class ConfigDB {
 	 * world. The default stored value is the one used for graveyard generated on 1.18 or newer. A conditional check will be used
 	 * to change this value to 4 as part of the server launch process if doing so is appropriate. */
 	public double graveyardYCoord = -60;
-	
+
 	private boolean isStartupDone = false;
-	
+
 	final public String pluginVersionString = Bukkit.getServer().getPluginManager().getPlugin("Herobrine")
 			.getDescription().getVersion();
-
-	public ConfigDB(Logger l) {
-		this.log = l;
-	}
 
 	public File configF = new File("plugins/Herobrine/config.yml");
 	public File npcF = new File("plugins/Herobrine/npc.yml");
@@ -193,7 +189,7 @@ public class ConfigDB {
 			useBookMessages.add("White eyes in dark...");
 			useBookMessages.add("... was last what I saw ...");
 			useBookMessages.add("... before i was dead.");
-			
+
 			config.set("config.ShowInterval", 144000);
 			config.set("config.ShowRate", 2);
 			config.set("config.HitPlayer", true);
@@ -275,7 +271,7 @@ public class ConfigDB {
 			config.set("config.SpawnDemonsOnPlayerBedEnter", true);
 			configUpdated = true;
 		}
-		
+
 		if(configUpdated) {
 			try {
 				config.save(configF);
@@ -371,7 +367,7 @@ public class ConfigDB {
 		HerobrineWorldName = config.getString("config.HerobrineWorldName");
 		ShowInTabList = config.getBoolean("config.ShowInTabList");
 		CheckForUpdates = this.config.getBoolean("config.CheckForUpdates");
-		
+
 		Herobrine.HerobrineMaxHP = HerobrineHP;
 		Herobrine.getPluginCore().getAICore().Stop_MAIN();
 		Herobrine.getPluginCore().getAICore().Start_MAIN();
@@ -394,7 +390,7 @@ public class ConfigDB {
 							Herobrine.AvailableWorld = true;
 
 					if (Herobrine.AvailableWorld == false)
-						log.warning("[Herobrine] There are no worlds available for Herobrine to spawn in.");
+						log.warn("[Herobrine] There are no worlds available for Herobrine to spawn in.");
 				}
 			}, 1L);
 

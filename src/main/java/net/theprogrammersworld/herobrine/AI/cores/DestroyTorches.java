@@ -11,7 +11,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class DestroyTorches extends Core {
 
 	public DestroyTorches() {
-		super(CoreType.DESTROY_TORCHES, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.DESTROY_TORCHES, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {

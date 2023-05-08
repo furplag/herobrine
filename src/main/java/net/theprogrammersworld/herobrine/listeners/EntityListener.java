@@ -6,7 +6,6 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
-
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -17,22 +16,21 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.AI.*;
-import net.theprogrammersworld.herobrine.AI.Core.CoreType;
+import net.theprogrammersworld.herobrine.AI.AICore;
+import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.entity.MobType;
 import net.theprogrammersworld.herobrine.misc.ItemName;
-
-import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 
 public class EntityListener implements Listener {
 
@@ -54,16 +52,16 @@ public class EntityListener implements Listener {
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
 		if (!Herobrine.isNPCDisabled) {
 			if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
-				
+
 				Entity entity = event.getEntity();
 				EntityType creatureType = event.getEntityType();
-				
+
 				if (event.isCancelled())
 					return;
 
 				if (creatureType == EntityType.ZOMBIE) {
 					if (PluginCore.getConfigDB().UseNPC_Warrior) {
-						if (Utils.getRandomGen().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
+						if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
 
 							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
 								LivingEntity ent = (LivingEntity) entity;
@@ -77,7 +75,7 @@ public class EntityListener implements Listener {
 					}
 				} else if (creatureType == EntityType.SKELETON) {
 					if (PluginCore.getConfigDB().UseNPC_Demon) {
-						if (Utils.getRandomGen().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
+						if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
 
 							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
 								LivingEntity ent = (LivingEntity) entity;
@@ -104,10 +102,10 @@ public class EntityListener implements Listener {
 	@EventHandler
 	public void EntityTargetEvent(EntityTargetLivingEntityEvent e) {
 		LivingEntity lv = e.getTarget();
-		
+
 		if(lv == null)
 			return;
-		
+
 		if (lv.getEntityId() == PluginCore.entityId) {
 			e.setCancelled(true);
 			return;
@@ -117,22 +115,22 @@ public class EntityListener implements Listener {
 	@EventHandler
 	public void onProjectileHit(ProjectileHitEvent event) {
 		if (event.getEntity() instanceof Arrow) {
-			
+
 			Arrow arrow = (Arrow) event.getEntity();
 			if (arrow.getShooter() instanceof Player) {
-				
+
 				Player player = (Player) arrow.getShooter();
 				if (player.getInventory().getItemInMainHand() != null) {
-					
+
 					itemInHand = player.getInventory().getItemInMainHand();
 					if (itemInHand.getType() != null) {
-						
+
 						if (itemInHand.getType() == Material.BOW) {
 							getLore = ItemName.getLore(itemInHand);
 							if (getLore != null) {
-								
+
 								if (getLore.containsAll(equalsLore)) {
-									
+
 									if (PluginCore.getConfigDB().UseArtifactBow) {
 
 										player.teleport(arrow.getLocation());
@@ -164,14 +162,14 @@ public class EntityListener implements Listener {
 
 				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
 				if (PluginCore.getConfigDB().Killable == true
-					&& PluginCore.getAICore().getCoreTypeNow() != CoreType.GRAVEYARD) {
-					
+					&& PluginCore.getAICore().getCurrent() != Core.Type.GRAVEYARD) {
+
 					if (dEvent.getDamager() instanceof Player) {
 						if (event.getDamage() >= Herobrine.HerobrineHP) {
 
 							HerobrineDropItems();
 
-							PluginCore.getAICore().CancelTarget(CoreType.ANY);
+							PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 							Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 							Player player = (Player) dEvent.getDamager();
 							player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
@@ -185,8 +183,8 @@ public class EntityListener implements Listener {
 
 						Arrow arrow = (Arrow) dEvent.getDamager();
 						if (arrow.getShooter() instanceof Player) {
-							if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
-								PluginCore.getAICore().CancelTarget(CoreType.ANY);
+							if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
+								PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 								PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
 							} else {
 
@@ -194,7 +192,7 @@ public class EntityListener implements Listener {
 
 									HerobrineDropItems();
 
-									PluginCore.getAICore().CancelTarget(CoreType.ANY);
+									PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 									Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
 									Player player = (Player) arrow.getShooter();
 									player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
@@ -207,19 +205,19 @@ public class EntityListener implements Listener {
 
 							}
 						} else {
-							if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+							if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
 								Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 								newloc.setY(-100);
 								PluginCore.HerobrineNPC.moveTo(newloc);
-								PluginCore.getAICore().CancelTarget(CoreType.ANY);
+								PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 							}
 						}
 					} else {
-						if (PluginCore.getAICore().getCoreTypeNow() == CoreType.RANDOM_POSITION) {
+						if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
 							Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 							newloc.setY(-100);
 							PluginCore.HerobrineNPC.moveTo(newloc);
-							PluginCore.getAICore().CancelTarget(CoreType.ANY);
+							PluginCore.getAICore().CancelTarget(Core.Type.ANY);
 						}
 					}
 				}
@@ -242,7 +240,7 @@ public class EntityListener implements Listener {
 								getLore = ItemName.getLore(itemInHand);
 								if (getLore.containsAll(equalsLoreS)) {
 									if (PluginCore.getConfigDB().UseArtifactSword) {
-										if (Utils.getRandomGen().nextBoolean()) {
+										if (Utils.getRandom().nextBoolean()) {
 											player.getLocation().getWorld().strikeLightning(event.getEntity().getLocation());
 										}
 									}
@@ -294,7 +292,7 @@ public class EntityListener implements Listener {
 			}
 		}
 	}
-	
+
 	protected void HerobrineDropItems(){
 		Object[] items = PluginCore.getConfigDB().config.getConfigurationSection("config.Drops").getKeys(false).toArray();
 		for (Object itemObj : items) {

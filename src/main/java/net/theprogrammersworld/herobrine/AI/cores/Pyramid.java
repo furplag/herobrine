@@ -15,7 +15,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Pyramid extends Core {
 
 	public Pyramid() {
-		super(CoreType.PYRAMID, AppearType.NORMAL, Herobrine.getPluginCore());
+		super(Core.Type.PYRAMID, AppearType.NORMAL, Herobrine.getPluginCore());
 	}
 
 	public CoreResult CallCore(Object[] data) {
@@ -102,8 +102,8 @@ public class Pyramid extends Core {
 			int i5 = 0;
 			int i6 = 0;
 
-			int xMax = Utils.getRandomGen().nextInt(15) - 10;
-			int zMax = Utils.getRandomGen().nextInt(15) - 10;
+			int xMax = Utils.getRandom().nextInt(15) - 10;
+			int zMax = Utils.getRandom().nextInt(15) - 10;
 
 			for (i1 = -5; i1 <= 5; i1++) {// Y
 				for (i2 = xMax; i2 <= 15; i2++) {// X
@@ -144,12 +144,12 @@ public class Pyramid extends Core {
 						}
 						if (canBuild == true) {
 							BuildPyramid(
-										loc.getWorld(), 
-										i2 + loc.getBlockX(), 
-										i1 + loc.getBlockY(), 
+										loc.getWorld(),
+										i2 + loc.getBlockX(),
+										i1 + loc.getBlockY(),
 										i3 + loc.getBlockZ()
 										);
-							
+
 							return new CoreResult(true, "Creating a pyramid.");
 						}
 					}
@@ -171,7 +171,7 @@ public class Pyramid extends Core {
 
 			Material mainMat = (Material) Material.SANDSTONE;
 
-			
+
 			// TODO CHANGE THIS
 			// Level 1
 			world.getBlockAt(X, Y, Z).setType(mainMat);

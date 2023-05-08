@@ -3,39 +3,39 @@ package net.theprogrammersworld.herobrine.AI;
 import net.theprogrammersworld.herobrine.Herobrine;
 
 public abstract class Core {
-	
+
 	private final AppearType Appear;
-	private final CoreType coreType;
+	private final Type coreType;
 	private CoreResult nowData = null;
 	protected Herobrine PluginCore = null;
-	
-	public Core(CoreType cp,AppearType ap, Herobrine hb){
+
+	public Core(Type cp,AppearType ap, Herobrine hb){
 		this.coreType=cp;
 		this.Appear=ap;
 		this.PluginCore = hb;
 	}
-	
+
 	public AppearType getAppear(){
 		return Appear;
 		}
-	
-	public CoreType getCoreType(){
+
+	public Type getCoreType(){
 		return coreType;
 		}
 
 	protected abstract CoreResult CallCore(Object[] data);
-	
+
 	public CoreResult RunCore(Object[] data){
 
 		nowData=this.CallCore(data);
 		if (nowData.getResult() && Appear == AppearType.APPEAR){
-			Herobrine.getPluginCore().getAICore().setCoreTypeNow(this.coreType);
-			
+			Herobrine.getPluginCore().getAICore().setCurrent(this.coreType);
+
 		}
 		return nowData;
 		}
-	
-	public enum CoreType{
+
+	public enum Type{
 		ATTACK,
 		HAUNT,
 		BOOK,
@@ -57,11 +57,11 @@ public abstract class Core {
 		BURN,
 		CURSE,
 		STARE;
-		
+
 	}
+
 	public enum AppearType{
 		APPEAR,
 		NORMAL,
-
 	}
 }
