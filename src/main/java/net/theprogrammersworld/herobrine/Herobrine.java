@@ -83,7 +83,7 @@ public class Herobrine extends JavaPlugin implements Listener {
 		// If it is not, print an error message and disable the plugin.
 		if (continueWithEnable) {
 			try {
-				Class.forName("org.bukkit.craftbukkit.v1_19_R2.CraftArt");
+				Class.forName("org.bukkit.craftbukkit.v1_19_R3.CraftArt");
 			} catch (ClassNotFoundException e) {
 				Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not "
 						+ "compatible with this server's Spigot version and will be disabled.");

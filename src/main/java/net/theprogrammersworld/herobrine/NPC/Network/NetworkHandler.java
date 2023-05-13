@@ -12,13 +12,8 @@ public class NetworkHandler extends ServerGamePacketListenerImpl {
 	}
 
 	@Override
-	public void dismount(final double d0, final double d1, final double d2, final float f, final float f1) {
-		
-	}
-
-	@Override
 	public void send(final Packet<?> packet) {
-		
+
 	}
 
 }

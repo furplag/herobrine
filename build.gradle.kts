@@ -1,4 +1,4 @@
-val mc_version="1.19.3"
+val mc_version="1.19.4"
 
 plugins {
 	`java-library`
@@ -41,4 +41,4 @@ tasks {
 	}
 }
 
-tasks.named("jar") { finalizedBy("remap") } 
+tasks.named("jar") { finalizedBy("remap") }
