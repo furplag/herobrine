@@ -15,7 +15,7 @@ public class UpdateScanner implements Runnable {
 		// Check for a newer version of the plugin, and put the thread to sleep for 24 hours
 		// before the check is performed again. If a newer version is found, begin reporting
 		// the discovery of a newer version once every hour.
-		final String pluginVersionCount = "38";
+		final String pluginVersionCount = "40";
 		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 		
 		while(!Herobrine.getPluginCore().getConfigDB().newVersionFound) {

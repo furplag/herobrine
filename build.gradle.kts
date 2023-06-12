@@ -2,7 +2,7 @@ val mc_version="1.19.4"
 
 plugins {
 	`java-library`
-	id("io.github.patrick.remapper") version "1.3.0"
+	id("io.github.patrick.remapper") version "1.4.0"
 }
 
 repositories {
