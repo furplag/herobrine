@@ -95,16 +95,14 @@ public final class Herobrine extends JavaPlugin implements Listener {
 
   public Map<Player, Long> PlayerApple = new HashMap<Player, Long>();
 
-
   @Override
   public void onEnable() {
     boolean continueWithEnable = true;
-    // Check a server class name to determine if the plugin is compatible with the
-    // Spigot server version.
+    // Check a server class name to determine if the plugin is compatible with the Spigot server version.
     // If it is not, print an error message and disable the plugin.
     if (continueWithEnable) {
       try {
-        Class.forName("org.bukkit.craftbukkit.v1_19_R3.CraftArt");
+		Class.forName("org.bukkit.craftbukkit.v1_20_R1.CraftArt");
       } catch (ClassNotFoundException e) {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "This version of Herobrine is not compatible with this server's Spigot version and will be disabled.");
         continueWithEnable = false;

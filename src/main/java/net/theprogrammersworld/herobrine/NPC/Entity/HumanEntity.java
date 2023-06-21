@@ -1,8 +1,8 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_19_R3.CraftServer;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
@@ -21,7 +21,8 @@ public class HumanEntity extends ServerPlayer {
   public HumanEntity(final NPCCore npcCore, final NMSServer.World world, final GameProfile gameProfile) {
     super(npcCore.getServer().getMinecraftServer(), world.getWorldServer(), gameProfile);
     setGameMode(GameType.SURVIVAL);
-    connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this);
+    connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(),
+        this);
     fauxSleeping = true;
   }
 

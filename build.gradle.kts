@@ -1,8 +1,8 @@
-val mc_version="1.19.4"
+val mc_version="1.20"
 
 plugins {
-  `java-library`
-  id("io.github.patrick.remapper") version "1.3.0"
+	`java-library`
+	id("io.github.patrick.remapper") version "1.4.0"
 }
 
 repositories {
@@ -16,8 +16,8 @@ dependencies {
   compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.1.0-SNAPSHOT")
   compileOnly("org.spigotmc:spigot:${mc_version}-R0.1-SNAPSHOT:remapped-mojang")
 
-  compileOnly("org.projectlombok:lombok:1.18.26")
-  annotationProcessor("org.projectlombok:lombok:1.18.26")
+  compileOnly("org.projectlombok:lombok:1.18.28")
+  annotationProcessor("org.projectlombok:lombok:1.18.28")
 }
 
 java {
@@ -32,5 +32,3 @@ tasks {
 }
 
 tasks.named("jar") { finalizedBy("remap") }
-
-version="2.6.1-SNAPSHOT-atomikos-personalized"
