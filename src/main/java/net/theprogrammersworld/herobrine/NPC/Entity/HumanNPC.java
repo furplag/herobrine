@@ -1,15 +1,14 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.theprogrammersworld.herobrine.Herobrine;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+
+import net.minecraft.world.InteractionHand;
+import net.theprogrammersworld.herobrine.Herobrine;
 
 public class HumanNPC {
 
@@ -25,7 +24,7 @@ public class HumanNPC {
 		return this.id;
 	}
 
-	public ServerPlayer getEntity() {
+	public HumanEntity getEntity() {
 		return this.entity;
 	}
 
@@ -44,7 +43,7 @@ public class HumanNPC {
 
 	public void setItemInHand(ItemStack item) {
 		if (item != null) {
-			((org.bukkit.entity.HumanEntity) getEntity().getBukkitEntity()).getInventory().setItemInMainHand(item);
+			getEntity().getBukkitEntity().getInventory().setItemInMainHand(item);
 		}
 	}
 
@@ -86,7 +85,7 @@ public class HumanNPC {
 	}
 
 	public void setYaw(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		getEntity().setYRot(yaw);
 	}
 
 	public void lookAtPoint(Location point) {
@@ -118,7 +117,7 @@ public class HumanNPC {
 	}
 
 	public void setYawA(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		getEntity().setYRot(yaw);
 	}
 
 	public org.bukkit.entity.Entity getBukkitEntity() {
