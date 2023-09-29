@@ -1,12 +1,11 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_20_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
-import net.minecraft.server.level.ClientInformation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.level.GameType;
@@ -20,7 +19,7 @@ public class HumanEntity extends ServerPlayer {
 	private CraftPlayer cplayer = null;
 
 	public HumanEntity(final NPCCore npcCore, final NMSWorld world, final GameProfile s) {
-		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s, ClientInformation.createDefault());
+		super(npcCore.getServer().getMCServer(), world.getWorldServer(), s);
 
 		this.setGameMode(GameType.SURVIVAL);
 

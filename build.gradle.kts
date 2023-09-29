@@ -1,4 +1,4 @@
-val mc_version="1.20.2"
+val mc_version="1.20"
 
 plugins {
 	`java-library`
