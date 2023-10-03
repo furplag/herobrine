@@ -2,14 +2,16 @@ val mc_version="1.20.2"
 
 plugins {
 	`java-library`
-	id("io.github.patrick.remapper") version "1.4.0"
+  id("io.github.patrick.remapper") version "1.4.0"
+  id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
   mavenCentral()
   maven("https://maven.elmakers.com/repository/")
   maven("https://maven.enginehub.org/repo/") /* worldedit, worldguard */
-}
+  maven("https://jitpack.io/")
+ }
 
 dependencies {
   compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.14-SNAPSHOT")
@@ -32,3 +34,5 @@ tasks {
 }
 
 tasks.named("jar") { finalizedBy("remap") }
+
+apply(plugin = "com.github.johnrengelman.shadow")

@@ -27,10 +27,10 @@ public class HumanEntity extends ServerPlayer {
   public HumanEntity(final NPCCore npcCore, final NMSServer.World world, final GameProfile gameProfile) {
     super(npcCore.getServer().getMinecraftServer(), world.getWorldServer(), gameProfile, ClientInformation.createDefault());
     setGameMode(GameType.SURVIVAL);
+    fauxSleeping = true;
     connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this, CommonListenerCookie.createInitial(getGameProfile())) {
       @Override public void send(final Packet<?> packet) {}
     };
-    fauxSleeping = true;
   }
 
   @Override

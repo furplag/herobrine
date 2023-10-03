@@ -8,14 +8,16 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
+import org.bukkit.block.sign.Side;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.AI.ConsoleLogger;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 import net.theprogrammersworld.herobrine.misc.BlockChanger;
 
+@Slf4j( topic = "Minecraft" )
 public class Signs extends Core {
 
 	public Signs() {
@@ -25,8 +27,6 @@ public class Signs extends Core {
 	public CoreResult CallCore(Object[] data) {
 		return placeSign((Location) data[0], (Location) data[1]);
 	}
-
-	static ConsoleLogger log = new ConsoleLogger();
 
 	public CoreResult placeSign(Location loc, Location ploc) {
 		boolean status = false;
@@ -88,7 +88,7 @@ public class Signs extends Core {
 				((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
 				sign.setBlockData(blockData);
 
-				sign.setLine(1, Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
+				sign.getSide(Side.FRONT).setLine(1, Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
 				sign.update();
 			}
 		}

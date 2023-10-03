@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoRemovePacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket.Action;
@@ -43,17 +44,17 @@ import net.theprogrammersworld.herobrine.AI.cores.Totem;
 import net.theprogrammersworld.herobrine.entity.MobType;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
-public class AICore {
-
-  public static ConsoleLogger log = new ConsoleLogger();
+@Slf4j( topic = "Minecraft" )
+public final class AICore {
 
   private static final List<Core> cores;
-  static {
-    cores = Collections
-        .unmodifiableList(List.of(new Attack(), new Book(), new BuildCave(), new Burn(), new BuryPlayer(), new Curse(),
-            new DestroyTorches(), new Graveyard(), new Haunt(), new Heads(), new Pyramid(), new RandomExplosion(),
-            new RandomPosition(), new RandomSound(), new Signs(), new SoundCore(), new Temple(), new Totem()));
-  }
+  static {/* @formatter:off */
+    cores = Collections.unmodifiableList(List.of(
+      new Attack(), new Book(), new BuildCave(), new Burn(), new BuryPlayer(), new Curse(),
+      new DestroyTorches(), new Graveyard(), new Haunt(), new Heads(), new Pyramid(), new RandomExplosion(),
+      new RandomPosition(), new RandomSound(), new Signs(), new SoundCore(), new Temple(), new Totem()
+    ));
+  /* @formatter:on */}
 
   @Getter
   @Setter

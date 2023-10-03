@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.AICore;
@@ -17,6 +18,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 import net.theprogrammersworld.herobrine.AI.Message;
 import net.theprogrammersworld.herobrine.AI.extensions.Position;
 
+@Slf4j( topic = "Minecraft" )
 public class Attack extends Core {
 
 	private int ticksToEnd = 0;
@@ -42,7 +44,7 @@ public class Attack extends Core {
 				ticksToEnd = 0;
 				AICore.PlayerTarget = player;
 				AICore.isTarget = true;
-				AICore.log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
+				log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
 				Location ploc = (Location) AICore.PlayerTarget.getLocation();
 				Object[] data = { ploc };
 				PluginCore.getAICore().getCore(Core.Type.DESTROY_TORCHES).RunCore(data);

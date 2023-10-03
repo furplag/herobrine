@@ -25,13 +25,14 @@ import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
-import net.theprogrammersworld.herobrine.AI.AICore;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.entity.MobType;
 import net.theprogrammersworld.herobrine.misc.ItemName;
 
+@Slf4j(topic = "Minecraft")
 public class EntityListener implements Listener {
 
 	private ItemStack itemInHand = null;
@@ -177,7 +178,7 @@ public class EntityListener implements Listener {
 						} else {
 							Herobrine.HerobrineHP -= event.getDamage();
 							PluginCore.HerobrineNPC.hurtAnimation();
-							AICore.log.info("HIT: " + event.getDamage());
+							log.info("HIT: " + event.getDamage());
 						}
 					} else if (dEvent.getDamager() instanceof Projectile) {
 
@@ -200,7 +201,7 @@ public class EntityListener implements Listener {
 								} else {
 									Herobrine.HerobrineHP -= event.getDamage();
 									PluginCore.HerobrineNPC.hurtAnimation();
-									AICore.log.info("HIT: " + event.getDamage());
+									log.info("HIT: " + event.getDamage());
 								}
 
 							}

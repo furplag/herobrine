@@ -13,8 +13,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Random;
 
+@Slf4j(topic = "Minecraft")
 public class Haunt extends Core {
 
 	private int _ticks = 0;
@@ -44,7 +47,7 @@ public class Haunt extends Core {
 			isFirst = true;
 			AICore.isTarget = true;
 			AICore.PlayerTarget = player;
-			AICore.log.info("[Herobrine] " + player.getDisplayName() + " is now being haunted by Herobrine.");
+			log.info("[Herobrine] " + player.getDisplayName() + " is now being haunted by Herobrine.");
 			Location loc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
 			loc.setY(-100);
 			PluginCore.HerobrineNPC.moveTo(loc);

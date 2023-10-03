@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import lombok.extern.slf4j.Slf4j;
 import net.theprogrammersworld.herobrine.ConfigDB;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
@@ -16,6 +17,7 @@ import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 import net.theprogrammersworld.herobrine.NPC.AI.Path;
 
+@Slf4j(topic = "Minecraft")
 public class RandomPosition extends Core {
 
 	private int randomTicks = 0;
@@ -59,14 +61,14 @@ public class RandomPosition extends Core {
 						newloc.setY(newloc.getY() + 1.5);
 						PluginCore.HerobrineNPC.lookAtPoint(newloc);
 						randomTicks = 0;
-						AICore.log.info("[Herobrine] Herobrine is now in RandomLocation mode.");
+						log.info("[Herobrine] Herobrine is now in RandomLocation mode.");
 						PluginCore.getAICore().Start_RM();
 						PluginCore.getAICore().Start_RS();
 						PluginCore.getAICore().Start_CG();
 						RandomMoveIsPlayer = false;
 						return new CoreResult(true, "Herobrine is now in WalkingMode.");
 					} else {
-						AICore.log.info("[Herobrine] RandomPosition Failed.");
+						log.info("[Herobrine] RandomPosition Failed.");
 						return setRandomPosition(world);
 					}
 				}
@@ -136,7 +138,7 @@ public class RandomPosition extends Core {
 
 				randy++;
 
-				AICore.log.info("[Herobrine] RandomLocation "
+				log.info("[Herobrine] RandomLocation "
 						+ world.getBlockAt(randx, randy, randz).getType().toString() + " is X:" + randx + " Y:"
 						+ randy + " Z:" + randz);
 				return new Location(world, (float) randx, (float) randy, (float) randz);

@@ -43,18 +43,16 @@ public class NPCCore {
   public NPCCore() {
     
     server = NMSServer.getInstance();
-    
     networkmanager = new Connection(PacketFlow.SERVERBOUND) {
       { channel = new EmbeddedChannel(); }
       @Override public void setListener(PacketListener packetListener) {}
       @Override public void tick() {}
     };
-    
+
     taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Herobrine.getPluginCore(), new Runnable() {
         @Override public void run() { npcs.removeIf((npc) -> !npc.getEntity().isAlive()); }
     }, 1L, 1L);
-    
-    this.herobrineProfile = getHerobrineGameProfile();
+    herobrineProfile = getHerobrineGameProfile();
   }
 
   public void cancelTask() {
