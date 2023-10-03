@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import lombok.Getter;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.theprogrammersworld.herobrine.Herobrine;
 
@@ -37,7 +36,7 @@ public class HumanNPC {
 
 	public void setItemInHand(ItemStack item) {
 		if (item != null) {
-			((org.bukkit.entity.HumanEntity) getEntity().getBukkitEntity()).getInventory().setItemInMainHand(item);
+			getEntity().getBukkitEntity().getInventory().setItemInMainHand(item);
 		}
 	}
 
@@ -79,7 +78,7 @@ public class HumanNPC {
 	}
 
 	public void setYaw(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		getEntity().setYRot(yaw);
 	}
 
 	public void lookAtPoint(Location point) {
@@ -111,7 +110,7 @@ public class HumanNPC {
 	}
 
 	public void setYawA(float yaw) {
-		((ServerPlayer) getEntity()).setYRot(yaw);
+		getEntity().setYRot(yaw);
 	}
 
 	public org.bukkit.entity.Entity getBukkitEntity() {

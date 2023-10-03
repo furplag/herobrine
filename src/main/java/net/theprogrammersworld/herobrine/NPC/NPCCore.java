@@ -5,17 +5,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
+import io.netty.channel.embedded.EmbeddedChannel;
 import lombok.Getter;
 import net.minecraft.network.Connection;
+import net.minecraft.network.PacketListener;
 import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.world.entity.Entity;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
@@ -35,20 +40,24 @@ public class NPCCore {
   private final GameProfile herobrineProfile;
   private final int taskId;
 
-  private List<HumanNPC> npcs = new ArrayList<HumanNPC>();
+  private final List<HumanNPC> npcs = new ArrayList<HumanNPC>();
   private final AtomicInteger lastId = new AtomicInteger();
 
-  public NPCCore() {
+  public NPCCore(JavaPlugin plugin) {
+    
     server = NMSServer.getInstance();
-    networkmanager = new Connection(PacketFlow.SERVERBOUND);
-    herobrineProfile = getHerobrineGameProfile();
-
+    
+    networkmanager = new Connection(PacketFlow.SERVERBOUND) {
+      { channel = new EmbeddedChannel(); }
+      @Override public void setListener(PacketListener packetListener) {}
+      @Override public void tick() {}
+    };
+    
     taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Herobrine.getPluginCore(), new Runnable() {
-      @Override
-      public void run() {
-        npcs.removeIf((npc) -> npc == null || !npc.getEntity().isAlive());
-      }
+        @Override public void run() { npcs.removeIf((npc) -> !npc.getEntity().isAlive()); }
     }, 1L, 1L);
+    
+    this.herobrineProfile = getHerobrineGameProfile();
   }
 
   public void cancelTask() {
