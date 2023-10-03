@@ -1,7 +1,6 @@
 package net.theprogrammersworld.herobrine.NPC.Entity;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
@@ -22,11 +21,12 @@ import net.theprogrammersworld.herobrine.NPC.NMS.NMSServer;
 
 public class HumanEntity extends ServerPlayer {
 
-  private final AtomicReference<CraftPlayer> craftPlayer = new AtomicReference<>();
+  private CraftPlayer craftPlayer;
 
   public HumanEntity(final NPCCore npcCore, final NMSServer.World world, final GameProfile gameProfile) {
     super(npcCore.getServer().getMinecraftServer(), world.getWorldServer(), gameProfile, ClientInformation.createDefault());
     setGameMode(GameType.SURVIVAL);
+    craftPlayer = null;
     fauxSleeping = true;
     connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this, CommonListenerCookie.createInitial(getGameProfile())) {
       @Override public void send(final Packet<?> packet) {}
@@ -40,8 +40,6 @@ public class HumanEntity extends ServerPlayer {
 
   @Override
   public CraftPlayer getBukkitEntity() {
-    Optional.ofNullable(craftPlayer.get()).ifPresentOrElse((c) -> {}, () -> { craftPlayer.set(new CraftPlayer((CraftServer) Bukkit.getServer(), this)); });
-
-    return craftPlayer.get();
+    return Optional.ofNullable(craftPlayer).orElseGet(() -> { craftPlayer = new CraftPlayer((CraftServer) Bukkit.getServer(), this); return craftPlayer; });
   }
 }
