@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Predicate;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -20,7 +18,6 @@ import lombok.Getter;
 import net.minecraft.network.Connection;
 import net.minecraft.network.PacketListener;
 import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.world.entity.Entity;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanNPC;
@@ -43,7 +40,7 @@ public class NPCCore {
   private final List<HumanNPC> npcs = new ArrayList<HumanNPC>();
   private final AtomicInteger lastId = new AtomicInteger();
 
-  public NPCCore(JavaPlugin plugin) {
+  public NPCCore() {
     
     server = NMSServer.getInstance();
     
