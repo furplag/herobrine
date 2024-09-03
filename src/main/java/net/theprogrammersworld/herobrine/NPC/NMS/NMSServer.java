@@ -9,8 +9,8 @@ import java.util.stream.StreamSupport;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_20_R2.CraftWorld;
+import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.CraftWorld;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,7 +21,7 @@ import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 
-public class NMSServer {
+public final class NMSServer {
 
   @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
   @Getter

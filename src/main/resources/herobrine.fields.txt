@@ -1,0 +1,158 @@
+/**  Description */
+private final Object Argument;
+
+/**  Sets whether or not Herobrine can attack players in creative mode */
+private final Object AttackCreative;
+
+/**  Sets whether or not Herobrine can attack server OPs */
+private final Object AttackOP;
+
+/**  Sets the percent chance that Herobrine will write a book */
+private final Object BookChance;
+
+/**  Sets the messages that Herobrine can write in books */
+private final Object BookMessages;
+
+/**  Sets Herobrine's build interval (includes burying players, building pyramids, and building temples) */
+private final Object BuildInterval;
+
+/**  Sets the percent chance that a pyramid will spawn on a chunk. Setting this value to 0 will disable pyramid chunk spawning. (Extremely high settings for this configuration argument will slow server performance.) */
+private final Object BuildPyramidOnChunkPercentage;
+
+/**  Sets whether or not Herobrine can build pyramids */
+private final Object BuildPyramids;
+
+/**  Sets whether or not Herobrine can create caves and place redstone torches */
+private final Object BuildStuff;
+
+/**  Sets the percent chance that a temple will spawn on a chunk. Setting this value to 0 will disable temple chunk spawning. (Extremely high settings for this configuration argument will slow server performance.) */
+private final Object BuildTempleOnChunkPercentage;
+
+/**  Sets whether or not Herobrine can build temples */
+private final Object BuildTemples;
+
+/**  Sets whether or not Herobrine can bury players */
+private final Object BuryPlayers;
+
+/**  Sets the percent chance that Herobrine will create a cave */
+private final Object CaveChance;
+
+/**  Sets whether the plugin will periodically check for a newer version (in versions of the plugin prior to v1.4.0, these checks occurred only once when the server was launched) */
+private final Object CheckForUpdates;
+
+/**  Sets the message that is displayed when Herobrine dies */
+private final Object DeathMessage;
+
+/**  Sets whether or not Herobrine can destory torches when he attacks */
+private final Object DestoryTorches;
+
+/**  Sets the torch destruction radius */
+private final Object DestroyTorchesRadius;
+
+/**  Sets the items that Herobrine will drop when he dies */
+private final Object Drops;
+
+/**  Sets Herobrine's HP */
+private final Object HerobrineHP;
+
+/**  Sets the Universally Unique Identifer that will be used by the Herobrine Non-Player Character */
+private final Object HerobrineUUID;
+
+/**  Sets the name of the world that will be used as Herobrine's Graveyard */
+private final Object HerobrineWorldName;
+
+/**  Sets whether or not Herobrine can hit a player */
+private final Object HitPlayer;
+
+/**  Sets the item that Herobrine is holding in his hand (this setting is based on item data values) */
+private final Object ItemInHand;
+
+/**  Sets whether Herobrine can be killed (PvP must be enabled on the server) */
+private final Object Killable;
+
+/**  Sets whether or not Herobrine can cause lightning storms */
+private final Object Lightning;
+
+/**  Sets the limit of books, heads, and signs Herobrine can place per hour */
+private final Object Limit;
+
+/**  Sets the messages that Herobrine can write in the chat */
+private final Object Messages;
+
+/**  Sets the name that will be used by the Herobrine Non-Player Character */
+private final Object Name;
+
+/**  Sets whether or not Herobrine can fly or if he can only walk */
+private final Object OnlyWalkingMode;
+
+/**  Sets the actions that Herobrine can perform within a secured area (secure areas are defined by other plugins that Herobrine is compatible with) */
+private final Object SecuredArea;
+
+/**  Sets whether or not Herobrine writes in the chat when attacking */
+private final Object SendMessages;
+
+/**  Sets whether the server promotion advertisement will display to OPs when they log in */
+private final Object ShowDonateMsgToOp;
+
+/**  Sets whether Herobrine's name will be visible in the online players tab list to all players at all times (Herobrine's name will appear in the list of his current target regardless of this setting's configuration) */
+private final Object ShowInTabList;
+
+/**  Set the interval in milliseconds at which Herobrine will select a target (this setting also depends on ShowRate) */
+private final Object ShowInterval;
+
+/**  Set the chance of Herobrine's target seeing Herobrine, there are three levels (1 = sometimes, 2 = often, 3 = very often) */
+private final Object ShowRate;
+
+/**  Sets the percent chance that Herobrine will place a sign */
+private final Object SignChance;
+
+/**  Sets the messages that Herobrine can write on signs */
+private final Object SignMessages;
+
+/**  Sets whether or not Herobrine can spawn bats */
+private final Object SpawnBats;
+
+/**  Sets whether or not Herobrine can spawn wolves */
+private final Object SpawnWolves;
+
+/**  Sets whether or not Herobrine's Totem explodes after he is summoned */
+private final Object TotemExplodes;
+
+/**  Sets whether Herobrine's Ancient Sword can be found in Herobrine's Temples */
+private final Object UseAncientSword;
+
+/**  Sets what artifacts Herobrine can place in temples */
+private final Object UseArtifacts;
+
+/**  Sets whether or not Herobrine can teleport players to Herobrine's Graveyard */
+private final Object UseGraveyardWorld;
+
+/**  Sets whether or not Herobrine can spawn heads */
+private final Object UseHeads;
+
+/**  Sets whether or not the ignore Herobrine permission can be used (hb-ai.ignore) */
+private final Object UseIgnorePermission;
+
+/**  Sets whether the plugin will spawn Herobrine's Demons */
+private final Object UseNPC.Demon;
+
+/**  Sets whether the plugin will spawn Herobrine's Guardians */
+private final Object UseNPC.Guardian;
+
+/**  Sets whether the plugin will spawn Herobrine's Warriors */
+private final Object UseNPC.Warrior;
+
+/**  Sets whether or not Herobrine can use potions on players */
+private final Object UsePotionEffects;
+
+/**  Sets whether or not Herobrine can be summoned by building Herobrine's Totem */
+private final Object UseTotem;
+
+/**  Sets the X radius where Herobrine can be in WalkingMode */
+private final Object WalkingModeRadius X;
+
+/**  Sets the Z radius where Herobrine can be in WalkingMode */
+private final Object WalkingModeRadius Z;
+
+/**  Sets the worlds that Herobrine has access to */
+private final Object Worlds;

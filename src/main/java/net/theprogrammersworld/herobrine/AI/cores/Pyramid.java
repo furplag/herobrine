@@ -7,7 +7,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import lombok.extern.slf4j.Slf4j;
-import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
@@ -16,7 +15,7 @@ import net.theprogrammersworld.herobrine.AI.CoreResult;
 public class Pyramid extends Core {
 
   public Pyramid() {
-    super(Core.Type.PYRAMID, AppearType.NORMAL, Herobrine.getPluginCore());
+    super(Core.Type.PYRAMID, AppearType.NORMAL);
   }
 
   public CoreResult CallCore(Object[] data) {
@@ -29,7 +28,7 @@ public class Pyramid extends Core {
 
   // TODO Change this nonsense
   public CoreResult FindPlace(Chunk chunk) {
-    if (PluginCore.getConfigDB().BuildPyramids) {
+    if (plugin.getConfigDB().BuildPyramids) {
 
       Location loc = chunk.getBlock(2, 0, 2).getLocation();
       loc = loc.getWorld().getHighestBlockAt(loc).getLocation();
@@ -75,7 +74,7 @@ public class Pyramid extends Core {
   }
 
   public CoreResult FindPlace(Player player) {
-    if (PluginCore.getConfigDB().BuildPyramids) {
+    if (plugin.getConfigDB().BuildPyramids) {
 
       Location loc = (Location) player.getLocation();
 
@@ -153,7 +152,7 @@ public class Pyramid extends Core {
 
   public void BuildPyramid(World world, int X, int Y, int Z) {
 
-    if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
+    if (plugin.getSupport().checkBuild(new Location(world, X, Y, Z))) {
 
       log.info("Creating pyramid at " + X + "," + Y + "," + Z);
 

@@ -16,7 +16,7 @@ public final class Support {
   private final Set<PluginSupport> availablePlugins = new HashSet<>();
 
   public Support() {/* @formatter:off */
-    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getInstance(), new Runnable() {
       @Override public void run() {
         availablePlugins.addAll(PluginSupport.supportPlugins.parallelStream().filter(PluginSupport::isAvailable).peek((_p) -> log.info("[Herobrine] %s plugin detected on server".formatted(_p.getPluginName()))).collect(Collectors.toSet()));
       }
@@ -28,23 +28,23 @@ public final class Support {
   }
 
   public boolean checkBuild(final Location location) {
-    return isEnable(Herobrine.getPluginCore().getConfigDB().SecuredArea_Build, location);
+    return isEnable(Herobrine.getInstance().getConfigDB().SecuredArea_Build, location);
   }
 
   public boolean checkAttack(final Location location) {
-    return isEnable(Herobrine.getPluginCore().getConfigDB().SecuredArea_Attack, location);
+    return isEnable(Herobrine.getInstance().getConfigDB().SecuredArea_Attack, location);
   }
 
   public boolean checkHaunt(final Location location) {
-    return isEnable(Herobrine.getPluginCore().getConfigDB().SecuredArea_Haunt, location);
+    return isEnable(Herobrine.getInstance().getConfigDB().SecuredArea_Haunt, location);
   }
 
   public boolean checkSigns(final Location location) {
-    return isEnable(Herobrine.getPluginCore().getConfigDB().SecuredArea_Signs, location);
+    return isEnable(Herobrine.getInstance().getConfigDB().SecuredArea_Signs, location);
   }
 
   public boolean checkBooks(final Location location) {
-    return isEnable(Herobrine.getPluginCore().getConfigDB().SecuredArea_Books, location);
+    return isEnable(Herobrine.getInstance().getConfigDB().SecuredArea_Books, location);
   }
 
   private boolean isEnable(final boolean configValue, final Location location) {

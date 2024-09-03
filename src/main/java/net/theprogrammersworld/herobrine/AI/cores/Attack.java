@@ -21,214 +21,214 @@ import net.theprogrammersworld.herobrine.AI.extensions.Position;
 @Slf4j( topic = "Minecraft" )
 public class Attack extends Core {
 
-	private int ticksToEnd = 0;
-	private int HandlerINT = 0;
-	private boolean isHandler = false;
+  private int ticksToEnd = 0;
+  private int HandlerINT = 0;
+  private boolean isHandler = false;
 
-	public Attack() {
-		super(Core.Type.ATTACK, AppearType.APPEAR, Herobrine.getPluginCore());
-	}
+  public Attack() {
+    super(Core.Type.ATTACK, AppearType.APPEAR);
+  }
 
-	public CoreResult CallCore(Object[] data) {
-		return setAttackTarget((Player) data[0]);
-	}
+  public CoreResult CallCore(Object[] data) {
+    return setAttackTarget((Player) data[0]);
+  }
 
-	public CoreResult setAttackTarget(Player player) {
-		if (!PluginCore.getAICore().checkAncientSword(player.getInventory())) {
-			if (PluginCore.getSupport().checkAttack(player.getLocation())) {
-				if (!PluginCore.canAttackPlayerNoMSG(player)) {
-					return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they are protected.");
-				}
+  public CoreResult setAttackTarget(Player player) {
+    if (!plugin.getAICore().checkAncientSword(player.getInventory())) {
+      if (plugin.getSupport().checkAttack(player.getLocation())) {
+        if (!plugin.canAttackPlayerNoMSG(player)) {
+          return new CoreResult(false, player.displayName() + " cannot be attacked because they are protected.");
+        }
 
-				Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
-				ticksToEnd = 0;
-				AICore.PlayerTarget = player;
-				AICore.isTarget = true;
-				log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
-				Location ploc = (Location) AICore.PlayerTarget.getLocation();
-				Object[] data = { ploc };
-				PluginCore.getAICore().getCore(Core.Type.DESTROY_TORCHES).RunCore(data);
-				if (PluginCore.getConfigDB().UsePotionEffects) {
-					AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
-					AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
-					AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
-				}
-				Location tploc = (Location) Position.getTeleportPosition(ploc);
+        Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
+        ticksToEnd = 0;
+        AICore.PlayerTarget = player;
+        AICore.isTarget = true;
+        log.info("[Herobrine] Teleporting Herobrine to " + AICore.PlayerTarget.getName() + ".");
+        Location ploc = (Location) AICore.PlayerTarget.getLocation();
+        Object[] data = { ploc };
+        plugin.getAICore().getCore(Core.Type.DESTROY_TORCHES).RunCore(data);
+        if (plugin.getConfigDB().UsePotionEffects) {
+          AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, 1000, 1));
+          AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
+          AICore.PlayerTarget.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 1000, 1));
+        }
+        Location tploc = (Location) Position.getTeleportPosition(ploc);
 
-				PluginCore.HerobrineNPC.moveTo(tploc);
+        plugin.HerobrineNPC.moveTo(tploc);
 
-				Message.sendRandomMessage(AICore.PlayerTarget);
+        Message.sendRandomMessage(AICore.PlayerTarget);
 
-				StartHandler();
+        StartHandler();
 
-				return new CoreResult(true, "Herobrine is currently attacking " + player.getName() + ".");
-			} else {
-				return new CoreResult(false, AICore.PlayerTarget.getDisplayName() + " cannot be attacked because they are in a protected area.");
-			}
-		} else {
-			return new CoreResult(false, player.getDisplayName() + " cannot be attacked because they have an Ancient Sword.");
-		}
-	}
+        return new CoreResult(true, "Herobrine is currently attacking " + player.getName() + ".");
+      } else {
+        return new CoreResult(false, AICore.PlayerTarget.displayName() + " cannot be attacked because they are in a protected area.");
+      }
+    } else {
+      return new CoreResult(false, player.displayName() + " cannot be attacked because they have an Ancient Sword.");
+    }
+  }
 
-	public void StopHandler() {
-		if (isHandler) {
-			Bukkit.getScheduler().cancelTask(HandlerINT);
-			isHandler = false;
-		}
-	}
+  public void StopHandler() {
+    if (isHandler) {
+      Bukkit.getScheduler().cancelTask(HandlerINT);
+      isHandler = false;
+    }
+  }
 
-	public void StartHandler() {
-		KeepLooking();
-		FollowHideRepeat();
-		isHandler = true;
-		HandlerINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(AICore.plugin, new Runnable() {
-			public void run() {
-				Handler();
-			}
-		}, 1 * 5L, 1 * 5L);
-	}
+  public void StartHandler() {
+    KeepLooking();
+    FollowHideRepeat();
+    isHandler = true;
+    HandlerINT = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+      public void run() {
+        Handler();
+      }
+    }, 1 * 5L, 1 * 5L);
+  }
 
-	private void Handler() {
-		KeepLooking();
-		if (ticksToEnd == 1 || ticksToEnd % 16 == 0)
-			FollowHideRepeat();
+  private void Handler() {
+    KeepLooking();
+    if (ticksToEnd == 1 || ticksToEnd % 16 == 0)
+      FollowHideRepeat();
 
-	}
+  }
 
-	public void KeepLooking() {
-		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
-			if (AICore.PlayerTarget.isDead() == false) {
-				if (ticksToEnd == 160) {
-					PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-				} else {
-					ticksToEnd++;
+  public void KeepLooking() {
+    if (AICore.PlayerTarget.isOnline() && AICore.isTarget
+        && plugin.getAICore().getCurrent() == Core.Type.ATTACK) {
+      if (AICore.PlayerTarget.isDead() == false) {
+        if (ticksToEnd == 160) {
+          plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+        } else {
+          ticksToEnd++;
 
-					Location ploc = (Location) AICore.PlayerTarget.getLocation();
-					ploc.setY(ploc.getY() + 1.5);
-					PluginCore.HerobrineNPC.lookAtPoint(ploc);
-					if (PluginCore.getConfigDB().Lightning == true) {
-						int lchance = Utils.getRandom().nextInt(100);
+          Location ploc = (Location) AICore.PlayerTarget.getLocation();
+          ploc.setY(ploc.getY() + 1.5);
+          plugin.HerobrineNPC.lookAtPoint(ploc);
+          if (plugin.getConfigDB().Lightning == true) {
+            int lchance = Utils.getRandom().nextInt(100);
 
-						if (lchance > 75) {
-							Location newloc = (Location) ploc;
-							int randx = Utils.getRandom().nextInt(50);
-							int randz = Utils.getRandom().nextInt(50);
-							if (Utils.getRandom().nextBoolean()) {
-								newloc.setX(newloc.getX() + randx);
-							} else {
-								newloc.setX(newloc.getX() - randx);
-							}
-							if (Utils.getRandom().nextBoolean()) {
-								newloc.setZ(newloc.getZ() + randz);
-							} else {
-								newloc.setZ(newloc.getZ() - randz);
-							}
-							newloc.setY(250);
-							newloc.getWorld().strikeLightning(newloc);
+            if (lchance > 75) {
+              Location newloc = (Location) ploc;
+              int randx = Utils.getRandom().nextInt(50);
+              int randz = Utils.getRandom().nextInt(50);
+              if (Utils.getRandom().nextBoolean()) {
+                newloc.setX(newloc.getX() + randx);
+              } else {
+                newloc.setX(newloc.getX() - randx);
+              }
+              if (Utils.getRandom().nextBoolean()) {
+                newloc.setZ(newloc.getZ() + randz);
+              } else {
+                newloc.setZ(newloc.getZ() - randz);
+              }
+              newloc.setY(250);
+              newloc.getWorld().strikeLightning(newloc);
 
-						}
+            }
 
-					}
+          }
 
-				}
-			} else {
-				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-			}
-		} else {
-			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-		}
-	}
+        }
+      } else {
+        plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+      }
+    } else {
+      plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+    }
+  }
 
-	public void Follow() {
-		if (AICore.PlayerTarget.isOnline()
-			&& AICore.isTarget
-			&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
+  public void Follow() {
+    if (AICore.PlayerTarget.isOnline()
+      && AICore.isTarget
+      && plugin.getAICore().getCurrent() == Core.Type.ATTACK) {
 
-			if (AICore.PlayerTarget.isDead() == false) {
+      if (AICore.PlayerTarget.isDead() == false) {
 
-				if (PluginCore.getConfigDB().useWorlds.contains(AICore.PlayerTarget.getWorld().getName())
-					&& PluginCore.getSupport().checkAttack(AICore.PlayerTarget.getLocation())) {
+        if (plugin.getConfigDB().useWorlds.contains(AICore.PlayerTarget.getWorld().getName())
+          && plugin.getSupport().checkAttack(AICore.PlayerTarget.getLocation())) {
 
-					PluginCore.HerobrineNPC.moveTo(Position.getTeleportPosition(AICore.PlayerTarget.getLocation()));
-					Location ploc = (Location) AICore.PlayerTarget.getLocation();
-					ploc.setY(ploc.getY() + 1.5);
-					PluginCore.HerobrineNPC.lookAtPoint(ploc);
-					AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_BREATH, 0.75f, 0.75f);
-					if (PluginCore.getConfigDB().HitPlayer == true) {
-						int hitchance = Utils.getRandom().nextInt(100);
-						if (hitchance < 55) {
-							AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_HURT, 0.75f, 0.75f);
+          plugin.HerobrineNPC.moveTo(Position.getTeleportPosition(AICore.PlayerTarget.getLocation()));
+          Location ploc = (Location) AICore.PlayerTarget.getLocation();
+          ploc.setY(ploc.getY() + 1.5);
+          plugin.HerobrineNPC.lookAtPoint(ploc);
+          AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_BREATH, 0.75f, 0.75f);
+          if (plugin.getConfigDB().HitPlayer == true) {
+            int hitchance = Utils.getRandom().nextInt(100);
+            if (hitchance < 55) {
+              AICore.PlayerTarget.playSound(AICore.PlayerTarget.getLocation(), Sound.ENTITY_PLAYER_HURT, 0.75f, 0.75f);
 
-							AICore.PlayerTarget.damage(4);
+              AICore.PlayerTarget.damage(4);
 
-						}
-					}
-				} else {
-					PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-				}
-			} else {
-				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-			}
-		} else {
-			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-		}
+            }
+          }
+        } else {
+          plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+        }
+      } else {
+        plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+      }
+    } else {
+      plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+    }
 
-	}
+  }
 
-	public void Hide() {
-		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
-			if (AICore.PlayerTarget.isDead() == false) {
+  public void Hide() {
+    if (AICore.PlayerTarget.isOnline() && AICore.isTarget
+        && plugin.getAICore().getCurrent() == Core.Type.ATTACK) {
+      if (AICore.PlayerTarget.isDead() == false) {
 
-				Location ploc = (Location) AICore.PlayerTarget.getLocation();
+        Location ploc = (Location) AICore.PlayerTarget.getLocation();
 
-				ploc.setY(-100);
+        ploc.setY(-100);
 
-				for(int i=0; i < 5; i++){
-					for(float j=0; j < 2; j+= 0.5f){
-						Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-						hbloc.setY(hbloc.getY() + j);
-						hbloc.getWorld().playEffect(hbloc, Effect.SMOKE, 80);
-					}
-				}
+        for(int i=0; i < 5; i++){
+          for(float j=0; j < 2; j+= 0.5f){
+            Location hbloc = (Location) plugin.HerobrineNPC.getBukkitEntity().getLocation();
+            hbloc.setY(hbloc.getY() + j);
+            hbloc.getWorld().playEffect(hbloc, Effect.SMOKE, 80);
+          }
+        }
 
-				if (PluginCore.getConfigDB().SpawnBats) {
-					Location hbloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
-					ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
-				}
+        if (plugin.getConfigDB().SpawnBats) {
+          Location hbloc = (Location) plugin.HerobrineNPC.getBukkitEntity().getLocation();
+          ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
+          ploc.getWorld().spawnEntity(hbloc, EntityType.BAT);
+        }
 
-				PluginCore.HerobrineNPC.moveTo(ploc);
+        plugin.HerobrineNPC.moveTo(ploc);
 
-			} else {
-				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-			}
-		} else {
-			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-		}
+      } else {
+        plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+      }
+    } else {
+      plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+    }
 
-	}
+  }
 
-	public void FollowHideRepeat() {
-		if (AICore.PlayerTarget.isOnline() && AICore.isTarget
-				&& PluginCore.getAICore().getCurrent() == Core.Type.ATTACK) {
-			if (AICore.PlayerTarget.isDead() == false) {
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
-					public void run() {
-						Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
-							public void run() {
-								Hide();
-							}
-						}, 1 * 30L);
-						Follow();
-					}
-				}, 1 * 45L);
-			} else {
-				PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-			}
-		} else {
-			PluginCore.getAICore().CancelTarget(Core.Type.ATTACK);
-		}
-	}
+  public void FollowHideRepeat() {
+    if (AICore.PlayerTarget.isOnline() && AICore.isTarget
+        && plugin.getAICore().getCurrent() == Core.Type.ATTACK) {
+      if (AICore.PlayerTarget.isDead() == false) {
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+          public void run() {
+            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+              public void run() {
+                Hide();
+              }
+            }, 1 * 30L);
+            Follow();
+          }
+        }, 1 * 45L);
+      } else {
+        plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+      }
+    } else {
+      plugin.getAICore().CancelTarget(Core.Type.ATTACK);
+    }
+  }
 }

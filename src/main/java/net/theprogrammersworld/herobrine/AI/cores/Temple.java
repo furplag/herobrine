@@ -23,7 +23,7 @@ import net.theprogrammersworld.herobrine.misc.StructureLoader;
 public class Temple extends Core {
 
   public Temple() {
-    super(Core.Type.TEMPLE, AppearType.NORMAL, Herobrine.getPluginCore());
+    super(Core.Type.TEMPLE, AppearType.NORMAL);
   }
 
   @Override
@@ -61,7 +61,7 @@ public class Temple extends Core {
           if (canBuild) {
             Create(location.getWorld(), x1 + location.getBlockX(), y1 + location.getBlockY(), z1 + location.getBlockZ());
 
-            return new CoreResult(true, "Creating a temple near %s.".formatted(player.getDisplayName()));
+            return new CoreResult(true, "Creating a temple near %s.".formatted(player.displayName()));
           }
         }
       }
@@ -104,7 +104,7 @@ public class Temple extends Core {
 
     Location loc = new Location(world, X, Y, Z);
 
-    if (Herobrine.getPluginCore().getSupport().checkBuild(new Location(world, X, Y, Z))) {
+    if (plugin.getSupport().checkBuild(new Location(world, X, Y, Z))) {
 
       int MainX = loc.getBlockX();
       int MainY = loc.getBlockY();
@@ -112,14 +112,14 @@ public class Temple extends Core {
 
       // Main blocks
 
-      new StructureLoader(Herobrine.getPluginCore().getInputStreamData("/res/temple.yml")).Build(loc.getWorld(), MainX, MainY, MainZ);
+      new StructureLoader(Herobrine.class.getResourceAsStream("/res/temple.yml")).Build(loc.getWorld(), MainX, MainY, MainZ);
       loc.getWorld().getBlockAt(MainX + 6, MainY + 0, MainZ + 2).setType(Material.CHEST);
       // Mob spawn
-      if (!Herobrine.isNPCDisabled) {
-        if (Herobrine.getPluginCore().getConfigDB().UseNPC_Guardian) {
+      if (!plugin.isNPCDisabled) {
+        if (plugin.getConfigDB().UseNPC_Guardian) {
           Location mobloc = new Location(loc.getWorld(), MainX + 6, MainY + 0, MainZ + 4);
-          for (int i = 1; i <= Herobrine.getPluginCore().getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
-            Herobrine.getPluginCore().getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
+          for (int i = 1; i <= plugin.getConfigDB().npc.getInt("npc.Guardian.SpawnCount"); i++) {
+            plugin.getEntityManager().spawnCustomZombie(mobloc, MobType.ARTIFACT_GUARDIAN);
           }
         }
       }
@@ -129,26 +129,26 @@ public class Temple extends Core {
       ItemStack item = null;
       ArrayList<String> newLore = new ArrayList<String>();
 
-      if (chance < 4 && Herobrine.getPluginCore().getConfigDB().UseArtifactBow) {
+      if (chance < 4 && plugin.getConfigDB().UseArtifactBow) {
 
         item = new ItemStack(Material.BOW);
         newLore.add("Herobrine artifact");
         newLore.add("Bow of Teleporting");
         item = ItemName.setNameAndLore(item, "Bow of Teleporting", newLore);
-        item.addEnchantment(Enchantment.ARROW_FIRE, 1);
-        item.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
+        item.addEnchantment(Enchantment.FLAME, 1);
+        item.addEnchantment(Enchantment.PUNCH, 1);
 
-      } else if (chance < 8 && Herobrine.getPluginCore().getConfigDB().UseArtifactSword) {
+      } else if (chance < 8 && plugin.getConfigDB().UseArtifactSword) {
 
         item = new ItemStack(Material.DIAMOND_SWORD);
         newLore.add("Herobrine artifact");
         newLore.add("Sword of Lightning");
         item = ItemName.setNameAndLore(item, "Sword of Lightning", newLore);
         item.addEnchantment(Enchantment.KNOCKBACK, 2);
-        item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
-        item.addEnchantment(Enchantment.DURABILITY, 3);
+        item.addEnchantment(Enchantment.SHARPNESS, 2);
+        item.addEnchantment(Enchantment.UNBREAKING, 3);
 
-      } else if (chance < 12 && Herobrine.getPluginCore().getConfigDB().UseArtifactApple) {
+      } else if (chance < 12 && plugin.getConfigDB().UseArtifactApple) {
 
         item = new ItemStack(Material.GOLDEN_APPLE);
         newLore.add("Herobrine artifact");
@@ -156,10 +156,10 @@ public class Temple extends Core {
         item = ItemName.setNameAndLore(item, "Apple of Death", newLore);
 
       } else {
-        if (Herobrine.getPluginCore().getConfigDB().UseAncientSword) {
-          item = Herobrine.getPluginCore().getAICore().createAncientSword();
+        if (plugin.getConfigDB().UseAncientSword) {
+          item = plugin.getAICore().createAncientSword();
           item.addEnchantment(Enchantment.KNOCKBACK, 2);
-          item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+          item.addEnchantment(Enchantment.SHARPNESS, 2);
         }
       }
 

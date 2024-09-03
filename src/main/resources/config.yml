@@ -1,0 +1,37 @@
+---
+name: "Herobrine"
+uuid: "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2"
+skin: null
+show-in-tab-list: false
+killable: false
+hp: 200
+show-interval: 144000
+show-rate: 2
+graveyard-world:
+  enabled: true
+  name: "world_herobrine_graveyard"
+  displayName: "Herobrine's graveyard"
+messages:
+  book:
+    enabled: true
+    limit: 1
+    messages:
+    - "White eyes in dark..."
+    - "... was last what I saw ..."
+    - "... before I was dead."
+  message:
+    enabled: true
+    limit: 1
+    messages:
+    - "Even Notch can't save you now!"
+    - "Fear me!"
+    - "Welcome to my world!"
+    - "I am your death!"
+    - "Grave awaits you!"
+  sign:
+    enabled: true
+    limit: 1
+    messages:
+    - "I'm watching."
+    - "Death..."
+    - "Eyes in dark..."

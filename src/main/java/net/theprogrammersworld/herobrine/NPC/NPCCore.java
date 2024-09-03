@@ -16,7 +16,6 @@ import com.mojang.authlib.properties.Property;
 import io.netty.channel.embedded.EmbeddedChannel;
 import lombok.Getter;
 import net.minecraft.network.Connection;
-import net.minecraft.network.PacketListener;
 import net.minecraft.network.protocol.PacketFlow;
 import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.NPC.Entity.HumanEntity;
@@ -26,7 +25,7 @@ import net.theprogrammersworld.herobrine.NPC.NMS.NMSServer;
 public class NPCCore {
 
   private static GameProfile getHerobrineGameProfile() {
-    return new GameProfile(UUID.fromString(Herobrine.getPluginCore().getConfigDB().HerobrineUUID), Herobrine.getPluginCore().getConfigDB().HerobrineName) {{
+    return new GameProfile(UUID.fromString(Herobrine.getInstance().getConfigDB().HerobrineUUID), Herobrine.getInstance().getConfigDB().HerobrineName) {{
       getProperties().put("textures", new Property("textures",
         "eyJ0aW1lc3RhbXAiOjE0MjE0ODczMzk3MTMsInByb2ZpbGVJZCI6ImY4NGM2YTc5MGE0ZTQ1ZTA4NzliY2Q0OWViZDRjNGUyIiwicHJvZmlsZU5hbWUiOiJIZXJvYnJpbmUiLCJpc1B1YmxpYyI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzk4YjdjYTNjN2QzMTRhNjFhYmVkOGZjMThkNzk3ZmMzMGI2ZWZjODQ0NTQyNWM0ZTI1MDk5N2U1MmU2Y2IifX19",
         "Edb1R3vm2NHUGyTPaOdXNQY9p5/Ez4xButUGY3tNKIJAzjJM5nQNrq54qyFhSZFVwIP6aM4Ivqmdb2AamXNeN0KgaaU/C514N+cUZNWdW5iiycPytfh7a6EsWXV4hCC9B2FoLkbXuxs/KAbKORtwNfFhQupAsmn9yP00e2c3ZQmS18LWwFg0vzFqvp4HvzJHqY/cTqUxdlSFDrQe/4rATe6Yx6v4zbZN2sHbSL+8AwlDDuP2Xr4SS6f8nABOxjSTlWMn6bToAYiymD+KUPoO0kQJ0Uw/pVXgWHYjQeM4BYf/FAxe8Bf1cP8S7VKueULkOxqIjXAp85uqKkU7dR/s4M4yHm6fhCOCLSMv6hi5ewTaFNYyhK+NXPftFqHcOxA1LbrjOe6NyphF/2FI79n90hagxJpWwNPz3/8I5rnGbYwBZPTsTnD8PszgQTNuWSuvZwGIXPIp9zb90xuU7g7VNWjzPVoOHfRNExEs7Dn9pG8CIA/m/a8koWW3pkbP/AMMWnwgHCr/peGdvF5fN+hJwVdpbfC9sJfzGwA7AgXG/6yqhl1U7YAp/aCVM9bZ94sav+kQghvN41jqOwy4F4i/swc7R4Fx2w5HFxVY3j7FChG7iuhqjUclm79YNhTG0lBQLiZbN5FmC9QgrNHRKlzgSZrXHWoG3YXFSqfn4J+Om9w="));
@@ -41,15 +40,14 @@ public class NPCCore {
   private final AtomicInteger lastId = new AtomicInteger();
 
   public NPCCore() {
-    
+
     server = NMSServer.getInstance();
     networkmanager = new Connection(PacketFlow.SERVERBOUND) {
       { channel = new EmbeddedChannel(); }
-      @Override public void setListener(PacketListener packetListener) {}
       @Override public void tick() {}
     };
 
-    taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Herobrine.getPluginCore(), new Runnable() {
+    taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Herobrine.getInstance(), new Runnable() {
         @Override public void run() { npcs.removeIf((npc) -> !npc.getEntity().isAlive()); }
     }, 1L, 1L);
     herobrineProfile = getHerobrineGameProfile();

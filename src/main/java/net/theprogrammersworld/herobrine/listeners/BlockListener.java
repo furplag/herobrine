@@ -27,7 +27,7 @@ public class BlockListener implements Listener {
       Block blockt = (Block) event.getBlock();
       Location blockloc = (Location) blockt.getLocation();
 
-      if (Herobrine.getPluginCore().getConfigDB().UseTotem && event.getPlayer() != null) {
+      if (Herobrine.getInstance().getConfigDB().UseTotem && event.getPlayer() != null) {
         blockloc.setY(blockloc.getY() - 1);
         Block block = (Block) blockloc.getWorld().getBlockAt(blockloc);
         if (block.getType() == Material.NETHERRACK) {
@@ -56,29 +56,28 @@ public class BlockListener implements Listener {
           }
 
           if (checkListCorrect && !AICore.isTotemCalled) {
-            Herobrine.getPluginCore().getAICore().PlayerCallTotem(event.getPlayer());
+            Herobrine.getInstance().getAICore().PlayerCallTotem(event.getPlayer());
           }
 
         }
       }
     }
 
-    if (Herobrine.isGraveyard(event.getBlock().getWorld())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
       event.setCancelled(true);
     }
   }
 
   @EventHandler
   public void onBlockBreak(BlockBreakEvent event) {
-    if (Herobrine.isGraveyard(event.getBlock().getWorld())
-        || ((Heads) Herobrine.getPluginCore().getAICore().getCore(Core.Type.HEADS)).getHeadList().contains(event.getBlock())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true        || ((Heads) Herobrine.getInstance().getAICore().getCore(Core.Type.HEADS)).getHeadList().contains(event.getBlock())) {
       event.setCancelled(true);
     }
   }
 
   @EventHandler
   public void onBlockPlace(BlockPlaceEvent event) {
-    if (Herobrine.isGraveyard(event.getBlock().getWorld())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
       event.setCancelled(true);
     }
   }

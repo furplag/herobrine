@@ -3,8 +3,8 @@ package net.theprogrammersworld.herobrine.NPC.Entity;
 import java.util.Optional;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_20_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 
 import com.mojang.authlib.GameProfile;
 
@@ -28,7 +28,7 @@ public class HumanEntity extends ServerPlayer {
     setGameMode(GameType.SURVIVAL);
     craftPlayer = null;
     fauxSleeping = true;
-    connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this, CommonListenerCookie.createInitial(getGameProfile())) {
+    connection = new ServerGamePacketListenerImpl(npcCore.getServer().getMinecraftServer(), npcCore.getNetworkmanager(), this, CommonListenerCookie.createInitial(getGameProfile(), false)) {
       @Override public void send(final Packet<?> packet) {}
     };
   }

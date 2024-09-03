@@ -14,7 +14,7 @@ public class PathManager {
   private Path path;
 
   public void update() {
-    if (path != null && Set.of(Core.Type.ANY, Core.Type.RANDOM_POSITION).contains(Herobrine.getPluginCore().getAICore().getCurrent())) {
+    if (path != null && Set.of(Core.Type.ANY, Core.Type.RANDOM_POSITION).contains(Herobrine.getInstance().getAICore().getCurrent())) {
       path.update();
     }
   }

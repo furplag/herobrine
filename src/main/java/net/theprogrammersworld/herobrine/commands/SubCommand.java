@@ -9,24 +9,24 @@ import net.theprogrammersworld.herobrine.Herobrine;
 @Slf4j(topic = "Minecraft")
 public abstract class SubCommand {
 
-	protected Herobrine plugin;
+  protected Herobrine plugin;
 
-	public SubCommand(Herobrine plugin){
-		this.plugin = plugin;
-	}
+  public SubCommand(Herobrine plugin){
+    this.plugin = plugin;
+  }
 
-	public abstract boolean execute(Player player, String[] args);
+  public abstract boolean execute(Player player, String[] args);
 
-	public abstract String help();
+  public abstract String help();
 
-	public abstract String helpDesc();
+  public abstract String helpDesc();
 
-	protected void sendMessage(Player player, String message){
-		if(player == null)
-			log.info(ChatColor.stripColor(message));
-		else
-			player.sendMessage(message);
-	}
+  protected void sendMessage(Player player, String message){
+    if(player == null)
+      log.info(ChatColor.stripColor(message));
+    else
+      player.sendMessage(message);
+  }
 
 
 }

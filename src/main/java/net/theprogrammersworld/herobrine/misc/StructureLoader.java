@@ -13,44 +13,44 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class StructureLoader {
 
-	private int current = 0;
-	private int length = 0;
-	private InputStream inp;
-	private YamlConfiguration file;
+  private int current = 0;
+  private int length = 0;
+  private InputStream inp;
+  private YamlConfiguration file;
 
-	public StructureLoader(InputStream in) {
-		inp = in;
+  public StructureLoader(InputStream in) {
+    inp = in;
 
-		file = new YamlConfiguration();
+    file = new YamlConfiguration();
 
-		try {
-			file.load(new InputStreamReader(inp, StandardCharsets.UTF_8));
-		} catch (FileNotFoundException e) {
+    try {
+      file.load(new InputStreamReader(inp, StandardCharsets.UTF_8));
+    } catch (FileNotFoundException e) {
 
-			e.printStackTrace();
-		} catch (IOException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
 
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
+      e.printStackTrace();
+    } catch (InvalidConfigurationException e) {
 
-			e.printStackTrace();
-		}
+      e.printStackTrace();
+    }
 
-		try {
-			inp.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    try {
+      inp.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
-	public void Build(World world, int MainX, int MainY, int MainZ) {
-		
-		length = file.getInt("DATA.LENGTH") - 1;
-		for(current = 0; current <= length; current++) {
-			world.getBlockAt(MainX + file.getInt("DATA." + current + ".X"), MainY + file.getInt("DATA." + current + ".Y"), MainZ + file.getInt("DATA." + current + ".Z"))
-				.setType(Material.valueOf(file.getString("DATA." + current + ".MATERIAL")));
-		}
+  public void Build(World world, int MainX, int MainY, int MainZ) {
 
-	}
+    length = file.getInt("DATA.LENGTH") - 1;
+    for(current = 0; current <= length; current++) {
+      world.getBlockAt(MainX + file.getInt("DATA." + current + ".X"), MainY + file.getInt("DATA." + current + ".Y"), MainZ + file.getInt("DATA." + current + ".Z"))
+        .setType(Material.valueOf(file.getString("DATA." + current + ".MATERIAL")));
+    }
+
+  }
 
 }

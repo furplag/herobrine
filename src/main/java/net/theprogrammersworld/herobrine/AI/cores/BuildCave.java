@@ -8,7 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.World;
 
 import lombok.extern.slf4j.Slf4j;
-import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.*;
 
@@ -16,7 +15,7 @@ import net.theprogrammersworld.herobrine.AI.*;
 public class BuildCave extends Core {
 
   public BuildCave() {
-    super(Core.Type.BUILD_CAVE, AppearType.NORMAL, Herobrine.getPluginCore());
+    super(Core.Type.BUILD_CAVE, AppearType.NORMAL);
   }
 
   public CoreResult CallCore(Object[] data) {
@@ -25,12 +24,12 @@ public class BuildCave extends Core {
 
   public CoreResult buildCave(Location loc) {
 
-    if (Herobrine.getPluginCore().getConfigDB().BuildStuff == true) {
-      if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
+    if (plugin.getConfigDB().BuildStuff == true) {
+      if (plugin.getSupport().checkBuild(loc)) {
         if (loc.getBlockY() < 60) {
 
           int chance = Utils.getRandom().nextInt(100);
-          if (chance > (100 - Herobrine.getPluginCore().getConfigDB().CaveChance)) {
+          if (chance > (100 - plugin.getConfigDB().CaveChance)) {
             log.info("Creating cave...");
 
             GenerateCave(loc);
@@ -55,7 +54,7 @@ public class BuildCave extends Core {
 
   public void GenerateCave(Location loc) {
 
-    if (Herobrine.getPluginCore().getSupport().checkBuild(loc)) {
+    if (plugin.getSupport().checkBuild(loc)) {
 
       ArrayList<Location> redstoneTorchList = new ArrayList<Location>();
 

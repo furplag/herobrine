@@ -6,41 +6,40 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.theprogrammersworld.herobrine.Herobrine;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
 
 public class Curse extends Core {
 
-	public Curse() {
-		super(Core.Type.CURSE, AppearType.NORMAL, Herobrine.getPluginCore());
-	}
+  public Curse() {
+    super(Core.Type.CURSE, AppearType.NORMAL);
+  }
 
-	@Override
-	public CoreResult CallCore(Object[] data) {
+  @Override
+  public CoreResult CallCore(Object[] data) {
 
-		final Player player = (Player) data[0];
+    final Player player = (Player) data[0];
 
-		player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 1000, 1));
-		player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
-		player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000, 1));
-		player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 50, 1));
-		player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 1000, 1));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, 1000, 1));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1000, 1));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 1000, 1));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 50, 1));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 1000, 1));
 
-		for (int i=0; i< 3 ; i++) {
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Herobrine.getPluginCore(), new Runnable() {
+    for (int i=0; i< 3 ; i++) {
+      Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 
-				@Override
-				public void run() {
-					player.getLocation().getWorld().strikeLightning(new Location(player.getLocation().getWorld(),
-							player.getLocation().getX(), player.getLocation().getY() + 1, player.getLocation().getZ()));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 50, 1));
-				}
+        @Override
+        public void run() {
+          player.getLocation().getWorld().strikeLightning(new Location(player.getLocation().getWorld(),
+              player.getLocation().getX(), player.getLocation().getY() + 1, player.getLocation().getZ()));
+          player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 50, 1));
+        }
 
-			}, i * 150L);
-		}
+      }, i * 150L);
+    }
 
-		return new CoreResult(true, player.getDisplayName() + " has been cursed by Herobrine.");
-	}
+    return new CoreResult(true, player.displayName() + " has been cursed by Herobrine.");
+  }
 
 }

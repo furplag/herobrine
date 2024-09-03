@@ -7,27 +7,27 @@ import net.theprogrammersworld.herobrine.Herobrine;
 
 public class CmdAllWorlds extends SubCommand {
 
-	public CmdAllWorlds(Herobrine plugin) {
+  public CmdAllWorlds(Herobrine plugin) {
       super(plugin);
   }
 
-	@Override
-	public boolean execute(Player player, String[] args) {
+  @Override
+  public boolean execute(Player player, String[] args) {
 
-		plugin.getConfigDB().addAllWorlds();
-		sendMessage(player, ChatColor.GREEN + "[Herobrine] All worlds have been added to the configuration file. Herobrine can now access all of the server's worlds.");
+    plugin.getConfigDB().addAllWorlds();
+    sendMessage(player, ChatColor.GREEN + "[Herobrine] All worlds have been added to the configuration file. Herobrine can now access all of the server's worlds.");
 
-		return true;
-	}
+    return true;
+  }
 
-	@Override
-	public String help() {
-		return ChatColor.GREEN + "/herobrine allworlds";
-	}
+  @Override
+  public String help() {
+    return ChatColor.GREEN + "/herobrine allworlds";
+  }
 
-	@Override
-	public String helpDesc() {
-		return ChatColor.GREEN + "Grants Herobrine access to all worlds";
-	}
+  @Override
+  public String helpDesc() {
+    return ChatColor.GREEN + "Grants Herobrine access to all worlds";
+  }
 
 }

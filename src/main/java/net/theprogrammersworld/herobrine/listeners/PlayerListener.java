@@ -14,7 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Jukebox;
-import org.bukkit.craftbukkit.v1_20_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -47,28 +47,28 @@ public class PlayerListener implements Listener {
   private Location p_loc = null;
   private long timestamp = 0;
   private boolean canUse = false;
-  private Herobrine PluginCore = null;
+  private Herobrine pluginCore = null;
 
   public PlayerListener(Herobrine plugin) {
     equalsLoreS.add("Herobrine artifact");
     equalsLoreS.add("Sword of Lightning");
     equalsLoreA.add("Herobrine artifact");
     equalsLoreA.add("Apple of Death");
-    PluginCore = plugin;
+    pluginCore = plugin;
   }
 
   @EventHandler
   public void onJoin(PlayerJoinEvent event) {
     // If the persistent tab list entry for Herobrine is enabled, send an "add
     // player" packet to the user on login.
-    if (Herobrine.getPluginCore().getConfigDB().ShowInTabList)
+    if (Herobrine.getInstance().getConfigDB().ShowInTabList)
       ((CraftPlayer) event.getPlayer()).getHandle().connection.send(
-          new ClientboundPlayerInfoUpdatePacket(Action.ADD_PLAYER, Herobrine.getPluginCore().HerobrineNPC.getEntity()));
+          new ClientboundPlayerInfoUpdatePacket(Action.ADD_PLAYER, Herobrine.getInstance().HerobrineNPC.getEntity()));
 
     // Check if the user has a Graveyard cache. If they do, this means they are
     // stuck in the Graveyard and
     // need teleported out.
-    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(PluginCore, new Runnable() {
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(pluginCore, new Runnable() {
       @Override
       public void run() {
         String graveyardCachePath = "plugins/Herobrine/pregraveyard_caches/" + event.getPlayer().getUniqueId();
@@ -112,7 +112,7 @@ public class PlayerListener implements Listener {
 
     // If a newer version of Herobrine is available and the player is an OP, display
     // a message to the OP stating that a new version is available.
-    if (Herobrine.getPluginCore().getConfigDB().newVersionFound && event.getPlayer().isOp())
+    if (Herobrine.getInstance().getConfigDB().newVersionFound && event.getPlayer().isOp())
       event.getPlayer().sendMessage(ChatColor.RED + "A new version of Herobrine is available. To "
           + "get it, go to www.theprogrammersworld.net/Herobrine and click \"Download\".");
   }
@@ -130,21 +130,21 @@ public class PlayerListener implements Listener {
 
             if (ItemName.getLore(itemInHand) != null) {
 
-              if (ItemName.getLore(itemInHand).containsAll(equalsLoreS) && PluginCore.getConfigDB().UseArtifactSword) {
+              if (ItemName.getLore(itemInHand).containsAll(equalsLoreS) && pluginCore.getConfigDB().UseArtifactSword) {
 
                 if (Utils.getRandom().nextBoolean()) {
                   event.getPlayer().getLocation().getWorld().strikeLightning(event.getClickedBlock().getLocation());
                 }
 
               } else if (ItemName.getLore(itemInHand).containsAll(equalsLoreA)
-                  && PluginCore.getConfigDB().UseArtifactApple) {
+                  && pluginCore.getConfigDB().UseArtifactApple) {
 
                 timestamp = System.currentTimeMillis() / 1000;
                 canUse = false;
 
-                if (PluginCore.PlayerApple.containsKey(event.getPlayer())) {
-                  if (PluginCore.PlayerApple.get(event.getPlayer()) < timestamp) {
-                    PluginCore.PlayerApple.remove(event.getPlayer());
+                if (pluginCore.PlayerApple.containsKey(event.getPlayer())) {
+                  if (pluginCore.PlayerApple.get(event.getPlayer()) < timestamp) {
+                    pluginCore.PlayerApple.remove(event.getPlayer());
                     canUse = true;
                   } else {
                     canUse = false;
@@ -158,12 +158,12 @@ public class PlayerListener implements Listener {
                   event.getPlayer().getWorld().createExplosion(event.getPlayer().getLocation(), 0F);
                   LivingEntities = (ArrayList<LivingEntity>) event.getPlayer().getLocation().getWorld()
                       .getLivingEntities();
-                  PluginCore.PlayerApple.put(event.getPlayer(), timestamp + 60);
+                  pluginCore.PlayerApple.put(event.getPlayer(), timestamp + 60);
 
                   for (int i = 0; i <= LivingEntities.size() - 1; i++) {
 
                     if (LivingEntities.get(i) instanceof Player
-                        || LivingEntities.get(i).getEntityId() == PluginCore.entityId) {
+                        || LivingEntities.get(i).getEntityId() == pluginCore.entityId) {
                     } else {
                       le_loc = LivingEntities.get(i).getLocation();
                       p_loc = event.getPlayer().getLocation();
@@ -203,18 +203,18 @@ public class PlayerListener implements Listener {
           if (!block.isPlaying()) {
             if (item.getType() == Material.MUSIC_DISC_11) {
 
-              PluginCore.getAICore();
+              pluginCore.getAICore();
 
               if (!AICore.isDiscCalled) {
 
                 final Player player = event.getPlayer();
-                PluginCore.getAICore();
+                pluginCore.getAICore();
                 AICore.isDiscCalled = true;
-                PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+                pluginCore.getAICore().CancelTarget(Core.Type.ANY);
 
-                Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(AICore.plugin, new Runnable() {
+                Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(pluginCore, new Runnable() {
                   public void run() {
-                    PluginCore.getAICore().callByDisc(player);
+                    pluginCore.getAICore().callByDisc(player);
                   }
                 }, 1 * 50L);
               }
@@ -236,21 +236,21 @@ public class PlayerListener implements Listener {
     if (Utils.getRandom().nextInt(100) > 75) {
       Player player = event.getPlayer();
       event.setCancelled(true);
-      PluginCore.getAICore().playerBedEnter(player);
+      pluginCore.getAICore().playerBedEnter(player);
     }
   }
 
   @EventHandler(priority = EventPriority.HIGHEST)
   public void onPlayerQuit(PlayerQuitEvent event) {
-    if (!Herobrine.isHerobrine(event.getPlayer().getEntityId())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
 
       if (AICore.PlayerTarget == event.getPlayer()
-          && PluginCore.getAICore().getCurrent() == Core.Type.GRAVEYARD && event.getPlayer().getLocation()
-              .getWorld() == Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName)
+          && pluginCore.getAICore().getCurrent() == Core.Type.GRAVEYARD && event.getPlayer().getLocation()
+              .getWorld() == Bukkit.getServer().getWorld(Herobrine.getInstance().getConfigDB().HerobrineWorldName)
           && AICore.isTarget) {
 
         if (Utils.getRandom().nextBoolean()) {
-          event.getPlayer().teleport(PluginCore.getAICore().getGraveyard().getSavedLocation());
+          event.getPlayer().teleport(pluginCore.getAICore().getGraveyard().getSavedLocation());
         }
       }
     }
@@ -258,7 +258,7 @@ public class PlayerListener implements Listener {
 
   @EventHandler(priority = EventPriority.HIGHEST)
   public void onPlayerKick(PlayerKickEvent event) {
-    if (event.getPlayer().getEntityId() == PluginCore.entityId) {
+    if (event.getPlayer().getEntityId() == pluginCore.entityId) {
       event.setCancelled(true);
       return;
     }
@@ -267,25 +267,25 @@ public class PlayerListener implements Listener {
   @EventHandler(priority = EventPriority.HIGHEST)
   public void onPlayerTeleport(PlayerTeleportEvent event) {
 
-    if (Herobrine.isHerobrine(event.getPlayer().getEntityId())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
       if (event.getFrom().getWorld() != event.getTo().getWorld()) {
-        PluginCore.HerobrineRemove();
-        PluginCore.HerobrineSpawn(event.getTo());
+        pluginCore.HerobrineRemove();
+        pluginCore.HerobrineSpawn(event.getTo());
         event.setCancelled(true);
         return;
       }
 
-      if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
+      if (pluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
 
-        Location herobrineLocation = PluginCore.HerobrineNPC.getEntity().getBukkitEntity().getLocation();
+        Location herobrineLocation = pluginCore.HerobrineNPC.getEntity().getBukkitEntity().getLocation();
 
-        if (herobrineLocation.getBlockX() > PluginCore.getConfigDB().WalkingModeXRadius
-            && herobrineLocation.getBlockX() < -PluginCore.getConfigDB().WalkingModeXRadius
-            && herobrineLocation.getBlockZ() > PluginCore.getConfigDB().WalkingModeZRadius
-            && herobrineLocation.getBlockZ() < -PluginCore.getConfigDB().WalkingModeZRadius) {
+        if (herobrineLocation.getBlockX() > pluginCore.getConfigDB().WalkingModeXRadius
+            && herobrineLocation.getBlockX() < -pluginCore.getConfigDB().WalkingModeXRadius
+            && herobrineLocation.getBlockZ() > pluginCore.getConfigDB().WalkingModeZRadius
+            && herobrineLocation.getBlockZ() < -pluginCore.getConfigDB().WalkingModeZRadius) {
 
-          PluginCore.getAICore().CancelTarget(Core.Type.RANDOM_POSITION);
-          PluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
+          pluginCore.getAICore().CancelTarget(Core.Type.RANDOM_POSITION);
+          pluginCore.HerobrineNPC.moveTo(new Location(Bukkit.getServer().getWorlds().get(0), 0, -20, 0));
 
         }
       }
@@ -294,10 +294,10 @@ public class PlayerListener implements Listener {
 
   @EventHandler
   public void onPlayerDeathEvent(PlayerDeathEvent event) {
-    if (Herobrine.isHerobrine(event.getEntity().getEntityId())) {
+    if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
       event.setDeathMessage("");
-      PluginCore.HerobrineRemove();
-      PluginCore.HerobrineSpawn(new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0, 1, 1));
+      pluginCore.HerobrineRemove();
+      pluginCore.HerobrineSpawn(new Location((World) Bukkit.getServer().getWorlds().get(0), 0, -20.f, 0, 1, 1));
     }
   }
 
@@ -305,16 +305,16 @@ public class PlayerListener implements Listener {
   public void onPlayerMoveEvent(PlayerMoveEvent event) {
     // Dynamically toggle Herobrine's visibility to players as a workaround to the
     // persistent tab list entry if the persistent entry is disabled.
-    if (!Herobrine.getPluginCore().getConfigDB().ShowInTabList)
-      PluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
+    if (!Herobrine.getInstance().getConfigDB().ShowInTabList)
+      pluginCore.getAICore().toggleHerobrinePlayerVisibility(event.getPlayer());
 
     // Prevent player from moving when in Herobrine's Graveyard.
-    if (event.getPlayer().getEntityId() != PluginCore.entityId) {
-      if (Herobrine.isGraveyard(event.getPlayer().getWorld())) {
+    if (event.getPlayer().getEntityId() != pluginCore.entityId) {
+      if (/*!Herobrine.getInstance().isHerobrine(event.getPlayer().getEntityId())*/true) {
         Player player = (Player) event.getPlayer();
         player.teleport(
-            new Location(Bukkit.getServer().getWorld(Herobrine.getPluginCore().getConfigDB().HerobrineWorldName),
-                -2.49f, Herobrine.getPluginCore().getConfigDB().graveyardYCoord, 10.69f, -179.85f, 0.44999f));
+            new Location(Bukkit.getServer().getWorld(Herobrine.getInstance().getConfigDB().HerobrineWorldName),
+                -2.49f, Herobrine.getInstance().getConfigDB().graveyardYCoord, 10.69f, -179.85f, 0.44999f));
       }
     }
 

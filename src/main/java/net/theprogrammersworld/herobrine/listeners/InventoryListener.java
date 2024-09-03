@@ -20,10 +20,10 @@ public class InventoryListener implements Listener {
 
   @EventHandler
   public void onInventoryClose(InventoryCloseEvent event) {
-    if (Herobrine.getPluginCore().getConfigDB().UseHeads && InventoryType.CHEST == event.getInventory().getType()) {
-      Herobrine.getPluginCore().getAICore().getCore(Core.Type.BOOK).RunCore(new Object[] { event.getPlayer(), event.getInventory() });
+    if (Herobrine.getInstance().getConfigDB().UseHeads && InventoryType.CHEST == event.getInventory().getType()) {
+      Herobrine.getInstance().getAICore().getCore(Core.Type.BOOK).RunCore(new Object[] { event.getPlayer(), event.getInventory() });
       if (Utils.getRandom().nextInt(100) > 97 && event.getInventory().firstEmpty() != -1) {
-        if (Herobrine.getPluginCore().getAICore().getResetLimits().isHead()) {
+        if (Herobrine.getInstance().getAICore().getResetLimits().isHead()) {
           event.getInventory().setItem(event.getInventory().firstEmpty(), ItemName.CreateSkull(event.getPlayer().getUniqueId(), event.getPlayer().getName()));
         }
       }
@@ -32,10 +32,10 @@ public class InventoryListener implements Listener {
 
   @EventHandler
   public void onInventoryOpen(InventoryOpenEvent event) {
-    if (Herobrine.getPluginCore().getConfigDB().PlaceSigns && Herobrine.getPluginCore().getConfigDB().useWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
-      if (Herobrine.getPluginCore().getAICore().getResetLimits().isSign() && Herobrine.getPluginCore().getSupport().checkSigns(event.getPlayer().getLocation())) {
+    if (Herobrine.getInstance().getConfigDB().PlaceSigns && Herobrine.getInstance().getConfigDB().useWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
+      if (Herobrine.getInstance().getAICore().getResetLimits().isSign() && Herobrine.getInstance().getSupport().checkSigns(event.getPlayer().getLocation())) {
         if (Set.of(InventoryType.CHEST, InventoryType.FURNACE, InventoryType.WORKBENCH).contains(event.getInventory().getType())) {
-          Herobrine.getPluginCore().getAICore().getCore(Core.Type.SIGNS).RunCore(new Object[] { event.getPlayer().getLocation(), event.getPlayer().getLocation() });
+          Herobrine.getInstance().getAICore().getCore(Core.Type.SIGNS).RunCore(new Object[] { event.getPlayer().getLocation(), event.getPlayer().getLocation() });
         }
       }
     }

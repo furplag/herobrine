@@ -1,0 +1,124 @@
+---
+config:
+  ShowInterval: 144000
+  ShowRate: 2
+  HitPlayer: true
+  SendMessages: true
+  Lightning: false
+  DestroyTorches: true
+  DestroyTorchesRadius: 5
+  Worlds:
+  - "world"
+  TotemExplodes: true
+  OnlyWalkingMode: false
+  BuildStuff: true
+  PlaceSigns: true
+  UseTotem: true
+  WriteBooks: true
+  Killable: false
+  UsePotionEffects: true
+  CaveChance: 40
+  BookChance: 5
+  SignChance: 5
+  DeathMessage: "You cannot kill me!"
+  Messages:
+  - "Even Notch can't save you now!"
+  - "Fear me!"
+  - "Welcome to my world!"
+  - "I am your death!"
+  - "Grave awaits you!"
+  SignMessages:
+  - "I'm watching."
+  - "Death..."
+  - "Eyes in dark..."
+  BookMessages:
+  - "White eyes in dark..."
+  - "... was last what I saw ..."
+  - "... before i was dead."
+  Drops:
+    DIAMOND:
+      count: 1
+      chance: 20
+  BuildPyramids: true
+  BuildPyramidOnChunkPercentage: 5
+  UseGraveyardWorld: true
+  BuryPlayers: true
+  SpawnWolves: true
+  SpawnBats: true
+  UseWalkingMode: true
+  WalkingModeRadius:
+    X: 1000
+    Z: 1000
+    FromX: 0
+    FromZ: 0
+  BuildInterval: 72000
+  BuildTemples: true
+  BuildTempleOnChunkPercentage: 5
+  UseArtifacts:
+    Bow: true
+    Sword: true
+    Apple: true
+  HerobrineHP: 300
+  AttackCreative: true
+  AttackOP: true
+  SecuredArea:
+    Build: true
+    Attack: true
+    Haunt: true
+    Signs: true
+    Books: true
+  UseHeads: true
+  UseAncientSword: true
+  UseNPC:
+    Guardian: true
+    Warrior: true
+    Demon: true
+  SpawnDemonsOnPlayerBedEnter: true
+  ItemInHand: "AIR"
+  Explosions: true
+  Burn: true
+  Curse: true
+  Limit:
+    Books: 1
+    Signs: 1
+    Heads: 1
+  UseIgnorePermission: true
+  HerobrineUUID: "f84c6a79-0a4e-45e0-879b-cd49ebd4c4e2"
+  HerobrineName: "Herobrine"
+  HerobrineWorldName: "world_herobrine_graveyard"
+  ShowInTabList: false
+  CheckForUpdates: true
+npc:
+  Guardian:
+    SpawnCount: 1
+    HP: 40
+    Speed: 0.3
+    Drops:
+      GOLDEN_SWORD:
+        Chance: 40
+        Count: 1
+      GOLDEN_AXE:
+        Chance: 30
+        Count: 1
+  Warrior:
+    SpawnChance: 4
+    HP: 40
+    Speed: 0.3
+    Drops:
+      IRON_CHESTPLATE:
+        Chance: 25
+        Count: 1
+      IRON_HELMET:
+        Chance: 20
+        Count: 1
+  Demon:
+    SpawnChance: 4
+    HP: 40
+    Speed: 0.3
+    Drops:
+      GOLDEN_APPLE:
+        Chance: 40
+        Count: 1
+      SKELETON_SKULL:
+        Chance: 20
+        Count: 1

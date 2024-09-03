@@ -9,13 +9,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class Utils {
+
+
   public static Random getRandom() {
     return ThreadLocalRandom.current();
   }
 
   public static Player getRandomPlayer() {/* @formatter:off */
     return Optional.ofNullable(Bukkit.getServer().getOnlinePlayers()).orElseGet(ArrayList::new)
-      .parallelStream().filter((_e) -> _e.getEntityId() != Herobrine.getPluginCore().entityId)
+      .parallelStream().filter((_e) -> _e.getEntityId() != Herobrine.getInstance().entityId)
       .findAny().orElse(null);
   /* @formatter:on */}
 }

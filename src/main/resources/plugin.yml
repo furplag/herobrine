@@ -1,12 +1,15 @@
-name: Herobrine
-main: net.theprogrammersworld.herobrine.Herobrine
-version: 2.4.4-SNAPSHOT
-description: "Bring Herobrine to your Spigot-based Minecraft server!"
-website: https://www.theprogrammersworld.net
-api-version: '1.20'
-load: STARTUP
+---
+name: "$name"
+version: "$version"
+main: "net.theprogrammersworld.herobrine.Herobrine"
+description: "$description ( build by PaperWeightDev $paperSpigotVersion . )"
+website: "https://www.theprogrammersworld.net"
+api-version: "$apiVersion"
+load: "STARTUP"
 commands:
-    herobrine:
-      description: Main command.
-      usage: /herobrine help
-      aliases: [hero, hb]
+  herobrine:
+    description: "Main command."
+    usage: "/herobrine help"
+    aliases:
+    - "hero"
+    - "hb"

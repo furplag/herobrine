@@ -35,276 +35,276 @@ import net.theprogrammersworld.herobrine.misc.ItemName;
 @Slf4j(topic = "Minecraft")
 public class EntityListener implements Listener {
 
-	private ItemStack itemInHand = null;
-	private ArrayList<String> equalsLore = new ArrayList<String>();
-	private ArrayList<String> equalsLoreS = new ArrayList<String>();
-	private ArrayList<String> getLore = new ArrayList<String>();
-	private Herobrine PluginCore = null;
+  private ItemStack itemInHand = null;
+  private ArrayList<String> equalsLore = new ArrayList<String>();
+  private ArrayList<String> equalsLoreS = new ArrayList<String>();
+  private ArrayList<String> getLore = new ArrayList<String>();
+  private Herobrine PluginCore = null;
 
-	public EntityListener(Herobrine plugin) {
-		equalsLore.add("Herobrine artifact");
-		equalsLore.add("Bow of Teleporting");
-		equalsLoreS.add("Herobrine artifact");
-		equalsLoreS.add("Sword of Lightning");
-		PluginCore = plugin;
-	}
+  public EntityListener(Herobrine plugin) {
+    equalsLore.add("Herobrine artifact");
+    equalsLore.add("Bow of Teleporting");
+    equalsLoreS.add("Herobrine artifact");
+    equalsLoreS.add("Sword of Lightning");
+    PluginCore = plugin;
+  }
 
-	@EventHandler
-	public void onCreatureSpawn(CreatureSpawnEvent event) {
-		if (!Herobrine.isNPCDisabled) {
-			if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
+  @EventHandler
+  public void onCreatureSpawn(CreatureSpawnEvent event) {
+    if (!Herobrine.getInstance().isNPCDisabled) {
+      if (PluginCore.getConfigDB().useWorlds.contains(event.getEntity().getLocation().getWorld().getName())) {
 
-				Entity entity = event.getEntity();
-				EntityType creatureType = event.getEntityType();
+        Entity entity = event.getEntity();
+        EntityType creatureType = event.getEntityType();
 
-				if (event.isCancelled())
-					return;
+        if (event.isCancelled())
+          return;
 
-				if (creatureType == EntityType.ZOMBIE) {
-					if (PluginCore.getConfigDB().UseNPC_Warrior) {
-						if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
+        if (creatureType == EntityType.ZOMBIE) {
+          if (PluginCore.getConfigDB().UseNPC_Warrior) {
+            if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Warrior.SpawnChance")) {
 
-							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
-								LivingEntity ent = (LivingEntity) entity;
+              if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
+                LivingEntity ent = (LivingEntity) entity;
 
-								ent.setHealth(0);
-								PluginCore.getEntityManager().spawnCustomZombie(event.getLocation(), MobType.HEROBRINE_WARRIOR);
+                ent.setHealth(0);
+                PluginCore.getEntityManager().spawnCustomZombie(event.getLocation(), MobType.HEROBRINE_WARRIOR);
 
-								return;
-							}
-						}
-					}
-				} else if (creatureType == EntityType.SKELETON) {
-					if (PluginCore.getConfigDB().UseNPC_Demon) {
-						if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
+                return;
+              }
+            }
+          }
+        } else if (creatureType == EntityType.SKELETON) {
+          if (PluginCore.getConfigDB().UseNPC_Demon) {
+            if (Utils.getRandom().nextInt(100) < PluginCore.getConfigDB().npc.getInt("npc.Demon.SpawnChance")) {
 
-							if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
-								LivingEntity ent = (LivingEntity) entity;
+              if (PluginCore.getEntityManager().isCustomMob(entity.getEntityId()) == false) {
+                LivingEntity ent = (LivingEntity) entity;
 
-								ent.setHealth(0);
-								PluginCore.getEntityManager().spawnCustomSkeleton(event.getLocation(), MobType.DEMON);
+                ent.setHealth(0);
+                PluginCore.getEntityManager().spawnCustomSkeleton(event.getLocation(), MobType.DEMON);
 
-								return;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
-	@EventHandler
-	public void onEntityDeathEvent(EntityDeathEvent event) {
-		if (PluginCore.getEntityManager().isCustomMob(event.getEntity().getEntityId())) {
-			PluginCore.getEntityManager().removeMob(event.getEntity().getEntityId());
-		}
-	}
+  @EventHandler
+  public void onEntityDeathEvent(EntityDeathEvent event) {
+    if (PluginCore.getEntityManager().isCustomMob(event.getEntity().getEntityId())) {
+      PluginCore.getEntityManager().removeMob(event.getEntity().getEntityId());
+    }
+  }
 
-	@EventHandler
-	public void EntityTargetEvent(EntityTargetLivingEntityEvent e) {
-		LivingEntity lv = e.getTarget();
+  @EventHandler
+  public void EntityTargetEvent(EntityTargetLivingEntityEvent e) {
+    LivingEntity lv = e.getTarget();
 
-		if(lv == null)
-			return;
+    if(lv == null)
+      return;
 
-		if (lv.getEntityId() == PluginCore.entityId) {
-			e.setCancelled(true);
-			return;
-		}
-	}
+    if (lv.getEntityId() == PluginCore.entityId) {
+      e.setCancelled(true);
+      return;
+    }
+  }
 
-	@EventHandler
-	public void onProjectileHit(ProjectileHitEvent event) {
-		if (event.getEntity() instanceof Arrow) {
+  @EventHandler
+  public void onProjectileHit(ProjectileHitEvent event) {
+    if (event.getEntity() instanceof Arrow) {
 
-			Arrow arrow = (Arrow) event.getEntity();
-			if (arrow.getShooter() instanceof Player) {
+      Arrow arrow = (Arrow) event.getEntity();
+      if (arrow.getShooter() instanceof Player) {
 
-				Player player = (Player) arrow.getShooter();
-				if (player.getInventory().getItemInMainHand() != null) {
+        Player player = (Player) arrow.getShooter();
+        if (player.getInventory().getItemInMainHand() != null) {
 
-					itemInHand = player.getInventory().getItemInMainHand();
-					if (itemInHand.getType() != null) {
+          itemInHand = player.getInventory().getItemInMainHand();
+          if (itemInHand.getType() != null) {
 
-						if (itemInHand.getType() == Material.BOW) {
-							getLore = ItemName.getLore(itemInHand);
-							if (getLore != null) {
+            if (itemInHand.getType() == Material.BOW) {
+              getLore = ItemName.getLore(itemInHand);
+              if (getLore != null) {
 
-								if (getLore.containsAll(equalsLore)) {
+                if (getLore.containsAll(equalsLore)) {
 
-									if (PluginCore.getConfigDB().UseArtifactBow) {
+                  if (PluginCore.getConfigDB().UseArtifactBow) {
 
-										player.teleport(arrow.getLocation());
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                    player.teleport(arrow.getLocation());
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
-	@EventHandler
-	public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
+  @EventHandler
+  public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
 
-		if (event.getEntity().getEntityId() == PluginCore.entityId) {
-			event.setCancelled(true);
-			event.setDamage(0);
-			return;
-		}
+    if (event.getEntity().getEntityId() == PluginCore.entityId) {
+      event.setCancelled(true);
+      event.setDamage(0);
+      return;
+    }
 
-	}
+  }
 
-	@EventHandler
-	public void onEntityDamage(EntityDamageEvent event) {
-		if (event.getEntity().getEntityId() == PluginCore.entityId) {
-			if (event instanceof EntityDamageByEntityEvent) {
+  @EventHandler
+  public void onEntityDamage(EntityDamageEvent event) {
+    if (event.getEntity().getEntityId() == PluginCore.entityId) {
+      if (event instanceof EntityDamageByEntityEvent) {
 
-				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
-				if (PluginCore.getConfigDB().Killable == true
-					&& PluginCore.getAICore().getCurrent() != Core.Type.GRAVEYARD) {
+        EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
+        if (PluginCore.getConfigDB().Killable == true
+          && PluginCore.getAICore().getCurrent() != Core.Type.GRAVEYARD) {
 
-					if (dEvent.getDamager() instanceof Player) {
-						if (event.getDamage() >= Herobrine.HerobrineHP) {
+          if (dEvent.getDamager() instanceof Player) {
+            if (event.getDamage() >= Herobrine.HerobrineHP) {
 
-							HerobrineDropItems();
+              HerobrineDropItems();
 
-							PluginCore.getAICore().CancelTarget(Core.Type.ANY);
-							Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
-							Player player = (Player) dEvent.getDamager();
-							player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
+              PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+              Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
+              Player player = (Player) dEvent.getDamager();
+              player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
-						} else {
-							Herobrine.HerobrineHP -= event.getDamage();
-							PluginCore.HerobrineNPC.hurtAnimation();
-							log.info("HIT: " + event.getDamage());
-						}
-					} else if (dEvent.getDamager() instanceof Projectile) {
+            } else {
+              Herobrine.HerobrineHP -= event.getDamage();
+              PluginCore.HerobrineNPC.hurtAnimation();
+              log.info("HIT: " + event.getDamage());
+            }
+          } else if (dEvent.getDamager() instanceof Projectile) {
 
-						Arrow arrow = (Arrow) dEvent.getDamager();
-						if (arrow.getShooter() instanceof Player) {
-							if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
-								PluginCore.getAICore().CancelTarget(Core.Type.ANY);
-								PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
-							} else {
+            Arrow arrow = (Arrow) dEvent.getDamager();
+            if (arrow.getShooter() instanceof Player) {
+              if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
+                PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+                PluginCore.getAICore().setAttackTarget((Player) arrow.getShooter());
+              } else {
 
-								if (event.getDamage() >= Herobrine.HerobrineHP) {
+                if (event.getDamage() >= Herobrine.HerobrineHP) {
 
-									HerobrineDropItems();
+                  HerobrineDropItems();
 
-									PluginCore.getAICore().CancelTarget(Core.Type.ANY);
-									Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
-									Player player = (Player) arrow.getShooter();
-									player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
+                  PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+                  Herobrine.HerobrineHP = Herobrine.HerobrineMaxHP;
+                  Player player = (Player) arrow.getShooter();
+                  player.sendMessage("<Herobrine> " + PluginCore.getConfigDB().DeathMessage);
 
-								} else {
-									Herobrine.HerobrineHP -= event.getDamage();
-									PluginCore.HerobrineNPC.hurtAnimation();
-									log.info("HIT: " + event.getDamage());
-								}
+                } else {
+                  Herobrine.HerobrineHP -= event.getDamage();
+                  PluginCore.HerobrineNPC.hurtAnimation();
+                  log.info("HIT: " + event.getDamage());
+                }
 
-							}
-						} else {
-							if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
-								Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-								newloc.setY(-100);
-								PluginCore.HerobrineNPC.moveTo(newloc);
-								PluginCore.getAICore().CancelTarget(Core.Type.ANY);
-							}
-						}
-					} else {
-						if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
-							Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
-							newloc.setY(-100);
-							PluginCore.HerobrineNPC.moveTo(newloc);
-							PluginCore.getAICore().CancelTarget(Core.Type.ANY);
-						}
-					}
-				}
+              }
+            } else {
+              if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
+                Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
+                newloc.setY(-100);
+                PluginCore.HerobrineNPC.moveTo(newloc);
+                PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+              }
+            }
+          } else {
+            if (PluginCore.getAICore().getCurrent() == Core.Type.RANDOM_POSITION) {
+              Location newloc = (Location) PluginCore.HerobrineNPC.getBukkitEntity().getLocation();
+              newloc.setY(-100);
+              PluginCore.HerobrineNPC.moveTo(newloc);
+              PluginCore.getAICore().CancelTarget(Core.Type.ANY);
+            }
+          }
+        }
 
-			}
+      }
 
-			event.setCancelled(true);
-			event.setDamage(0);
-			return;
+      event.setCancelled(true);
+      event.setDamage(0);
+      return;
 
-		} else {
-			if (event instanceof EntityDamageByEntityEvent) {
-				EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
-				if (dEvent.getDamager() instanceof Player) {
-					Player player = (Player) dEvent.getDamager();
-					if (player.getInventory().getItemInMainHand() != null) {
-						if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
-							if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
-								itemInHand = player.getInventory().getItemInMainHand();
-								getLore = ItemName.getLore(itemInHand);
-								if (getLore.containsAll(equalsLoreS)) {
-									if (PluginCore.getConfigDB().UseArtifactSword) {
-										if (Utils.getRandom().nextBoolean()) {
-											player.getLocation().getWorld().strikeLightning(event.getEntity().getLocation());
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if (dEvent.getDamager() instanceof Zombie) {
-					Zombie zmb = (Zombie) dEvent.getDamager();
-					if (zmb.getCustomName() == "Artifact Guardian" || zmb.getCustomName() == "Herobrine Warrior") {
+    } else {
+      if (event instanceof EntityDamageByEntityEvent) {
+        EntityDamageByEntityEvent dEvent = (EntityDamageByEntityEvent) event;
+        if (dEvent.getDamager() instanceof Player) {
+          Player player = (Player) dEvent.getDamager();
+          if (player.getInventory().getItemInMainHand() != null) {
+            if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
+              if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
+                itemInHand = player.getInventory().getItemInMainHand();
+                getLore = ItemName.getLore(itemInHand);
+                if (getLore.containsAll(equalsLoreS)) {
+                  if (PluginCore.getConfigDB().UseArtifactSword) {
+                    if (Utils.getRandom().nextBoolean()) {
+                      player.getLocation().getWorld().strikeLightning(event.getEntity().getLocation());
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } else if (dEvent.getDamager() instanceof Zombie) {
+          Zombie zmb = (Zombie) dEvent.getDamager();
+          if (zmb.getCustomName() == "Artifact Guardian" || zmb.getCustomName() == "Herobrine Warrior") {
 
-						dEvent.setDamage(dEvent.getDamage() * 3);
-					}
+            dEvent.setDamage(dEvent.getDamage() * 3);
+          }
 
-				} else if (dEvent.getDamager() instanceof Skeleton) {
-					Skeleton zmb = (Skeleton) dEvent.getDamager();
-					if (zmb.getCustomName() == "Demon") {
+        } else if (dEvent.getDamager() instanceof Skeleton) {
+          Skeleton zmb = (Skeleton) dEvent.getDamager();
+          if (zmb.getCustomName() == "Demon") {
 
-						dEvent.setDamage(dEvent.getDamage() * 3);
-					}
+            dEvent.setDamage(dEvent.getDamage() * 3);
+          }
 
-				}
-			}
-			if (event.getCause() != null) {
-				if (event.getCause() == DamageCause.LIGHTNING) {
-					if (event.getEntity() instanceof Player) {
-						if (event.getEntity().getEntityId() != PluginCore.entityId) {
-							Player player = (Player) event.getEntity();
-							if (player.getInventory().getItemInMainHand() != null) {
-								if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
-									if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
-										itemInHand = player.getInventory().getItemInMainHand();
-										getLore = ItemName.getLore(itemInHand);
-										if (getLore.containsAll(equalsLoreS)) {
-											if (PluginCore.getConfigDB().UseArtifactSword) {
-												event.setDamage(0);
-												event.setCancelled(true);
-												return;
-											}
-										}
-									}
-								}
-							}
+        }
+      }
+      if (event.getCause() != null) {
+        if (event.getCause() == DamageCause.LIGHTNING) {
+          if (event.getEntity() instanceof Player) {
+            if (event.getEntity().getEntityId() != PluginCore.entityId) {
+              Player player = (Player) event.getEntity();
+              if (player.getInventory().getItemInMainHand() != null) {
+                if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD) {
+                  if (ItemName.getLore(player.getInventory().getItemInMainHand()) != null) {
+                    itemInHand = player.getInventory().getItemInMainHand();
+                    getLore = ItemName.getLore(itemInHand);
+                    if (getLore.containsAll(equalsLoreS)) {
+                      if (PluginCore.getConfigDB().UseArtifactSword) {
+                        event.setDamage(0);
+                        event.setCancelled(true);
+                        return;
+                      }
+                    }
+                  }
+                }
+              }
 
-						}
-					}
-				}
+            }
+          }
+        }
 
-			}
-		}
-	}
+      }
+    }
+  }
 
-	protected void HerobrineDropItems(){
-		Object[] items = PluginCore.getConfigDB().config.getConfigurationSection("config.Drops").getKeys(false).toArray();
-		for (Object itemObj : items) {
-			final String item = itemObj.toString();
-			final int chance = new Random().nextInt(100);
-			if (chance <= PluginCore.getConfigDB().config.getInt("config.Drops." + item + ".chance")) {
-				PluginCore.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(PluginCore.HerobrineNPC.getBukkitEntity()
-						.getLocation(), new ItemStack(Material.matchMaterial(item), PluginCore.getConfigDB().config
-								.getInt("config.Drops." + item + ".count")));
-			}
-		}
-	}
+  protected void HerobrineDropItems(){
+    Object[] items = PluginCore.getConfigDB().config.getConfigurationSection("config.Drops").getKeys(false).toArray();
+    for (Object itemObj : items) {
+      final String item = itemObj.toString();
+      final int chance = new Random().nextInt(100);
+      if (chance <= PluginCore.getConfigDB().config.getInt("config.Drops." + item + ".chance")) {
+        PluginCore.HerobrineNPC.getBukkitEntity().getLocation().getWorld().dropItemNaturally(PluginCore.HerobrineNPC.getBukkitEntity()
+            .getLocation(), new ItemStack(Material.matchMaterial(item), PluginCore.getConfigDB().config
+                .getInt("config.Drops." + item + ".count")));
+      }
+    }
+  }
 
 }

@@ -11,7 +11,7 @@ import org.bukkit.block.data.Directional;
 import org.bukkit.block.sign.Side;
 
 import lombok.extern.slf4j.Slf4j;
-import net.theprogrammersworld.herobrine.Herobrine;
+import net.kyori.adventure.text.Component;
 import net.theprogrammersworld.herobrine.Utils;
 import net.theprogrammersworld.herobrine.AI.Core;
 import net.theprogrammersworld.herobrine.AI.CoreResult;
@@ -20,77 +20,77 @@ import net.theprogrammersworld.herobrine.misc.BlockChanger;
 @Slf4j( topic = "Minecraft" )
 public class Signs extends Core {
 
-	public Signs() {
-		super(Core.Type.SIGNS, AppearType.NORMAL, Herobrine.getPluginCore());
-	}
+  public Signs() {
+    super(Core.Type.SIGNS, AppearType.NORMAL);
+  }
 
-	public CoreResult CallCore(Object[] data) {
-		return placeSign((Location) data[0], (Location) data[1]);
-	}
+  public CoreResult CallCore(Object[] data) {
+    return placeSign((Location) data[0], (Location) data[1]);
+  }
 
-	public CoreResult placeSign(Location loc, Location ploc) {
-		boolean status = false;
-		log.info("Generating sign...");
+  public CoreResult placeSign(Location loc, Location ploc) {
+    boolean status = false;
+    log.info("Generating sign...");
 
-		if (loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY(), loc.getBlockZ()).getType() == Material.AIR
-				&& loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY() - 1, loc.getBlockZ())
-						.getType() != Material.AIR) {
-			loc.setX(loc.getBlockX() + 2);
-			createSign(loc, ploc);
-			status = true;
-		} else if (loc.getWorld().getBlockAt(loc.getBlockX() - 2, loc.getBlockY(), loc.getBlockZ())
-				.getType() == Material.AIR
-				&& loc.getWorld().getBlockAt(loc.getBlockX() - 2, loc.getBlockY() - 1, loc.getBlockZ())
-						.getType() != Material.AIR) {
-			loc.setX(loc.getBlockX() - 2);
-			createSign(loc, ploc);
-			status = true;
-		} else if (loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() + 2)
-				.getType() == Material.AIR
-				&& loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() + 2)
-						.getType() != Material.AIR) {
-			loc.setZ(loc.getBlockZ() + 2);
-			createSign(loc, ploc);
-			status = true;
-		} else if (loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() - 2)
-				.getType() == Material.AIR
-				&& loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 2)
-						.getType() != Material.AIR) {
-			loc.setZ(loc.getBlockZ() - 2);
-			createSign(loc, ploc);
-			status = true;
-		}
+    if (loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY(), loc.getBlockZ()).getType() == Material.AIR
+        && loc.getWorld().getBlockAt(loc.getBlockX() + 2, loc.getBlockY() - 1, loc.getBlockZ())
+            .getType() != Material.AIR) {
+      loc.setX(loc.getBlockX() + 2);
+      createSign(loc, ploc);
+      status = true;
+    } else if (loc.getWorld().getBlockAt(loc.getBlockX() - 2, loc.getBlockY(), loc.getBlockZ())
+        .getType() == Material.AIR
+        && loc.getWorld().getBlockAt(loc.getBlockX() - 2, loc.getBlockY() - 1, loc.getBlockZ())
+            .getType() != Material.AIR) {
+      loc.setX(loc.getBlockX() - 2);
+      createSign(loc, ploc);
+      status = true;
+    } else if (loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() + 2)
+        .getType() == Material.AIR
+        && loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() + 2)
+            .getType() != Material.AIR) {
+      loc.setZ(loc.getBlockZ() + 2);
+      createSign(loc, ploc);
+      status = true;
+    } else if (loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() - 2)
+        .getType() == Material.AIR
+        && loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ() - 2)
+            .getType() != Material.AIR) {
+      loc.setZ(loc.getBlockZ() - 2);
+      createSign(loc, ploc);
+      status = true;
+    }
 
-		if (status) {
-			return new CoreResult(true, "Sign generated successfully.");
-		} else {
-			return new CoreResult(false, "Sign generation failed.");
-		}
-	}
+    if (status) {
+      return new CoreResult(true, "Sign generated successfully.");
+    } else {
+      return new CoreResult(false, "Sign generation failed.");
+    }
+  }
 
-	public void createSign(Location loc, Location ploc) {
+  public void createSign(Location loc, Location ploc) {
 
-		Random randcgen = Utils.getRandom();
-		int chance = randcgen.nextInt(100);
-		if (chance > (100 - Herobrine.getPluginCore().getConfigDB().SignChance)) {
-			Random randgen = Utils.getRandom();
-			int count = Herobrine.getPluginCore().getConfigDB().useSignMessages.size();
-			int randmsg = randgen.nextInt(count);
+    Random randcgen = Utils.getRandom();
+    int chance = randcgen.nextInt(100);
+    if (chance > (100 - plugin.getConfigDB().SignChance)) {
+      Random randgen = Utils.getRandom();
+      int count = plugin.getConfigDB().useSignMessages.size();
+      int randmsg = randgen.nextInt(count);
 
-			Block signblock = loc.add(0, 0D, 0).getBlock();
-			Block undersignblock = signblock.getLocation().subtract(0D, 1D, 0D).getBlock();
-			if (!signblock.getType().isSolid() && undersignblock.getType().isSolid()) {
+      Block signblock = loc.add(0, 0D, 0).getBlock();
+      Block undersignblock = signblock.getLocation().subtract(0D, 1D, 0D).getBlock();
+      if (!signblock.getType().isSolid() && undersignblock.getType().isSolid()) {
 
-				signblock.setType(Material.OAK_SIGN);
-				Sign sign = (Sign) signblock.getState();
+        signblock.setType(Material.OAK_SIGN);
+        Sign sign = (Sign) signblock.getState();
 
-				BlockData blockData = sign.getBlockData();
-				((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
-				sign.setBlockData(blockData);
+        BlockData blockData = sign.getBlockData();
+        ((Directional) blockData).setFacing(BlockChanger.getPlayerBlockFace(ploc));
+        sign.setBlockData(blockData);
 
-				sign.getSide(Side.FRONT).setLine(1, Herobrine.getPluginCore().getConfigDB().useSignMessages.get(randmsg));
-				sign.update();
-			}
-		}
-	}
+        sign.getSide(Side.FRONT).line(1, Component.text(plugin.getConfigDB().useSignMessages.get(randmsg)));
+        sign.update();
+      }
+    }
+  }
 }
